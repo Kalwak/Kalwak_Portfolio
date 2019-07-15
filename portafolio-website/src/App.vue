@@ -1,8 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" class="container-fluid">
     <page-header></page-header>
     <page-main></page-main>
-    <page-footer></page-footer>
   </div>
 </template>
 

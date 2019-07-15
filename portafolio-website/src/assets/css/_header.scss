@@ -1,0 +1,36 @@
+.header {
+  padding: 0px 20px;
+  align-items: center;
+  box-shadow: 0px 1px 5px #000;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .brand__logo {
+    display: block;
+    width: 130px;
+
+    img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.nav {
+  &__item {
+    display: inline-block;
+    padding: 22px 30px;
+    color: #000 !important;
+    font-size: 0.9em;
+    transition: .3s all linear;
+
+    &:hover {
+      background-color: #ddd;
+    }
+  }
+}
