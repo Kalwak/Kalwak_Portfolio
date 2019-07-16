@@ -1,13 +1,12 @@
 .header {
-  padding: 0px 60px;
   align-items: center;
   justify-content: center;
-  // box-shadow: 0px 1px 5px #000;
+  box-shadow: 0px 1px 5px #000;
 }
 
 .brand {
   .brand__logo {
-    width: 130px;
+    width: 120px;
 
     .logo__image {
       width: 100%;
@@ -22,13 +21,43 @@
     display: inline-block;
     padding: 0px 30px;
     color: #000;
-    padding: 25px 30px;
+    padding: 15px 20px;
     font-size: 1em;
     transition: .3s all linear;
     font-family: $pt-sans;
 
     &:hover {
       background-color: #ddd;
+    }
+  }
+}
+
+.dropdown-container {
+  position: relative;
+  cursor: pointer;
+
+  &:hover .dropdown__options {
+    visibility: visible;
+  }
+
+  .dropdown__options {
+    position: absolute;
+    visibility: hidden;
+    z-index: 1;
+    width: 150%;
+    top: 100%;
+    left: 0;
+    background-color: rgb(197, 95, 95);
+    color: #fff;
+
+    .dropdown__option {
+      padding: 10px 0px;
+      text-align: center;
+      display: block;
+
+      &:hover {
+        color: #ddd;
+      }
     }
   }
 }
