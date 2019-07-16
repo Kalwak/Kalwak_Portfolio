@@ -1,6 +1,6 @@
 <template>
   <header class="header row">
-    <div class="col-auto">
+    <div class="col-auto column">
       <div class="brand">
         <div class="brand__logo">
           <a href="/" title="Wink">
@@ -9,15 +9,15 @@
         </div>
       </div>
     </div>
-    <nav class="nav col-auto">
-      <div class="nav__item dropdown-container">
+    <nav class="nav col-auto column">
+      <div class="nav__item dropdown-list">
         Sobre nosotros
         <div class="dropdown__options">
           <span class="dropdown__option">Quienes somos ?</span>
           <span class="dropdown__option">Trabajos anteriores</span>
         </div>
       </div>
-      <div class="nav__item dropdown-container">
+      <div class="nav__item dropdown-list">
         Servicios
         <div class="dropdown__options">
           <span class="dropdown__option">Desarrollo web</span>
@@ -29,7 +29,7 @@
       <router-link to="/"><a class="nav__item">Cotizar</a></router-link>
       <router-link to="/"><a class="nav__item">Contacto</a></router-link>
     </nav>
-    <div class="col-auto">
+    <div class="col-auto column">
       <div class="lang-switcher">
         <img src="@/assets/images/spanish-lang.svg" alt="Spain flag" class="lang" title="spanish" />
         <img src="@/assets/images/english-lang.svg" alt="USA flag" class="lang" title="english" />
@@ -40,7 +40,7 @@
 
 <script>
 export default {
-  name: 'page-header'
+  name: 'page-header',
 }
 </script>
 
