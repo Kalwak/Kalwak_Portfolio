@@ -20,7 +20,7 @@
   &__item {
     display: inline-block;
     padding: 0px 30px;
-    color: #000;
+    color: #000 !important;
     padding: 15px 20px;
     font-size: 1em;
     transition: .3s all linear;
@@ -42,19 +42,18 @@
 
   .dropdown__options {
     position: absolute;
+    min-width: 220px;
     visibility: hidden;
     z-index: 1;
-    width: 150%;
     top: 100%;
     left: 0;
     background-color: rgb(197, 95, 95);
     color: #fff;
 
     .dropdown__option {
-      padding: 10px 0px;
-      text-align: center;
-      display: block;
-
+      padding: 15px 20px;
+      display: inline-block;
+      min-width: 100%;
       &:hover {
         color: #ddd;
       }
