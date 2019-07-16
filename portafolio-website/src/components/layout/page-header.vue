@@ -1,5 +1,5 @@
 <template>
-  <header class="header row">
+  <header class="header row animated slideInLeft">
     <div class="col-auto column">
       <div class="brand">
         <div class="brand__logo">
