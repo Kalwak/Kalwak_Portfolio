@@ -11,14 +11,18 @@
     </div>
     <nav class="nav col-auto column">
       <div class="nav__item dropdown-list">
-        Sobre nosotros
+        <span class="dropdown__label">
+          Sobre nosotros <span class="icon-down-open-mini"></span>
+        </span>
         <div class="dropdown__options">
           <span class="dropdown__option">Quienes somos ?</span>
           <span class="dropdown__option">Trabajos anteriores</span>
         </div>
       </div>
       <div class="nav__item dropdown-list">
-        Servicios
+        <span class="dropdown__label">
+          Servicios <span class="icon-down-open-mini"></span>
+        </span>
         <div class="dropdown__options">
           <span class="dropdown__option">Desarrollo web</span>
           <span class="dropdown__option">Desarrollo de software</span>

@@ -24,6 +24,7 @@
   }
 
   .banner__text {
+    cursor: pointer;
     position: relative;
     border: 2px solid #ddd;
     padding: 20px 40px;
@@ -32,9 +33,12 @@
 
     .banner__text-title {
       font-size: 1.8em;
+      margin-bottom: 10px;
     }
+
     .banner__text-description {
       font-size: 1.2em;
+      margin: 0;
     }
   }
 }

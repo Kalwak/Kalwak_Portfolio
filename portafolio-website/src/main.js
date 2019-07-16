@@ -4,6 +4,7 @@ import router from './router';
 import store from './store';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/animate.css';
+import './assets/icons/icons.css';
 import './assets/css/main.scss';
 Vue.config.productionTip = false;
 
