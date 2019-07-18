@@ -15,7 +15,7 @@
           Sobre nosotros <span class="icon-down-open-mini"></span>
         </span>
         <transition name="dropdown">
-          <div class="dropdown__options animated fadeIn" v-if="dropdown">
+          <div class="dropdown__options" v-if="dropdown">
             <span class="dropdown__option">Quienes somos ?</span>
             <span class="dropdown__option">Trabajos anteriores</span>
           </div>
