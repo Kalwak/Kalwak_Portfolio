@@ -10,26 +10,18 @@
       </div>
     </div>
     <nav class="nav col-auto column">
-      <div class="nav__item dropdown-list">
+      <div class="nav__item dropdown-list" @mouseover="dropdown = true" @mouseout="dropdown = false">
         <span class="dropdown__label">
           Sobre nosotros <span class="icon-down-open-mini"></span>
         </span>
-        <div class="dropdown__options">
-          <span class="dropdown__option">Quienes somos ?</span>
-          <span class="dropdown__option">Trabajos anteriores</span>
-        </div>
+        <transition name="dropdown">
+          <div class="dropdown__options animated fadeIn" v-if="dropdown">
+            <span class="dropdown__option">Quienes somos ?</span>
+            <span class="dropdown__option">Trabajos anteriores</span>
+          </div>
+        </transition>
       </div>
-      <div class="nav__item dropdown-list">
-        <span class="dropdown__label">
-          Servicios <span class="icon-down-open-mini"></span>
-        </span>
-        <div class="dropdown__options">
-          <span class="dropdown__option">Desarrollo web</span>
-          <span class="dropdown__option">Desarrollo de software</span>
-          <span class="dropdown__option">Pagos web</span>
-          <span class="dropdown__option">Diseño grafico</span>
-        </div>
-      </div>
+      <router-link to="/"><a class="nav__item">Servicios</a></router-link>
       <router-link to="/"><a class="nav__item">Cotizar</a></router-link>
       <router-link to="/"><a class="nav__item">Contacto</a></router-link>
     </nav>
@@ -45,6 +37,11 @@
 <script>
 export default {
   name: 'page-header',
+  data() {
+    return {
+      dropdown: false,
+    };
+  },
 }
 </script>
 
