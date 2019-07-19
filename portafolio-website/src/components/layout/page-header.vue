@@ -1,3 +1,9 @@
+<!--
+  page header
+    - brand logo
+    - navigation menu
+    - language switcher
+-->
 <template>
   <header class="header row animated slideInLeft">
     <div class="col-auto column">
@@ -9,22 +15,7 @@
         </div>
       </div>
     </div>
-    <nav class="nav col-auto column">
-      <div class="nav__item dropdown-list" @mouseover="dropdown = true" @mouseout="dropdown = false">
-        <span class="dropdown__label">
-          Sobre nosotros <span class="icon-down-open-mini"></span>
-        </span>
-        <transition name="dropdown">
-          <div class="dropdown__options" v-if="dropdown">
-            <span class="dropdown__option">Quienes somos ?</span>
-            <span class="dropdown__option">Trabajos anteriores</span>
-          </div>
-        </transition>
-      </div>
-      <router-link to="/"><a class="nav__item">Servicios</a></router-link>
-      <router-link to="/"><a class="nav__item">Cotizar</a></router-link>
-      <router-link to="/"><a class="nav__item">Contacto</a></router-link>
-    </nav>
+    <nav-menu></nav-menu>
     <div class="col-auto column">
       <div class="lang-switcher">
         <img src="@/assets/images/spanish-lang.svg" alt="Spain flag" class="lang" title="spanish" />
@@ -35,13 +26,13 @@
 </template>
 
 <script>
+import NavMenu from '@/components/sub-layout/navigation-menu.vue';
+
 export default {
   name: 'page-header',
-  data() {
-    return {
-      dropdown: false,
-    };
-  },
+  components: {
+    NavMenu
+  }
 }
 </script>
 

@@ -1,5 +1,5 @@
 <template>
-  <main class="main row">
+  <main class="main row animated">
     <router-view></router-view>
   </main>
 </template>

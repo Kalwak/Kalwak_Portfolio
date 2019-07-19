@@ -1,4 +1,3 @@
-
 <template>
   <div class="col-12 column">
     <div class="banner">
@@ -10,8 +9,6 @@
           Soluciones Innovadoras
         </p>
       </div>
-    </div>
-  <div class="col-12 column">
-  </div>
+    </div>>
   </div>
 </template>
