@@ -1,6 +1,6 @@
 <template>
-  <main class="main row animated">
-    <router-view></router-view>
+  <main class="main row">
+    <!-- <router-view></router-view> -->
   </main>
 </template>
 

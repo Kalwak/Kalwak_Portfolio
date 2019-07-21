@@ -8,13 +8,12 @@
   - Contact
 -->
 <template>
-  <nav class="nav col-auto column">
-
+  <nav class="nav col-auto">
     <div class="nav__item">
       <span class="nav__link nav__link--flex">Sobre nosotros<span class="icon-down-open-mini"></span></span>
       <div class="dropdown-list">
-        <router-link to="/team"><a class="dropdown-list__item nav__link">Quienes somos ?</a></router-link>
-        <router-link to="/projects"><a class="dropdown-list__item nav__link">Proyectos anteriores</a></router-link>
+        <router-link to="/team" class="dropdown-list__item nav__link">Quienes somos ?</router-link>
+        <router-link to="/projects" class="dropdown-list__item nav__link">Proyectos anteriores</router-link>
       </div>
     </div>
 
