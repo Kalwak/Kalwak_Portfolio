@@ -20,7 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Django-Environ configuration
 env = environ.Env(
     # set casting, default value
-    DEBUG_MODE=(bool, False)
+    DEBUG_MODE=(bool, False),
+    EMAIL=(str, 'foo@gmail.com'),
+    SECRET_KEY=(str, 'secret-key'),
+    EMAIL_PASSWORD=(str, 'password'),
 )
 # reading .env file
 environ.Env.read_env()
