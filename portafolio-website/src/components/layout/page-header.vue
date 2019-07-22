@@ -18,12 +18,6 @@
           </div>
         </div>
         <nav-menu />
-        <div class="col-auto">
-          <div class="lang-switcher">
-            <img src="@/assets/images/spanish-lang.svg" alt="Spain flag" class="lang" title="spanish" />
-            <img src="@/assets/images/english-lang.svg" alt="USA flag" class="lang" title="english" />
-          </div>
-        </div>
       </div>
     </div>
   </header>

@@ -28,6 +28,13 @@
     <div class="nav__item">
       <router-link to="/contact" class="nav__link">Contacto</router-link>
     </div>
+
+    <div class="nav__item">
+      <div class="lang-switcher">
+        <img src="@/assets/images/spanish-lang.svg" alt="Spain flag" class="lang" title="spanish" />
+        <img src="@/assets/images/english-lang.svg" alt="USA flag" class="lang" title="english" />
+      </div>
+    </div>
   </nav>
 </template>
 

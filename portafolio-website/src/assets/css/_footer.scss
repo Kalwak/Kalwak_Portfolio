@@ -9,4 +9,112 @@
 
 .footer {
   background-color: #ddd;
+  padding: 60px 0px 0px;
+}
+
+.contact-section {
+  justify-content: space-between;
+  display: flex;
+}
+
+.contact-form, .contact-information {
+
+  .contact__title {
+    text-transform: uppercase;
+    font-size: 1.3em;
+  }
+
+  .contact__title, .form__input, 
+  .contact-info {
+    margin: 0px 0px 20px;
+  }
+}
+
+.contact-form {
+  width: 60%;
+  .form {
+    width: 90%;
+
+    .form__input, .form__button {
+      border-radius: 0px;
+      padding: 4px 8px;
+      font-size: 1.1em;
+      border: none;
+    }
+
+    .form__input {
+      border: 1.2px solid $orange-color;
+    }
+
+    .form__textarea {
+      min-height: 150px;
+      max-height: 170px;
+    }
+
+    .form__button {
+      background-color: $blue-color;
+      color: #fff;
+    }
+  }
+}
+
+.contact-information {
+  width: 40%;
+  
+  .contact-info {
+    font-size: 1.1em;
+
+    .info__title, .info__description {
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+    .info__title {
+      color: $blue-color;
+    }
+
+    .info__description {
+      a {
+        color: $orange-color;
+
+        &:hover {
+          color: #333;
+        }
+      }
+    }
+  }
+
+  .social-media {
+    margin-top: 20px;
+
+    .contact__title {
+      margin-bottom: 4px;
+    }
+    
+    &__icon {
+      font-size: 1.3em;
+      margin: 0px 8px 0px 0px;
+    }
+
+    .icon-whatsapp {
+      color: #25d366;
+    }
+    .icon-facebook {
+      color: #3b5998;
+    }
+  }
+}
+
+.information-section {
+  margin-top: 30px;
+
+  .copyright-section {
+    p {
+      text-align: center;
+      color: #333;
+      margin-bottom: 4px;
+      font-size: 0.9em;
+    }
+  }
 }
