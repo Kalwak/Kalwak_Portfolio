@@ -27,12 +27,12 @@ a {
   margin: 0;
 }
 
-[class^='col-'], [class^='container-'], .row {
+[class|='col'], [class|='container'], .row, .form-group {
   @extend .reset-m-p;
 }
 
 // to limit the width
 .inner-wrapper {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0px auto;
 }
