@@ -1,8 +1,10 @@
 <!--
-  page header
-    - brand logo
-    - navigation menu
-    - language switcher
+  PAGE HEADER
+    structure of this section
+    - header
+      - brand-logo // here is presented the page brand logo
+      - navigation-menu // here is represented the navigation menu for 
+        [about-us, projects, services, prices, contact, language-switcher]
 -->
 <template>
   <header class="header row animated slideInDown">

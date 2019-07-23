@@ -1,7 +1,20 @@
+<!--
+  PAGE FOOTER
+  structure of this section:
+    - footer 
+      - contact-section
+        - contact-form // form to make consults 
+        - contact-information // general information about kalwak 
+          like: email, phone number, facebook page and whatsapp number
+        
+      - information-section
+        - copyright-section // some commom copyright message
+-->
+
 <template>
   <footer class="footer row">
     <div class="col-12 inner-wrapper">
-      <div class="contact-section">
+      <div class="contact-section" id="contact-section">
         <div class="contact-form">
           <h4 class="contact__title">Contactanos</h4>
           <div class="form-row form">
@@ -27,19 +40,19 @@
           <p class="contact-info">
             <span class="info__title">Telefono:</span>
             <span class="info__description">
-              <a href="tel:+506" title="telefono">+50684599023</a>
+              <a href="tel:+50684599023" title="telefono">+50684599023</a>
             </span>
           </p>
           <p class="contact-info">
             <span class="info__title">Correo:</span>
             <span class="info__description">
-              <a href="mailto:kalwakcr@gmail.com" title="correo gmail">kalwakcr@gmail.com</a>
+              <a href="mailto:kalwakcr@gmail.com" target="_blank" title="correo kalwak">kalwakcr@gmail.com</a>
             </span>
           </p>
           <div class="social-media">
             <h4 class="contact__title">Nuestras redes</h4>
-            <a href="https://www.facebook.com/Kalwak-358576961719203" class="social-media__icon icon-facebook social-media__icon" title="facebook"></a>
-            <a href="tel:+50684599023" class="social-media__icon icon-whatsapp social-media__icon" title="whatsapp"></a>
+            <a href="https://www.facebook.com/Kalwak-358576961719203" target="_blank" class="social-media__icon icon-facebook social-media__icon" title="facebook"></a>
+            <a href="tel:+50684599023" target="_blank" class="social-media__icon icon-whatsapp social-media__icon" title="whatsapp"></a>
           </div>
         </div>
       </div>

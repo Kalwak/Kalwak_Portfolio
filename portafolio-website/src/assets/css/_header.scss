@@ -9,7 +9,7 @@
 
 .header {
   background-color: #fff;
-  // position: relative;
+  position: relative;
   z-index: 1020;
   padding: 20px 0px 10px;
   align-items: center;
@@ -78,7 +78,7 @@
       
       &__item {
         background-color: #fff;
-        padding: 12px;
+        padding: 18px 10px;
         display: block;
       }
     }

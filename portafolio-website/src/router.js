@@ -16,9 +16,11 @@ export default new Router({
       path: '/projects',
       name: 'projects',
       component: () => import('./views/Projects.vue'),
-      meta: {
-        title: 'Wink | trabajos anteriores'
-      }
+    },
+    {
+      path: '/about-us',
+      name: 'about-us',
+      component: () => import('./views/AboutUs.vue'),
     }
   ]
 });
