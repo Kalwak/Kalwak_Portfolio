@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
+#from rest_framework import permissions
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -128,3 +128,11 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+"""
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSIONS_CLASSES" : ("permissions.IsAuthenticatedOrReadOnly",) #no puedes modificar nada solo ver hasta que logguess
+    #permisissions.IsAuthenticated #no puedes ver nada hasta que logguees
+}
+"""
