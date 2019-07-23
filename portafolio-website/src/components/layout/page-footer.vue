@@ -38,8 +38,8 @@
           </p>
           <div class="social-media">
             <h4 class="contact__title">Nuestras redes</h4>
-            <a href="" class="social-media__icon icon-facebook social-media__icon" title="facebook"></a>
-            <a href="" class="social-media__icon icon-whatsapp social-media__icon" title="whatsapp"></a>
+            <a href="https://www.facebook.com/Kalwak-358576961719203" class="social-media__icon icon-facebook social-media__icon" title="facebook"></a>
+            <a href="tel:+50684599023" class="social-media__icon icon-whatsapp social-media__icon" title="whatsapp"></a>
           </div>
         </div>
       </div>
