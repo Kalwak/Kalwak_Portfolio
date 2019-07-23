@@ -1,6 +1,8 @@
 certifi==2019.6.16
 chardet==3.0.4
 Django==2.2.3
+django-environ==0.4.5
+django-request-logging==0.7.0
 djangorestframework==3.10.1
 idna==2.8
 pytz==2019.1
