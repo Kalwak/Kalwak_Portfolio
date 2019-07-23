@@ -21,9 +21,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 env = environ.Env(
     # set casting, default value
     DEBUG_MODE=(bool, False),
-    EMAIL=(str, 'foo@gmail.com'),
     SECRET_KEY=(str, 'secret-key'),
-    EMAIL_PASSWORD=(str, 'password'),
+    SENDGRID_API_KEY=(str, 'password'),
 )
 # reading .env file
 environ.Env.read_env()
@@ -137,12 +136,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Email django SMTP configuration
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = env('EMAIL')
-EMAIL_HOST_PASSWORD = env('EMAIL_PASSWORD')
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = 'kalwakcr@gmail.com'
 
 # Logging configuration
 LOGGING = {
