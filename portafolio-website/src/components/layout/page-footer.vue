@@ -6,60 +6,61 @@
         - contact-form // form to make consults 
         - contact-information // general information about kalwak 
           like: email, phone number, facebook page and whatsapp number
-        
-      - information-section
+        - information-section
         - copyright-section // some commom copyright message
 -->
 
 <template>
   <footer class="footer row">
-    <div class="col-12 inner-wrapper">
-      <div class="contact-section" id="contact-section">
-        <div class="contact-form">
-          <h4 class="contact__title">Contactanos</h4>
-          <div class="form-row form">
-            <div class="form-group col-12">
-              <input type="text" placeholder="Nombre" class="form-control form__input" />
+    <div class="col-12">
+      <div class="inner-wrapper">
+        <div class="contact-section" id="contact-section">
+          <div class="contact-form">
+            <h4 class="contact__title">Contactanos</h4>
+            <div class="form-row form">
+              <div class="form-group col-12">
+                <input type="text" placeholder="Nombre" class="form-control form__input" />
+              </div>
+              <div class="form-group col">
+                <input type="tel" placeholder="Telefono" class="form-control form__input" />
+              </div>
+              <div class="form-group col">
+                <input type="email" placeholder="E-mail" class="form-control form__input" />
+              </div>
+              <div class="form-group col-12">
+                <textarea placeholder="Consulta" class="form-control form__input form__textarea"></textarea>
+              </div>
+              <div class="form-group col-12 text-right">
+                <button class="form__button">Enviar</button>
+              </div>
             </div>
-            <div class="form-group col">
-              <input type="tel" placeholder="Telefono" class="form-control form__input" />
-            </div>
-            <div class="form-group col">
-              <input type="email" placeholder="E-mail" class="form-control form__input" />
-            </div>
-            <div class="form-group col-12">
-              <textarea placeholder="Consulta" class="form-control form__input form__textarea"></textarea>
-            </div>
-            <div class="form-group col-12 text-right">
-              <button class="form__button">Enviar</button>
+          </div>
+          <div class="contact-information">
+            <h4 class="contact__title">Mas information</h4>
+            <p class="contact-info">
+              <span class="info__title">Telefono:</span>
+              <span class="info__description">
+                <a href="tel:+50684599023" title="telefono">+50684599023</a>
+              </span>
+            </p>
+            <p class="contact-info">
+              <span class="info__title">Correo:</span>
+              <span class="info__description">
+                <a href="mailto:kalwakcr@gmail.com" target="_blank" title="correo kalwak">kalwakcr@gmail.com</a>
+              </span>
+            </p>
+            <div class="social-media">
+              <h4 class="contact__title">Nuestras redes</h4>
+              <a href="https://www.facebook.com/Kalwak-358576961719203" target="_blank" class="social-media__icon icon-facebook social-media__icon" title="facebook"></a>
+              <a href="tel:+50684599023" target="_blank" class="social-media__icon icon-whatsapp social-media__icon" title="whatsapp"></a>
             </div>
           </div>
         </div>
-        <div class="contact-information">
-          <h4 class="contact__title">Mas information</h4>
-          <p class="contact-info">
-            <span class="info__title">Telefono:</span>
-            <span class="info__description">
-              <a href="tel:+50684599023" title="telefono">+50684599023</a>
-            </span>
-          </p>
-          <p class="contact-info">
-            <span class="info__title">Correo:</span>
-            <span class="info__description">
-              <a href="mailto:kalwakcr@gmail.com" target="_blank" title="correo kalwak">kalwakcr@gmail.com</a>
-            </span>
-          </p>
-          <div class="social-media">
-            <h4 class="contact__title">Nuestras redes</h4>
-            <a href="https://www.facebook.com/Kalwak-358576961719203" target="_blank" class="social-media__icon icon-facebook social-media__icon" title="facebook"></a>
-            <a href="tel:+50684599023" target="_blank" class="social-media__icon icon-whatsapp social-media__icon" title="whatsapp"></a>
+        <div class="information-section">
+          <div class="copyright-section">
+            <p>Copyright&copy; - 2019 Kalwak Derechos Reservados</p>
+            <p>Desarrolo web y de softare www.kalwak.com</p>
           </div>
-        </div>
-      </div>
-      <div class="information-section">
-        <div class="copyright-section">
-          <p>Copyright&copy; - 2019 Kalwak Derechos Reservados</p>
-          <p>Desarrolo web y de softare www.kalwak.com</p>
         </div>
       </div>
     </div>

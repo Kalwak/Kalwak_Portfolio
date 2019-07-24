@@ -1,0 +1,55 @@
+/**
+*/
+
+
+// .about-section {}
+
+.team-section {
+  margin-top: 120px;
+  
+  & > .inner-wrapper { // this is actually the container for the member of the team
+    max-width: 100%;
+
+    .team__member {
+      padding: 40px 0px;
+
+      .inner-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .member__content {
+          width: 48%;
+          height: 260px;
+
+          &:nth-child(1) {
+            background-color: $blue-color;
+          }
+        }
+      }
+
+      &:nth-child(odd) {
+        .inner-wrapper {
+          .member__content {
+            &:nth-child(1) {
+              order:  1;
+              background-color: #fff;
+            }
+          }
+        }
+      }
+
+      &:nth-child(1n) {
+        background-color: $blue-color;
+      }
+
+      &:nth-child(2n) {
+        background-color: #fff;
+      }
+
+      &:nth-child(3n) {
+        background-color: $orange-color;
+      }
+    }
+  }
+}
