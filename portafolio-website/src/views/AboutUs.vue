@@ -13,37 +13,32 @@
     </div>
     <div class="team-section">
       <div class="inner-wrapper">
-        <div class="team__member">
-          <div class="inner-wrapper">
-            <div class="member__content"></div>
-            <div class="member__content"></div>
-          </div>
-        </div>
-        <div class="team__member">
-          <div class="inner-wrapper">
-            <div class="member__content"></div>
-            <div class="member__content"></div>
-          </div>
-        </div>
-        <div class="team__member">
-          <div class="inner-wrapper">
-            <div class="member__content"></div>
-            <div class="member__content"></div>
-          </div>
-        </div>
-        <div class="team__member">
-          <div class="inner-wrapper">
-            <div class="member__content"></div>
-            <div class="member__content"></div>
-          </div>
-        </div>
-        <div class="team__member">
-          <div class="inner-wrapper">
-            <div class="member__content"></div>
-            <div class="member__content"></div>
-          </div>
-        </div>
+        <team-member :memberData="teamMember" v-for="teamMember in teamMembers" :key="teamMember.id" />
       </div>
     </div>
   </div>
 </template>
+
+<script>
+import TeamMember from '@/components/sub-layout/team-member.vue';
+
+
+export default {
+  name: 'about-us',
+  computed: {
+    teamMembers() {
+      return this.$store.state.team.members;
+    }
+  },
+
+  components: {
+    TeamMember
+  },
+
+  created() {
+    const self = this;
+    self.$store.dispatch('getTeamMembersData');
+  }
+}
+</script>
+
