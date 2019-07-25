@@ -13,7 +13,7 @@
     </div>
     <div class="team-section">
       <div class="inner-wrapper">
-        <team-member :memberData="teamMember" v-for="teamMember in teamMembers" :key="teamMember.id" />
+        <team-member :memberData="teamMember" v-for="teamMember in teamMembersData" :key="teamMember.id" />
       </div>
     </div>
   </div>
@@ -21,24 +21,20 @@
 
 <script>
 import TeamMember from '@/components/sub-layout/team-member.vue';
+import teamMembersData from '@/team-members.json';
 
 
 export default {
   name: 'about-us',
-  computed: {
-    teamMembers() {
-      return this.$store.state.team.members;
-    }
+  data() {
+    return {
+      teamMembersData
+    };
   },
 
   components: {
     TeamMember
   },
-
-  created() {
-    const self = this;
-    self.$store.dispatch('getTeamMembersData');
-  }
 }
 </script>
 

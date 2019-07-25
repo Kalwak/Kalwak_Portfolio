@@ -77,9 +77,10 @@
       padding-top: 25px;
       
       &__item {
-        background-color: #fff;
-        padding: 18px 10px;
+        position: relative;
+        padding: 15px 10px;
         display: block;
+        background-color: #fff;
       }
     }
   }

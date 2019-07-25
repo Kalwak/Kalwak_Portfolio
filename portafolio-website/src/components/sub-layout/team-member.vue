@@ -1,10 +1,12 @@
 <template>
   <div class="team__member">
     <div class="inner-wrapper">
-      <div class="member__content"></div>
+      <div class="member__content">
+        <p>image goes here</p>
+      </div>
       <div class="member__content">
         <h4 class="font-weight-bold text-uppercase">{{ memberData.name }}</h4>
-        <p class="lead">{{ memberData.biography }}</p>
+        <p>{{ memberData.biography }}</p>
       </div>
     </div>
   </div>

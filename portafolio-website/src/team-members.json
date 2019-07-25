@@ -3,30 +3,30 @@
     "id": 1,
     "name": "Alejandro Zumbado Vargas",
     "biography": "Soy un amante de las computadoras, la tecnología; me encanta la ingeniería, solucionar problemas, la transformación de situaciones reales al ámbito computacional. Siempre he tenido el sueño de ser el creador de algo nuevo o ser parte de algo.",
-    "tags": "Desarrollador backend con Django y Javascript"
+    "tags": ["django"]
   },
   {
     "id": 2,
     "name": "Jose Quesada Villalobos",
     "biography": "Apasionado de la ciencia y la tecnología, empecé a programar desde una temprana edad y desde entonces no he parado de aprender y buscar nuevos problemas a los cuales brindar soluciones innovadoras. Poseo excelentes habilidades matemáticas y lógicas que me han permitido desempeñarme exitosamente en desarrollo de páginas web, aplicaciones móviles, programación competitiva, aprendizaje automático y modelado tanto numérico cómo estadístico. Ademas me encanta enseñar, jugar basketball, asistir a eventos culturales y participar en actividades de divulgación.",
-    "tags": "Desarrollador backend con Django"
+    "tags": ["django"]
   },
   {
     "id": 3,
-    "name": "Joseph",
-    "biography": "Gran experiencia y conocimiento cuando se trata de habilidades informáticas como desarrollo web, algoritmos complejos, aplicaciones de escritorio, manejo de Linux con casi cualquier distribución, pruebas de lápiz y otras herramientas informáticas y de programación. También tengo una gran habilidad para hablar inglés con facilidad. Teniendo una mentalidad de determinación, hago mi mayor esfuerzo en cualquier tarea dada con sed de conocimiento. Me encanta pasar el tiempo leyendo libros, cómics y realmente me gusta el desarrollo de videojuegos.",
-    "tags": "Desarrolador fullstack con Django y Javascrip, desarrollador de software"
+    "name": "Joseph Zamora",
+    "biography": "Gran experiencia y conocimiento cuando se trata de habilidades informáticas como desarrollo web, algoritmos complejos, aplicaciones de escritorio, manejo de Linux con casi cualquier distribución, pruebas de lápiz y otras herramientas informáticas y de programación. También tengo una gran habilidad para hablar inglés con facilidad. Teniendo una mentalidad de determinación, hago mi mayor esfuerzo en cualquier tarea dada con sed de conocimiento. Me encanta pasar el tiempo leyendo librosy cómics.",
+    "tags": ["full-stack"]
   },
   {
     "id": 4,
     "name": "Edwin Garcia",
-    "biography": "Desarollador web frontend, apasionado por las tecnologias web y de las computadora, crear paginas web con html, css y javascript, crear programas computacionales tambien es algo que mi me gusta hacer.",
-    "tags": "Desarrolador frontend"
+    "biography": "Desarollador web frontend, apasionado por las tecnologias web y de las computadora, crear paginas web con html, css y javascript, crear programas computacionales tambien es algo que me gusta hacer.",
+    "tags": ["vuejs"]
   },
   {
     "id": 5,
-    "name": "Jennifer",
+    "name": "Jennifer Silva",
     "biography": "",
-    "tags": "Diseñadora"
+    "tags": ["photoshop", "ilustrador"]
   }
 ]
