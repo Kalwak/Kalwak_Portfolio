@@ -3,11 +3,11 @@ from . import models
 
 class ProyectSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.ProyectForm
-        fields = ('name', "Date", "Description")
+        model = models.Proyect
+        fields = ("name", "date", "description")
 
 
 class GallerySerializers(serializers.ModelSerializer):
 	class Meta:
-		model = models.GalleryForm
+		model = models.Gallery
 		fields = '__all__'

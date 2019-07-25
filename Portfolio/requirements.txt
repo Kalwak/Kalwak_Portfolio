@@ -5,6 +5,8 @@ django-environ==0.4.5
 django-request-logging==0.7.0
 djangorestframework==3.10.1
 idna==2.8
+pkg-resources==0.0.0
+psycopg2-binary==2.8.3
 pytz==2019.1
 requests==2.22.0
 sqlparse==0.3.0

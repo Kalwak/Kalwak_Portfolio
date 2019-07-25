@@ -1,3 +1,5 @@
 from django.contrib import admin
-#from models import ProyectForm, GalleryForm
-# Register your models here.
+from .models import Gallery, Proyect
+
+admin.site.register(Gallery)
+admin.site.register(Proyect)

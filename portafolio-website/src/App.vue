@@ -1,0 +1,22 @@
+<template>
+  <div id="app" class="container-fluid">
+    <page-header></page-header>
+    <page-main></page-main>
+  </div>
+</template>
+
+<script>
+import PageHeader from './components/layout/page-header.vue';
+import PageMain from './components/layout/page-main.vue';
+import PageFooter from './components/layout/page-footer.vue';
+
+
+export default {
+  name: 'app',
+  components: {
+    PageHeader,
+    PageMain,
+    PageFooter
+  }
+}
+</script>

@@ -5,6 +5,7 @@ from django.core.mail import EmailMessage
 from django.http import JsonResponse
 from .models import EmailForm
 
+
 @api_view(['POST'])
 def SendEmail(request):
     '''

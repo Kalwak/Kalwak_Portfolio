@@ -11,11 +11,11 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-#from rest_framework import permissions
+# from rest_framework import permissions
 import environ
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 # Django-Environ configuration
 env = environ.Env(
@@ -24,10 +24,15 @@ env = environ.Env(
     EMAIL=(str, 'foo@gmail.com'),
     SECRET_KEY=(str, 'secret-key'),
     EMAIL_PASSWORD=(str, 'password'),
+    DBNAME=(str, 'kalwak'),
+    DBUSER=(str, 'postgres'),
+    DBPASSWORD=(str, 'password'),
+    HOST=(str, 'localhost'),
+    PORT=(str, '5432'),
+    LOGGING=(bool, True),
 )
 # reading .env file
 environ.Env.read_env()
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -37,10 +42,9 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG_MODE')
-
+LOGGING = env('LOGGING')
 
 ALLOWED_HOSTS = ['*']
-
 
 # Application definition
 
@@ -53,6 +57,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'Email',
+    'Proyect',
 ]
 
 MIDDLEWARE = [
@@ -63,8 +68,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'request_logging.middleware.LoggingMiddleware',
 ]
+
+if LOGGING:
+    MIDDLEWARE += ['request_logging.middleware.LoggingMiddleware']
 
 ROOT_URLCONF = 'Portfolio.urls'
 
@@ -86,17 +93,19 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Portfolio.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': env('DBNAME'),
+        'USER': env('DBUSER'),
+        'PASSWORD': env('DBPASSWORD'),
+        'HOST': env('HOST'),
+        'PORT': env('PORT'),
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -116,7 +125,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -129,7 +137,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -151,32 +158,33 @@ REST_FRAMEWORK = {
 }
 """
 # Logging configuration
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'standard': {
-            'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+if LOGGING:
+    LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        'formatters': {
+            'standard': {
+                'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+            },
         },
-    },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
+        'handlers': {
+            'console': {
+                'class': 'logging.StreamHandler',
+            },
+            'file_error': {
+                'level': 'DEBUG',
+                'class': 'logging.FileHandler',
+                'filename': os.path.join(BASE_DIR, 'errors.log'),
+                'formatter': 'standard',
+            },
         },
-        'file_error': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'errors.log'),
-            'formatter': 'standard',
+        'loggers': {
+            'django.request': {
+                'handlers': ['console', 'file_error'],
+                'level': 'DEBUG',  # change debug level as appropiate
+                'propagate': False,
+            },
         },
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['console', 'file_error'],
-            'level': 'DEBUG',  # change debug level as appropiate
-            'propagate': False,
-        },
-    },
-}
+    }
 
 REQUEST_LOGGING_ENABLE_COLORIZE = False
