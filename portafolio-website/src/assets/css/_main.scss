@@ -1,0 +1,34 @@
+.main {
+  background-color: #fff;
+}
+
+
+// Home vue
+.banner {
+  // position: relative;
+  width: 100%;
+  height: 600px;
+  background: url('../images/banner.jpg') center no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+
+  .banner__text {
+    border: 2px solid #ddd;
+    background-color: rgba(#000, 0.8);
+    cursor: pointer;
+    position: relative;
+    padding: 20px 30px;
+    color: #ddd;
+
+    .banner__text-title {
+      font-size: 2.1em;
+      margin-bottom: 10px;
+    }
+
+    .banner__text-description {
+      font-size: 1.5em;
+      margin: 0;
+    }
+  }
+}
