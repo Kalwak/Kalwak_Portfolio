@@ -178,33 +178,25 @@ if LOGGING:
                 'filename': os.path.join(BASE_DIR, 'errors.log'),
                 'formatter': 'standard',
             },
+            'file_debug': {
+                'level': 'DEBUG',
+                'class': 'logging.FileHandler',
+                'filename': os.path.join(BASE_DIR, 'debug.log'),
+                'formatter': 'standard',
+            },
         },
         'loggers': {
             'django.request': {
-                'handlers': ['console', 'file_error'],
+                'handlers': ['file_error'],
+                'level': 'DEBUG',  # change debug level as appropiate
+                'propagate': False,
+            },
+            'debugger': {
+                'handlers': ['console', 'file_debug'],
                 'level': 'DEBUG',  # change debug level as appropiate
                 'propagate': False,
             },
         },
-        'file_debug': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': os.path.join(BASE_DIR, 'debug.log'),
-            'formatter': 'standard',
-        },
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['file_error'],
-            'level': 'DEBUG',  # change debug level as appropiate
-            'propagate': False,
-        },
-        'debugger': {
-            'handlers': ['console', 'file_debug'],
-            'level': 'DEBUG',  # change debug level as appropiate
-            'propagate': False,
-        },
-    },
-}
+    }
 
 REQUEST_LOGGING_ENABLE_COLORIZE = False
