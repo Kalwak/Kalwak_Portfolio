@@ -1,6 +1,7 @@
-from .views import SendEmail
+from .views import SendEmailView
 from django.urls import path
 
 urlpatterns = [
-    path('SendEmail', SendEmail, name='SendEmail'),
+    path('send_email', SendEmailView.as_view({'post': 'create'}),
+         name='send_email'),
 ]

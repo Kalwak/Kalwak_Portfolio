@@ -23,6 +23,7 @@ env = environ.Env(
     DEBUG_MODE=(bool, False),
     SECRET_KEY=(str, 'secret-key'),
     SENDGRID_API_KEY=(str, 'password'),
+    EMAIL=(str,'kalwakcr@gmail.com')
 )
 # reading .env file
 environ.Env.read_env()
@@ -141,7 +142,7 @@ EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'kalwakcr@gmail.com'
+DEFAULT_FROM_EMAIL = env('EMAIL')
 
 # Logging configuration
 LOGGING = {
@@ -162,10 +163,21 @@ LOGGING = {
             'filename': os.path.join(BASE_DIR, 'errors.log'),
             'formatter': 'standard',
         },
+        'file_debug': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'debug.log'),
+            'formatter': 'standard',
+        },
     },
     'loggers': {
         'django.request': {
-            'handlers': ['console', 'file_error'],
+            'handlers': ['file_error'],
+            'level': 'DEBUG',  # change debug level as appropiate
+            'propagate': False,
+        },
+        'debugger': {
+            'handlers': ['console', 'file_debug'],
             'level': 'DEBUG',  # change debug level as appropiate
             'propagate': False,
         },
