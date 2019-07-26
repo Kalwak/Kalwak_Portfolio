@@ -6,4 +6,4 @@ class ProyectConfig(AppConfig):
 
 
 class PhotoConfig(AppConfig):
-	name = "Gallery"
+    name = "Gallery"

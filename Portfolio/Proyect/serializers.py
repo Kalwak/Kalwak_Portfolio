@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from . import models
 
+
 class ProyectSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Proyect
@@ -8,6 +9,6 @@ class ProyectSerializer(serializers.ModelSerializer):
 
 
 class GallerySerializers(serializers.ModelSerializer):
-	class Meta:
-		model = models.Gallery
-		fields = '__all__'
+    class Meta:
+        model = models.Gallery
+        fields = '__all__'
