@@ -8,5 +8,35 @@
         </div>
       </div>
     </div>
+    <div class="projects-carousel">
+    </div>
   </div>
 </template>
+
+<script>
+import projectsInformation from '../projects-information.json';
+import Swiper from 'swiper';
+
+
+export default {
+  name: 'home',
+  data() {
+    return {
+      projectsInformation
+    };
+  },
+
+  computed: {
+    projects() {
+      return this.projectsInformation;
+    }
+  },
+
+  mounted() {}
+}
+</script>
+
+
+<style lang="scss">
+  @import url('https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.0/css/swiper.css');
+</style>

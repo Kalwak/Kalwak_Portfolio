@@ -17,51 +17,57 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
-        align-items: center;
 
         .member__content {
           width: 48%;
-          height: 300px;
-          padding-right: 20px;
-          overflow: auto;
 
-          &::-webkit-scrollbar {
-            width: 10px;
-          }
-
-          &::-webkit-scrollbar-thumb {
-            background-color: #de4213;
-            border-radius: 8px;
-          }
-
-          &::-webkit-scrollbar-track {
-            background-color: #ddd;
-            border-radius: 8px;
-          }
-        }
-      }
-
-      &:nth-child(odd) {
-        .inner-wrapper {
-          .member__content {
-            &:nth-child(1) {
-              order:  1;
+          .member__image {
+            height: 100%;
+  
+            .image {
+              object-fit: cover;
             }
           }
         }
       }
+      @extend .team-sections-colors;
+    }
+  }
+}
 
-      &:nth-child(1n) {
-        background-color: $blue-color;
-      }
 
-      &:nth-child(2n) {
-        background-color: #fff;
-      }
+/**
+  *HIS CLASS IS IN CHAGE OF CHANGING EVERY MEMBER CONTAINER
+  BACKGROUND COLOR, FOR POSITION, LIKE EVERY 1, 2 AND 3 ... 
+  A DIFFERENT BACKGROUND COLOR.
+  ALSO WITH THIS CLASS, I'M HANDLING THE SWAPPING BETWEEN
+  MEMBER__CONTENT BY ODD CONTAINER POSITION.
+*/
+.team-sections-colors {
 
-      &:nth-child(3n) {
-        background-color: $orange-color;
+  &:nth-child(odd) {
+    .inner-wrapper {
+      .member__content {
+        &:nth-child(1) {
+          order:  1;
+        }
       }
     }
+  }
+
+  &:nth-child(1n) {
+    background-color: $blue-color;
+    color: #fff;
+
+  }
+
+  &:nth-child(2n) {
+    background-color: #fff;
+    color: #000;
+  }
+
+  &:nth-child(3n) {
+    background-color: $orange-color;
+    color: #fff;
   }
 }

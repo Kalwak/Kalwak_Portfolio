@@ -5,6 +5,7 @@ import store from './store';
 import vueSmoothScroll from 'vue2-smooth-scroll';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/css/animate.css';
+import '../node_modules/hamburgers/dist/hamburgers.min.css';
 import './assets/icons/icons.css';
 import './assets/css/main.scss';
 Vue.config.productionTip = false;

@@ -16,13 +16,18 @@ export default new Router({
       path: '/projects',
       name: 'projects',
       component: () => import('./views/Projects.vue'),
+      meta: {
+        title: 'Kalwak | Proyectos anteriores'
+      }
     },
     {
       path: '/about-us',
       name: 'about-us',
       component: () => import('./views/AboutUs.vue'),
+      meta: {
+        title: 'Kalwak | Acerca de nosotros' 
+      }
     }
   ]
 });
-
 // component: () => import(/* webpackChunkName: "about" */ './views/Component.vue')

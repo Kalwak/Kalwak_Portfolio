@@ -13,7 +13,7 @@
     </div>
     <div class="team-section">
       <div class="inner-wrapper">
-        <team-member :memberData="teamMember" v-for="teamMember in teamMembersData" :key="teamMember.id" />
+        <team-member :member="teamMember" v-for="teamMember in teamMembersData" :key="teamMember.id" />
       </div>
     </div>
   </div>

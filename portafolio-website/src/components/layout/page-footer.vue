@@ -30,7 +30,7 @@
               <div class="form-group col-12">
                 <textarea placeholder="Consulta" class="form-control form__input form__textarea"></textarea>
               </div>
-              <div class="form-group col-12 text-right">
+              <div class="form-group col-12 form__button-container">
                 <button class="form__button">Enviar</button>
               </div>
             </div>

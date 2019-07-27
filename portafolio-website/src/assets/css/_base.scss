@@ -33,6 +33,25 @@ a {
 
 // to limit the width
 .inner-wrapper {
-  max-width: 1100px;
+  max-width: 1200px;
   margin: 0px auto;
+}
+
+
+// MEDIA QUERIES FOR BASE STYLES
+@media screen and (max-width: 1200px) {
+  body {
+    font-size: 15px;
+  }
+
+  .inner-wrapper {
+    max-width: 95%;
+  }
+}
+
+@media screen and (max-width: 00px) {
+  body {
+    font-size: 14px;
+  }
+
 }

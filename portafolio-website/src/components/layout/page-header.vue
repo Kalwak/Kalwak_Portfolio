@@ -11,16 +11,22 @@
     <div class="col-12">
       <div class="inner-wrapper">
         <div class="row justify-content-between align-items-center">
-          <div class="col-auto">
+          <div class="col-auto brand-column">
             <div class="brand">
               <div class="brand__logo">
                 <a href="/" title="kalwak">
                   <img src="@/assets/images/logo.svg" alt="Wink logo" title="Kalwak logo" class="logo__image" />
                 </a>
+                <button class="hamburger hamburger--collapse menu-button" :class="{ 'is-active': activatedMenu }" type="button" @click="activatedMenu = !activatedMenu">
+                  <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                  </span>
+                </button>
+                <!-- <span class="menu-button" >menu</span> -->
               </div>
             </div>
           </div>
-          <nav-menu />
+          <nav-menu  :class="{ activatedMenu }" />
       </div>
       </div>
     </div>
@@ -32,6 +38,12 @@ import NavMenu from '@/components/sub-layout/navigation-menu.vue';
 
 export default {
   name: 'page-header',
+  data() {
+    return {
+      activatedMenu: false
+    };
+  },
+  
   components: {
     NavMenu
   }
