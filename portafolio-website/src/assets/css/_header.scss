@@ -142,7 +142,7 @@
   .nav {
     height: 0;
 
-    overflow: auto;
+    overflow: hidden;
     transition: all .3s cubic-bezier(.33,.94,.5,.86);
     position: relative;
     justify-content: flex-start;
@@ -186,6 +186,5 @@
 
   .activatedMenu {
     height: 300px;
-    margin-top: 20px;
   }
 }
