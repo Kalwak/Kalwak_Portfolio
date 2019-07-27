@@ -17,13 +17,13 @@
                 <a href="/" title="kalwak">
                   <img src="@/assets/images/logo.svg" alt="Wink logo" title="Kalwak logo" class="logo__image" />
                 </a>
-                <button class="hamburger hamburger--collapse menu-button" :class="{ 'is-active': activatedMenu }" type="button" @click="activatedMenu = !activatedMenu">
-                  <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                  </span>
-                </button>
                 <!-- <span class="menu-button" >menu</span> -->
               </div>
+              <button class="hamburger hamburger--collapse menu-button" :class="{ 'is-active': activatedMenu }" type="button" @click="activatedMenu = !activatedMenu">
+                <span class="hamburger-box">
+                  <span class="hamburger-inner"></span>
+                </span>
+              </button>
             </div>
           </div>
           <nav-menu  :class="{ activatedMenu }" />
