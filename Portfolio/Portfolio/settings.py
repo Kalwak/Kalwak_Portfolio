@@ -61,6 +61,13 @@ INSTALLED_APPS = [
     'Proyect',
 ]
 
+if DEBUG:
+    INSTALLED_APPS += ['django_extensions']
+    GRAPH_MODELS = {
+        'all_applications': True,
+        'group_models': True,
+    }
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
