@@ -15,6 +15,8 @@
           :per-page="1" 
           :loop="true"
           :autoplay="true"
+          :autoplay-timeout="4000"
+          :navigation-click-target-size="0"
           :navigation-enabled="true" 
           :pagination-enabled="false" 
           navigation-prev-label="<span class='icon-left-arrow'></span>"
