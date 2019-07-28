@@ -175,6 +175,11 @@ if LOGGING:
             'standard': {
                 'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
             },
+            'verbose': {
+                'format': '{levelname} {asctime} {pathname} {funcName}' +
+                          ' {process:d} {thread:d} {message}',
+                'style': '{',
+            }
         },
         'handlers': {
             'console': {
@@ -190,7 +195,7 @@ if LOGGING:
                 'level': 'DEBUG',
                 'class': 'logging.FileHandler',
                 'filename': os.path.join(BASE_DIR, 'debug.log'),
-                'formatter': 'standard',
+                'formatter': 'verbose',
             },
         },
         'loggers': {
@@ -200,7 +205,7 @@ if LOGGING:
                 'propagate': False,
             },
             'debugger': {
-                'handlers': ['console', 'file_debug'],
+                'handlers': ['file_debug'],
                 'level': 'DEBUG',  # change debug level as appropiate
                 'propagate': False,
             },
