@@ -53,3 +53,9 @@
 .icon-whatsapp:before {
   content: "\65";
 }
+.icon-right-arrow:before {
+  content: "\66";
+}
+.icon-left-arrow:before {
+  content: "\67";
+}

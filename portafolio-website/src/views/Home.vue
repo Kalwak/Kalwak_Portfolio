@@ -8,15 +8,36 @@
         </div>
       </div>
     </div>
-    <div class="projects-carousel">
+    <div class="projects-container">
+      <div class="inner-wrapper">
+        <h3 class="projects__title">Trabajos anteriores</h3>
+        <carousel 
+          :per-page="1" 
+          :loop="true"
+          :autoplay="true"
+          :navigation-enabled="true" 
+          :pagination-enabled="false" 
+          navigation-prev-label="<span class='icon-left-arrow'></span>"
+          navigation-next-label="<span class='icon-right-arrow'></span>"
+          class="projects-slider">
+          <slide class="project-slide"
+            v-for="project in projects" :key="project.id">
+            <div class="img__container">
+              <img :src="project.images.thumbnail" alt="" class="project__image">
+            </div>
+            <div class="information__container">
+              <p class="project__category">{{ project.category }}</p>
+            </div>
+          </slide>
+        </carousel>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import projectsInformation from '../projects-information.json';
-import Swiper from 'swiper';
-
+import { Carousel, Slide } from 'vue-carousel';
 
 export default {
   name: 'home',
@@ -26,17 +47,19 @@ export default {
     };
   },
 
+  components: {
+    Carousel,
+    Slide
+  },
+
   computed: {
     projects() {
       return this.projectsInformation;
     }
   },
 
-  mounted() {}
+  mounted() {
+    const self = this;
+  }
 }
 </script>
-
-
-<style lang="scss">
-  @import url('https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.0.0/css/swiper.css');
-</style>
