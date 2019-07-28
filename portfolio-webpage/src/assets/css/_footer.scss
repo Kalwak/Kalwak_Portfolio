@@ -33,10 +33,10 @@
 }
 
 .contact-form {
-  width: 50%;
+  width: 70%;
   .form {
     margin: 0;
-    width: 90%;
+    width: 95%;
 
     .form__input, .form__button {
       border-radius: 4px;
@@ -66,7 +66,7 @@
 }
 
 .contact-information {
-  width: 50%;
+  width: 30%;
   
   .contact-info {
     font-size: 1.1em;
@@ -136,7 +136,6 @@
 @media screen and (max-width: 800px) {
   .contact-form, .contact-information {
     width: 100%;
-    text-align: center;
   }
 
   .contact-form {
@@ -155,6 +154,14 @@
           min-width: 100%;
         }
       }
+    }
+  }
+
+  .contact-information {
+    text-align: center;
+  
+    .social-media {
+      margin-top: 20px;
     }
   }
 }

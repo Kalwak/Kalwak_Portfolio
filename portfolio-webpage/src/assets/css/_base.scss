@@ -53,5 +53,10 @@ a {
   body {
     font-size: 15px;
   }
+}
 
+@media screen and (max-width: 400px) {
+  body {
+    font-size: 14px;
+  }
 }
