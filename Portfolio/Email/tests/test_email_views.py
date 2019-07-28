@@ -28,12 +28,28 @@ class EmailTestCase(TestCase):
         correct_response = b'{"email":["Enter a valid email address."]}'
         self.assertEqual(response.content, correct_response)
 
-    def test_send_mail_post_missing_field(self):
+    def test_send_mail_post_missing_message_field(self):
         data = {'subject': 'Test Kalwak Email API',
                 'email': 'kalwakcr@gmail.com'}
         response = self.client.post('/api/send_email', data=data,
                                     format='json')
         correct_response = b'{"message":["This field is required."]}'
+        self.assertEqual(response.content, correct_response)
+
+    def test_send_mail_post_missing_subject_field(self):
+        data = {'message': 'This is a test',
+                'email': 'kalwakcr@gmail.com'}
+        response = self.client.post('/api/send_email', data=data,
+                                    format='json')
+        correct_response = b'{"subject":["This field is required."]}'
+        self.assertEqual(response.content, correct_response)
+
+    def test_send_mail_post_missing_email_field(self):
+        data = {'subject': 'Test Kalwak Email API',
+                'message': 'This is a test'}
+        response = self.client.post('/api/send_email', data=data,
+                                    format='json')
+        correct_response = b'{"email":["This field is required."]}'
         self.assertEqual(response.content, correct_response)
 
     def test_send_mail_get(self):
