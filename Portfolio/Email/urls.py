@@ -1,7 +1,7 @@
-from .views import SendEmail, EmailListView
+from .views import SendEmailView
 from django.urls import path
 
 urlpatterns = [
-    path('SendEmail', SendEmail, name='SendEmail'),
-    path('EmailListView', EmailListView.as_view(), name='EmailListView'),
+    path('send_email', SendEmailView.as_view({'post': 'create'}),
+         name='send_email'),
 ]

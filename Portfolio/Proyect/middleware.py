@@ -1,7 +1,7 @@
-from Portfolio.Portfolio.utils import create_log
+from Portfolio.utils import create_log
 
 
-class SimpleMiddleware:
+class LoggingMiddleware:
     """
     Middleware used to create a log of the users actions and save it in the database.
     """

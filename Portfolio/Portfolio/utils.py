@@ -2,7 +2,7 @@ import json
 from json import JSONDecodeError
 from ipware import get_client_ip
 
-from Portfolio.Proyect.models import Logs
+from Proyect.models import Logs
 
 """
 These utilities are made to helpout with the UserLogMiddleware

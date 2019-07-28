@@ -1,28 +1,18 @@
-from django.shortcuts import render
-from rest_framework import permissions, viewsets
-from rest_framework.decorators import api_view
-from django.core.mail import EmailMessage
-from django.http import JsonResponse
-from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
-from .models import EmailForm
+from .serializers import EmailSerializer
+from rest_framework import viewsets
+from rest_framework.response import Response
 
 
-@api_view(['POST'])
-def SendEmail(request):
-    '''
-    Post Method that sends a Email from the 'Contact us' page form
-    to the group Email.
-    '''
-    Email = request.data.get("Email", None)
-    Subject = request.data.get("Subject", None)
-    Body = request.data.get("Body", None)
-    Email = EmailMessage(Subject, '%s \n From %s' % (Body, Email),
-                         to=['winkemail@gmail.com', ])
-    Response = Email.send()
-    Response = {"response": Response}
-    return JsonResponse(Response)
+class SendEmailView(viewsets.ViewSet):
 
-
-class EmailListView(ListView):
-    template_name = "ejemplo.html"
-    queryset = ""  # EmailForm.objects.all() #comando para colectar todos los objetos (en este caso no tiene)
+    def create(self, request):
+        """
+        Post Method that sends an Email from the 'Contact us' page form
+        to the group Email.
+        :params request: should contain a JSON with email,subject and message
+        """
+        serializer = EmailSerializer(data=request.data)
+        if serializer.is_valid():
+            response = serializer.send_email()
+            return Response({"response": response})
+        return Response(serializer.errors)

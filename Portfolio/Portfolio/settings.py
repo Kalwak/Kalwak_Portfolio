@@ -21,7 +21,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 env = environ.Env(
     # set casting, default value
     DEBUG_MODE=(bool, False),
-    EMAIL=(str, 'foo@gmail.com'),
     SECRET_KEY=(str, 'secret-key'),
     EMAIL_PASSWORD=(str, 'password'),
     DBNAME=(str, 'kalwak'),
@@ -30,6 +29,8 @@ env = environ.Env(
     HOST=(str, 'localhost'),
     PORT=(str, '5432'),
     LOGGING=(bool, True),
+    SENDGRID_API_KEY=(str, 'password'),
+    EMAIL=(str, 'kalwakcr@gmail.com')
 )
 # reading .env file
 environ.Env.read_env()
@@ -57,6 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'Email',
+    'Proyect',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +69,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'Portfolio.middleware',
+    'Proyect.middleware.LoggingMiddleware',
 ]
 
 if LOGGING:
@@ -144,12 +146,12 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Email django SMTP configuration
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = env('EMAIL')
-EMAIL_HOST_PASSWORD = env('EMAIL_PASSWORD')
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+DEFAULT_FROM_EMAIL = env('EMAIL')
 
 """
 REST_FRAMEWORK = {
@@ -177,10 +179,21 @@ if LOGGING:
                 'filename': os.path.join(BASE_DIR, 'errors.log'),
                 'formatter': 'standard',
             },
+            'file_debug': {
+                'level': 'DEBUG',
+                'class': 'logging.FileHandler',
+                'filename': os.path.join(BASE_DIR, 'debug.log'),
+                'formatter': 'standard',
+            },
         },
         'loggers': {
             'django.request': {
-                'handlers': ['console', 'file_error'],
+                'handlers': ['file_error'],
+                'level': 'DEBUG',  # change debug level as appropiate
+                'propagate': False,
+            },
+            'debugger': {
+                'handlers': ['console', 'file_debug'],
                 'level': 'DEBUG',  # change debug level as appropiate
                 'propagate': False,
             },

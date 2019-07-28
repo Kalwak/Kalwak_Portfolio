@@ -1,4 +1,6 @@
 from django.contrib import admin
-from Portfolio.Proyect.models import Logs
+from .models import *
 
 admin.site.register(Logs)
+admin.site.register(Gallery)
+admin.site.register(Proyect)
