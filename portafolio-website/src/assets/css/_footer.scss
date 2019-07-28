@@ -8,7 +8,8 @@
 
 
 .footer {
-  background-color: #fff;
+  background-color: #ddd;
+  padding-top: 60px;
 }
 
 .contact-section {
@@ -32,8 +33,9 @@
 }
 
 .contact-form {
-  width: 60%;
+  width: 50%;
   .form {
+    margin: 0;
     width: 90%;
 
     .form__input, .form__button {
@@ -64,7 +66,7 @@
 }
 
 .contact-information {
-  width: 40%;
+  width: 50%;
   
   .contact-info {
     font-size: 1.1em;
@@ -145,6 +147,13 @@
 
       .form__button-container {
         text-align: center;
+      }
+
+      .form__input-container {
+
+        &:nth-child(2), &:nth-child(3) {
+          min-width: 100%;
+        }
       }
     }
   }

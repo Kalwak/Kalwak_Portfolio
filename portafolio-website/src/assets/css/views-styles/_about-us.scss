@@ -1,9 +1,3 @@
-/**
-*/
-
-
-// .about-section {}
-
 .team-section {
   margin-top: 120px;
   
@@ -22,15 +16,30 @@
           width: 48%;
 
           .member__image {
-            height: 100%;
+            text-align: center;
   
             .image {
               object-fit: cover;
+              width: 250px;
+              height: 250px;
+              border-radius: 6px;
+            }
+          }
+
+          .member__information {
+            
+            .member__name {
+              font-size: 1.1em;
+              font-weight: bold;
+            }
+
+            .member__biography {
+              margin: 0;
             }
           }
         }
       }
-      @extend .team-sections-colors;
+      @extend .team-section-colors;
     }
   }
 }
@@ -43,7 +52,7 @@
   ALSO WITH THIS CLASS, I'M HANDLING THE SWAPPING BETWEEN
   MEMBER__CONTENT BY ODD CONTAINER POSITION.
 */
-.team-sections-colors {
+.team-section-colors {
 
   &:nth-child(odd) {
     .inner-wrapper {
@@ -69,5 +78,69 @@
   &:nth-child(3n) {
     background-color: $orange-color;
     color: #fff;
+  }
+}
+
+
+/**
+  MEDIA QUERIES FOR ABOUT-US SECTION
+*/
+@media screen and (max-width: 700px) {
+  .team-section {
+    margin-top: 120px;
+    
+    & > .inner-wrapper { // this is actually the container for the member of the team
+      max-width: 100%;
+  
+      .team__member {
+        padding: 40px 0px;
+  
+        .inner-wrapper {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+  
+          .member__content {
+            width: 80%;
+  
+            .member__image {
+              margin-bottom: 30px;
+    
+              .image {
+                width: 100%;
+                height: 300px;
+                object-fit: cover;
+              }
+            }
+
+            .member__information {
+              .member__name {
+                text-align: center;
+                margin-bottom: 20px;
+              }
+  
+              .member__biography {
+                margin: 0px auto;
+                width: 90%;
+                text-align: justify;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .team-section-colors {
+
+    &:nth-child(odd) {
+      .inner-wrapper {
+        .member__content {
+          &:nth-child(1) {
+            order:  0;
+          }
+        }
+      }
+    }
   }
 }

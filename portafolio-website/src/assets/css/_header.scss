@@ -10,7 +10,7 @@
 .header {
   position: relative;
   z-index: 1020;
-  padding: 15px 0px;
+  padding: 10px 0px;
 }
 
 .brand {
@@ -51,6 +51,7 @@
 
     .nav__link {
       cursor: pointer;
+
       ::selection {
         background: transparent;
       }
@@ -83,8 +84,7 @@
       
       &__item {
         position: relative;
-        padding: 15px 10px;
-        display: block;
+        padding: 15px;
         background-color: #ddd;
       }
     }
@@ -112,10 +112,6 @@
 */
 // MOBILES
 @media screen and (max-width: 750px) {
-  .header {
-    background-color: #ddd;
-    padding: 10px 0px;
-  }
 
   .brand-column {
     width: 100%;
@@ -125,11 +121,15 @@
     display: flex;
     justify-content: space-between;
 
+    .brand__logo {
+      background-color: rgb(241, 235, 235);
+      border-radius: 4px;
+    }
+
     .menu-button {
-      display: inline-block;
+      display: block;
       padding: 0px 4px;
       border-radius: 4px;
-      color: $blue-color;
       background-color: rgb(241, 235, 235);
       
       &:focus {
@@ -141,20 +141,17 @@
 
   .nav {
     height: 0;
-
     overflow: hidden;
     transition: all .3s cubic-bezier(.33,.94,.5,.86);
     position: relative;
     justify-content: flex-start;
+    align-items: center;
     flex-wrap: wrap;
 
     &__item {
-      text-align: left;
+      padding: 10px 0px;
       margin: 0;
-      display: inline-block;
       width: 100%;
-      padding: 10px;
-      text-align: left;
 
       .dropdown-list {
         background: transparent;
@@ -170,8 +167,8 @@
         margin-left: 6px;
 
         &__item {
-          padding: 10px 0px 10px 10px;
-          background-color: #ddd;
+          padding: 10px;
+          background-color: #fff;
         }
       }
     }
@@ -185,6 +182,6 @@
   }
 
   .activatedMenu {
-    height: 300px;
+    height: 276px;
   }
 }

@@ -19,7 +19,7 @@
                 </a>
                 <!-- <span class="menu-button" >menu</span> -->
               </div>
-              <button class="hamburger hamburger--collapse menu-button" :class="{ 'is-active': activatedMenu }" type="button" @click="activatedMenu = !activatedMenu">
+              <button class="hamburger hamburger--squeeze menu-button" :class="{ 'is-active': activatedMenu }" type="button" @click="activatedMenu = !activatedMenu">
                 <span class="hamburger-box">
                   <span class="hamburger-inner"></span>
                 </span>
