@@ -81,6 +81,17 @@
       position: relative;
       z-index: 100;
       
+      .image__container {
+        width: 100%;
+        background-color: #fff;
+        text-align: center;
+
+        .project__image {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
       .information__container {
 
         .project__category {
@@ -103,7 +114,7 @@
 
   .projects-container {
     .inner-wrapper {
-      width: 100%;
+      min-width: 100%;
     }
   
     .projects__title, .project__category {
@@ -115,17 +126,6 @@
   
       .VueCarousel-navigation {
         display: none;
-      }
-  
-      .project-slide {
-        
-        .information__container {
-  
-          .project__category {
-            text-align: center;
-            color: #fff;
-          }
-        }
       }
     }
   }

@@ -24,7 +24,7 @@
           class="projects-slider">
           <slide class="project-slide"
             v-for="project in projects" :key="project.id">
-            <div class="img__container">
+            <div class="image__container">
               <img :src="project.images.thumbnail" alt="" class="project__image">
             </div>
             <div class="information__container">
@@ -58,10 +58,6 @@ export default {
     projects() {
       return this.projectsInformation;
     }
-  },
-
-  mounted() {
-    const self = this;
   }
 }
 </script>

@@ -136,6 +136,10 @@
 @media screen and (max-width: 800px) {
   .contact-form, .contact-information {
     width: 100%;
+
+    .contact__title {
+      text-align: center;
+    }
   }
 
   .contact-form {
