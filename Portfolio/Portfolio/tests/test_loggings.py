@@ -39,7 +39,7 @@ class LoggingTests(TestCase):
         fileHandle = open(self.debug_path, "r")
         log_file = fileHandle.readlines()
         # getting last log
-        last_request = log_file[len(log_file)-2]
+        last_request = log_file[len(log_file)-1]
         fileHandle.close()
         # verifying log writes
         info_logged = last_request.split()[-1]
