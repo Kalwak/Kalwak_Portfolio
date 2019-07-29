@@ -9,7 +9,7 @@
           <router-link to="/about-us" class="nav__link">Quienes somos ?</router-link>
         </div>
         <div class="dropdown-list__item">
-          <router-link to="/projects" class="nav__link">Proyectos anteriores</router-link>
+          <router-link to="/projects" class="nav__link">Trabajos anteriores</router-link>
         </div>
       </div>
     </div>

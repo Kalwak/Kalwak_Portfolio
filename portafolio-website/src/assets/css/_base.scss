@@ -45,7 +45,7 @@ a {
   }
 
   .inner-wrapper {
-    width: 95%;
+    max-width: 95%;
   }
 }
 
@@ -58,5 +58,11 @@ a {
 @media screen and (max-width: 400px) {
   body {
     font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 300px) {
+  body {
+    font-size: 13px;
   }
 }

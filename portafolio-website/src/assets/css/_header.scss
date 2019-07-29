@@ -18,7 +18,13 @@
 
   .brand__logo {
     position: relative;
+    transition: .3s all;
+    border-radius: 4px;
     width: 120px;
+
+    &:hover {
+      background-color: rgb(241, 235, 235);
+    }
 
     .logo__image {
       max-height: 100%;
@@ -105,6 +111,10 @@
   }
 }
 
+.router-link-exact-active {
+  color: $blue-color;
+}
+
 
 /**
   MEDIA QUERIES START HERE,
@@ -183,5 +193,6 @@
 
   .activatedMenu {
     height: 284px;
+    margin-top: 10px;
   }
 }

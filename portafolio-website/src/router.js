@@ -18,7 +18,13 @@ export default new Router({
       component: () => import('./views/Projects.vue'),
       meta: {
         title: 'Kalwak | Proyectos anteriores'
-      }
+      },
+      children: [
+        {
+          path: 'category/:category',
+          component: () => import('./views/sub-views/ProjectCategory.vue'),
+        }
+      ]
     },
     {
       path: '/about-us',
@@ -27,7 +33,7 @@ export default new Router({
       meta: {
         title: 'Kalwak | Acerca de nosotros' 
       }
-    }
+    },
   ]
 });
 // component: () => import(/* webpackChunkName: "about" */ './views/Component.vue')

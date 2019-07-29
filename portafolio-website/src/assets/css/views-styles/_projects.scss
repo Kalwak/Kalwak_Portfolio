@@ -2,11 +2,19 @@
 
 
 .category-list {
-  background-color: $blue-color;
-  display: flex;
-  justify-content: space-around;
+  background-color: #000;
+
+  .inner-wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
 
   .list__category {
     width: 120px;
+    height: 120px;
+
+    .category__icon {
+      height: 100%;
+    }
   }
 }
