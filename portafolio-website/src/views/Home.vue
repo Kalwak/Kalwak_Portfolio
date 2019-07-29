@@ -25,7 +25,7 @@
           <slide class="project-slide"
             v-for="project in projects" :key="project.id">
             <div class="image__container">
-              <img :src="project.images.thumbnail" alt="" class="project__image">
+              <img :src="project.images.cover" alt="" class="project__image">
             </div>
             <div class="information__container">
               <p class="project__category">{{ project.category }}</p>
