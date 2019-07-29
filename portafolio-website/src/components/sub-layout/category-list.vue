@@ -3,7 +3,7 @@
     <div class="inner-wrapper">
       <div class="list__category">
       <router-link to="/projects/category/web-development">
-          <img src="~@/assets/images/categories-images/category-4.png" alt="categoria" class="category__icon" />
+          <img src="~@/assets/images/categories-images/category-1.png" alt="categoria" class="category__icon" />
         </router-link>
       </div>
       <div class="list__category">
