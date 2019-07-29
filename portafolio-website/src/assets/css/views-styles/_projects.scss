@@ -1,0 +1,12 @@
+
+
+
+.category-list {
+  background-color: $blue-color;
+  display: flex;
+  justify-content: space-around;
+
+  .list__category {
+    width: 120px;
+  }
+}

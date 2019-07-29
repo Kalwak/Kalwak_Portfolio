@@ -9,12 +9,14 @@
 
 .footer {
   background-color: #ddd;
-  padding: 60px 0px 0px;
+  padding-top: 60px;
 }
 
 .contact-section {
   justify-content: space-between;
   display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
 }
 
 .contact-form, .contact-information {
@@ -33,11 +35,12 @@
 .contact-form {
   width: 60%;
   .form {
-    width: 90%;
+    margin: 0;
+    width: 95%;
 
     .form__input, .form__button {
-      border-radius: 0px;
-      padding: 4px 8px;
+      border-radius: 4px;
+      padding: 4px 10px;
       font-size: 1.1em;
       border: none;
     }
@@ -51,6 +54,10 @@
       max-height: 200px;
     }
 
+    .form__button-container {
+      text-align: right;
+    }
+
     .form__button {
       background-color: $blue-color;
       color: #fff;
@@ -59,7 +66,7 @@
 }
 
 .contact-information {
-  width: 40%;
+  width: 30%;
   
   .contact-info {
     font-size: 1.1em;
@@ -115,6 +122,46 @@
       color: #333;
       margin-bottom: 4px;
       font-size: 0.9em;
+    }
+  }
+}
+
+
+// MEDIA QUERIES STARTS HERE (800px)
+/**
+  STYLES FOR DIFFERENT DEVICES SCREENS, FIRST I'LL GO THROUGH 
+  TABLES AND FINALLY TO MOBILE DEVICES SCREENS.
+*/
+// MOBILE DEVICES 
+@media screen and (max-width: 800px) {
+  .contact-form, .contact-information {
+    width: 100%;
+  }
+
+  .contact-form {
+    margin-bottom: 60px;
+
+    .form {
+      width: 100%;
+
+      .form__button-container {
+        text-align: center;
+      }
+
+      .form__input-container {
+
+        &:nth-child(2), &:nth-child(3) {
+          min-width: 100%;
+        }
+      }
+    }
+  }
+
+  .contact-information {
+    text-align: center;
+  
+    .social-media {
+      margin-top: 20px;
     }
   }
 }

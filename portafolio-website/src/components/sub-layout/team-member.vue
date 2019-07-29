@@ -1,10 +1,16 @@
 <template>
   <div class="team__member">
     <div class="inner-wrapper">
-      <div class="member__content"></div>
       <div class="member__content">
-        <h4 class="font-weight-bold text-uppercase">{{ memberData.name }}</h4>
-        <p class="lead">{{ memberData.biography }}</p>
+        <div class="member__image">
+          <img src="~@/assets/images/banner.jpg" alt="placeholder image" class="image" />
+        </div>
+      </div>
+      <div class="member__content">
+        <div class="member__information">
+          <h3 class="member__name text-uppercase">{{ member.name }}</h3>
+          <p class="member__biography">{{ member.biography }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -14,7 +20,7 @@
 export default {
   name: 'team-member',
   props: {
-    memberData: {
+    member: {
       type: Object,
       required: true,
     } 

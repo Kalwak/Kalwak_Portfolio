@@ -18,19 +18,19 @@
           <div class="contact-form">
             <h4 class="contact__title">Contactanos</h4>
             <div class="form-row form">
-              <div class="form-group col-12">
+              <div class="form-group col-12 form__input-container">
                 <input type="text" placeholder="Nombre" class="form-control form__input" />
               </div>
-              <div class="form-group col">
+              <div class="form-group col form__input-container">
                 <input type="tel" placeholder="Telefono" class="form-control form__input" />
               </div>
-              <div class="form-group col">
+              <div class="form-group col form__input-container">
                 <input type="email" placeholder="E-mail" class="form-control form__input" />
               </div>
-              <div class="form-group col-12">
+              <div class="form-group col-12 form__input-container">
                 <textarea placeholder="Consulta" class="form-control form__input form__textarea"></textarea>
               </div>
-              <div class="form-group col-12 text-right">
+              <div class="form-group col-12 form__button-container">
                 <button class="form__button">Enviar</button>
               </div>
             </div>
