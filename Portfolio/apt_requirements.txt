@@ -1,0 +1,5 @@
+graphviz
+postgresql
+nodejs
+npm
+python3
