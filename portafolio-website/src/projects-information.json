@@ -10,28 +10,28 @@
   },
   {
     "id": 2,
-    "category": "Desarrollo web",
-    "project-name": "CR Fitness",
+    "category": "Logos",
+    "project-name": "",
     "images": {
-      "cover": "https://res.cloudinary.com/edwing123/image/upload/v1564152708/kalwak-projects-images/image-4.png",
+      "cover": "https://res.cloudinary.com/edwing123/image/upload/v1564152707/kalwak-projects-images/image-1.png",
       "images": []
     }
   },
   {
     "id": 3,
-    "category": "Desarrollo web",
-    "project-name": "CR Fitness",
+    "category": "Logos",
+    "project-name": "",
     "images": {
-      "cover": "https://res.cloudinary.com/edwing123/image/upload/v1564152708/kalwak-projects-images/image-4.png",
+      "cover": "https://res.cloudinary.com/edwing123/image/upload/v1564152707/kalwak-projects-images/image-3.png",
       "images": []
     }
   },
   {
     "id": 4,
-    "category": "Desarrollo web",
-    "project-name": "CR Fitness",
+    "category": "Logos",
+    "project-name": "",
     "images": {
-      "cover": "https://res.cloudinary.com/edwing123/image/upload/v1564152708/kalwak-projects-images/image-4.png",
+      "cover": "https://res.cloudinary.com/edwing123/image/upload/v1564152707/kalwak-projects-images/image-2.png",
       "images": []
     }
   }

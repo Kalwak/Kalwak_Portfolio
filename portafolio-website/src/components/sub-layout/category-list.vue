@@ -7,12 +7,12 @@
         </router-link>
       </div>
       <div class="list__category">
-        <router-link to="/projects/category/web-playments">
+        <router-link to="/projects/category/web-playment">
           <img src="~@/assets/images/categories-images/category-2.png" alt="categoria" class="category__icon" />
         </router-link>
       </div>
       <div class="list__category">
-        <router-link to="/projects/category/systems">
+        <router-link to="/projects/category/inventory-systems">
           <img src="~@/assets/images/categories-images/category-3.png" alt="categoria" class="category__icon" />
         </router-link>
       </div>
