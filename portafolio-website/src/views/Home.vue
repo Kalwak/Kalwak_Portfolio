@@ -4,7 +4,7 @@
       <div class="inner-wrapper">
         <div class="banner__text">
           <h2 class="banner__text-title">Desarrollo web</h2>
-          <p class="banner__text-description">Soluciones Innovadoras</p>
+          <h3 class="banner__text-description">Soluciones Innovadoras</h3>
         </div>
       </div>
     </div>
@@ -25,10 +25,10 @@
           <slide class="project-slide"
             v-for="project in projects" :key="project.id">
             <div class="image__container">
-              <img :src="project.images.cover" alt="" class="project__image">
+              <img :src="project.images.cover" :alt="project.name" class="project__image">
             </div>
             <div class="information__container">
-              <p class="project__category">{{ project.category }}</p>
+              <h3 class="project__category">{{ project.category }}</h3>
             </div>
           </slide>
         </carousel>

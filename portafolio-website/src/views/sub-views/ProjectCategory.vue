@@ -1,6 +1,11 @@
+<!--
+  PROJECTS CATEGORY
+  STRUCTURE OF THIS SECTION
+    
+--->
 <template>
   <div class="project-category">
-    <h3>Route: {{ $route }}</h3>
+    <h3>Route {{ $route.params.category }}</h3>
   </div>
 </template>
 

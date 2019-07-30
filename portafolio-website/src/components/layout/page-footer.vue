@@ -16,7 +16,7 @@
       <div class="inner-wrapper">
         <div class="contact-section" id="contact-section">
           <div class="contact-form">
-            <h4 class="contact__title">Contactanos</h4>
+            <h4 class="contact__title">Contáctanos</h4>
             <div class="form-row form">
               <div class="form-group col-12 form__input-container">
                 <input type="text" placeholder="Nombre" class="form-control form__input" />
@@ -36,9 +36,9 @@
             </div>
           </div>
           <div class="contact-information">
-            <h4 class="contact__title">Mas information</h4>
+            <h4 class="contact__title">Mas información</h4>
             <p class="contact-info">
-              <span class="info__title">Telefono:</span>
+              <span class="info__title">teléfono:</span>
               <span class="info__description">
                 <a href="tel:+50684599023" title="telefono">+50684599023</a>
               </span>
@@ -59,7 +59,7 @@
         <div class="information-section">
           <div class="copyright-section">
             <p>Copyright&copy; - 2019 Kalwak Derechos Reservados</p>
-            <p>Desarrolo web y de softare www.kalwak.com</p>
+            <p>Desarrollo web y de software www.kalwak.xyz</p>
           </div>
         </div>
       </div>
