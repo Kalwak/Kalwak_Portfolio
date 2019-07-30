@@ -7,7 +7,7 @@
         [about-us, projects, services, prices, contact, language-switcher]
 -->
 <template>
-  <header class="header row animated slideInDown">
+  <header class="header row animated slideInDown fixed-top">
     <div class="col-12">
       <div class="inner-wrapper">
         <div class="row justify-content-between align-items-center">
