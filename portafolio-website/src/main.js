@@ -8,12 +8,14 @@ import './assets/css/animate.css';
 import '../node_modules/hamburgers/dist/hamburgers.min.css';
 import './assets/icons/icons.css';
 import './assets/css/main.scss';
+
+
 Vue.config.productionTip = false;
-Vue.use(vueSmoothScroll)
+Vue.use(vueSmoothScroll);
 
 new Vue({
   router,
   store,
   // render: h => h(App),
-  render: h => h(App)
+  render: createElement => createElement(App),
 }).$mount('#app');
