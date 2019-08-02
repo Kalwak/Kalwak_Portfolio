@@ -49,3 +49,10 @@ class LogsTestCase(TestCase):
         expected = 10
         self.assertEqual(amount, expected)
 
+    def test_admin_not_logged(self):
+        Logs.objects.all().delete()
+        self.client.get("/fakeurl/")
+        self.client.get("/admin")
+        amount = Logs.objects.count()
+        expected = 1
+        self.assertEqual(amount, expected)
