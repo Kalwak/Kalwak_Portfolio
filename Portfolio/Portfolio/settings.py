@@ -30,7 +30,8 @@ env = environ.Env(
     PORT=(str, '5432'),
     LOGGING=(bool, True),
     SENDGRID_API_KEY=(str, 'password'),
-    EMAIL=(str, 'kalwakcr@gmail.com')
+    EMAIL=(str, 'kalwakcr@gmail.com'),
+    LOGS_LIMIT=(int, 10)
 )
 # reading .env file
 environ.Env.read_env()
@@ -44,6 +45,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG_MODE')
 LOGGING = env('LOGGING')
+LOGS_LIMIT = env('LOGS_LIMIT')
 
 ALLOWED_HOSTS = ['*']
 

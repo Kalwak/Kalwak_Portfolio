@@ -1,6 +1,7 @@
 from django.contrib.postgres.fields import JSONField
 from django.core.validators import RegexValidator
 from django.db import models
+from Portfolio.settings import LOGS_LIMIT
 
 
 class Logs(models.Model):
@@ -25,6 +26,17 @@ class Logs(models.Model):
 
     def __str__(self):
         return f'Log(datetime={self.datetime}, status_code={self.status_code}, path={self.path})'
+
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        """
+        Overriding the save method in order to limit the amount of Logs that can be saved in the database.
+        The limit is LOGS_LIMIT, after that the first ones inserted will be eliminated
+        """
+        count = Logs.objects.all().count()
+        super().save()
+        if count >= LOGS_LIMIT:
+            Logs.objects.first().delete()
 
 
 class Proyect(models.Model):
