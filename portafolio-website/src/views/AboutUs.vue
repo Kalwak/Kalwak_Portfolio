@@ -1,6 +1,13 @@
 <!--
-  ABOUT US PAGE
-  structure of section
+  ABOUT US VIEW
+  STRUCTURE OF THIS SECTION
+  - DIV CONTAINER // WHICH ACTUALLY IS A COLUMN 
+      - ABOUT-SECTION
+        - INNER-WRAPPER CLASS // LIMIT PAGE WIDTH
+          - WITHOUT CONTENT //
+      - TEAM-SECTION
+        - INNER-WRAPPER CLASS
+          - TEAM-MEMBER COMPONENT // REPRESENTS A TEAM MEMBER
 -->
 <template>
   <div class="col-12">
