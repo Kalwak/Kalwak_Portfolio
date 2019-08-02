@@ -14,8 +14,8 @@ class SendEmailView(viewsets.ViewSet):
         """
         serializer = EmailSerializer(data=request.data)
         if serializer.is_valid():
-            log.info('Email data is valid.')
+            log.info('Request data is valid.')
             response = serializer.send_email()
             return Response({"response": response})
-        log.info('Email data is not valid.')
+        log.info('Request data is not valid.')
         return Response(serializer.errors)
