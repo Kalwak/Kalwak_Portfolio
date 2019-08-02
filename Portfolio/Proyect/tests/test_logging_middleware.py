@@ -1,4 +1,4 @@
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 from rest_framework import status
 from Proyect.models import Logs
@@ -22,7 +22,7 @@ class LogsTestCase(TestCase):
     def test_log_404(self):
         self.client.get("/fakeurl/")
         expected = status.HTTP_404_NOT_FOUND
-        status_code = Logs.objects.all().last().status_code
+        status_code = Logs.objects.last().status_code
         self.assertEqual(expected, status_code)
 
     def test_log_200(self):
@@ -33,4 +33,19 @@ class LogsTestCase(TestCase):
         status_code = Logs.objects.last().status_code
         expected = status.HTTP_400_BAD_REQUEST
         self.assertEqual(expected, status_code)
+
+    def create_10_logs(self):
+        for _ in range(10):
+            self.client.get("/fakeurl/")
+
+    @override_settings(LOGS_LIMIT=10)
+    def test_limit_logs1(self):
+        self.create_10_logs()
+        amount = Logs.objects.count()
+        expected = 10
+        self.assertEqual(amount, expected)
+        self.create_10_logs()
+        amount = Logs.objects.count()
+        expected = 10
+        self.assertEqual(amount, expected)
 
