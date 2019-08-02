@@ -21,11 +21,11 @@ class LoggingTests(TestCase):
     def test_error_file_writes_404(self):
         self.client.get("/fakeurl/")
         # opening the log_file
-        fileHandle = open(self.error_path, "r")
-        log_file = fileHandle.readlines()
+        file = open(self.error_path, "r")
+        log_file = file.readlines()
         # getting last log
         last_request = log_file[len(log_file)-2]
-        fileHandle.close()
+        file.close()
         # verifying http status
         http_status_last_request = last_request.split()[-1]
         self.assertEqual(http_status_last_request, "404")
@@ -36,11 +36,11 @@ class LoggingTests(TestCase):
     def test_debug_file_writes(self):
         logging_debugger.info('Testing')
         # opening the log_file
-        fileHandle = open(self.debug_path, "r")
-        log_file = fileHandle.readlines()
+        file = open(self.debug_path, "r")
+        log_file = file.readlines()
         # getting last log
         last_request = log_file[len(log_file)-1]
-        fileHandle.close()
+        file.close()
         # verifying log writes
         info_logged = last_request.split()[-1]
         self.assertEqual(info_logged, "Testing")
