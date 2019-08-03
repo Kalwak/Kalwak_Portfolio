@@ -11,6 +11,7 @@
 </template>
 
 <script>
+// views will render here, so its content is dynamic
 export default {
   name: 'page-main'
 }

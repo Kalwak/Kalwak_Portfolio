@@ -33,6 +33,7 @@
 export default {
   name: 'team-member',
   props: {
+    // member prop, this will be the object with member information
     member: {
       type: Object,
       required: true,

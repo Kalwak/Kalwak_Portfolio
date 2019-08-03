@@ -27,6 +27,7 @@
 </template>
 
 <script>
+// about-us view component
 import TeamMember from '@/components/sub-layout/team-member.vue';
 import teamMembersData from '@/team-members.json';
 
@@ -35,11 +36,13 @@ export default {
   name: 'about-us',
   data() {
     return {
+      // array of objects, each object with member information
       teamMembersData
     };
   },
 
   components: {
+    // team-member component, where information about the member will shown
     TeamMember
   },
 }

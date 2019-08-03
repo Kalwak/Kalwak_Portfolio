@@ -24,6 +24,10 @@
     </div>
 
     <div class="nav__item">
+      <router-link to="/products" class="nav__link">Productos</router-link>
+    </div>
+
+    <div class="nav__item">
       <router-link to="/cotizar" class="nav__link">Cotizar</router-link>
     </div>
 

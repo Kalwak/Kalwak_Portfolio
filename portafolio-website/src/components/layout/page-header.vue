@@ -19,7 +19,7 @@
                 </a>
                 <!-- <span class="menu-button" >menu</span> -->
               </div>
-              <button class="hamburger hamburger--squeeze menu-button" :class="{ 'is-active': activatedMenu }" type="button" @click="activatedMenu = !activatedMenu">
+              <button class="hamburger hamburger--squeeze menu-button" :class="{ 'is-active': activatedMenu }" type="button" @click="toggleMenu">
                 <span class="hamburger-box">
                   <span class="hamburger-inner"></span>
                 </span>
@@ -34,19 +34,29 @@
 </template>
 
 <script>
+// header component // see component top to see its structure
 import NavMenu from '@/components/sub-layout/navigation-menu.vue';
 
 export default {
   name: 'page-header',
   data() {
     return {
+      // used for toggling the menu (see mobile)
       activatedMenu: false
     };
   },
   
   components: {
+    // navigation menu component
     NavMenu
-  }
+  },
+
+  methods: {
+    // actually toggles the activedMenu data property's state
+    toggleMenu() {
+      this.activatedMenu = !this.activatedMenu;
+    }
+  },
 }
 </script>
 

@@ -15,8 +15,11 @@ import PageFooter from './components/layout/page-footer.vue';
 export default {
   name: 'app',
   components: {
+    // this represents the header element
     PageHeader,
+    // this represents the main content
     PageMain,
+    // this represent the footer element
     PageFooter
   }
 }

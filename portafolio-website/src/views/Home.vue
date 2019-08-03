@@ -1,3 +1,22 @@
+<!--
+  HOME VIEW
+  STRUCTURE OF THIS SECTION
+  - MAIN COLUMN
+    - BANNER // CONTAINER FOR BANNER
+      - INNER-WRAPPER
+        - BANNER__TEXT // CONTAINER FOR BANNER TEXT
+          - BANNER__TITLE
+          - BANNER__DESCRIPTION
+    - PROJECTS-SECTION
+      - INNER-WRAPPER
+        - PROJECTS__TITLE // TITLE OF THIS SECTION
+        - CAROUSEL // MAIN CONTAINER FOR PROJECTS CAROUSEL, ALSO HAS PROJECTS-SLIDER CLASS
+          - SLIDE // CONTAINER FOR PROJECT INFORMATION, HAS PROJECT-SLIDE CLASS
+            - IMAGE__CONTAINER // CONTAINER FOR PROJECT COVER IMAGE
+              - COVER IMAGE WITH CLASS PROJECT__IMAGE
+            - INFORMATION__CONTAINER // 
+              - PROJECT__CATEGORY
+--->
 <template>
   <div class="col-12">
     <div class="banner">
@@ -38,6 +57,7 @@
 </template>
 
 <script>
+// home views
 import projectsInformation from '../projects-information.json';
 import { Carousel, Slide } from 'vue-carousel';
 
@@ -45,16 +65,20 @@ export default {
   name: 'home',
   data() {
     return {
+      // an array of objects with every registered project we've worked
       projectsInformation
     };
   },
 
   components: {
+    // from vue-carousel, this is the carousel main container
     Carousel,
+    // from vue-carousel, this is the slide that goes into caoursel component
     Slide
   },
 
   computed: {
+    // returns the array from the data property projectsInformation, just for readility
     projects() {
       return this.projectsInformation;
     }
