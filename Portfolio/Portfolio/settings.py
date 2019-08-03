@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'Email',
     'Project',
+    'Service',
 ]
 
 if DEBUG:
@@ -141,18 +142,18 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
+
+TIME_ZONE = 'America/Costa_Rica'
 
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
 STATIC_URL = '/static/'
+MEDIA_URL = '/assets/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'assets')
 
 # Email django SMTP configuration
 EMAIL_HOST = 'smtp.sendgrid.net'
@@ -161,6 +162,10 @@ EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = env('EMAIL')
+SERVER_EMAIL = env('EMAIL')
+ADMINS = (
+  ('Me', env('EMAIL')),
+)
 
 """
 REST_FRAMEWORK = {
@@ -190,25 +195,30 @@ if LOGGING:
             'file_error': {
                 'level': 'DEBUG',
                 'class': 'logging.FileHandler',
-                'filename': os.path.join(BASE_DIR, 'errors.log'),
+                'filename': os.path.join(BASE_DIR, 'logs/errors.log'),
                 'formatter': 'standard',
             },
             'file_debug': {
                 'level': 'DEBUG',
                 'class': 'logging.FileHandler',
-                'filename': os.path.join(BASE_DIR, 'debug.log'),
+                'filename': os.path.join(BASE_DIR, 'logs/debug.log'),
                 'formatter': 'verbose',
+            },
+            'email_errors': {
+                'level': 'ERROR',
+                'class': 'django.utils.log.AdminEmailHandler',
+                'formatter': 'standard'
             },
         },
         'loggers': {
             'django.request': {
-                'handlers': ['file_error'],
-                'level': 'DEBUG',  # change debug level as appropiate
+                'handlers': ['file_error', 'email_errors'],
+                'level': 'DEBUG',
                 'propagate': False,
             },
             'debugger': {
                 'handlers': ['file_debug'],
-                'level': 'DEBUG',  # change debug level as appropiate
+                'level': 'DEBUG',
                 'propagate': False,
             },
         },

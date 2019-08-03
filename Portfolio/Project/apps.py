@@ -1,7 +1,7 @@
 from django.apps import AppConfig
 
 
-class ProyectConfig(AppConfig):
+class ProjectConfig(AppConfig):
     name = 'Project'
 
 

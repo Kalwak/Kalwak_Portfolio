@@ -3,4 +3,4 @@ from .models import *
 
 admin.site.register(Logs)
 admin.site.register(Gallery)
-admin.site.register(Proyect)
+admin.site.register(Project)
