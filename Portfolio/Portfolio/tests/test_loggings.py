@@ -9,8 +9,8 @@ class LoggingTests(TestCase):
 
     def setUp(self) -> None:
         self.client = APIClient()
-        self.error_path = os.path.join(BASE_DIR, 'errors.log')
-        self.debug_path = os.path.join(BASE_DIR, 'debug.log')
+        self.error_path = os.path.join(BASE_DIR, 'logs/errors.log')
+        self.debug_path = os.path.join(BASE_DIR, 'logs/debug.log')
 
     def test_debug_file_exists(self):
         self.assertEquals(os.path.exists(self.debug_path), True)
