@@ -2,7 +2,7 @@ from django.apps import AppConfig
 
 
 class ProyectConfig(AppConfig):
-    name = 'Proyect'
+    name = 'Project'
 
 
 class PhotoConfig(AppConfig):

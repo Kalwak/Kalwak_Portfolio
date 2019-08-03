@@ -44,8 +44,8 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG_MODE')
-LOGGING = env('LOGGING')
-LOGS_LIMIT = env('LOGS_LIMIT')
+LOGGING = env('LOGGING')  # Boolean to check if logging is enabled
+LOGS_LIMIT = env('LOGS_LIMIT')  # Limit the amount of logs saved to the database
 
 ALLOWED_HOSTS = ['*']
 
@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'Email',
-    'Proyect',
+    'Project',
 ]
 
 if DEBUG:
@@ -78,7 +78,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'Proyect.middleware.LoggingMiddleware',
+    'Project.middleware.LoggingMiddleware',
 ]
 
 if LOGGING:
