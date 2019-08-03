@@ -39,7 +39,7 @@ class Logs(models.Model):
             Logs.objects.first().delete()
 
 
-class Proyect(models.Model):
+class Project(models.Model):
     """
     model that will give information
     about the different projects that
@@ -64,7 +64,7 @@ class Gallery(models.Model):
     (many photos will reference a single project)
     """
     photo = models.ImageField(upload_to='Gallery', default="Kalwak.svg")
-    proyect = models.ForeignKey(Proyect, on_delete=models.CASCADE, default=0)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, default=0)
 
     def __str__(self):
         return f"Name: {self.photo.name}"

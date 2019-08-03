@@ -1,7 +1,7 @@
 from django.test import TestCase, override_settings
 from rest_framework.test import APIClient
 from rest_framework import status
-from Proyect.models import Logs
+from Project.models import Logs
 
 
 class LogsTestCase(TestCase):

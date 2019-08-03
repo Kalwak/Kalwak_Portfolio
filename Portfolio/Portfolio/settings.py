@@ -60,7 +60,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'Email',
-    'Proyect',
+    'Project',
     'Service',
 ]
 
@@ -79,7 +79,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'Proyect.middleware.LoggingMiddleware',
+    'Project.middleware.LoggingMiddleware',
 ]
 
 if LOGGING:
