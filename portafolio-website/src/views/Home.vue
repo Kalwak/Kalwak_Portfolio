@@ -44,10 +44,10 @@
           <slide class="project-slide"
             v-for="project in projects" :key="project.id">
             <div class="image__container">
-              <img :src="project.images.cover" :alt="project.name" class="project__image">
+              <img :src="project.images[0]" :alt="project.projectName" class="project__image">
             </div>
             <div class="information__container">
-              <h3 class="project__category">{{ project.category }}</h3>
+              <h3 class="project__category">{{ project.categories[0] }}</h3>
             </div>
           </slide>
         </carousel>
@@ -58,17 +58,11 @@
 
 <script>
 // home views
-import projectsInformation from '../projects-information.json';
 import { Carousel, Slide } from 'vue-carousel';
+
 
 export default {
   name: 'home',
-  data() {
-    return {
-      // an array of objects with every registered project we've worked
-      projectsInformation
-    };
-  },
 
   components: {
     // from vue-carousel, this is the carousel main container
@@ -80,8 +74,8 @@ export default {
   computed: {
     // returns the array from the data property projectsInformation, just for readility
     projects() {
-      return this.projectsInformation;
-    }
-  }
+      return this.$store.state.projectsInformation;
+    },
+  },
 }
 </script>

@@ -18,3 +18,45 @@
     }
   }
 }
+
+.project-navigation {
+
+  .inner-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    .navigation__arrow {
+      color: $blue-color;
+      margin: 30px 0px;
+      display: flex;
+      cursor: pointer;
+      align-items: center;
+
+      &:hover {
+        opacity: .8;
+      }
+
+      &--disabled {
+        opacity: 0.4;
+        pointer-events: none;
+        color: #24292e;
+      }
+
+      span {
+        color: #24292e;
+        margin: 0px 4px;
+        line-height: 15px;
+      }
+    }
+  }
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}

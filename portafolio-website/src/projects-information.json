@@ -1,38 +1,40 @@
 [
   {
     "id": 1,
-    "category": "Desarrollo web",
-    "project-name": "CR Fitness",
-    "images": {
-      "cover": "https://res.cloudinary.com/edwing123/image/upload/v1564152708/kalwak-projects-images/image-4.png",
-      "images": []
-    }
+    "categories": ["web development"],
+    "name": "CR Fitness",
+    "information": {
+      "subTitle": "Pagina web para CRFITNESS",
+      "description": "Some description",
+      "url": "Some url"
+    },
+    "images": [
+      "https://res.cloudinary.com/edwing123/image/upload/v1564152708/kalwak-projects-images/image-4.png",
+      "https://res.cloudinary.com/edwing123/image/upload/v1564152708/kalwak-projects-images/image-4.png"
+    ]
   },
   {
     "id": 2,
-    "category": "Logos",
-    "project-name": "",
-    "images": {
-      "cover": "https://res.cloudinary.com/edwing123/image/upload/v1564152707/kalwak-projects-images/image-1.png",
-      "images": []
-    }
+    "categories": ["graphic design"],
+    "name": "Some name",
+    "images": [
+      "https://res.cloudinary.com/edwing123/image/upload/v1564152707/kalwak-projects-images/image-1.png"
+    ]
   },
   {
     "id": 3,
-    "category": "Logos",
-    "project-name": "",
-    "images": {
-      "cover": "https://res.cloudinary.com/edwing123/image/upload/v1564152707/kalwak-projects-images/image-3.png",
-      "images": []
-    }
+    "categories": ["graphic design"],
+    "name": "Some name",
+    "images": [
+      "https://res.cloudinary.com/edwing123/image/upload/v1564152707/kalwak-projects-images/image-3.png"
+    ]
   },
   {
     "id": 4,
-    "category": "Logos",
-    "project-name": "",
-    "images": {
-      "cover": "https://res.cloudinary.com/edwing123/image/upload/v1564152707/kalwak-projects-images/image-2.png",
-      "images": []
-    }
+    "categories": ["graphic design"],
+    "name": "Some name",
+    "images": [
+      "https://res.cloudinary.com/edwing123/image/upload/v1564152707/kalwak-projects-images/image-2.png"
+    ]
   }
 ]

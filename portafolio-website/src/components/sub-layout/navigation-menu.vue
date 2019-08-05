@@ -14,7 +14,7 @@
           <router-link to="/about-us" class="nav__link">Quienes somos ?</router-link>
         </div>
         <div class="dropdown-list__item">
-          <router-link to="/projects" class="nav__link">Trabajos anteriores</router-link>
+          <router-link :to="'/projects/' + category" class="nav__link">Trabajos anteriores</router-link>
         </div>
       </div>
     </div>
@@ -43,4 +43,22 @@
     </div>
   </nav>
 </template>
+
+<script>
+export default {
+  name: 'navigation-menu',
+
+  computed: {
+    category() {
+      let category = this.$store.state.projects.projectsCategory;
+      if (!category.length) {
+        return 'web-development';
+      } else {
+        return category.split(' ').join('-');
+      };
+    },
+  },
+}
+</script>
+
 

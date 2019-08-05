@@ -8,10 +8,7 @@
 <template>
   <div class="col-12">
     <category-list />
-    <div class="inner-wrapper">
-      <!-- /projects/category/category-name -->
-      <router-view></router-view>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -22,10 +19,9 @@ import  CategoryList from '../components/sub-layout/category-list.vue';
 
 export default {
   name: 'projects',
+
   components: {
-    // category-list componet which will container a list of categories
-    CategoryList
-  }
+    CategoryList,
+  },
 }
 </script>
-

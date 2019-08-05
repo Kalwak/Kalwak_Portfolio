@@ -59,3 +59,9 @@
 .icon-left-arrow:before {
   content: "\67";
 }
+.icon-double-right-arrow:before {
+  content: "\68";
+}
+.icon-double-left-arrow:before {
+  content: "\69";
+}
