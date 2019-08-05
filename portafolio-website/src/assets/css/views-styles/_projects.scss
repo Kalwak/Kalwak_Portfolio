@@ -103,8 +103,10 @@
   }
 
   .project__body {
-    
-    width: 50%;
+
+  .project__description {
+    width: 60%;
+  }
   }
 }
 
@@ -127,7 +129,24 @@
 @media screen and (max-width: 800px) {
   .project__header, .project__body {
     .inner-wrapper {
-      min-width: 100% !important;
+      min-width: 100%;
     }
   }
+
+  .project-container {
+  
+    .project__header {
+      .project__title {
+        text-align: center;
+      }
+    }
+  
+    .project__body {
+      .project__description {
+        max-width: 600px;
+        width: 60%;
+      }
+    }
+  }
+  
 }

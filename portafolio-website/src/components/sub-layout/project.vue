@@ -7,7 +7,7 @@
           class="project__carousel"
           :key="project.pageId"
           :per-page="1" 
-          :loop="true"
+          :loop="false"
           :autoplay="true"
           :autoplay-timeout="4000"
           :pagination-enabled="false"
@@ -28,8 +28,8 @@
         <h3 class="project__title">{{ project.information.subTitle }}</h3>
         <div class="project__description">
           <p class="description__text" v-html="project.information.description"></p>
+                  <p class="project__widget">Enlace de producion {{ project.information.url }}</p>
         </div>
-        <p class="project__widget">Enlace de producion {{ project.information.url }}</p>
       </div>
     </div>
   </div>

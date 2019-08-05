@@ -3,10 +3,7 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import vueSmoothScroll from 'vue2-smooth-scroll';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './assets/css/animate.css';
-import '../node_modules/hamburgers/dist/hamburgers.min.css';
-import './assets/icons/icons.css';
+import '../node_modules/swiper/dist/js/swiper.min.js';
 import './assets/css/main.scss';
 
 
