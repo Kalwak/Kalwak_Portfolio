@@ -20,6 +20,7 @@
 }
 
 .project-navigation {
+  padding: 30px 0px;
 
   .inner-wrapper {
     display: flex;
@@ -27,7 +28,6 @@
 
     .navigation__arrow {
       color: $blue-color;
-      margin: 30px 0px;
       display: flex;
       cursor: pointer;
       align-items: center;
@@ -51,6 +51,64 @@
   }
 }
 
+.project-container {
+  .inner-wrapper {
+    width: 85%;
+  }
+
+  .project__title, .image__category {
+    padding: 18px 0px;
+    font-size: 1.5em;
+    text-transform: uppercase;
+  }
+
+  .project__header {
+    background-color: $orange-color;
+
+    .project__carousel {
+      .VueCarousel-navigation {
+
+        .VueCarousel-navigation-button {
+          font-size: 3.5em;
+          padding: 0;
+          margin: 0;
+          outline: none;
+  
+          &:hover {
+            opacity: 0.6;;
+          }
+        }
+      }
+      
+      &__slide {
+        width: 100%;
+        position: relative;
+        z-index: 100;
+
+        .project__images {
+          width: 100%;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+
+          .image__category {
+            text-align: center;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  .project__body {
+    
+    width: 50%;
+  }
+}
+
+
 .noselect {
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -59,4 +117,17 @@
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
+}
+
+
+/**
+  PROJECT COMPONENT MEDIA QUERIES
+*/
+
+@media screen and (max-width: 800px) {
+  .project__header, .project__body {
+    .inner-wrapper {
+      min-width: 100% !important;
+    }
+  }
 }

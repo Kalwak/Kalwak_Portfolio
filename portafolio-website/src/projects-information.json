@@ -5,7 +5,7 @@
     "name": "CR Fitness",
     "information": {
       "subTitle": "Pagina web para CRFITNESS",
-      "description": "Some description",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Do dolor amet. Eos et qu adipisicing elit. <br /> <br />  adip amet. Eos et quDolore quaerat adipisci similique rerum quidem dicta minus fuga reiciendis dolor asimilique rerum quidem dicta minus fuga reiciendis dolor amet. Eos et qui obcaecati, est sequi mollitia blanditiis tempora optio?",
       "url": "Some url"
     },
     "images": [
@@ -17,6 +17,11 @@
     "id": 2,
     "categories": ["graphic design"],
     "name": "Some name",
+    "information": {
+      "subTitle": "Pagina web para CRFITNESS",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Do dolor amet. Eos et qu adipisicing elit. <br /> <br />  adip amet. Eos et quDolore quaerat adipisci similique rerum quidem dicta minus fuga reiciendis dolor asimilique rerum quidem dicta minus fuga reiciendis dolor amet. Eos et qui obcaecati, est sequi mollitia blanditiis tempora optio?",
+      "url": "Some url"
+    },
     "images": [
       "https://res.cloudinary.com/edwing123/image/upload/v1564152707/kalwak-projects-images/image-1.png"
     ]
@@ -25,6 +30,11 @@
     "id": 3,
     "categories": ["graphic design"],
     "name": "Some name",
+    "information": {
+      "subTitle": "Pagina web para CRFITNESS",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Do dolor amet. Eos et qu adipisicing elit. <br /> <br />  adip amet. Eos et quDolore quaerat adipisci similique rerum quidem dicta minus fuga reiciendis dolor asimilique rerum quidem dicta minus fuga reiciendis dolor amet. Eos et qui obcaecati, est sequi mollitia blanditiis tempora optio?",
+      "url": "Some url"
+    },
     "images": [
       "https://res.cloudinary.com/edwing123/image/upload/v1564152707/kalwak-projects-images/image-3.png"
     ]
@@ -33,6 +43,11 @@
     "id": 4,
     "categories": ["graphic design"],
     "name": "Some name",
+    "information": {
+      "subTitle": "Pagina web para CRFITNESS",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Do dolor amet. Eos et qu adipisicing elit. <br /> <br />  adip amet. Eos et quDolore quaerat adipisci similique rerum quidem dicta minus fuga reiciendis dolor asimilique rerum quidem dicta minus fuga reiciendis dolor amet. Eos et qui obcaecati, est sequi mollitia blanditiis tempora optio?",
+      "url": "Some url"
+    },
     "images": [
       "https://res.cloudinary.com/edwing123/image/upload/v1564152707/kalwak-projects-images/image-2.png"
     ]

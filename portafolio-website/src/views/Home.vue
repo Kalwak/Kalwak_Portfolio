@@ -31,6 +31,7 @@
       <div class="inner-wrapper">
         <h3 class="projects__title">Trabajos anteriores</h3>
         <carousel 
+          :key="1"
           :per-page="1" 
           :loop="true"
           :autoplay="true"
@@ -42,12 +43,14 @@
           navigation-next-label="<span class='icon-right-arrow'></span>"
           class="projects-slider">
           <slide class="project-slide"
-            v-for="project in projects" :key="project.id">
+            v-for="(project, index) in projects" :key="project.id">
             <div class="image__container">
               <img :src="project.images[0]" :alt="project.projectName" class="project__image">
             </div>
             <div class="information__container">
-              <h3 class="project__category">{{ project.categories[0] }}</h3>
+              <h3 class="project__category">
+                <router-link :to="'/projects/' + categoryRoutes[index]">{{ project.categories[0] }}</router-link>
+              </h3>
             </div>
           </slide>
         </carousel>
@@ -75,6 +78,12 @@ export default {
     // returns the array from the data property projectsInformation, just for readility
     projects() {
       return this.$store.state.projectsInformation;
+    },
+
+    categoryRoutes() {
+      return this.projects.map( project => {
+        return project.categories[0];
+      });
     },
   },
 }

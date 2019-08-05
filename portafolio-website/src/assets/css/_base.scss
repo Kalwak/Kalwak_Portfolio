@@ -22,6 +22,10 @@ a {
   text-decoration: none !important;
 }
 
+p {
+  word-wrap: break-word;
+}
+
 .reset-m-p {
   padding: 0;
   margin: 0;

@@ -80,7 +80,6 @@ export default {
         allowTouchMove: false,
       });
       let index = carousel.activeIndex;
-      console.log(index);
       self.disableArrowsByBoundaries(index);
       // carousel.activeIndex = 0;
       const prevArrow = document.querySelector('.leftControlArrow');
@@ -89,7 +88,6 @@ export default {
         carousel.slidePrev();
         let newSlideIndex = carousel.activeIndex;
         self.disableArrowsByBoundaries(newSlideIndex);
-        console.log(index);
       });
       nextArrow.addEventListener('click', function() {
         carousel.slideNext();

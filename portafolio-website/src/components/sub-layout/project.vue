@@ -2,24 +2,34 @@
   <div class="project-container">
     <div class="project__header">
       <div class="inner-wrapper">
-        <h3>{{ project.name }}</h3>
-        <div class="project__carousel">
+        <h3 class="project__title">{{ project.name }}</h3>
           <carousel 
+          class="project__carousel"
+          :key="project.pageId"
           :per-page="1" 
           :loop="true"
           :autoplay="true"
           :autoplay-timeout="4000"
-          :navigation-click-target-size="0"
-          :navigation-enabled="true" 
-          :pagination-enabled="false" 
-          navigation-prev-label="<span  style='font-size: 1.8em;' class='icon-left-arrow'></span>"
-          navigation-next-label="<span  style='font-size: 1.8em;' class='icon-right-arrow'></span>">
-          <slide class="project__slide"
-            v-for="(imageSrc, index) in project.images" :key="index">
-            <img :src="imageSrc" :alt="project.title" />
-          </slide>
-        </carousel>
+          :pagination-enabled="false"
+          :navigation-enabled="true"
+          navigation-prev-label="<span class='icon-left-arrow carousel__arrow'></span>"
+          navigation-next-label="<span class='icon-right-arrow carousel__arrow'></span>">
+            <slide class="project__carousel__slide" v-for="(imageSrc, index) in project.images" :key="index">
+              <div class="project__images">
+                <img :src="imageSrc" :alt="project.title" />
+                <p class="image__category">{{ project.categories[0] }}</p>
+              </div>
+            </slide>
+          </carousel>
+      </div>
+    </div>
+    <div class="inner-wrapper">
+      <div class="project__body">
+        <h3 class="project__title">{{ project.information.subTitle }}</h3>
+        <div class="project__description">
+          <p class="description__text" v-html="project.information.description"></p>
         </div>
+        <p class="project__widget">Enlace de producion {{ project.information.url }}</p>
       </div>
     </div>
   </div>
