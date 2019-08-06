@@ -17,7 +17,7 @@
             <slide class="project__carousel__slide" v-for="(imageSrc, index) in project.images" :key="index">
               <div class="project__images">
                 <img :src="imageSrc" :alt="project.title" />
-                <p class="image__category">{{ project.categories[0] }}</p>
+                <h3 class="image__category">{{ project.categories[0] }}</h3>
               </div>
             </slide>
           </carousel>
@@ -28,7 +28,7 @@
         <h3 class="project__title">{{ project.information.subTitle }}</h3>
         <div class="project__description">
           <p class="description__text" v-html="project.information.description"></p>
-                  <p class="project__widget">Enlace de producion {{ project.information.url }}</p>
+                  <p class="description__widget">Enlace de producion {{ project.information.url }}</p>
         </div>
       </div>
     </div>

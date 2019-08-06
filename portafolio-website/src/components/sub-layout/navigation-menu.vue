@@ -55,7 +55,7 @@ export default {
         return 'web-development';
       } else {
         return category.split(' ').join('-');
-      };
+      }
     },
   },
 }

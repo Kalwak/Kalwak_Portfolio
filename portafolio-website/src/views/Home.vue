@@ -82,7 +82,7 @@ export default {
 
     categoryRoutes() {
       return this.projects.map( project => {
-        return project.categories[0];
+        return project.categories[0].split(' ').join('-');
       });
     },
   },
