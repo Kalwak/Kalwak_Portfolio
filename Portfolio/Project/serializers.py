@@ -5,7 +5,7 @@ from . import models
 class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Project
-        fields = ("name", "date", "description")
+        fields = '__all__'
 
 
 class GallerySerializers(serializers.ModelSerializer):

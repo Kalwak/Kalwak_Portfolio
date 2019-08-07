@@ -1,4 +1,12 @@
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import authentication, permissions
-from django.contrib.auth.models import User
+from rest_framework import viewsets
+from Project.models import Project
+from Project.serializers import ProjectSerializer
+
+
+class ProjectViewset(viewsets.ModelViewSet):
+    """
+    Project viewset to help out with only the GET method. It can give you the list of
+    Projects or you can retrieve individual Projects.
+    """
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
