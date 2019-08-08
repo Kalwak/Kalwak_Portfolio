@@ -7,7 +7,7 @@ export default new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   scrollBehavior () {
-    return { x: 0, y: 0 }
+    return { x: 0, y: 0 };
   },
   routes: [
     {
@@ -31,6 +31,20 @@ export default new Router({
       path: '/about-us',
       name: 'about-us',
       component: () => import('./views/AboutUs.vue'),
+    },
+    {
+      path: '/services',
+      name: 'services',
+      component: () => import('./views/Services.vue'),
+
+      children: [
+        {
+          path: ':service',
+          component() {
+            return import('./views/sub-views/Service.vue');
+          },
+        }
+      ],
     },
   ]
 });

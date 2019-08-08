@@ -7,7 +7,7 @@
           class="project__carousel"
           :key="project.pageId"
           :per-page="1" 
-          :loop="false"
+          :loop="true"
           :autoplay="true"
           :autoplay-timeout="4000"
           :pagination-enabled="false"

@@ -1,7 +1,9 @@
 <!--
   PROJECTS CATEGORY
   STRUCTURE OF THIS SECTION
-    
+    .project-category - main container for categories
+      - project-navigation // component that provices arrow (left & right) to swtich between projects that belong to this category 
+        - swiper-container // 
 --->
 <template>
   <div class="project-category">
