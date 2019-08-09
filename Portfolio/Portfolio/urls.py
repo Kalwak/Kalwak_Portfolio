@@ -24,6 +24,8 @@ urlpatterns = [
                   path('api/', include('Service.urls')),
                   path('api/', include('Project.urls')),
                   path('api/', include('rest_framework.urls')),
-              ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+              ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = "Kalwak Administration"

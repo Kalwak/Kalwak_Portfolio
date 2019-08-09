@@ -87,9 +87,9 @@ MIDDLEWARE = [
 CORS_ORIGIN_ALLOW_ALL = False
 
 CORS_ORIGIN_WHITELIST = (
-        'http://localhost:5433',
-        'http://localhost:5432',
-            )
+    'http://localhost:5433',
+    'http://localhost:5432',
+)
 
 if LOGGING:
     MIDDLEWARE += ['request_logging.middleware.LoggingMiddleware']
@@ -178,15 +178,9 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = env('EMAIL')
 SERVER_EMAIL = env('EMAIL')
 ADMINS = (
-  ('Me', env('EMAIL')),
+    ('Me', env('EMAIL')),
 )
 
-"""
-REST_FRAMEWORK = {
-    "DEFAULT_PERMISSIONS_CLASSES" : ("permissions.IsAuthenticatedOrReadOnly",) #no puedes modificar nada solo ver hasta que logguess
-    #permisissions.IsAuthenticated #no puedes ver nada hasta que logguees
-}
-"""
 # Logging configuration
 if LOGGING:
     LOGGING = {
