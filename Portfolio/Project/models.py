@@ -50,7 +50,7 @@ class Project(models.Model):
     name = models.CharField(max_length=100)
     cover_page = models.ImageField(upload_to='cover_pages',
                                    default="Kalwak.svg")
-    description = models.CharField(max_length=1000)
+    description = models.TextField()
     website = models.URLField(max_length=255)
     date = models.DateField(auto_now=False, auto_now_add=False)
 
