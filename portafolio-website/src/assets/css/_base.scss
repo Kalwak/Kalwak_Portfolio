@@ -33,7 +33,7 @@ a {
 
 // to limit the width
 .inner-wrapper {
-  max-width: 1200px;
+  max-width: 60%;
   margin: 0px auto;
 }
 
@@ -45,13 +45,17 @@ a {
   }
 
   .inner-wrapper {
-    max-width: 95%;
+    max-width: 80%;
   }
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 900px) {
   body {
     font-size: 15px;
+  }
+
+  .inner-wrapper {
+    max-width: 90%;
   }
 }
 
