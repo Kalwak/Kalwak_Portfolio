@@ -14,7 +14,7 @@ class Logs(models.Model):
     response = JSONField()
     request = JSONField()
     ipv4_address = models.GenericIPAddressField()
-    path_validator = RegexValidator(regex='^\/[(\w|\d)*\/]+$',
+    path_validator = RegexValidator(regex=r'^\/[(\w|\d)*\/]+$',
                                     message='The path is incorrect. Example: /api/ict/unit/')
     path = models.CharField(validators=[], max_length=100)
     is_ajax = models.BooleanField()
@@ -53,9 +53,18 @@ class Project(models.Model):
     description = models.TextField()
     website = models.URLField(max_length=255)
     date = models.DateField(auto_now=False, auto_now_add=False)
+    subtitle = models.CharField(max_length=30)
+    categories = models.ManyToManyField('ProjectCategory')
 
     def __str__(self):
         return f"Name: {self.name}, Link: {self.website}"
+
+
+class ProjectCategory(models.Model):
+    name = models.SlugField(primary_key=True)
+
+    def __str__(self):
+        return f"ProjectCategory(name={self.name})"
 
 
 class Gallery(models.Model):

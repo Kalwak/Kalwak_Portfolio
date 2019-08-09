@@ -47,12 +47,12 @@
                         <div class="image__container">
                             <img :src="project.cover_page" :alt="project.name" class="project__image">
                         </div>
-                        <!--<div class="information__container">
+                        <div class="information__container">
                             <h3 class="project__category">
-                                <router-link :to="'/projects/' + categoryRoutes[index]">{{ project.categories[0] }}
+                                <router-link :to="'/projects/' + project.categories[0]">{{ categoryFormatted[index] }}
                                 </router-link>
                             </h3>
-                        </div>-->
+                        </div>
                     </slide>
                 </carousel>
             </div>
@@ -105,9 +105,9 @@
 
 
         computed: {
-            categoryRoutes() {
+            categoryFormatted() {
                 return this.projects.map(project => {
-                    return project.categories[0].split(' ').join('-');
+                    return project.categories[0].split('-').join(' ');
                 });
             },
         },
