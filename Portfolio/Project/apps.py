@@ -1,8 +1,8 @@
 from django.apps import AppConfig
 
 
-class ProyectConfig(AppConfig):
-    name = 'Proyect'
+class ProjectConfig(AppConfig):
+    name = 'Project'
 
 
 class PhotoConfig(AppConfig):
