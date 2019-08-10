@@ -42,15 +42,14 @@ export default {
   name: 'category-list',
 
   computed: {
+    // category that comes from the router params
     category() {
       return this.$route.params.category.split('-').join(' ');
     },
-    
   },
 
   created() {
     const self = this;
-    console.log('category set');
     self.$store.commit('setCategory', self.category);
     self.$store.dispatch('setProjectsByCategory');
   },

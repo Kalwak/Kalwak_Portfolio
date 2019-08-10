@@ -20,10 +20,10 @@
 </template>
 
 <script>
-// category view
+// category sub-view
 import { mapState } from 'vuex';
 import ProjectNavigation from '@/components/sub-layout/project-navigation.vue';
-import ProjectCard from '@/components/sub-layout/project.vue';
+import ProjectCard from '@/components/sub-layout/project-card.vue';
 
 
 export default {
@@ -37,6 +37,7 @@ export default {
 
   computed: {
     ...mapState({
+      // return the projects from store state
       projects: state => state.projects.projects,
     }),
   },

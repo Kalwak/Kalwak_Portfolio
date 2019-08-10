@@ -21,6 +21,7 @@ export default {
   name: 'projects',
 
   components: {
+    // category list component // for navigation based on categories
     CategoryList,
   },
 }

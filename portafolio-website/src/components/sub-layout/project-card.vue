@@ -28,7 +28,7 @@
         <h3 class="project__title">{{ project.information.subTitle }}</h3>
         <div class="project__description">
           <p class="description__text" v-html="project.information.description"></p>
-                  <p class="description__widget">Enlace de producion {{ project.information.url }}</p>
+          <p class="description__widget">Enlace de producion {{ project.information.url }}</p>
         </div>
       </div>
     </div>

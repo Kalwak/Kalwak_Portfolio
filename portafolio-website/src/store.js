@@ -15,6 +15,10 @@ export default new Vuex.Store({
       currentProject: {},
       currentProjectId: 0,
     },
+
+    services: {
+      currenCategory: '',
+    },
   },
 
   mutations: {
@@ -25,6 +29,8 @@ export default new Vuex.Store({
     // setProjectId: (state, id) => state.projects.projectId = id,
     setProjects: (state, projects) => state.projects.projects = projects,
     setCurrentProject: (state, project) => state.projects.currentProject = project,
+    // set service category
+    setServiceCategory: (state, category) => state.services.currenCategory = category,
   },
 
   actions: {

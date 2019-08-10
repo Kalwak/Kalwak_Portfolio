@@ -32,6 +32,7 @@ export default {
   },
 
   methods: {
+    // @vuese
     // disable navigation arrows when number of projects is less than one
     // else enable them again, so set them to false
     disableArrowsByZeroProjects() {
@@ -45,15 +46,21 @@ export default {
       // };
     },
 
+    // @vuese
     // set true or false
+    // @arg boolean
     setLeftArrowState(status) {
       this.leftArrowDisabled = status;
     },
 
+    // @vuese
+    // set true or false
+    // @arg boolean
     setRightArrowState(status) {
       this.rightArrowDisabled = status;
     },
 
+    // @vuese
     // disable arrows if limit
     disableArrowsByBoundaries(index) {
       // to disable left arrow
@@ -61,16 +68,18 @@ export default {
         this.setLeftArrowState(true);
       } else {
         this.setLeftArrowState(false);
-      };
+      }
 
+      // @vuese
       // to disable right arrow 
       if (index === this.numberOfProjects - 1) {
         this.setRightArrowState(true);
       } else {
         this.setRightArrowState(false);
-      };
+      }
     },
 
+    // @vuese
     //  create carousel and navigation for every project
     // of the current categroy 
     createProjectsCarousel() {

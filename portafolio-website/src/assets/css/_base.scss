@@ -22,6 +22,15 @@ a {
   text-decoration: none !important;
 }
 
+.u-button {
+  border: none;
+  background: $blue-color;
+  color: #fff;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+
 .reset-m-p {
   padding: 0;
   margin: 0;

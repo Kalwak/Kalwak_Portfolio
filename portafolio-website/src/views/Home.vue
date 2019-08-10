@@ -70,12 +70,12 @@ export default {
   components: {
     // from vue-carousel, this is the carousel main container
     Carousel,
-    // from vue-carousel, this is the slide that goes into caoursel component
+    // from vue-carousel, this is the slide that goes into carousel component
     Slide
   },
 
   computed: {
-    // returns the array from the data property projectsInformation, just for readility
+    // returns the array from the data property projectsInformation, just for readability
     projects() {
       return this.$store.state.projectsInformation;
     },

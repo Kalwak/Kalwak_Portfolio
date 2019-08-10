@@ -14,17 +14,13 @@
           <router-link to="/about-us" class="nav__link">Quienes somos ?</router-link>
         </div>
         <div class="dropdown-list__item">
-          <router-link :to="'/projects/' + category" class="nav__link">Trabajos anteriores</router-link>
+          <router-link :to="'/projects/' + projectCategory" class="nav__link">Trabajos anteriores</router-link>
         </div>
       </div>
     </div>
 
     <div class="nav__item">
-      <router-link to="/services" class="nav__link">Servicios</router-link>
-    </div>
-
-    <div class="nav__item">
-      <router-link to="/products" class="nav__link">Productos</router-link>
+      <router-link :to="'/services/' + serviceCategory" class="nav__link">Servicios</router-link>
     </div>
 
     <div class="nav__item">
@@ -45,17 +41,26 @@
 </template>
 
 <script>
+// navigation menu component
+
+
 export default {
   name: 'navigation-menu',
 
   computed: {
-    category() {
+    // returns category from the store (vuex)
+    projectCategory() {
       let category = this.$store.state.projects.projectsCategory;
       if (!category.length) {
         return 'web-development';
       } else {
         return category.split(' ').join('-');
       }
+    },
+
+    // returns service category 
+    serviceCategory() {
+      return 'web-development';
     },
   },
 }

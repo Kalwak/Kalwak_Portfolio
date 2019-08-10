@@ -52,6 +52,7 @@ export default {
   },
 
   methods: {
+    // @vuese
     // actually toggles the activedMenu data property's state
     toggleMenu() {
       this.activatedMenu = !this.activatedMenu;

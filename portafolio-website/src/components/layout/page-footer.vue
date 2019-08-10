@@ -70,3 +70,12 @@
     </div>
   </footer>
 </template>
+
+<script>
+// page footer component
+
+
+export default {
+  name: 'page-footer'
+}
+</script>

@@ -1,4 +1,13 @@
+<!--
+  SERVICES VIEW
+  STRUCTURE OF THIS SECTIION
+  -CATEGORY-LiST // LIST OF CATEGORIES FOR SERVICES
+    - INNER-WRAPPER // LIMIT WIDTH
+  - ROUTER-VIEW // ROUTE WILL MATCH A SERVICE ...
+
+-->
 <template>
+
   <div class="col-12">
     <div class="category-list">
       <div class="inner-wrapper">
@@ -24,7 +33,7 @@
         </div>
         <div class="list__category list__category--width-20">
           <router-link to="/services/products">
-            <img src="~@/assets/images/categories-images/service-1.png" alt="services" class="category__icon" />
+            <img src="~@/assets/images/categories-images/category-5.png" alt="services" class="category__icon" />
           </router-link>
         </div>
       </div>
