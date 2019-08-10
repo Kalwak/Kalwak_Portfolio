@@ -2,10 +2,10 @@ from rest_framework import serializers
 from . import models
 
 
-class ProyectSerializer(serializers.ModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
-        model = models.Proyect
-        fields = ("name", "date", "description")
+        model = models.Project
+        fields = '__all__'
 
 
 class GallerySerializers(serializers.ModelSerializer):

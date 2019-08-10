@@ -1,6 +1,5 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
-from Email.views import SendEmailView
 from rest_framework import status
 
 
@@ -9,7 +8,7 @@ class EmailTestCase(TestCase):
     def setUp(self) -> None:
         self.client = APIClient()
 
-    def test_send_mail_post_succesful(self):
+    def test_send_mail_post_successful(self):
         data = {'subject': 'Test Kalwak Email API',
                 'message': 'This is a test',
                 'email': 'kalwakcr@gmail.com'}

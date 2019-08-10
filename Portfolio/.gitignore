@@ -1,5 +1,6 @@
 #Custom
 .idea
+assets/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -113,3 +114,4 @@ media/
 **/migrations/**
 !**/migrations
 !**/migrations/__init__.py
+*assets/Service/*

@@ -28,9 +28,10 @@ env = environ.Env(
     DBPASSWORD=(str, 'password'),
     HOST=(str, 'localhost'),
     PORT=(str, '5432'),
-    LOGGING=(bool, True),
+    LOGGING=(bool, False),
     SENDGRID_API_KEY=(str, 'password'),
-    EMAIL=(str, 'kalwakcr@gmail.com')
+    EMAIL=(str, 'kalwakcr@gmail.com'),
+    LOGS_LIMIT=(int, 10)
 )
 # reading .env file
 environ.Env.read_env()
@@ -43,7 +44,8 @@ SECRET_KEY = env('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG_MODE')
-LOGGING = env('LOGGING')
+LOGGING = env('LOGGING')  # Boolean to check if logging is enabled
+LOGS_LIMIT = env('LOGS_LIMIT')  # Limit the amount of logs saved to the database
 
 ALLOWED_HOSTS = ['*']
 
@@ -57,8 +59,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'corsheaders',
     'Email',
-    'Proyect',
+    'Project',
+    'Service',
 ]
 
 if DEBUG:
@@ -71,13 +75,21 @@ if DEBUG:
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'Proyect.middleware.LoggingMiddleware',
+    'Project.middleware.LoggingMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = False
+
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:5433',
+    'http://localhost:5432',
+)
 
 if LOGGING:
     MIDDLEWARE += ['request_logging.middleware.LoggingMiddleware']
@@ -87,7 +99,9 @@ ROOT_URLCONF = 'Portfolio.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, "templates/")
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,18 +153,21 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
+
+TIME_ZONE = 'America/Costa_Rica'
 
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "assets"),
+]
+MEDIA_URL = '/assets/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'assets')
 
 # Email django SMTP configuration
 EMAIL_HOST = 'smtp.sendgrid.net'
@@ -159,13 +176,11 @@ EMAIL_HOST_PASSWORD = env('SENDGRID_API_KEY')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = env('EMAIL')
+SERVER_EMAIL = env('EMAIL')
+ADMINS = (
+    ('Me', env('EMAIL')),
+)
 
-"""
-REST_FRAMEWORK = {
-    "DEFAULT_PERMISSIONS_CLASSES" : ("permissions.IsAuthenticatedOrReadOnly",) #no puedes modificar nada solo ver hasta que logguess
-    #permisissions.IsAuthenticated #no puedes ver nada hasta que logguees
-}
-"""
 # Logging configuration
 if LOGGING:
     LOGGING = {
@@ -188,25 +203,30 @@ if LOGGING:
             'file_error': {
                 'level': 'DEBUG',
                 'class': 'logging.FileHandler',
-                'filename': os.path.join(BASE_DIR, 'errors.log'),
+                'filename': os.path.join(BASE_DIR, 'logs/errors.log'),
                 'formatter': 'standard',
             },
             'file_debug': {
                 'level': 'DEBUG',
                 'class': 'logging.FileHandler',
-                'filename': os.path.join(BASE_DIR, 'debug.log'),
+                'filename': os.path.join(BASE_DIR, 'logs/debug.log'),
                 'formatter': 'verbose',
+            },
+            'email_errors': {
+                'level': 'ERROR',
+                'class': 'django.utils.log.AdminEmailHandler',
+                'formatter': 'standard'
             },
         },
         'loggers': {
             'django.request': {
-                'handlers': ['file_error'],
-                'level': 'DEBUG',  # change debug level as appropiate
+                'handlers': ['file_error', 'email_errors'],
+                'level': 'DEBUG',
                 'propagate': False,
             },
             'debugger': {
                 'handlers': ['file_debug'],
-                'level': 'DEBUG',  # change debug level as appropiate
+                'level': 'DEBUG',
                 'propagate': False,
             },
         },

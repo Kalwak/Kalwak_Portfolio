@@ -19,7 +19,10 @@ export default {
   
   data() {
     return {
+      // used to disable left arrow
       leftArrowDisabled: false,
+      
+      // used to disable right arrow
       rightArrowDisabled: false,
     };
   },
