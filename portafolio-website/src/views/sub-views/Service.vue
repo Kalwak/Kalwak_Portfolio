@@ -22,6 +22,7 @@
           {{ service.description }}
         </p>
     </div>
+
     <div class="service__carousel">
       <div class="inner-wrapper">
         <carousel 
@@ -37,12 +38,13 @@
           navigation-next-label="<span class='icon-right-arrow carousel__arrow'></span>">
           <slide class="project__carousel__slide" v-for="(imageSrc, index) in images" :key="index">
             <div class="project__images">
-              <img :src="imageSrc" alt="category" />
+              <img :src="imageSrc" alt="servicio" />
             </div>
-        </slide>
-      </carousel>
+          </slide>
+        </carousel>
       </div>
     </div>
+    
     <div class="inner-wrapper text-center mt-3">
       <button class="u-button">Cotizar</button>
     </div>
