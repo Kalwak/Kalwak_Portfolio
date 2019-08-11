@@ -26,7 +26,7 @@ Create a virtual environment
 ```
 mkdir ~/.virtualenvs
 virtualenv -p python3 ~/.virtualenvs/kalwak_portfolio
-source ~/.virtualenvs/activate
+source ~/.virtualenvs/kalwak_portfolio/bin/activate
 ```
 
 Install python requirements
