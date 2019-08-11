@@ -1,94 +1,62 @@
 # Kalwak Portfolio Webpage
 
-One Paragraph of project description goes here
+Kalwak online webpage.
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+- graphviz
+- postgresql
+- nodejs
+- npm
+- python 3.7
 
-```
-Give examples
-```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+Clone this repository
 
 ```
-Give the example
+git clone https://github.com/Kalwak/Kalwak_Portfolio
+cd Kalwak_Portfolio
 ```
 
-And repeat
+Create a virtual environment
 
 ```
-until finished
+mkdir ~/.virtualenvs
+virtualenv -p python3 ~/.virtualenvs/kalwak_portfolio
+source ~/.virtualenvs/activate
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
+Install python requirements
 
 ```
-Give an example
+cd Portfolio
+pip install -r requirements.txt
 ```
 
-### And coding style tests
+## Setting up environment variables
 
-Explain what these tests test and why
+To set up your env variables you should create a .env in Portfolio/Portfolio
+and add your variables as in the .env.example
 
-```
-Give an example
-```
 
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-# Documentation
-
-```
-Give an example
-```
-
-# Visualize Database
-
-After installing the requirements, creating the database and running *python manage.py migrate*
-you may create a png with a visualization of the database with its relations. Use the
-following command:
-
-```
-python manage.py graph_models -a -g -o db_visualized.png
-```
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Django](https://www.djangoproject.com/) - The backend framework used
 
-## Contributing
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Edwin Garcia** - *Frontend Development*
+* **Joseph Zamora** - *Lead Programmer* - [JZ1999](https://github.com/JZ1999)
+* **Jose Quesada** - *Backend Development* - [josemarioqv](https://github.com/josemarioqv)
 
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
