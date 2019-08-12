@@ -14,9 +14,9 @@
           :navigation-enabled="true"
           navigation-prev-label="<span class='icon-left-arrow carousel__arrow'></span>"
           navigation-next-label="<span class='icon-right-arrow carousel__arrow'></span>">
-            <slide class="project__carousel__slide" v-for="(imageSrc, index) in project.images" :key="index">
+            <slide class="project__carousel__slide" v-for="(image, index) in project.images" :key="index">
               <div class="project__images">
-                <img :src="imageSrc" :alt="project.title" />
+                <img :src="image.photo" :alt="project.title" />
                 <h3 class="image__category">{{ project.categories[0] }}</h3>
               </div>
             </slide>
@@ -25,10 +25,10 @@
     </div>
     <div class="inner-wrapper">
       <div class="project__body">
-        <h3 class="project__title">{{ project.information.subTitle }}</h3>
+        <h3 class="project__title">{{ project.subtitle }}</h3>
         <div class="project__description">
-          <p class="description__text" v-html="project.information.description"></p>
-                  <p class="description__widget">Enlace de producion {{ project.information.url }}</p>
+          <p class="description__text" v-html="project.description"></p>
+                  <p class="description__widget">Enlace de producion {{ project.website }}</p>
         </div>
       </div>
     </div>

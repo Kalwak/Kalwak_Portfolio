@@ -8,59 +8,75 @@
             - IMAGE TO SHOW AS AN ICON FOR THE CATEGORY
 --->
 <template>
-  <div class="category-list">
-    <div class="inner-wrapper">
-      <div class="list__category">
-        <router-link to="/projects/web-development">
-          <img src="~@/assets/images/categories-images/category-1.png" alt="web development" class="category__icon" />
-        </router-link>
-      </div>
-      <div class="list__category">
-        <router-link to="/projects/web-payments">
-          <img src="~@/assets/images/categories-images/category-2.png" alt="web payments" class="category__icon" />
-        </router-link>
-      </div>
-      <div class="list__category">
-        <router-link to="/projects/inventory-systems">
-          <img src="~@/assets/images/categories-images/category-3.png" alt="inventory systems" class="category__icon" />
-        </router-link>
-      </div>
-      <div class="list__category">
-        <router-link to="/projects/graphic-design">
-          <img src="~@/assets/images/categories-images/category-4.png" alt="graphic design" class="category__icon" />
-        </router-link>
-      </div>
+    <div class="category-list">
+        <div class="inner-wrapper">
+            <div class="list__category">
+                <router-link to="/projects/web-development">
+                    <img src="~@/assets/images/categories-images/category-1.png" alt="web development"
+                         class="category__icon"/>
+                </router-link>
+            </div>
+            <div class="list__category">
+                <router-link to="/projects/web-payments">
+                    <img src="~@/assets/images/categories-images/category-2.png" alt="web payments"
+                         class="category__icon"/>
+                </router-link>
+            </div>
+            <div class="list__category">
+                <router-link to="/projects/inventory-systems">
+                    <img src="~@/assets/images/categories-images/category-3.png" alt="inventory systems"
+                         class="category__icon"/>
+                </router-link>
+            </div>
+            <div class="list__category">
+                <router-link to="/projects/graphic-design">
+                    <img src="~@/assets/images/categories-images/category-4.png" alt="graphic design"
+                         class="category__icon"/>
+                </router-link>
+            </div>
+        </div>
     </div>
-  </div>
 </template>
 
 <script>
-// category list
+    // category list
 
 
-export default {
-  name: 'category-list',
+    import {ProjectService} from "../../services/project_service";
 
-  computed: {
-    category() {
-      return this.$route.params.category.split('-').join(' ');
-    },
-    
-  },
+    function format_to_slug(string){
+        string = string.replace(' ', '-');
+        return string;
+    }
 
-  created() {
-    const self = this;
-    console.log('category set');
-    self.$store.commit('setCategory', self.category);
-    self.$store.dispatch('setProjectsByCategory');
-  },
+    export default {
+        name: 'category-list',
 
-  watch: {
-    category(newCategory) {
-      const self = this;
-      self.$store.commit('setCategory', newCategory);
-      self.$store.dispatch('setProjectsByCategory');
-    },
-  },
-}
+        computed: {
+            category() {
+                return this.$route.params.category.split('-').join(' ');
+            },
+
+        },
+
+        created() {
+            const self = this;
+            console.log('category set');
+
+            let service = new ProjectService();
+            service.getProjects().then((data) => {
+                self.$store.commit('setAllProjects', data);
+                self.$store.commit('setCategory', format_to_slug(self.category));
+                self.$store.dispatch('setProjectsByCategory');
+            }).catch(err => console.error(err));
+        },
+
+        watch: {
+            category(newCategory) {
+                const self = this;
+                self.$store.commit('setCategory', format_to_slug(newCategory));
+                self.$store.dispatch('setProjectsByCategory');
+            },
+        },
+    }
 </script>

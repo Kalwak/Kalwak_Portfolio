@@ -93,7 +93,6 @@
                 // Gives us a list of projects from the django backend
                 apiService.getProjects().then((data) => {
                     this.projects = data;
-                    console.log(data);
                 }).catch(err => console.error(err));
             },
         },
