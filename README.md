@@ -41,7 +41,15 @@ pip install -r requirements.txt
 To set up your env variables you should create a .env in Portfolio/Portfolio
 and add your variables as in the .env.example
 
+## Running tests
 
+To run all the unittets
+
+```
+python manage.py test
+```
+
+ 
 
 ## Built With
 
