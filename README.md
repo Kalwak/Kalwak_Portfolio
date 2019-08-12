@@ -38,7 +38,7 @@ pip install -r requirements.txt
 
 ## Creating the Data Base
 
-In order to create the db just excute
+In order to create the data base
 
 ```
 sudo -u postgres createdb kalwak
