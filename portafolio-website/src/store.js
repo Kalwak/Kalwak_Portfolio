@@ -9,6 +9,7 @@ export default new Vuex.Store({
     projectsInformation,
     // organized information, with I'll work with the
     // projects pagination
+    // this projects are based on the current category
     projects: {
       projectsCategory: '',
       projects: [],
