@@ -11,3 +11,5 @@ npx vuese gen
 ```
 npx vuese serve
 ```
+
+Note: These commands have to be put in the project root directory
