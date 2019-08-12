@@ -32,6 +32,7 @@ import TeamMember from '@/components/sub-layout/team-member.vue';
 import teamMembersData from '@/team-members.json';
 
 
+// @vuese
 export default {
   name: 'about-us',
   data() {

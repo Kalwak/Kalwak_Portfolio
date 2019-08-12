@@ -12,6 +12,9 @@
 
 <script>
 // views will render here, so its content is dynamic
+
+
+// @vuese
 export default {
   name: 'page-main'
 }

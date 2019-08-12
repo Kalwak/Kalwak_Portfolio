@@ -74,7 +74,7 @@
 <script>
 // page footer component
 
-
+// @vuese
 export default {
   name: 'page-footer'
 }

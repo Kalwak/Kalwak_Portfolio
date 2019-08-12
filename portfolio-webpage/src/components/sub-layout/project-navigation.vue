@@ -14,6 +14,7 @@ import { mapState } from 'vuex';
 import Swiper from 'swiper';
 
 
+// @vuese
 export default {
   name: 'project-navigation',
   

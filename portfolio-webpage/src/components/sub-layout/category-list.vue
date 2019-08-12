@@ -48,7 +48,9 @@
         string = string.replace(' ', '-');
         return string;
     }
+    
 
+    // @vuese
     export default {
         name: 'category-list',
 
