@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Desarrollo web",
+    "category": "web development",
+    "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet fugit, voluptatum obcaecati beatae accusamus itaque non sequi ipsam, placeat corporis rerum ut voluptatem expedita fugiat maiores repellat officiis aliquam! Nihil sequi ab debitis, placeat minus nemo velit quis tenetur. Nobis repudiandae quibusdam aliquam soluta sit molestiae ducimus qui at expedita, exercitationem, quos explicabo rerum est temporibus possimus laudantium sed, similique rem natus nihil quo molestias? Nulla amet illum animi consectetur sint temporibus est quasi, in eius nesciunt fuga omnis suscipit deserunt ipsam blanditiis quam error, placeat delectus accusantium. Et quae minima magni autem in soluta ex, recusandae commodi doloribus aut?"
+  },
+  {
+    "name": "Pagos web",
+    "category": "web payments",
+    "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet fugit, voluptatum obcaecati beatae accusamus itaque non sequi ipsam, placeat corporis rerum ut voluptatem expedita fugiat maiores repellat officiis aliquam! Nihil sequi ab debitis, placeat minus nemo velit quis tenetur. Nobis repudiandae quibusdam aliquam soluta sit molestiae ducimus qui at expedita, exercitationem, quos explicabo rerum est temporibus possimus laudantium sed, similique rem natus nihil quo molestias? Nulla amet illum animi consectetur sint temporibus est quasi, in eius nesciunt fuga omnis suscipit deserunt ipsam blanditiis quam error, placeat delectus accusantium. Et quae minima magni autem in soluta ex, recusandae commodi doloribus aut?"
+  },
+  {
+    "name": "Sistemas de inventarios",
+    "category": "inventory systems",
+    "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet fugit, voluptatum obcaecati beatae accusamus itaque non sequi ipsam, placeat corporis rerum ut voluptatem expedita fugiat maiores repellat officiis aliquam! Nihil sequi ab debitis, placeat minus nemo velit quis tenetur. Nobis repudiandae quibusdam aliquam soluta sit molestiae ducimus qui at expedita, exercitationem, quos explicabo rerum est temporibus possimus laudantium sed, similique rem natus nihil quo molestias? Nulla amet illum animi consectetur sint temporibus est quasi, in eius nesciunt fuga omnis suscipit deserunt ipsam blanditiis quam error, placeat delectus accusantium. Et quae minima magni autem in soluta ex, recusandae commodi doloribus aut?"
+    
+  },
+  {
+    "name": "Diseño grafico",
+    "category": "graphic design",
+    "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet fugit, voluptatum obcaecati beatae accusamus itaque non sequi ipsam, placeat corporis rerum ut voluptatem expedita fugiat maiores repellat officiis aliquam! Nihil sequi ab debitis, placeat minus nemo velit quis tenetur. Nobis repudiandae quibusdam aliquam soluta sit molestiae ducimus qui at expedita, exercitationem, quos explicabo rerum est temporibus possimus laudantium sed, similique rem natus nihil quo molestias? Nulla amet illum animi consectetur sint temporibus est quasi, in eius nesciunt fuga omnis suscipit deserunt ipsam blanditiis quam error, placeat delectus accusantium. Et quae minima magni autem in soluta ex, recusandae commodi doloribus aut?"
+  },
+  {
+    "name": "Productos",
+    "category": "products",
+    "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eveniet fugit, voluptatum obcaecati beatae accusamus itaque non sequi ipsam, placeat corporis rerum ut voluptatem expedita fugiat maiores repellat officiis aliquam! Nihil sequi ab debitis, placeat minus nemo velit quis tenetur. Nobis repudiandae quibusdam aliquam soluta sit molestiae ducimus qui at expedita, exercitationem, quos explicabo rerum est temporibus possimus laudantium sed, similique rem natus nihil quo molestias? Nulla amet illum animi consectetur sint temporibus est quasi, in eius nesciunt fuga omnis suscipit deserunt ipsam blanditiis quam error, placeat delectus accusantium. Et quae minima magni autem in soluta ex, recusandae commodi doloribus aut?"
+  }
+]

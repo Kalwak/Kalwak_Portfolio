@@ -73,7 +73,7 @@ class Gallery(models.Model):
     (many photos will reference a single project)
     """
     photo = models.ImageField(upload_to='Gallery', default="Kalwak.svg")
-    project = models.ForeignKey(Project, on_delete=models.CASCADE, default=0)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, default=0, related_name='images')
 
     def __str__(self):
         return f"Name: {self.photo.name}"
