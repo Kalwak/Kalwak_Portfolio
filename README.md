@@ -51,7 +51,7 @@ and add your variables as in the .env.example
 
 ## Authors
 
-* **Edwin Garcia** - *Frontend Development*
+* **Edwin Garcia** - *Frontend Development* - [Edwing123](https://github.com/Edwing123)
 * **Joseph Zamora** - *Lead Programmer* - [JZ1999](https://github.com/JZ1999)
 * **Jose Quesada** - *Backend Development* - [josemarioqv](https://github.com/josemarioqv)
 
