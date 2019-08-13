@@ -32,6 +32,8 @@ def get_request(request):
         out = json.loads(out)
     except (AttributeError, JSONDecodeError):
         out = "No json request"
+    except UnicodeDecodeError:
+        out = str(request.FILES)
     return out
 
 

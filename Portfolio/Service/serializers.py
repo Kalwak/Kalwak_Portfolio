@@ -20,10 +20,7 @@ class ServiceRequestSerializer(serializers.HyperlinkedModelSerializer):
 
     def create(self, validated_data):
         files_data = self.context['request'].FILES
-        service = ServiceR.objects.create(name=validated_data.get('name'),
-                                          email=validated_data.get('email'),
-                                          description=validated_data.get('description')
-                                          )
+        service = ServiceR.objects.create(**validated_data)
         for file_data in files_data.values():
             Files.objects.create(service=service, file=file_data)
         return validated_data

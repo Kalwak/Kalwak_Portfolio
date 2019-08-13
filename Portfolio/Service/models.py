@@ -12,7 +12,7 @@ class ServiceRequest(models.Model):
 
 class Files(models.Model):
     service = models.ForeignKey(ServiceRequest, on_delete=models.CASCADE,
-                                default=0)
+                                default=0, related_name='files')
     file = models.FileField(upload_to='Service/', blank=True)
 
     def __str__(self):

@@ -11,14 +11,14 @@ class ServiceRequestView(viewsets.ModelViewSet):
     serializer_class = ServiceRequestSerializer
     queryset = ServiceRequest.objects.all()
 
-    def create(self, request):
+    def create(self, request, *args, **kwargs):
         """
         Post Method that saves a ServiceRequest
         :params request: should contain a JSON with name, email and description
                         also, could have attached serveral files.
         """
-        serializer = ServiceRequestSerializer(data=request.data,
-                                              context={'request': request})
+        serializer = self.serializer_class(data=request.data,
+                                           context={'request': request})
         if serializer.is_valid():
             log.info('Request data is valid.')
             serializer.save()
