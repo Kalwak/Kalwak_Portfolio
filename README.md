@@ -36,10 +36,32 @@ cd Portfolio
 pip install -r requirements.txt
 ```
 
+## Creating the Data Base
+
+In order to create the data base
+
+```
+sudo -u postgres createdb kalwak
+```
+
+This is asumming you already have the user postgres and want to use kalwak as 
+a name for the data base, as it is for default, otherwise just change the 
+variable in the .env
+
+
 ## Setting up environment variables
 
 To set up your env variables you should create a .env in Portfolio/Portfolio
 and add your variables as in the .env.example
+
+## Models Django and Postgres
+
+To create all the django models in the data base
+
+```
+python manage.py makemigrations
+python manage.py migrate
+```
 
 ## Running tests
 
@@ -53,8 +75,8 @@ python manage.py test
 
 ## Built With
 
-* [Django](https://www.djangoproject.com/) - The backend framework used
-
+* [Django](https://www.djangoproject.com/) - The BackEnd framework
+* [Vuejs](https://vuejs.org/) - The FrontEnd framework
 
 
 ## Authors
