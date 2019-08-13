@@ -40,6 +40,7 @@
     import {Carousel, Slide} from 'vue-carousel';
 
 
+    // @vuese
     export default {
         name: 'project-card',
 

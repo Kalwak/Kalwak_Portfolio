@@ -58,6 +58,7 @@ import projects from '../../projects-information.json';
 import { Carousel, Slide } from 'vue-carousel';
 
 
+// @vuese
 export default {
   name: 'service',
 

@@ -17,6 +17,7 @@
 import  CategoryList from '../components/sub-layout/category-list.vue';
 
 
+// @vuese
 export default {
   name: 'projects',
 

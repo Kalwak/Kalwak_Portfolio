@@ -26,6 +26,7 @@ import ProjectNavigation from '@/components/sub-layout/project-navigation.vue';
 import ProjectCard from '@/components/sub-layout/project-card.vue';
 
 
+// @vuese
 export default {
   name: 'category',
 

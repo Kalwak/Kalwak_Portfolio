@@ -30,6 +30,9 @@
 </template>
 
 <script>
+// team-member component
+
+// @vuese
 export default {
   name: 'team-member',
   props: {

@@ -37,6 +37,8 @@
 // header component // see component top to see its structure
 import NavMenu from '@/components/sub-layout/navigation-menu.vue';
 
+
+// @vuese
 export default {
   name: 'page-header',
   data() {

@@ -44,6 +44,8 @@
 // navigation menu component
 
 
+
+// @vuese
 export default {
   name: 'navigation-menu',
 

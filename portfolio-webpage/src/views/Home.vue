@@ -68,6 +68,7 @@
 
     const apiService = new ProjectService();
 
+    // @vuese
     export default {
 
         name: 'home',
