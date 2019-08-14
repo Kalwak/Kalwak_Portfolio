@@ -64,6 +64,16 @@ export default {
     serviceCategory() {
       return 'web-development';
     },
+
+    currentPath() {
+      return this.$route.path;
+    },
+  },
+
+  watch: {
+    currentPath() {
+      this.$emit('close-nav-menu', false);
+    },
   },
 }
 </script>

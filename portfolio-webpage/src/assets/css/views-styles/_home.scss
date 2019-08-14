@@ -108,6 +108,10 @@
 */
 // TABLES
 @media screen and (max-width: 800px) {
+  .banner {
+    height: 350px;
+  }
+
   .banner__text {
     text-align: center;
   }

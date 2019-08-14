@@ -26,7 +26,7 @@
               </button>
             </div>
           </div>
-          <nav-menu  :class="{ activatedMenu }" />
+          <nav-menu  :class="{ activatedMenu }" @close-nav-menu="toggleMenu" />
       </div>
       </div>
     </div>
@@ -62,4 +62,3 @@ export default {
   },
 }
 </script>
-
