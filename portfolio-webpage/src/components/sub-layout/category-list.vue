@@ -16,13 +16,13 @@
                          class="category__icon"/>
                 </router-link>
             </div>
-            <div class="list__category">
+            <div class="list__category d-none">
                 <router-link to="/projects/web-payments">
                     <img src="~@/assets/images/categories-images/category-2.png" alt="web payments"
                          class="category__icon"/>
                 </router-link>
             </div>
-            <div class="list__category">
+            <div class="list__category d-none">
                 <router-link to="/projects/inventory-systems">
                     <img src="~@/assets/images/categories-images/category-3.png" alt="inventory systems"
                          class="category__icon"/>

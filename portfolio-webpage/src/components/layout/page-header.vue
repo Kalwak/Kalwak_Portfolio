@@ -34,7 +34,7 @@
 </template>
 
 <script>
-// header component // see component top to see its structure
+// header component
 import NavMenu from '@/components/sub-layout/navigation-menu.vue';
 
 

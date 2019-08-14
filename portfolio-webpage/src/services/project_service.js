@@ -16,5 +16,4 @@ export class ProjectService {
         const url = `${API_URL}/api/project/${pk}/`;
         return axios.get(url).then(response => response.data);
     }
-
 }

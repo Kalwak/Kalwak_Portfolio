@@ -6,12 +6,16 @@
 
   .inner-wrapper {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
   }
 
   .list__category {
     width: 20%;
     text-align: center;
+
+    &:hover {
+      background-color: rgba(200, 200, 200, 0.2);
+    }
 
     .category__icon {
       height: 140px;
