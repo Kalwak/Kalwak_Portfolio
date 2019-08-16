@@ -63,6 +63,7 @@ INSTALLED_APPS = [
     'Email',
     'Project',
     'Service',
+    'frontend',
 ]
 
 if DEBUG:
@@ -84,13 +85,14 @@ MIDDLEWARE = [
     'Project.middleware.LoggingMiddleware',
 ]
 
-CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ORIGIN_WHITELIST = (
+# If CORS_ORIGIN_ALLOW_ALL is False then uncomment
+"""CORS_ORIGIN_WHITELIST = (
     'http://localhost:5433',
     'http://localhost:5432',
     'http://localhost:8080',
-)
+)"""
 
 if LOGGING:
     MIDDLEWARE += ['request_logging.middleware.LoggingMiddleware']
