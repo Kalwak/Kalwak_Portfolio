@@ -71,6 +71,23 @@ To run all the unittets
 python manage.py test
 ```
 
+## Deployment
+
+First off run the following command if you need to make a frontend
+build of vuejs.
+
+
+```
+npm run build
+```
+
+this makes a dist directory where the compiled frontend code resides.
+After the build has been made remove the files in the backend folder called
+
+frontend/static/  and frontend/templates/
+
+now add the static files from the dist folder to frontend/static/ and
+move the index.html from the dist folder to the frontend/templates/ folder.
  
 
 ## Built With
