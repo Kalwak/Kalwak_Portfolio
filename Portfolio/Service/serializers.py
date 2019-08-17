@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from .models import ServiceRequest as ServiceR
 from .models import File
-from Portfolio import logging_debugger as log
+from Portfolio import log
 
 
 class FileSerializer(serializers.ModelSerializer):

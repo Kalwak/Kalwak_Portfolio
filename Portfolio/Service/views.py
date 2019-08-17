@@ -3,7 +3,7 @@ from rest_framework import viewsets
 from .serializers import ServiceRequestSerializer
 from rest_framework import status
 from rest_framework.response import Response
-from Portfolio import logging_debugger as log
+from Portfolio import log
 
 
 class ServiceRequestView(viewsets.ModelViewSet):

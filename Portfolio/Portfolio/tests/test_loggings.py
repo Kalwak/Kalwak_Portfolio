@@ -1,7 +1,7 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 from Portfolio.settings import BASE_DIR
-from Portfolio import logging_debugger
+from Portfolio import log
 import os
 
 
@@ -34,7 +34,7 @@ class LoggingTests(TestCase):
         self.assertEqual(url_last_request, "/fakeurl/")
 
     def test_debug_file_writes(self):
-        logging_debugger.info('Testing')
+        log.info('Testing')
         # opening the log_file
         file = open(self.debug_path, "r")
         log_file = file.readlines()
