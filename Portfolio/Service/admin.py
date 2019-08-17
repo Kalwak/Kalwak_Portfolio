@@ -1,11 +1,11 @@
 from django.contrib import admin
-from Service.models import ServiceRequest, Files
+from Service.models import ServiceRequest, File
 
 
 # Register your models here.
 
 class FileInline(admin.TabularInline):
-    model = Files
+    model = File
 
     readonly_fields = [
         'file', 'service'
@@ -19,4 +19,4 @@ class ServiceRequestAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ServiceRequest, ServiceRequestAdmin)
-admin.site.register(Files)
+admin.site.register(File)

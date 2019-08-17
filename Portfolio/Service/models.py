@@ -10,7 +10,7 @@ class ServiceRequest(models.Model):
         return f"Name: {self.name}"
 
 
-class Files(models.Model):
+class File(models.Model):
     service = models.ForeignKey(ServiceRequest, on_delete=models.CASCADE,
                                 default=0, related_name='files')
     file = models.FileField(upload_to='Service/', blank=True)

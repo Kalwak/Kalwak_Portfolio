@@ -1,12 +1,12 @@
 from rest_framework import serializers
-from django.core.files.base import ContentFile
 from .models import ServiceRequest as ServiceR
-from .models import Files
+from .models import File
+from Portfolio import logging_debugger as log
 
 
 class FileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Files
+        model = File
         fields = '__all__'
 
 
@@ -22,5 +22,7 @@ class ServiceRequestSerializer(serializers.HyperlinkedModelSerializer):
         files_data = self.context['request'].FILES
         service = ServiceR.objects.create(**validated_data)
         for file_data in files_data.values():
-            Files.objects.create(service=service, file=file_data)
+            File.objects.create(service=service, file=file_data)
+            log.info('File ' + file_data.name + ' created and attached to ' +
+                     service.name + ' service')
         return validated_data

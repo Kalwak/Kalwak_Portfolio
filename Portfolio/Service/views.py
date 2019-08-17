@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from .models import ServiceRequest
 from rest_framework import viewsets
 from .serializers import ServiceRequestSerializer
@@ -15,7 +14,7 @@ class ServiceRequestView(viewsets.ModelViewSet):
         """
         Post Method that saves a ServiceRequest
         :params request: should contain a JSON with name, email and description
-                        also, could have attached serveral files.
+                        also, could have attached several files.
         """
         serializer = self.serializer_class(data=request.data,
                                            context={'request': request})
