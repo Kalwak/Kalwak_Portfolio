@@ -26,3 +26,12 @@ class ServiceRequestSerializer(serializers.HyperlinkedModelSerializer):
             log.info('File ' + file_data.name + ' created and attached to ' +
                      service.name + ' service')
         return validated_data
+
+
+class ChatbotSerializer(serializers.Serializer):
+    """
+    Does not need to override the update or create methods since this is used only to validate that the JSON sent to the
+    ChatbotAPIView is valid.
+    """
+    msg = serializers.CharField()
+    ip = serializers.IPAddressField()
