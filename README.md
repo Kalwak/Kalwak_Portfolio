@@ -1,6 +1,9 @@
 # Kalwak Portfolio Webpage
 
-Kalwak online webpage.
+Kalwak online webpage. This is the portfolio of Kalwak, made to give
+general information to the public, specific information such as products or
+showcase older proyects, or to order a product. The website is [Kalwak](http://kalwak.xyz/).
+This repository is in bitbucket (for the telegram integration) and github (an open source copy).
 
 
 ### Prerequisites
