@@ -19,13 +19,16 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-                  path('admin/', admin.site.urls),
-                  path('api/', include('Email.urls')),
-                  path('api/', include('Service.urls')),
-                  path('api/', include('Project.urls')),
-                  path('api/', include('rest_framework.urls')),
-              ]
+    path('admin/', admin.site.urls),
+    path('api/', include('Email.urls')),
+    path('api/', include('Service.urls')),
+    path('api/', include('Project.urls')),
+    path('api/', include('rest_framework.urls')),
+    path('', include('frontend.urls')),
+]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 admin.site.site_header = "Kalwak Administration"
+handler404 = 'frontend.views.vuejs_frontend404'
+
