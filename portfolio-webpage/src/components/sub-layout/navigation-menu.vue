@@ -11,7 +11,7 @@
       <span class="nav__link nav__link--flex">Sobre nosotros<span class="icon-down-open-mini"></span></span>
       <div class="dropdown-list">
         <div class="dropdown-list__item">
-          <router-link to="/about-us" class="nav__link">Quienes somos ?</router-link>
+          <router-link to="/about-us" class="nav__link">¿Quiénes somos?</router-link>
         </div>
         <div class="dropdown-list__item">
           <router-link :to="'/projects/' + projectCategory" class="nav__link">Trabajos anteriores</router-link>

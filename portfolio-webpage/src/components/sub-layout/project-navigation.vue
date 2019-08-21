@@ -1,8 +1,8 @@
 <template>
   <div class="project-navigation">
     <div class="inner-wrapper">
-      <span class="navigation__arrow leftControlArrow noselect" :class="{ 'navigation__arrow--disabled': leftArrowDisabled }"><span class="icon-double-left-arrow"></span>anterior</span>
-      <span class="navigation__arrow rightControlArrow noselect" :class="{ 'navigation__arrow--disabled': rightArrowDisabled }">siguiente<span class="icon-double-right-arrow"></span></span>
+      <span class="navigation__arrow leftControlArrow noselect" @click="prevSlide" :class="{ 'navigation__arrow--disabled': leftArrowDisabled }"><span class="icon-double-left-arrow"></span>anterior</span>
+      <span class="navigation__arrow rightControlArrow noselect" @click="nextSlide" :class="{ 'navigation__arrow--disabled': rightArrowDisabled }">siguiente<span class="icon-double-right-arrow"></span></span>
     </div>
   </div>
 </template>
@@ -33,6 +33,13 @@ export default {
     ...mapState({
       category: state => state.projects.projectsCategory,
     }),
+    carousel() {
+      const carousel = new Swiper('.swiper-container', {
+        // no touch swiping
+        allowTouchMove: false,
+      });
+      return carousel;
+    },
   },
 
   methods: {
@@ -94,19 +101,21 @@ export default {
       });
       let index = carousel.activeIndex;
       self.disableArrowsByBoundaries(index);
-      // carousel.activeIndex = 0;
-      const prevArrow = document.querySelector('.leftControlArrow');
-      const nextArrow = document.querySelector('.rightControlArrow');
-      prevArrow.addEventListener('click', () => {
-        carousel.slidePrev();
-        let newSlideIndex = carousel.activeIndex;
-        self.disableArrowsByBoundaries(newSlideIndex);
-      });
-      nextArrow.addEventListener('click', function() {
-        carousel.slideNext();
-        let newSlideIndex = carousel.activeIndex;
-        self.disableArrowsByBoundaries(newSlideIndex);
-      });
+      carousel.activeIndex = 0;
+    },
+
+    prevSlide() {
+      const self = this;
+      self.carousel.slidePrev();
+      let newSlideIndex = self.carousel.activeIndex;
+      self.disableArrowsByBoundaries(newSlideIndex);
+    },
+
+    nextSlide() {
+      const self = this;
+      self.carousel.slideNext();
+      let newSlideIndex = self.carousel.activeIndex;
+      self.disableArrowsByBoundaries(newSlideIndex);
     },
   },
 

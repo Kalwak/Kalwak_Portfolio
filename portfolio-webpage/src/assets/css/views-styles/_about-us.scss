@@ -1,3 +1,5 @@
+.about-section {}
+
 .team-section {
   margin-top: 120px;
   
@@ -85,7 +87,16 @@
 /**
   MEDIA QUERIES FOR ABOUT-US SECTION
 */
+@media screen and (max-width: 900px) {
+  .about-section {
+    h2 {
+      text-align: center;
+    }
+  }
+}
+
 @media screen and (max-width: 700px) {
+
   .team-section {
     
     & > .inner-wrapper { // this is actually the container for the member of the team

@@ -26,7 +26,7 @@
               </button>
             </div>
           </div>
-          <nav-menu  :class="{ activatedMenu }" @close-nav-menu="toggleMenu" />
+          <nav-menu  :class="{ activatedMenu }" @close-nav-menu="activatedMenu = false" />
       </div>
       </div>
     </div>

@@ -13,9 +13,8 @@
   <div class="col-12">
     <div class="about-section">
       <div class="inner-wrapper">
-        <h2>Mision</h2>
-        <h2>Vision</h2>
-        <h2>Objetivos</h2>
+        <h2>Misión</h2>
+        <h2>Visión</h2>
       </div>
     </div>
     <div class="team-section">

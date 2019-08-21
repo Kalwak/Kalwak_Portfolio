@@ -64,6 +64,11 @@
 
 
 // SERVICES MEDIA QUERIES
+@media screen and (max-width: 900px) {
+  .service__name {
+    text-align: center;
+  }
+}
 
 @media screen and (max-width: 800px) {
   .service-container {

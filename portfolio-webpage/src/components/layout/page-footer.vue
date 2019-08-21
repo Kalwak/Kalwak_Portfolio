@@ -23,7 +23,7 @@
                 <input type="text" placeholder="Nombre" class="form-control form__input" id="name" />
               </div>
               <div class="form-group col form__input-container">
-                <label for="phone" class="d-none">Telefono</label>
+                <label for="phone" class="d-none">Teléfono</label>
                 <input type="tel" placeholder="Telefono" class="form-control form__input" id="phone" />
               </div>
               <div class="form-group col form__input-container">
@@ -40,7 +40,7 @@
             </div>
           </div>
           <div class="contact-information">
-            <h4 class="contact__title">Mas información</h4>
+            <h4 class="contact__title">Más información</h4>
             <p class="contact-info">
               <span class="info__title">teléfono:</span>
               <span class="info__description">
