@@ -14,6 +14,7 @@ pydot==1.4.1
 pyparsing==2.4.1.1
 pytz==2019.1
 requests==2.22.0
+rivescript==1.14.9
 six==1.12.0
 sqlparse==0.3.0
 urllib3==1.25.3
