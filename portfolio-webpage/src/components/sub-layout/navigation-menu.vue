@@ -28,7 +28,7 @@
     </div>
 
     <div class="nav__item">
-      <a href="#contact-section" class="nav__link" v-smooth-scroll>Contacto</a>
+      <a href="/#contact-section" class="nav__link" v-smooth-scroll>Contacto</a>
     </div>
 
     <div class="nav__item">

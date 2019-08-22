@@ -99,7 +99,7 @@
         },
 
         mounted() {
-            //Once the component is mounted we will fetch the projects
+            // Once the component is mounted we will fetch the projects
             this.getProjects();
         },
 
