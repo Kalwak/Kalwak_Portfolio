@@ -35,7 +35,7 @@ class ServiceTestCase(TestCase):
                 "description": "foodescription"}
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         correct_response = b'{"email":["Enter a valid email address."]}'
         self.assertEqual(response.content, correct_response)
 
@@ -45,7 +45,7 @@ class ServiceTestCase(TestCase):
                 "description": "foodescription"}
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         correct_response = b'{"name":["This field may not be blank."]}'
         self.assertEqual(response.content, correct_response)
 
@@ -55,7 +55,7 @@ class ServiceTestCase(TestCase):
                 "description": ""}
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         correct_response = b'{"description":["This field may not be blank."]}'
         self.assertEqual(response.content, correct_response)
 
@@ -64,7 +64,7 @@ class ServiceTestCase(TestCase):
                 "description": "foodescription"}
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         correct_response = b'{"email":["This field is required."]}'
         self.assertEqual(response.content, correct_response)
 
@@ -73,7 +73,7 @@ class ServiceTestCase(TestCase):
                 "description": "foodescription"}
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         correct_response = b'{"name":["This field is required."]}'
         self.assertEqual(response.content, correct_response)
 
@@ -82,7 +82,7 @@ class ServiceTestCase(TestCase):
                 "email": "fooo@gmail.com"}
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         correct_response = b'{"description":["This field is required."]}'
         self.assertEqual(response.content, correct_response)
 
