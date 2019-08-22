@@ -17,7 +17,7 @@
         <div class="contact-section" id="contact-section">
           <div class="contact-form">
             <h4 class="contact__title">Contáctanos</h4>
-            <div class="form-row form">
+            <form class="form-row form animated fadeIn"  v-if="!email.onSending">
               <div class="form-group col-12 form__input-container">
                 <label for="name" class="d-none">Nombre</label>
                 <input type="text" placeholder="Nombre" class="form-control form__input" id="name" v-model="email.name" />
@@ -26,7 +26,7 @@
               <div class="form-group col form__input-container">
                 <label for="phone" class="d-none">Teléfono</label>
                 <input type="tel" placeholder="Telefono" class="form-control form__input" id="phone" v-model="email.phoneNumber" />
-                <small class="text-danger mt-1 mb-3 d-block" style="visibility: hidden;">*requerido</small>
+                <small class="text-danger mt-1 mb-3 d-block">*opcional</small>
               </div>
               <div class="form-group col form__input-container">
                 <label for="email" class="d-none">Email</label>
@@ -41,6 +41,13 @@
               <div class="form-group col-12 form__button-container">
                 <button class="form__button" @click="sendEmail" :disabled="buttonDisabled">Enviar</button>
               </div>
+            </form>
+            <div class="spinner" v-if="email.onSending">
+              <div class="rect1"></div>
+              <div class="rect2"></div>
+              <div class="rect3"></div>
+              <div class="rect4"></div>
+              <div class="rect5"></div>
             </div>
           </div>
           <div class="contact-information">
@@ -78,6 +85,7 @@
 <script>
 // page footer component
 import axios from 'axios';
+import swal from 'sweetalert';
 
 
 // @vuese
@@ -114,8 +122,6 @@ export default {
       return `
       nombre: ${ email.name }\n
       telefono: ${ email.phoneNumber || 'no fue dado!' }\n
-      ======================================================
-      consulta:\n
       ${ email.message }
       `;
     },
@@ -158,28 +164,28 @@ export default {
           email: self.email.address,
           message: self.fullMessage,
         };
-        // fetch('http://localhost:8000/api/send_email', {
-        //   method: 'POST',
-        //   headers: {
-        //   'Content-Type': 'application/json',
-        //   // 'Content-Type': 'application/x-www-form-urlencoded'
-        //   },
-        //   body: JSON.stringify({
-        //   subject: 'warning',
-        //   email: 'someemail@email.com',
-        //   message: 'some message'
-        // }),
-        // })
-        axios.post('http://localhost:8000/api/send_email', {
-          subject: 'some subject',
-          email: 'someemail@email.com',
-          message: 'Hi there!!',
-        })
+        axios.post('http://localhost:8000/api/send_email', data)
           .then(res => {
-            console.log(res);
+            if (res.request.statusText === 'OK' && res.data.response === 1) {
+              swal({
+                title: 'Notificacion',
+                text: 'Su mensaje ha sido enviado',
+                icon: 'success',
+              });
+            } else {
+              console.log('ok bad');
+              swal({
+                title: 'Notificacion',
+                text: res.data.email[0],
+                icon: 'warning',
+              });
+            };
           })
           .catch(err => {
             console.log(err);
+          })
+          .finally(() => {
+            self.email.onSending = false;
           });
       }
     },
@@ -199,6 +205,12 @@ export default {
       return {
         valid: validFields,
       };
+    },
+
+    // clear form inputs
+    clearInputs() {
+      const form = this.$ref.contactForm;
+      form.clear();
     },
   },
 }
