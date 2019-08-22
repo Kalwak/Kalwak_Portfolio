@@ -25,7 +25,7 @@
               </div>
               <div class="form-group col form__input-container">
                 <label for="phone" class="d-none">Teléfono</label>
-                <input type="tel" placeholder="Telefono" class="form-control form__input" id="phone" v-model="email.phoneNumber" />
+                <input type="tel" placeholder="Telefono" class="form-control form__input" id="phone" v-model.number="email.phoneNumber" />
                 <small class="text-danger mt-1 mb-3 d-block">*opcional</small>
               </div>
               <div class="form-group col form__input-container">
@@ -39,7 +39,7 @@
                 <small class="text-danger mt-1 mb-3 d-block">*requerido</small>
               </div>
               <div class="form-group col-12 form__button-container">
-                <button class="form__button" @click="sendEmail" :disabled="buttonDisabled">Enviar</button>
+                <button class="form__button" @click.prevent="sendEmail" :disabled="buttonDisabled">Enviar</button>
               </div>
             </form>
             <div class="spinner" v-if="email.onSending">
@@ -95,7 +95,7 @@ export default {
   data() {
     return {
       email: {
-        subject: 'contactanos-sitio-web',
+        subject: 'CONTACTO KALWAK',
         name: '',
         phoneNumber: '',
         address: '',
@@ -164,7 +164,7 @@ export default {
           email: self.email.address,
           message: self.fullMessage,
         };
-        axios.post('http://localhost:8000/api/send_email', data)
+        axios.post(self.apiEmail, data)
           .then(res => {
             if (res.request.statusText === 'OK' && res.data.response === 1) {
               swal({
@@ -172,14 +172,14 @@ export default {
                 text: 'Su mensaje ha sido enviado',
                 icon: 'success',
               });
+              self.clearInputs();
             } else {
-              console.log('ok bad');
               swal({
                 title: 'Notificacion',
                 text: res.data.email[0],
                 icon: 'warning',
               });
-            };
+            }
           })
           .catch(err => {
             console.log(err);
@@ -209,8 +209,11 @@ export default {
 
     // clear form inputs
     clearInputs() {
-      const form = this.$ref.contactForm;
-      form.clear();
+      let email = this.email;
+      email.name = '';
+      email.address = '';
+      email.message = '';
+      email.phoneNumber = '';
     },
   },
 }
