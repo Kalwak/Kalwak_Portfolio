@@ -28,7 +28,7 @@
     </div>
 
     <div class="nav__item">
-      <a href="/#contact-section" class="nav__link" v-smooth-scroll>Contacto</a>
+      <a href="#contact-section" class="nav__link" v-smooth-scroll>Contacto</a>
     </div>
 
     <div class="nav__item">
@@ -72,6 +72,7 @@ export default {
 
   watch: {
     currentPath() {
+      console.log('ok currentPath changed');
       this.$emit('close-nav-menu', false);
     },
   },

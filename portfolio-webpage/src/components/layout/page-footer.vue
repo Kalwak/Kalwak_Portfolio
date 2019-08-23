@@ -94,6 +94,7 @@ export default {
 
   data() {
     return {
+      // email is an object containing properties for email information like name, address etc...
       email: {
         subject: 'CONTACTO KALWAK',
         name: '',
@@ -107,7 +108,7 @@ export default {
   },
 
   computed: {
-    // base api endpoint
+    // base api endpoint 
     apiEndpoint() {
       return process.env.VUE_APP_API_ENDPOINT;
     },
@@ -117,6 +118,7 @@ export default {
       return `${this.apiEndpoint}/api/send_email`;
     },
 
+    // full message where name, phone and message will be included
     fullMessage() {
       const email = this.email;
       return `
@@ -126,21 +128,24 @@ export default {
       `;
     },
 
-    // disable send button whereas email is onSending or inputError
+    // disable send button whereas email is onSending
     buttonDisabledByProcess() {
       return this.email.onSending;
     },
 
+    // returns true if any of the required inputs is empty, else returns false
     buttonDisabledByInputs() {
       return !this.email.name 
       || !this.email.address 
       || !this.email.message;
     },
 
+    // returns true if buttonDisabledByProcess or buttonDisabledByInputs is true, else returns false
     buttonDisabled() {
       return this.buttonDisabledByProcess || this.buttonDisabledByInputs;
     },
 
+    // returns an object with the three required properties from email
     emailInfo() {
       const { name, address, message } = this.email;
       return  {
@@ -152,7 +157,8 @@ export default {
   },
 
   methods: {
-    sendEmail() {
+    // in this method the functionality to send email is implemented
+    async sendEmail() {
       const self = this;
       let validation = self.checkFields(self.emailInfo);
       if (validation.valid) {
@@ -191,6 +197,7 @@ export default {
     },
 
     // check if fields are not empty
+    // @args filds which is an object
     checkFields(fields) {
       let validFields = true;
       let fieldsKeys = Object.keys(fields);
@@ -207,7 +214,7 @@ export default {
       };
     },
 
-    // clear form inputs
+    // clear email property vaues, actually the neccessary ones
     clearInputs() {
       let email = this.email;
       email.name = '';

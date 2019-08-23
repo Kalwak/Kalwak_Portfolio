@@ -1,4 +1,15 @@
-.about-section {}
+.about-section {
+  margin-top: 50px;
+
+  h2 {
+    font-size: 1.4em;
+    margin: 40px auto 10px;
+    text-align: center;
+  }
+  p {
+    margin: 0 auto 60px;
+  }
+}
 
 .team-section {
   margin-top: 120px;

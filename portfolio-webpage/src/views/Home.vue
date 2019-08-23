@@ -28,41 +28,48 @@
             </div>
         </div>
         <div class="projects-container">
-            <div class="inner-wrapper">
-                <h3 class="projects__title">Trabajos anteriores</h3>
-                <carousel
-                        :key="1"
-                        :per-page="1"
-                        :loop="true"
-                        :autoplay="true"
-                        :autoplay-timeout="4000"
-                        :navigation-click-target-size="0"
-                        :navigation-enabled="true"
-                        :pagination-enabled="false"
-                        navigation-prev-label="<span class='icon-left-arrow'></span>"
-                        navigation-next-label="<span class='icon-right-arrow'></span>"
-                        class="projects-slider">
-                    <slide class="project-slide"
-                        v-for="(project, index) in projects" :key="project.id">
-                        <div class="image__container">
-                            <img :src="project.cover_page" :alt="project.name" class="project__image">
-                        </div>
-                        <div class="information__container">
-                            <h3 class="project__category">
-                                <router-link :to="'/projects/' + project.categories[0]">{{ categoryFormatted[index] }}
-                                </router-link>
-                            </h3>
-                        </div>
-                    </slide>
-                </carousel>
-            </div>
+          <div class="inner-wrapper">
+            <h3 class="projects__title" v-if="!loadingProjects">Trabajos anteriores</h3>
+            <carousel
+							v-if="!loadingProjects"
+              :key="1"
+              :per-page="1"
+              :loop="true"
+              :autoplay="true"
+              :autoplay-timeout="4000"
+              :navigation-click-target-size="0"
+              :navigation-enabled="true"
+              :pagination-enabled="false"
+              navigation-prev-label="<span class='icon-left-arrow'></span>"
+              navigation-next-label="<span class='icon-right-arrow'></span>"
+              class="projects-slider animated zoomIn">
+              <slide class="project-slide" v-for="(project, index) in projects" :key="project.id">
+              <div class="image__container">
+                <img :src="project.cover_page" :alt="project.name" class="project__image">
+              </div>
+              <div class="information__container">
+                <h3 class="project__category">
+                	<router-link :to="'/projects/' + project.categories[0]">{{ categoryFormatted[index] }}</router-link>
+                </h3>
+              </div>
+            	</slide>
+          	</carousel>
+						<div class="project-loader" v-if="loadingProjects">
+							<div class="sk-folding-cube">
+						  	<div class="sk-cube1 sk-cube"></div>
+						  	<div class="sk-cube2 sk-cube"></div>
+						  	<div class="sk-cube4 sk-cube"></div>
+						  	<div class="sk-cube3 sk-cube"></div>
+							</div>
+						</div>
         </div>
+      </div>
     </div>
 </template>
 
 <script>
+// home view
     import {ProjectService} from "../services/project_service";
-    // home views
     import {Carousel, Slide} from 'vue-carousel';
 
 
@@ -83,7 +90,8 @@
         data() {
 
             return {
-                projects: []
+								projects: [],
+								loadingProjects: false,
             };
 
         },
@@ -91,10 +99,15 @@
         methods: {
 
             getProjects() {
+							const self = this;
+							this.loadingProjects = true;
                 // Gives us a list of projects from the django backend
-                apiService.getProjects().then((data) => {
-                    this.projects = data;
+                setTimeout(() => {
+									apiService.getProjects().then((data) => {
+										self.projects = data;
+										self.loadingProjects = false;
                 }).catch(err => console.error(err));
+								}, 2000);
             },
         },
 

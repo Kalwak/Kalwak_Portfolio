@@ -14,7 +14,13 @@
     <div class="about-section">
       <div class="inner-wrapper">
         <h2>Misión</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mauris elit, maximus vel odio nec, sagittis pulvinar enim. Duis faucibus libero vitae ultricies pellentesque. Nulla facilisi. Cras vestibulum sagittis magna, vitae vestibulum dui commodo non. Nullam maximus luctus enim, quis tempus nunc aliquam non. Praesent pulvinar, odio sit amet bibendum pretium, velit ex iaculis leo, sed auctor nisi nulla sed ex. Nunc ut mi ut mi cursus feugiat. Vivamus elementum ultricies purus, id cursus lorem fermentum nec. Etiam gravida pellentesque bibendum. Donec laoreet ornare tortor, a faucibus erat rutrum eu. Proin vestibulum mi mollis, viverra mi non, auctor risus. Praesent vulputate sit amet libero ac elementum.
+        </p>
         <h2>Visión</h2>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam mauris elit, maximus vel odio nec, sagittis pulvinar enim. Duis faucibus libero vitae ultricies pellentesque. Nulla facilisi. Cras vestibulum sagittis magna, vitae vestibulum dui commodo non. Nullam maximus luctus enim, quis tempus nunc aliquam non. Praesent pulvinar, odio sit amet bibendum pretium, velit ex iaculis leo, sed auctor nisi nulla sed ex. Nunc ut mi ut mi cursus feugiat. Vivamus elementum ultricies purus, id cursus lorem fermentum nec. Etiam gravida pellentesque bibendum. Donec laoreet ornare tortor, a faucibus erat rutrum eu. Proin vestibulum mi mollis, viverra mi non, auctor risus. Praesent vulputate sit amet libero ac elementum.
+        </p>
       </div>
     </div>
     <div class="team-section">

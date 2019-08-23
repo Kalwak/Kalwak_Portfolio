@@ -6,7 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "docs:gen": "vuese gen",
+    "docs:serve": "vuese serve"
   },
   "dependencies": {
     "axios": "^0.19.0",
