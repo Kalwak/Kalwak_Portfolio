@@ -1,7 +1,8 @@
 from rest_framework import serializers
 from django.core.mail import EmailMessage
 from django.conf import settings
-from Portfolio import logging_debugger as log
+import logging
+log = logging.getLogger('debugger')
 
 
 class EmailSerializer(serializers.Serializer):
@@ -14,7 +15,7 @@ class EmailSerializer(serializers.Serializer):
         Sends email using serialized data.
         Returns 1 if the operation is successful and 0 if it fails.
         """
-        to_email = settings.DEFAULT_FROM_EMAIL
+        to_email = settings.SERVER_EMAIL
         email = EmailMessage(self.data['subject'],
                              '%s \n From %s' % (self.data['message'],
                                                 self.data['email']),

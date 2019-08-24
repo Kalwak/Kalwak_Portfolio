@@ -22,7 +22,6 @@ env = environ.Env(
     # set casting, default value
     DEBUG_MODE=(bool, False),
     SECRET_KEY=(str, 'secret-key'),
-    EMAIL_PASSWORD=(str, 'password'),
     DBNAME=(str, 'kalwak'),
     DBUSER=(str, 'postgres'),
     DBPASSWORD=(str, 'password'),
@@ -169,6 +168,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "assets"),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_URL = '/assets/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'assets')
 

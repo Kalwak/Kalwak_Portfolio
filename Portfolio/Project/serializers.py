@@ -14,3 +14,4 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Project
         fields = ["name", "cover_page", "description", "website", "date", "subtitle", "categories", "images"]
+

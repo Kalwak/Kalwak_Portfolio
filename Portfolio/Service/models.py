@@ -10,10 +10,15 @@ class ServiceRequest(models.Model):
         return f"Name: {self.name}"
 
 
-class Files(models.Model):
+class File(models.Model):
     service = models.ForeignKey(ServiceRequest, on_delete=models.CASCADE,
                                 default=0, related_name='files')
     file = models.FileField(upload_to='Service/', blank=True)
 
     def __str__(self):
         return f"Name: {self.file.name}"
+
+    def delete(self, *args, **kwargs):
+        storage, path = self.file.storage, self.file.path
+        super(File, self).delete(*args, **kwargs)
+        storage.delete(path)

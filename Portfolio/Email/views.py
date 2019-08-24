@@ -1,7 +1,8 @@
 from .serializers import EmailSerializer
 from rest_framework import viewsets
 from rest_framework.response import Response
-from Portfolio import logging_debugger as log
+import logging
+log = logging.getLogger('debugger')
 
 
 class SendEmailView(viewsets.ViewSet):
