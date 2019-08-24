@@ -1,9 +1,17 @@
 import PageFooter from '../../src/components/layout/page-footer.vue';
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 
+
+const $route = {
+  path: '/some/path'
+}
 
 describe('page-footer', () => {
-  const wrapper = mount(PageFooter);
+  const wrapper = shallowMount(PageFooter, {
+    mocks: {
+      $route,
+    },
+  });
 
   // buttonDisabledByInputs expects to be true if inputs like email, name or message are empty
   it('should have buttonDisabledByInputs set to true if required inputs are empty', () => {
