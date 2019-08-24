@@ -46,7 +46,7 @@
     </div>
     
     <div class="inner-wrapper text-center mt-3">
-      <button class="u-button">Cotizar</button>
+      <router-link class="u-button" to="/hire-us">Cotizar</router-link>
     </div>
   </div>
 </template>

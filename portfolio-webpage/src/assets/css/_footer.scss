@@ -99,10 +99,6 @@
 
   .social-media {
     margin-top: 60px;
-
-    .contact__title {
-      margin-bottom: 4px;
-    }
     
     &__icon {
       font-size: 1.6em;
@@ -131,6 +127,16 @@
   }
 }
 
+.information-50 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+
+  .contact-info-container, .social-media {
+    margin: 0 30px !important;
+  }
+}
 
 // MEDIA QUERIES STARTS HERE (800px)
 /**

@@ -18,53 +18,53 @@
               - PROJECT__CATEGORY
 --->
 <template>
-    <div class="col-12">
-        <div class="banner">
-            <div class="inner-wrapper">
-                <div class="banner__text">
-                    <h2 class="banner__text-title">Desarrollo web</h2>
-                    <h3 class="banner__text-description">Soluciones Innovadoras</h3>
-                </div>
-            </div>
-        </div>
-        <div class="projects-container">
-          <div class="inner-wrapper">
-            <h3 class="projects__title" v-if="!loadingProjects">Trabajos anteriores</h3>
-            <carousel
-							v-if="!loadingProjects"
-              :key="1"
-              :per-page="1"
-              :loop="true"
-              :autoplay="true"
-              :autoplay-timeout="4000"
-              :navigation-click-target-size="0"
-              :navigation-enabled="true"
-              :pagination-enabled="false"
-              navigation-prev-label="<span class='icon-left-arrow'></span>"
-              navigation-next-label="<span class='icon-right-arrow'></span>"
-              class="projects-slider animated zoomIn">
-              <slide class="project-slide" v-for="(project, index) in projects" :key="project.id">
-              <div class="image__container">
-                <img :src="project.cover_page" :alt="project.name" class="project__image">
-              </div>
-              <div class="information__container">
-                <h3 class="project__category">
-                	<router-link :to="'/projects/' + project.categories[0]">{{ categoryFormatted[index] }}</router-link>
-                </h3>
-              </div>
-            	</slide>
-          	</carousel>
-						<div class="project-loader" v-if="loadingProjects">
-							<div class="sk-folding-cube">
-						  	<div class="sk-cube1 sk-cube"></div>
-						  	<div class="sk-cube2 sk-cube"></div>
-						  	<div class="sk-cube4 sk-cube"></div>
-						  	<div class="sk-cube3 sk-cube"></div>
-							</div>
-						</div>
-        </div>
-      </div>
-    </div>
+	<div class="col-12">
+	  <div class="banner">
+    	<div class="inner-wrapper">
+      	<div class="banner__text">
+        	<h2 class="banner__text-title">Desarrollo web</h2>
+        	<h3 class="banner__text-description">Soluciones Innovadoras</h3>
+      	</div>
+    	</div>
+	  </div>
+		<div class="projects-container">
+    	<div class="inner-wrapper">
+      	<h3 class="projects__title" v-if="!loadingProjects">Trabajos anteriores</h3>
+      	<carousel
+					v-if="!loadingProjects"
+        	:key="1"
+        	:per-page="1"
+        	:loop="true"
+        	:autoplay="true"
+        	:autoplay-timeout="4000"
+        	:navigation-click-target-size="0"
+        	:navigation-enabled="true"
+        	:pagination-enabled="false"
+        	navigation-prev-label="<span class='icon-left-arrow'></span>"
+        	navigation-next-label="<span class='icon-right-arrow'></span>"
+        	class="projects-slider animated zoomIn">
+        	<slide class="project-slide" v-for="(project, index) in projects" :key="project.id">
+        		<div class="image__container">
+          		<img :src="project.cover_page" :alt="project.name" class="project__image">
+        		</div>
+        		<div class="information__container">
+          		<h3 class="project__category">
+          			<router-link :to="'/projects/' + project.categories[0]">{{ categoryFormatted[index] }}</router-link>
+          		</h3>
+        		</div>
+      		</slide>
+    		</carousel>
+				<div class="project-loader" v-if="loadingProjects">
+					<div class="sk-folding-cube">
+						<div class="sk-cube1 sk-cube"></div>
+						<div class="sk-cube2 sk-cube"></div>
+						<div class="sk-cube4 sk-cube"></div>
+						<div class="sk-cube3 sk-cube"></div>
+					</div>
+				</div>
+	  	</div>
+		</div>
+	</div>
 </template>
 
 <script>

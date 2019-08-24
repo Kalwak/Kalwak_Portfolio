@@ -24,7 +24,7 @@
     </div>
 
     <div class="nav__item">
-      <router-link to="/cotizar" class="nav__link">Cotizar</router-link>
+      <router-link to="/hire-us" class="nav__link">Cotizar</router-link>
     </div>
 
     <div class="nav__item">

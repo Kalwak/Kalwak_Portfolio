@@ -15,7 +15,7 @@
     <div class="col-12">
       <div class="inner-wrapper">
         <div class="contact-section" id="contact-section">
-          <div class="contact-form">
+          <div class="contact-form" v-if="!formDisabled">
             <h4 class="contact__title">Contáctanos</h4>
             <form class="form-row form animated fadeIn"  v-if="!email.onSending">
               <div class="form-group col-12 form__input-container">
@@ -50,20 +50,22 @@
               <div class="rect5"></div>
             </div>
           </div>
-          <div class="contact-information">
-            <h4 class="contact__title">Más información</h4>
-            <p class="contact-info">
-              <span class="info__title">teléfono:</span>
-              <span class="info__description">
-                <a href="tel:+50684599023" title="telefono">+50684599023</a>
-              </span>
-            </p>
-            <p class="contact-info">
-              <span class="info__title">Correo:</span>
-              <span class="info__description">
-                <a href="mailto:kalwakcr@gmail.com" target="_blank" title="correo kalwak">kalwakcr@gmail.com</a>
-              </span>
-            </p>
+          <div class="contact-information" :class="{ 'information-50': formDisabled }">
+            <div class="contact-info-container">
+              <h4 class="contact__title">Mas information</h4>
+              <p class="contact-info">
+                <span class="info__title">teléfono:</span>
+                <span class="info__description">
+                  <a href="tel:+50684599023" title="telefono">+50684599023</a>
+                </span>
+              </p>
+              <p class="contact-info">
+                <span class="info__title">Correo:</span>
+                <span class="info__description">
+                  <a href="mailto:kalwakcr@gmail.com" target="_blank" title="correo kalwak">kalwakcr@gmail.com</a>
+                </span>
+              </p>
+            </div>
             <div class="social-media">
               <h4 class="contact__title">Nuestras redes</h4>
               <a href="https://www.facebook.com/Kalwak-358576961719203" target="_blank" class="social-media__icon icon-facebook social-media__icon" title="facebook"></a>
@@ -104,6 +106,7 @@ export default {
         onSending: false,
         inputError: false,
       },
+      formDisabled: false,
     };
   },
 
@@ -153,6 +156,11 @@ export default {
         address,
         message
       }
+    },
+
+    // current path
+    currentPath() {
+      return this.$route.path;
     },
   },
 
@@ -221,6 +229,16 @@ export default {
       email.address = '';
       email.message = '';
       email.phoneNumber = '';
+    },
+  },
+
+  watch: {
+    currentPath() {
+      if (this.currentPath === '/hire-us') {
+        this.formDisabled = true;
+      } else {
+        this.formDisabled = false;
+      }
     },
   },
 }
