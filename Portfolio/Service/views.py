@@ -17,9 +17,15 @@ class ServiceRequestView(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         """
-        Post Method that saves a ServiceRequest
-        :params request: should contain a JSON with name, email and description
-                        also, could have attached several files.
+        Api view that saves a ServiceRequest and internally sends an email
+        to website owners. To see this implementation go to:
+        :func:`Service.serilizer.ServiceRequestSerializer.create`
+
+        :params request: should contain a JSON with:
+                            name
+                            email
+                            description
+                        also, can have attached several files.
         """
         serializer = self.serializer_class(data=request.data,
                                            context={'request': request})
