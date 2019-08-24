@@ -46,6 +46,11 @@ export default new Router({
         }
       ],
     },
+    {
+      path: '/hire-us',
+      name: 'hire us',
+      component: () => import('./views/HireUs.vue'),
+    },
   ]
 });
 // component: () => import(/* webpackChunkName: "about" */ './views/Component.vue')

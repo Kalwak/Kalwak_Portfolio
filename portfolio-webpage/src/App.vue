@@ -7,11 +7,13 @@
 </template>
 
 <script>
+// app components, this is the root component
 import PageHeader from './components/layout/page-header.vue';
 import PageMain from './components/layout/page-main.vue';
 import PageFooter from './components/layout/page-footer.vue';
 
 
+// @vuese
 export default {
   name: 'app',
   components: {

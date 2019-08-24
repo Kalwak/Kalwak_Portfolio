@@ -3,13 +3,13 @@
 ## To generate the docs for every component, run:
 
 ``` 
-npx vuese gen
+npm run docs:gen
 ```
 
 ## To serve a localhost to see components docs, run:
 
 ```
-npx vuese serve
+npm run docs:serve
 ```
 
 Note: These commands have to be put in the project root directory

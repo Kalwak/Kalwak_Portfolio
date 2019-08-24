@@ -1,8 +1,9 @@
 from django.test import TestCase
 from rest_framework.test import APIClient
 from Portfolio.settings import BASE_DIR
-from Portfolio import log
 import os
+import logging
+log = logging.getLogger('debugger')
 
 
 class LoggingTests(TestCase):

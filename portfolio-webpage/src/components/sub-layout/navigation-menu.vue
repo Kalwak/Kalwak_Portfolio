@@ -11,7 +11,7 @@
       <span class="nav__link nav__link--flex">Sobre nosotros<span class="icon-down-open-mini"></span></span>
       <div class="dropdown-list">
         <div class="dropdown-list__item">
-          <router-link to="/about-us" class="nav__link">Quienes somos ?</router-link>
+          <router-link to="/about-us" class="nav__link">¿Quiénes somos?</router-link>
         </div>
         <div class="dropdown-list__item">
           <router-link :to="'/projects/' + projectCategory" class="nav__link">Trabajos anteriores</router-link>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="nav__item">
-      <router-link to="/cotizar" class="nav__link">Cotizar</router-link>
+      <router-link to="/hire-us" class="nav__link">Cotizar</router-link>
     </div>
 
     <div class="nav__item">
@@ -63,6 +63,17 @@ export default {
     // returns service category 
     serviceCategory() {
       return 'web-development';
+    },
+
+    currentPath() {
+      return this.$route.path;
+    },
+  },
+
+  watch: {
+    currentPath() {
+      console.log('ok currentPath changed');
+      this.$emit('close-nav-menu', false);
     },
   },
 }

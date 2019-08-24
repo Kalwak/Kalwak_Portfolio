@@ -14,9 +14,9 @@
           <div class="col-auto brand-column">
             <div class="brand">
               <div class="brand__logo">
-                <a href="/" title="kalwak">
+                <router-link to="/" title="kalwak">
                   <img src="@/assets/images/logo.svg" alt="Wink logo" title="Kalwak logo" class="logo__image" />
-                </a>
+                </router-link>
                 <!-- <span class="menu-button" >menu</span> -->
               </div>
               <button class="hamburger hamburger--squeeze menu-button" :class="{ 'is-active': activatedMenu }" type="button" @click="toggleMenu">
@@ -26,7 +26,7 @@
               </button>
             </div>
           </div>
-          <nav-menu  :class="{ activatedMenu }" />
+          <nav-menu  :class="{ activatedMenu }" @close-nav-menu="activatedMenu = false" />
       </div>
       </div>
     </div>
@@ -62,4 +62,3 @@ export default {
   },
 }
 </script>
-
