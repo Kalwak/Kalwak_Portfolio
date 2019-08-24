@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from django.core.mail import EmailMessage
 from django.conf import settings
-from Portfolio import logging_debugger as log
+from Portfolio import log
 
 
 class EmailSerializer(serializers.Serializer):
