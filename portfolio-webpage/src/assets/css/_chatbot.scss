@@ -1,0 +1,35 @@
+.chatbot-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 20px;
+  width: 500px;
+  height: 500px;
+  z-index: 10000;
+  background-color: #ddd;
+  padding: 10px;
+
+  .chatbot__header {
+    display: flex;
+    justify-content: space-between;
+
+    &__title {}
+
+    .chatbot__header-settings {
+
+      .chatbot__setting-icon {}
+    }
+  }
+
+  .chatbot__body {
+
+    .chatbot-messages__container {}
+
+    .chatbot-input__container {
+
+      .input-text {}
+
+      .send-button {}
+    }
+  }
+}
