@@ -22,7 +22,6 @@ env = environ.Env(
     # set casting, default value
     DEBUG_MODE=(bool, False),
     SECRET_KEY=(str, 'secret-key'),
-    EMAIL_PASSWORD=(str, 'password'),
     DBNAME=(str, 'kalwak'),
     DBUSER=(str, 'postgres'),
     DBPASSWORD=(str, 'password'),
