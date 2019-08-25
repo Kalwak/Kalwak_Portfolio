@@ -1,5 +1,8 @@
 import json
 from json import JSONDecodeError
+
+import django
+from django.http import RawPostDataException
 from ipware import get_client_ip
 
 from Project.models import Logs
@@ -34,6 +37,8 @@ def get_request(request):
         out = "No json request"
     except UnicodeDecodeError:
         out = str(request.FILES)
+    except RawPostDataException:
+        out = "Error on accessing the request data"
     return out
 
 

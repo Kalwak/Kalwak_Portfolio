@@ -1,5 +1,5 @@
 from django.contrib import admin
-from Service.models import ServiceRequest, File
+from Service.models import ServiceRequest, File, Service
 
 
 # Register your models here.
@@ -12,9 +12,18 @@ class FileInline(admin.TabularInline):
     ]
 
 
+class ServiceInline(admin.TabularInline):
+    model = Service
+
+    readonly_fields = [
+        'service_request', 'service'
+    ]
+
+
 class ServiceRequestAdmin(admin.ModelAdmin):
     inlines = [
-        FileInline
+        FileInline,
+        ServiceInline
     ]
 
 

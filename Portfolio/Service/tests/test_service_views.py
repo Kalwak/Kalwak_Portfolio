@@ -23,16 +23,20 @@ class ServiceTestCase(TestCase):
     def test_service_request_post_successful(self):
         data = {"name": "Fooname",
                 "email": "fooo@gmail.com",
-                "description": "foodescription"}
+                "description": "foodescription",
+                "telephone": "84599021"}
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        response.data.pop("files")
+        response.data.pop("services")
         self.assertEqual(response.data, data)
 
     def test_service_request_wrong_email(self):
         data = {"name": "Fooname",
                 "email": "fooo",
-                "description": "foodescription"}
+                "description": "foodescription",
+                "telephone": "84599021"}
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
@@ -42,7 +46,8 @@ class ServiceTestCase(TestCase):
     def test_service_request_name_emply(self):
         data = {"name": "",
                 "email": "fooo@gmail.com",
-                "description": "foodescription"}
+                "description": "foodescription",
+                "telephone": "84599021"}
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
@@ -52,7 +57,8 @@ class ServiceTestCase(TestCase):
     def test_service_request_description_emply(self):
         data = {"name": "Fooname",
                 "email": "fooo@gmail.com",
-                "description": ""}
+                "description": "",
+                "telephone": "84599021"}
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
@@ -61,7 +67,8 @@ class ServiceTestCase(TestCase):
 
     def test_service_request_missing_email_field(self):
         data = {"name": "FooName",
-                "description": "foodescription"}
+                "description": "foodescription",
+                "telephone": "84599023"}
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
@@ -70,7 +77,8 @@ class ServiceTestCase(TestCase):
 
     def test_service_request_missing_name_field(self):
         data = {"email": "fooo@gmail.com",
-                "description": "foodescription"}
+                "description": "foodescription",
+                "telephone": "84599023"}
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
@@ -79,7 +87,8 @@ class ServiceTestCase(TestCase):
 
     def test_service_request_missing_description_field(self):
         data = {"name": "Fooname",
-                "email": "fooo@gmail.com"}
+                "email": "fooo@gmail.com",
+                "telephone": "84599021"}
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
@@ -90,11 +99,14 @@ class ServiceTestCase(TestCase):
         data = {"name": "Fooname",
                 "email": "fooo@gmail.com",
                 "description": "foodescription",
+                "telephone": "84599021",
                 "file": open(self.file_path, 'rb')}
         response = self.client.post('/api/service_request/', data=data,
                                     format='multipart')
         data.pop('file')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        response.data.pop("files")
+        response.data.pop("services")
         self.assertEqual(response.data, data)
         saved_file = File.objects.last()
         self.assertEqual(saved_file.service.email, "fooo@gmail.com")
@@ -105,6 +117,7 @@ class ServiceTestCase(TestCase):
         data = {"name": "Fooname",
                 "email": "fooo@gmail.com",
                 "description": "foodescription",
+                "telephone": "84599021",
                 "file1": open(self.file_path, 'rb'),
                 "file2": open(self.file_pdf_path, 'rb')}
         response = self.client.post('/api/service_request/', data=data,
@@ -112,6 +125,8 @@ class ServiceTestCase(TestCase):
         data.pop('file1')
         data.pop('file2')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        response.data.pop("files")
+        response.data.pop("services")
         self.assertEqual(response.data, data)
         saved_file = File.objects.last()
         self.assertEqual(saved_file.service.email, "fooo@gmail.com")
