@@ -64,7 +64,7 @@ class ProjectCategory(models.Model):
     name = models.SlugField(primary_key=True)
 
     def __str__(self):
-        return f"ProjectCategory(name={self.name})"
+        return self.name
 
 
 class Gallery(models.Model):
