@@ -8,12 +8,12 @@ export class ProjectService {
     }
 
     getProjects() {
-        const url = '/api/project/';
+        const url = API_URL + `/api/project/`;
         return axios.get(url).then(response => response.data);
     }
 
     getProject(pk) {
-        const url = `/api/project/${pk}/`;
+        const url = API_URL + `/api/project/${pk}/`;
         return axios.get(url).then(response => response.data);
     }
 }

@@ -3,7 +3,6 @@
     <page-header></page-header>
     <page-main></page-main>
     <page-footer></page-footer>
-    <chat-bot />
   </div>
 </template>
 
@@ -12,7 +11,6 @@
 import PageHeader from './components/layout/page-header.vue';
 import PageMain from './components/layout/page-main.vue';
 import PageFooter from './components/layout/page-footer.vue';
-import ChatBot from './components/sub-layout/chatbot.vue';
 
 
 // @vuese
@@ -25,8 +23,6 @@ export default {
     PageMain,
     // this represent the footer element
     PageFooter,
-    // this represents the chatbot
-    ChatBot
   }
 }
 </script>

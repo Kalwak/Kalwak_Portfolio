@@ -70,7 +70,7 @@
 <script>
 // home view
     import {ProjectService} from "../services/project_service";
-    import {Carousel, Slide} from 'vue-carousel';
+		import {Carousel, Slide} from 'vue-carousel';
 
 
     const apiService = new ProjectService();
@@ -84,7 +84,7 @@
             // from vue-carousel, this is the carousel main container
             Carousel,
             // from vue-carousel, this is the slide that goes into caoursel component
-            Slide
+						Slide,
         },
 
         data() {
