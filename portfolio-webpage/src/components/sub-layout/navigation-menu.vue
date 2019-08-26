@@ -50,7 +50,9 @@ export default {
   name: 'navigation-menu',
 
   computed: {
-    // returns category from the store (vuex)
+    // returns category from the store,
+    // will get the las project section category visitecd,
+    // if there's no value, web-development is returned
     projectCategory() {
       let category = this.$store.state.projects.projectsCategory;
       if (!category.length) {
@@ -60,17 +62,24 @@ export default {
       }
     },
 
-    // returns service category 
+    // returns default service category, this one will be used
+    // as the default category for the services section
     serviceCategory() {
       return 'web-development';
     },
 
+
+    // returns current path from $route.path
     currentPath() {
       return this.$route.path;
     },
   },
 
   watch: {
+
+    // watch for currentPath,
+    // used to emit a custom event to close navigation menu
+    // if the current path/route has changed
     currentPath() {
       console.log('ok currentPath changed');
       this.$emit('close-nav-menu', false);

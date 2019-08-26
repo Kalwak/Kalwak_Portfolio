@@ -36,11 +36,12 @@
 </template>
 
 <script>
-// chat-bot component
+// chat-bot component, provides chat inbox where the messages will be sent to the backend chatbot service
 import getIp from '../../services/get-ip';
 import axios from 'axios';
 
 
+// @vuese
 export default {
   name: 'chat-bot',
 
@@ -55,7 +56,8 @@ export default {
   },
 
   computed: {
-    // object message
+    // return an object with full information about the user message
+    // like message id, message type, by default is human, text which the user message and message time
     fullMessage() {
       let id = this.messages.length + 1;
       return {
@@ -71,7 +73,8 @@ export default {
       return !this.message.trim().length;
     },
 
-    // api endpoint
+    // composed chatbotApi url
+    // got based api url from process.env.VUE_APP_API_ENDPOINT
     chatbotApi() {
       let baseUrl = process.env.VUE_APP_API_ENDPOINT;
       let chatbotUrl = `${baseUrl}/api/chatbot/`;
@@ -80,7 +83,10 @@ export default {
   },
 
   methods: {
-    // push all full message to messages array
+    // @vuese
+    // push all full message to messages array,
+    // @args bubbleMessage is an object container message information like, id, time, message
+    // @args disabledIp, default false
     pushMessage(bubbleMessage, disabledIp = false) {
       if(!disabledIp) {
         getIp(ip => {
@@ -99,22 +105,31 @@ export default {
       };
     },
 
-    // close chatbot inbox
+    // @vuese
+    // close chatbot inbox by emitting a custom event,
+    // in the parent component, the event will be triggered and 
+    // chatbot will be removed from dom
     closeChatbot() {
       this.$emit('close-chatbot');
     },
 
+    // @vuese
     // scroll to bottom of the message inbox
+    // used when new messages are added to inbox messages container
+    // so the client messages view will always be in the last message
     scrollBottom() {
       const messagesContainer = this.$refs.messages;
       messagesContainer.scrollTop = messagesContainer.scrollHeight;
     },
 
-    // focus message on focus
+    // @vuese
+    // focus message input by calling focus method, 
+    // called in the mounted method 
     focusInput() {
       this.$refs.messageInput.focus();
     },
 
+    // @vuese
     // mock getIp method, this one helps me out with an error when testing
     getIp() {
       return getIp;
@@ -122,6 +137,8 @@ export default {
 
   },
 
+  // one purpose, everytime is mounted, the focusInput method will be called
+  // and the message input will be focus, ready for use input
   mounted() {
     this.focusInput();
   },

@@ -85,7 +85,8 @@
 </template>
 
 <script>
-// page footer component
+// page footer component, this is the app footer section, in this section we have the contact form and contact information
+// also some copyright messages
 import axios from 'axios';
 import swal from 'sweetalert';
 
@@ -165,7 +166,10 @@ export default {
   },
 
   methods: {
-    // in this method the functionality to send email is implemented
+    // @vuese
+    // sendEmail method, this method is triggered by the Enviar button which is only
+    // enabled if required inputs are not empty, in this method axios is used to make http post request
+    // to api/send_email endpoint (django backend service)
     async sendEmail() {
       const self = this;
       let validation = self.checkFields(self.emailInfo);
@@ -199,7 +203,7 @@ export default {
             console.log(err);
             swal({
               title: 'Notificación',
-              text: 'Hubo un error',
+              text: 'Hubo un error\nintente otra vez',
               icon: 'error',
             });
           })
@@ -209,7 +213,9 @@ export default {
       }
     },
 
-    // check if fields are not empty
+    // @vuese
+    // check if fields are not empty, 
+    // it's used to check if required inputs are not empty, this method is used in sendEmail method
     // @args filds which is an object
     checkFields(fields) {
       let validFields = true;
@@ -227,7 +233,8 @@ export default {
       };
     },
 
-    // clear email property vaues, actually the neccessary ones
+    // @vuese
+    // clear email property values like name, email, phoneNumber and message which are the ones showned in the contact form
     clearInputs() {
       let email = this.email;
       email.name = '';
@@ -238,6 +245,9 @@ export default {
   },
 
   watch: {
+    // watcher for currenthPath computed property, used to hide contact form
+    // callback function, check if current path is equal to /hire-us,
+    // if true, set data property formDisabled to true, else set it to false
     currentPath() {
       if (this.currentPath === '/hire-us') {
         this.formDisabled = true;

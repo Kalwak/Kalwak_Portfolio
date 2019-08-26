@@ -39,7 +39,7 @@
 </template>
 
 <script>
-    // category list
+    // category list, used to give a way to select the category for a certain work we've done
 
 
     import {ProjectService} from "../../services/project_service";
@@ -62,9 +62,11 @@
 
         },
 
+
+        // everytime the component is render, the created method will 
+        // get services based on the current category which comes from $route.params.category
         created() {
             const self = this;
-            console.log('category set');
 
             let service = new ProjectService();
             service.getProjects().then((data) => {
@@ -75,6 +77,9 @@
         },
 
         watch: {
+
+            // watcher for category that comes from $router.params.category, 
+            // used to get Projects by category
             category(newCategory) {
                 const self = this;
                 self.$store.commit('setCategory', format_to_slug(newCategory));

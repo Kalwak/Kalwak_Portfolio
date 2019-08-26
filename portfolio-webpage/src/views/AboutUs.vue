@@ -34,7 +34,7 @@
 </template>
 
 <script>
-    // about-us view component
+    // about-us view component, section to show information about kalwak and members information
     import TeamMember from '@/components/sub-layout/team-member.vue';
     import teamMembersData from '@/team-members.json';
 

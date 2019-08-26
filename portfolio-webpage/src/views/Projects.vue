@@ -13,7 +13,7 @@
 </template>
 
 <script>
-// projects view,
+// projects view, used to show projects category and router-view with the projects based on the selected category
 import  CategoryList from '../components/sub-layout/category-list.vue';
 
 

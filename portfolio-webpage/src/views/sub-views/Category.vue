@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// category sub-view
+// category sub-view, section with all the projects based on project category
 import { mapState } from 'vuex';
 import ProjectNavigation from '@/components/sub-layout/project-navigation.vue';
 import ProjectCard from '@/components/sub-layout/project-card.vue';

@@ -30,7 +30,8 @@
 </template>
 
 <script>
-// team-member component
+// team-member component, used to show information about a member,
+// like name, biography and profile photo
 
 // @vuese
 export default {

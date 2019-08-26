@@ -29,10 +29,14 @@ export default {
   },
 
   computed: {
+    // getting values from store getters and state
     ...mapGetters(['numberOfProjects']),
     ...mapState({
       category: state => state.projects.projectsCategory,
     }),
+
+    // initializate and returns the carousel object
+    // which will be used to trigger its methods slideNext and slidePrev with Anterior y Seguiente buttons, when they are clicked
     carousel() {
       const carousel = new Swiper('.swiper-container', {
         // no touch swiping
@@ -58,21 +62,24 @@ export default {
     },
 
     // @vuese
-    // set true or false
+    // set true or false to data property leftArrowDisabled
     // @arg boolean
     setLeftArrowState(status) {
       this.leftArrowDisabled = status;
     },
 
     // @vuese
-    // set true or false
+    // set true or false to data property rightArrowDisabled
     // @arg boolean
     setRightArrowState(status) {
       this.rightArrowDisabled = status;
     },
 
     // @vuese
-    // disable arrows if limit
+    // disable Anterior o Siguiente arrows based 
+    // on the current caousel slide index,
+    // so if current caousel slide index is 0, then Anterior arrow should be disabled
+    // the same to Siguiente arrow, but opposite case
     disableArrowsByBoundaries(index) {
       // to disable left arrow
       if (index === 0) {
@@ -91,12 +98,11 @@ export default {
     },
 
     // @vuese
-    //  create carousel and navigation for every project
-    // of the current categroy 
+    //  create carousel to navigation for every project
     createProjectsCarousel() {
       const self = this;
       const carousel = new Swiper('.swiper-container', {
-        // no touch swiping
+        // no touch swiping for carousel slides
         allowTouchMove: false,
       });
       let index = carousel.activeIndex;
@@ -104,6 +110,10 @@ export default {
       carousel.activeIndex = 0;
     },
 
+    // @vuese
+    // triggered by Anterior button,
+    // used to go to the prevous carousel slide and call disableArrowsByBoundaries method
+    // to check if Anterior should be disabled
     prevSlide() {
       const self = this;
       self.carousel.slidePrev();
@@ -111,6 +121,10 @@ export default {
       self.disableArrowsByBoundaries(newSlideIndex);
     },
 
+    // @vuese
+    // triggered by Siguiente button,
+    // used to go to the next carousel slide and call disableArrowsByBoundaries method
+    // to check if Siguiente should be disabled
     nextSlide() {
       const self = this;
       self.carousel.slideNext();
@@ -120,16 +134,23 @@ export default {
   },
 
   watch: {
+    // watcher for category computed property,
+    // everytime category changes, a new carousel will be created
+    // by calling createProjectsCarousel method
+    // and disableArrowsByZeroProjects method will be called to check if there's not projects
+    // then if so, disable navigation arrows
     category() {
       this.createProjectsCarousel();
       this.disableArrowsByZeroProjects();
     },
   },
 
+  // used to call disableArrowsByZeroProjects method
   created() {
     this.disableArrowsByZeroProjects();
   },
 
+  // used to call createProjectsCarousel method
   mounted() {
     this.createProjectsCarousel();
   },
