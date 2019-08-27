@@ -6,7 +6,7 @@
       </h5>
       <div class="chatbot__header-settings">
           <span class="chatbot__setting-icon">
-            <img src="~@/assets/images/chatbot-icons/refresh-icon.png" alt="clear chatbot"  class="setting-icon__image" title="clear chatbot" />
+            <img src="~@/assets/images/chatbot-icons/refresh-icon.png" alt="clear chatbot"  class="setting-icon__image" title="clear chatbot" @click="clearMessages" />
           </span>
           <span class="chatbot__setting-icon">
             <img src="~@/assets/images/chatbot-icons/close-icon.png" alt="close chatbot"  class="setting-icon__image"  title="close chatbot" @click="closeChatbot" />
@@ -133,6 +133,12 @@ export default {
     // mock getIp method, this one helps me out with an error when testing
     getIp() {
       return getIp;
+    },
+
+    //@vuese
+    // clear messages array to an empty array
+    clearMessages() {
+      this.messages = [];
     },
 
   },

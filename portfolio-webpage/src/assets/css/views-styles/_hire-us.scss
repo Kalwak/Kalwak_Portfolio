@@ -41,7 +41,7 @@
       justify-content: space-between;
 
       .hire-form__input {
-        width: 32%;
+        width: 49%;
         margin: 0px 0px 20px;
       }
     }
@@ -64,7 +64,7 @@
         font-size: 1em;
         color: $blue-color;
         font-weight: 600;
-        margin: 0px auto 20px;
+        margin: 0;
       }
 
       .note-message {
@@ -80,34 +80,13 @@
         flex-wrap: wrap;
 
         .service-picker__option {
-          width: 46%;
-          display: flex;
-          align-items: center;
+          width: 50%;
 
           .option__checkbox {
             border: 1px solid $orange-color;
-            background-color: #fff;
-            width: 15px;
-            height: 15px;
-            appearance: none;
-            -webkit-appearance: none;
-            position: relative;
 
             &:focus {
               outline: none;
-            }
-
-            &::before {
-              content: '';
-              transition: 0.3s all linear;
-              width: 100%;
-              height: 100%;
-              display: block;
-              position: absolute;
-            }
-
-            &:checked::before {
-              background-color: $blue-color;
             }
           }
 

@@ -45,9 +45,9 @@
   .chatbot__body {
 
     .chatbot-messages__container {
-      min-height: 500px;
-      max-height: 500px;
+      @extend .chatbot-messages-height;
       background-color: #fff;
+      width: 100%;
       overflow: auto;
 
       .message-container {
@@ -106,6 +106,7 @@
 
       .send-button {
         width: 15%;
+        height: 100%;
         border: none;
         padding: 0;
         outline: none;
@@ -123,6 +124,24 @@
       }
     }
   }
+}
+
+.chatbot-messages-height {
+  min-height: 68vh;
+  max-height: 68vh;
+}
+
+.chatbot-main-container {
+  position: fixed;
+  background-color: rgba($color: #000000, $alpha: .8);
+  top: 0;
+  left: 0;
+  z-index: 2200;
+}
+
+.chatbot-background {
+  width: 100%;
+  height: 100vh;
 }
 
 .chatbot-open-icon {
@@ -157,7 +176,6 @@
   }
 }
 
-
 // RESPONSIVE FOR CHATBOT AND OPEN ICON 
 @media screen and (max-width: 900px) {
   .chatbot-open-icon {
@@ -166,20 +184,7 @@
   }
 
   .chatbot-container {
-    width: 60%;
-  }
-
-  .chatbot-main-container {
-    position: fixed;
-    background-color: rgba($color: #000000, $alpha: .8);
-    top: 0;
-    left: 0;
-    z-index: 2200;
-  }
-
-  .chatbot-background {
-    width: 100%;
-    height: 100vh;
+    width: 50%;
   }
 }
 
@@ -187,11 +192,13 @@
   .chatbot-container {
     left: 0;
     margin: auto;
-    width: 90%;
+    width: 70%;
+
+
   }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 600px) {
   .chatbot-container {
     width: 100%;
     height: 100%;
@@ -206,11 +213,11 @@
       height: 92%;
   
       .chatbot-messages__container {
-        min-height: 93%;
+        min-height: 90%;
       }
   
       .chatbot-input__container {
-        height: 7%;
+        height: 10%;
     }
     }
   }

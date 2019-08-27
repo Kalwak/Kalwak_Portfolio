@@ -21,22 +21,22 @@
               <div class="form-group col-12 form__input-container">
                 <label for="name" class="d-none">Nombre</label>
                 <input type="text" placeholder="Nombre" class="form-control form__input" id="name" v-model="email.name" />
-                <small class="text-danger mt-1 mb-3 d-block">*requerido</small>
+                <small class="text-danger mt-1 mb-2 d-block" :class="{ visible: inputError, invisible: !inputError }">*requerido</small>
               </div>
               <div class="form-group col form__input-container">
                 <label for="phone" class="d-none">Teléfono</label>
                 <input type="tel" placeholder="Telefono" class="form-control form__input" id="phone" v-model.number="email.phoneNumber" />
-                <small class="text-danger mt-1 mb-3 d-block">*opcional</small>
+                <small class="text-danger mt-1 mb d-block invisible">*opcional</small>
               </div>
               <div class="form-group col form__input-container">
                 <label for="email" class="d-none">Email</label>
                 <input type="email" placeholder="E-mail" class="form-control form__input" id="email" v-model="email.address" />
-                <small class="text-danger mt-1 mb-3 d-block">*requerido</small>
+                <small class="text-danger mt-1 mb-2 d-block" :class="{ visible: inputError, invisible: !inputError }">*requerido</small>
               </div>
               <div class="form-group col-12 form__input-container">
                 <label for="message" class="d-none">Consulta</label>
                 <textarea placeholder="Consulta" class="form-control form__input form__textarea" id="message" v-model="email.message"></textarea>
-                <small class="text-danger mt-1 mb-3 d-block">*requerido</small>
+                <small class="text-danger mt-1 mb-2 d-block" :class="{ visible: inputError, invisible: !inputError }">*requerido</small>
               </div>
               <div class="form-group col-12 form__button-container">
                 <button class="form__button" @click.prevent="sendEmail" :disabled="buttonDisabled">Enviar</button>
@@ -69,7 +69,7 @@
             <div class="social-media">
               <h4 class="contact__title">Nuestras redes</h4>
               <a href="https://www.facebook.com/Kalwak-358576961719203" target="_blank" class="social-media__icon icon-facebook social-media__icon" title="facebook"></a>
-              <a href="tel:+50684599023" target="_blank" class="social-media__icon icon-whatsapp social-media__icon" title="whatsapp"></a>
+              <a href="tel:+50684599023" class="social-media__icon icon-whatsapp social-media__icon" title="whatsapp"></a>
             </div>
           </div>
         </div>
@@ -108,6 +108,10 @@ export default {
         inputError: false,
       },
       formDisabled: false,
+
+      // if click send button and required fields are empty, this will set to true
+      // and warnings about that the fields are required will be showned
+      inputError: false,
     };
   },
 
@@ -144,9 +148,9 @@ export default {
       || !this.email.message;
     },
 
-    // returns true if buttonDisabledByProcess or buttonDisabledByInputs is true, else returns false
+    // returns true if buttonDisabledByProcess is true, else returns false
     buttonDisabled() {
-      return this.buttonDisabledByProcess || this.buttonDisabledByInputs;
+      return this.buttonDisabledByProcess;
     },
 
     // returns an object with the three required properties from email
@@ -159,7 +163,7 @@ export default {
       }
     },
 
-    // current path
+    // returns current $route.path
     currentPath() {
       return this.$route.path;
     },
@@ -210,6 +214,8 @@ export default {
           .finally(() => {
             self.email.onSending = false;
           });
+      } else {
+        self.inputError = true;
       }
     },
 
@@ -249,6 +255,7 @@ export default {
     // callback function, check if current path is equal to /hire-us,
     // if true, set data property formDisabled to true, else set it to false
     currentPath() {
+      this.inputError = false;
       if (this.currentPath === '/hire-us') {
         this.formDisabled = true;
       } else {

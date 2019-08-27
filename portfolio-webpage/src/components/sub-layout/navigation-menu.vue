@@ -28,7 +28,7 @@
     </div>
 
     <div class="nav__item">
-      <a href="#contact-section" class="nav__link" v-smooth-scroll>Contacto</a>
+      <a :href="currentPath + '#contact-section'" class="nav__link">Contacto</a>
     </div>
 
     <div class="nav__item">
@@ -81,7 +81,6 @@ export default {
     // used to emit a custom event to close navigation menu
     // if the current path/route has changed
     currentPath() {
-      console.log('ok currentPath changed');
       this.$emit('close-nav-menu', false);
     },
   },
