@@ -113,18 +113,7 @@
 }
 
 // MEDIA QUERIES
-@media screen and (max-width: 1000px) {
-  .hire-us {
-
-    .hire-form {
-      width: 100%;
-      margin: 0px auto;
-    }
-  }
-}
-
-// MEDIA QUERIES
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 800px) {
   .hire-us {
 
     .hire-form {
@@ -132,6 +121,30 @@
       .hire-form__inputs {
         .hire-form__input {
           width: 49%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .hire-us {
+
+    .hire-form {
+      
+      .hire-form__inputs {
+        .hire-form__input {
+          width: 100%;
+        }
+      }
+
+      .service-picker {
+  
+        &__options {
+  
+          .service-picker__option {
+            width: 100%;
+          }
         }
       }
     }
