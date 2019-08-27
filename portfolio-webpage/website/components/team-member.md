@@ -1,5 +1,7 @@
 # team-member
 
+team-member component
+
 ## Props
 
 <!-- @vuese:team-member:props:start -->

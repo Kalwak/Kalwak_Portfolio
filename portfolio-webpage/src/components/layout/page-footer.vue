@@ -182,14 +182,14 @@ export default {
           .then(res => {
             if (res.request.statusText === 'OK' && res.data.response === 1) {
               swal({
-                title: 'Notificacion',
+                title: 'Notificación',
                 text: 'Su mensaje ha sido enviado',
                 icon: 'success',
               });
               self.clearInputs();
             } else {
               swal({
-                title: 'Notificacion',
+                title: 'Notificación',
                 text: res.data.email[0],
                 icon: 'warning',
               });
@@ -197,6 +197,11 @@ export default {
           })
           .catch(err => {
             console.log(err);
+            swal({
+              title: 'Notificación',
+              text: 'Hubo un error',
+              icon: 'error',
+            });
           })
           .finally(() => {
             self.email.onSending = false;

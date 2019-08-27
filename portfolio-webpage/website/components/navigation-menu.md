@@ -1,5 +1,7 @@
 # navigation-menu
 
+navigation menu component
+
 ## Events
 
 <!-- @vuese:navigation-menu:events:start -->

@@ -2,14 +2,37 @@ import os
 from rest_framework.views import APIView
 from rivescript import RiveScript
 from Portfolio.settings import BASE_DIR
-from Service.serializers import ChatbotSerializer
+from Service.serializers import ChatbotSerializer, FileSerializer, ServiceSerializer
 from .models import ServiceRequest
 from rest_framework import viewsets
 from .serializers import ServiceRequestSerializer
 from rest_framework import status
 from rest_framework.response import Response
 import logging
+
 log = logging.getLogger('debugger')
+
+
+def save_files(files, pk):
+    for element in files:
+        element["service"] = pk
+    files = FileSerializer(data=files, many=True)
+    if files.is_valid():
+        files.save()
+    else:
+        return Response(files.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+def save_services(services, pk):
+    print(services, pk)
+    for element in services:
+        element["service_request"] = pk
+    print(services)
+    services = ServiceSerializer(data=services, many=True)
+    if services.is_valid():
+        services.save()
+    else:
+        return Response(services.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ServiceRequestView(viewsets.ModelViewSet):
@@ -25,11 +48,22 @@ class ServiceRequestView(viewsets.ModelViewSet):
         :params request: should contain a JSON with name, email, description.
                         Also, can have attached several files.
         """
+        files = request.data.pop("files", [])
+        services = request.data.pop("services", [])
         serializer = self.serializer_class(data=request.data,
                                            context={'request': request})
         if serializer.is_valid():
             log.info('Request data is valid.')
-            serializer.save()
+            instance = serializer.save()
+            print(instance)
+
+            error = save_files(files, instance.pk)
+            if error:
+                return error
+            error = save_services(services, instance.pk)
+            if error:
+                return error
+
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         log.info('Request data is not valid.')
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

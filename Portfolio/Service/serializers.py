@@ -1,4 +1,6 @@
 from rest_framework import serializers
+
+from Service.models import Service
 from .models import ServiceRequest as ServiceR
 from .models import File
 from django.template.loader import render_to_string
@@ -6,7 +8,14 @@ from django.utils.html import strip_tags
 from django.conf import settings
 from django.core.mail import EmailMultiAlternatives
 import logging
+
 log = logging.getLogger('debugger')
+
+
+class ServiceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Service
+        fields = '__all__'
 
 
 class FileSerializer(serializers.ModelSerializer):
@@ -16,12 +25,12 @@ class FileSerializer(serializers.ModelSerializer):
 
 
 class ServiceRequestSerializer(serializers.HyperlinkedModelSerializer):
-    files = FileSerializer(source='servicefile_set', many=True,
-                           read_only=True)
+    files = FileSerializer(many=True, required=False)
+    services = ServiceSerializer(many=True, required=False)
 
     class Meta:
         model = ServiceR
-        fields = ('name', 'email', 'description', 'files')
+        fields = ('name', 'email', 'description', 'files', 'services', 'telephone')
 
     def create(self, validated_data):
         """
@@ -47,7 +56,7 @@ class ServiceRequestSerializer(serializers.HyperlinkedModelSerializer):
 
         email.send()
 
-        return validated_data
+        return service
 
 
 class ChatbotSerializer(serializers.Serializer):
