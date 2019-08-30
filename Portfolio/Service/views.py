@@ -24,10 +24,8 @@ def save_files(files, pk):
 
 
 def save_services(services, pk):
-    print(services, pk)
     for element in services:
         element["service_request"] = pk
-    print(services)
     services = ServiceSerializer(data=services, many=True)
     if services.is_valid():
         services.save()
@@ -55,7 +53,6 @@ class ServiceRequestView(viewsets.ModelViewSet):
         if serializer.is_valid():
             log.info('Request data is valid.')
             instance = serializer.save()
-            print(instance)
 
             error = save_files(files, instance.pk)
             if error:
