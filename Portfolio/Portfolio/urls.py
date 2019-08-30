@@ -29,6 +29,7 @@ urlpatterns = [
     path('api/', include('Email.urls', namespace='email')),
     path('api/', include('Service.urls', namespace='service')),
     path('api/', include('Project.urls', namespace='project')),
+    path('api/', include('Blog.urls', namespace='blog')),
     path('api/', include('rest_framework.urls')),
     path('', include('frontend.urls', namespace='frontend')),
 ]
