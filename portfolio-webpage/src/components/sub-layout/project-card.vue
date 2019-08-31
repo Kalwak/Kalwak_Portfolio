@@ -16,7 +16,7 @@
                         navigation-next-label="<span class='icon-right-arrow carousel__arrow'></span>">
                     <slide class="project__carousel__slide" v-for="(image, index) in project.images" :key="index">
                         <div class="project__images">
-                            <img :src="image.cover_page" :alt="project.title"/>
+                            <img :src="image.photo" :alt="project.title"/>
                             <h3 class="image__category">{{ project.categories[0] }}</h3>
                         </div>
                     </slide>
@@ -28,7 +28,7 @@
                 <h3 class="project__title">{{ project.subtitle }}</h3>
                 <div class="project__description">
                     <p class="description__text" v-html="project.description"></p>
-                    <p class="description__widget">Dirección de la página web <a :href="project.website" tabindex="_blank">{{ project.website }}</a></p>
+                    <p class="description__widget">Dirección de la página web <a :href="project.website" target="_blank">{{ project.website }}</a></p>
                 </div>
             </div>
         </div>

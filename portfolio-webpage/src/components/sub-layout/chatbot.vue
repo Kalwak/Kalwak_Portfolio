@@ -60,11 +60,13 @@ export default {
     // like message id, message type, by default is human, text which the user message and message time
     fullMessage() {
       let id = this.messages.length + 1;
+      let time = new Date().toLocaleTimeString();
+      time = this.getTimewithOutSeconds(time);
       return {
         type: 'human',
         id,
         text: this.message,
-        time: new Date().toLocaleTimeString(),
+        time,
       };
     },
 
@@ -141,6 +143,24 @@ export default {
       this.messages = [];
     },
 
+    // @vuese
+    // returns a string with the time, but without seconds information
+    // @args time time string
+    getTimewithOutSeconds(time) {
+      if (typeof time !== 'string') {
+        return 'time string required';
+      };
+
+      // get am or pm value reparated by the space
+      const timeStatus = time.split(' ')[1];
+      time = time.split(' ');
+      time.splice(1, 1);
+      time = time.join('');
+      time = time.split(':');
+      time.splice(2, 1);
+      time = time.join(':');
+      return `${time} ${timeStatus}`;
+    },
   },
 
   // one purpose, everytime is mounted, the focusInput method will be called

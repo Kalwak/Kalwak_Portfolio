@@ -6,12 +6,12 @@
       - H2 // CLASSES: HIRE-US__TITLE // MAIN TITLE OF THIS SECTION
       - DIV // CLASSES: INNER-WRAPPER // LIMITER FOR PAGE WIDTH
         - H3 // CLASSES: HIRE-US__SUB-TITLE // SUBTITLE OF THIS SECTION
-        - FORM // CLASSES: HIRE-FORM // FORM WHERE INPUTS FOR PROJECT WILL BE
+        - FORM // CLASSES: HIRE-FORM // FORM WHERE INPUTS FOR PROJECT INFORMATION WILL BE GIVEN BY USER
           - DIV // CLASSES: HIRE-FORM__INPUTS // CONTAINER FOR INPUTS LIKE FNAME, LNAME, PHONENUMBER AND EMAIL
             - INPUT:VARY // CLASSES: HIRE-FORM__INPUT // INPUT FOR BASIC USER INFORMATION
           - DIV // CLASSES: SERVICE-PICKER // SECTION WHERE THE SERVICES WILL BE PICKED THROUGH CHECKBOXES
             - h4 // CLASSES: SERVICE-PICKER__TITLE // TITLE FOR THIS SECTION
-            - DIV // CLASSES: SERVICE-PICKER__OPTIONS // CONTAINER FOR OPTION WHICH ARE CHECKBOXES AND LABELS
+            - DIV // CLASSES: SERVICE-PICKER__OPTIONS // CONTAINER FOR OPTIONS WHICH ARE CHECKBOXES AND LABELS
               - DIV // CLASSES: SERVICE-PICKER__OPTION // CONTAINER FOR CHECKBOX AND LABEL FOR SERVICE OPTION
                 - INPUT:CHECKBOX // CLASSES: OPTION__CHECKBOX // INPUT TYPE CHECKBOX
                 - LABEL // CLASSES: OPTION_LABEL // LABLE FOR CHECKBOX
@@ -45,7 +45,7 @@
                         <h4 class="service-picker__title">Servicio a consultar</h4>
                         <div class="service-picker__options">
                             <div v-for="(option, idx) in options" class="service-picker__option" :key="idx">
-                                <!-- change to :value="option.name" when every option.name is different, otherwise it'll get a bug when checking -->
+                                <!-- change to :value="option.name" when every option.name is different, otherwise it'll get a bug when checking checkboxes-->
                                 <input type="checkbox" :value="option.name + ' ' + option.id"
                                        :id="option.id" class="option__checkbox" v-model="service_request.services"/>
                                 <label :for="option.id" class="option__label">{{ option.name + ' ' + option.price

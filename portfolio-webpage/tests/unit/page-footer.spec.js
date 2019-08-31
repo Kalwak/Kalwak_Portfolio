@@ -72,19 +72,6 @@ describe('page-footer', () => {
     // as onSending is set to true, buttonDisabledByProcess is true, so either buttonDisabledByProcess or buttonDisabledByInputs is true... 
     // buttonDisabled should be true
     expect(wrapper.vm.buttonDisabled).toBe(true);
-
-      // not this time, will be oposite
-    wrapper.setData({
-      email: {
-        onSending: false,
-        name: '',
-        address: '',
-        message: '',
-      },
-    });
-
-    // should be true, because required inputs are empty ... 
-    expect(wrapper.vm.buttonDisabled).toBe(true);
   });
 
   it('should have emailInfo computed property, and should be an object', () => {
