@@ -57,11 +57,13 @@
                     </div>
                     <div class="hire-form__message">
                         <label class="d-none" for="message">Consulta</label>
-                        <textarea v-model="service_request.description" id="message"
-                                  placeholder="Cuentenos de su proyecto"></textarea>
+                        <textarea v-model="service_request.description" id="message" placeholder="Cuentenos de su proyecto"></textarea>
                     </div>
                     <div class="hire-form__button">
                         <button class="u-button" :disabled="buttonDisabled" @click.prevent="submit">Cotizar</button>
+                    </div>
+                    <div class="hire-form__files">
+                        <label></label>
                     </div>
                 </form>
             </div>

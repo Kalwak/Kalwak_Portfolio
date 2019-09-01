@@ -150,7 +150,8 @@ export default {
 
     // @vuese
     // returns a string with the time, but without seconds information
-    // @args time time string
+    // @args time string // should be the string returned from new Date().toLocaleTimeString
+    // or string with format hh:mm:ss am/pm, i.e 12:00 pm 
     getTimewithOutSeconds(time) {
       if (typeof time !== 'string') {
         return 'time string required';
@@ -172,9 +173,9 @@ export default {
     getFirstChatbotResponse() {
       let chatbotUrl = this.chatbotApi;
       axios.post('http://localhost:8000/api/chatbot/', {
-        ip: this.userIp,
-        msg: 'Hello',
-      })
+          ip: this.userIp,
+          msg: 'Hello',
+        })
         .then(response => {
           console.log(response);
         })

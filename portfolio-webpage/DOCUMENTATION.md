@@ -13,3 +13,4 @@ npm run docs:serve
 ```
 
 Note: These commands have to be put in the project root directory
+Note: this documentation assumes you've already made installations with `npm install` command
