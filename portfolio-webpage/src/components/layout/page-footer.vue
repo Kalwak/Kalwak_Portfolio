@@ -118,7 +118,7 @@ export default {
 
     // endpoint where email will be posted
     apiEmail() {
-      return `${this.apiEndpoint}/api/send_email`;
+      return `${this.apiEndpoint}/api/send_email/`;
     },
 
     // full message where name, phone and message will be included
