@@ -13,16 +13,13 @@
     <div class="col-12">
       <div class="about-section">
         <div class="inner-wrapper">
-            <h2>Sobre nosotros: ¡Kalwak es una compañía que tiene la solución de software que necesita! Con su
-                ingeniería rápida y eficiente para propocionarle
-                un software de primer nivel personalizado hasta el último detalle!</h2>
-            <h2>Mision: Integrarse al ambiente de PYMES y microempresas, ofreciendo software para el crecimiento de
-                las demás
-                empresas igualmente como al de Kalwak.</h2>
-            <h2>Vision: Un país donde cada empresa tenga su representación digital ya sea en una página web o en un
-                aplicación,
-                con el fin de promover el avance a la era digital por completo aprovechando cada uno de sus
-                beneficios!</h2>
+            <h2>¡Kalwak es una compañía que tiene la solución de software que necesita! Utilizando ingeniería rápida y
+                eficiente le proporcionamos un software de primer nivel, personalizado hasta el último detalle.</h2>
+            <h2>Misión: Integrarse al ambiente de PYMES y microempresas, ofreciendo software para su crecimiento, al igual
+                que lograr el crecimiento de Kalwak.</h2>
+            <h2>Visión: Un país donde cada empresa tenga su representación digital, ya sea en una página web o en un
+                aplicación, con el fin de promover el avance a la era digital, aprovechando cada uno de sus beneficios.</h2>
+
         </div>
       </div>
       <div class="team-section">

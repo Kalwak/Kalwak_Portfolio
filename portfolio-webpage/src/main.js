@@ -6,6 +6,8 @@ import vueSmoothScroll from 'vue2-smooth-scroll';
 import axios from 'axios';
 import '../node_modules/swiper/dist/js/swiper.min.js';
 import './assets/css/main.scss';
+import VueCookies from 'vue-cookies';
+Vue.use(VueCookies);
 
 
 Vue.config.productionTip = false;
@@ -18,3 +20,7 @@ new Vue({
   // render: h => h(App),
   render: createElement => createElement(App),
 }).$mount('#app');
+
+
+let csrf_cookie = window.$cookies.get('csrftoken');
+axios.defaults.headers.common['X-CSRFToken'] = csrf_cookie; // for all requests

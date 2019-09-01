@@ -24,10 +24,8 @@ def save_files(files, pk):
 
 
 def save_services(services, pk):
-    print(services, pk)
     for element in services:
         element["service_request"] = pk
-    print(services)
     services = ServiceSerializer(data=services, many=True)
     if services.is_valid():
         services.save()
@@ -43,13 +41,10 @@ class ServiceRequestView(viewsets.ModelViewSet):
         """
         Api view that saves a ServiceRequest and internally sends an email
         to website owners. To see this implementation go to:
-        :func:`Service.serilizer.ServiceRequestSerializer.create`
+        :func:`Service.serializers.ServiceRequestSerializer.create`
 
-        :params request: should contain a JSON with:
-                            name
-                            email
-                            description
-                        also, can have attached several files.
+        :params request: should contain a JSON with name, email, description.
+                        Also, can have attached several files.
         """
         files = request.data.pop("files", [])
         services = request.data.pop("services", [])
@@ -58,7 +53,6 @@ class ServiceRequestView(viewsets.ModelViewSet):
         if serializer.is_valid():
             log.info('Request data is valid.')
             instance = serializer.save()
-            print(instance)
 
             error = save_files(files, instance.pk)
             if error:

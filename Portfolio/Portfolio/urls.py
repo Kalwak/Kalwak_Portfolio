@@ -17,12 +17,19 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+import environ
+
+env = environ.Env(
+    # default value
+    ADMIN_URL=(str, 'admin/')
+)
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(env('ADMIN_URL'), admin.site.urls),
     path('api/', include('Email.urls', namespace='email')),
     path('api/', include('Service.urls', namespace='service')),
     path('api/', include('Project.urls', namespace='project')),
+    path('api/', include('Blog.urls', namespace='blog')),
     path('api/', include('rest_framework.urls')),
     path('', include('frontend.urls', namespace='frontend')),
 ]
@@ -32,4 +39,3 @@ if settings.DEBUG:
 
 admin.site.site_header = "Kalwak Administration"
 handler404 = 'frontend.views.vuejs_frontend404'
-
