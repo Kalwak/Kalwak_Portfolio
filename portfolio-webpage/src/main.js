@@ -23,5 +23,4 @@ new Vue({
 
 
 let csrf_cookie = window.$cookies.get('csrftoken');
-console.log(csrf_cookie);
 axios.defaults.headers.common['X-CSRFToken'] = csrf_cookie; // for all requests
