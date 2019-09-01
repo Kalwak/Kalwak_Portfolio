@@ -34,7 +34,6 @@ export default new Vuex.Store({
             let category = state.projects.projectsCategory;
             let categorizedProjects = [];
             let projects = state.projectsInformation;
-            console.log(projects, category);
 
             // going through every project object
             // and check if the current page category matches with theirs

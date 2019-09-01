@@ -34,7 +34,7 @@
 </template>
 
 <script>
-// header component
+// header component, page header section, used to show page brand logo and navigation menu
 import NavMenu from '@/components/sub-layout/navigation-menu.vue';
 
 
@@ -43,7 +43,7 @@ export default {
   name: 'page-header',
   data() {
     return {
-      // used for toggling the menu (see mobile)
+      // used for toggling the navigation menu, used only on table and mobile screen sizes
       activatedMenu: false
     };
   },
@@ -56,6 +56,7 @@ export default {
   methods: {
     // @vuese
     // actually toggles the activedMenu data property's state
+    // this method is triggered by menu button
     toggleMenu() {
       this.activatedMenu = !this.activatedMenu;
     }

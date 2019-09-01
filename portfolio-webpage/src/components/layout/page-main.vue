@@ -7,15 +7,32 @@
 <template>
   <main class="main row">
     <router-view></router-view>
+    <div class="chatbot-main-container" :class="{ 'chatbot-background': chatbotVisible }">
+      <chat-bot class="animated slideInUp"  @close-chatbot="chatbotVisible = false" v-if="chatbotVisible" />
+    </div>
+    <img src="~@/assets/images/chatbot-icons/chatbot-icon.png" alt="open chatbot" title="open chatbot" @click="chatbotVisible= true" class="chatbot-open-icon" />
   </main>
 </template>
 
 <script>
 // views will render here, so its content is dynamic
+import ChatBot from '../sub-layout/chatbot.vue';
 
 
 // @vuese
 export default {
-  name: 'page-main'
+  name: 'page-main',
+
+  data() {
+    return {
+      // chatbotVisble for controlling chatbot position/visibility
+      chatbotVisible: false,
+    };
+  },
+
+  components: {
+    // this represents the chatbot
+    ChatBot
+  },
 }
 </script>

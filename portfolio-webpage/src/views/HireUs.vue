@@ -70,8 +70,9 @@
 </template>
 
 <script>
+    // hire-us view component, provides an interface where the client is able to make a consultation for a centain service
+    // 
     import {ServiceRequestService} from '../services/service_request';
-    // hire-us view component
 
 
     // @vuese
@@ -146,7 +147,7 @@
                     || !this.service_request.description;
             },
 
-            // button disabled based on buttonDisabledByInputs
+            // button disabled based on buttonDisabledByInputs, this will be used to disabled cotizar button
             buttonDisabled() {
                 return this.buttonDisabledByInputs;
             },

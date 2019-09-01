@@ -52,7 +52,7 @@
 </template>
 
 <script>
-// service component
+// service component, shows information about the selected service
 import services from '../../services.json';
 import projects from '../../projects-information.json';
 import { Carousel, Slide } from 'vue-carousel';

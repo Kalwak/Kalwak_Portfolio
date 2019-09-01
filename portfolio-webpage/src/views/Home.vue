@@ -71,7 +71,7 @@
 <script>
     // home view
     import {ProjectService} from "../services/project_service";
-    import {Carousel, Slide} from 'vue-carousel';
+		import {Carousel, Slide} from 'vue-carousel';
 
 
     const apiService = new ProjectService();
@@ -85,13 +85,16 @@
             // from vue-carousel, this is the carousel main container
             Carousel,
             // from vue-carousel, this is the slide that goes into caoursel component
-            Slide
+						Slide,
         },
 
         data() {
 
             return {
+                // projects set to an empty array
                 projects: [],
+
+                // used to set when projects are loading or not
                 loadingProjects: false,
             };
 
@@ -99,19 +102,21 @@
 
         methods: {
 
+            // @vuese
+            // used to get project by the backend api 
+            // and set data property projects to the projects from the api call response
             getProjects() {
                 const self = this;
                 this.loadingProjects = true;
                 // Gives us a list of projects from the django backend
-                setTimeout(() => {
-                    apiService.getProjects().then((data) => {
-                        self.projects = data;
-                        self.loadingProjects = false;
-                    }).catch(err => console.error(err));
-                }, 2000);
+                apiService.getProjects().then((data) => {
+                    self.projects = data;
+                    self.loadingProjects = false;
+                }).catch(err => console.error(err));
             },
         },
 
+        // used to call getProjects method
         mounted() {
             // Once the component is mounted we will fetch the projects
             this.getProjects();
@@ -119,9 +124,11 @@
 
 
         computed: {
+            // returns an array of the firs category of every project,
+            // also formates the category by replacing - for ' ' an string with one space 
             categoryFormatted() {
                 return this.projects.map(project => {
-                    return project.categories[0].split('-').join(' ');
+                    return project.categories[0].split('-').join('');
                 });
             },
         },
