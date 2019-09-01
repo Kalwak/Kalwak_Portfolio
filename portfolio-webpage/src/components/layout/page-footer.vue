@@ -123,7 +123,7 @@ export default {
 
     // endpoint where email will be posted
     apiEmail() {
-      return `${this.apiEndpoint}/api/send_email`;
+      return `${this.apiEndpoint}/api/send_email/`;
     },
 
     // full message where name, phone and message will be included
@@ -204,10 +204,9 @@ export default {
             }
           })
           .catch(err => {
-            console.log(err);
             swal({
               title: 'Notificación',
-              text: 'Hubo un error\nintente otra vez',
+              text: 'Hubo un error, intente otra vez',
               icon: 'error',
             });
           })
