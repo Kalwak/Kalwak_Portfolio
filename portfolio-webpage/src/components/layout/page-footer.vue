@@ -204,10 +204,9 @@ export default {
             }
           })
           .catch(err => {
-            console.log(err);
             swal({
               title: 'Notificación',
-              text: 'Hubo un error\nintente otra vez',
+              text: 'Hubo un error, intente otra vez',
               icon: 'error',
             });
           })

@@ -94,7 +94,7 @@
                 // projects set to an empty array
                 projects: [],
 
-                // used to set when projects are loading or not
+                // used when projects are loading or not
                 loadingProjects: false,
             };
 

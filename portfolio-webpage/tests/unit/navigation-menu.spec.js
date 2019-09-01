@@ -1,5 +1,4 @@
 import NavigationMenu from '../../src/components/sub-layout/navigation-menu.vue';
-import Vue from 'vue';
 
 
 describe('navigation-menu', () => {

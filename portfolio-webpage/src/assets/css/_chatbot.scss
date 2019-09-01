@@ -52,6 +52,7 @@
 
       .message-container {
         margin: 20px 15px;
+        display: flex;
 
         .message__bubble {
           transition: .3s all linear;
@@ -67,7 +68,7 @@
 
           .message__text {
             font-size: 1em;
-            font-weight: 100;
+            font-weight: 400;
             word-wrap: break-word;
           }
 
@@ -84,7 +85,6 @@
       }
 
       .bubble--right {
-        display: flex;
         justify-content: flex-end;
       }
     }
