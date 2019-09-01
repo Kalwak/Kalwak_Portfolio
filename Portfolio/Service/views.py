@@ -101,8 +101,8 @@ class ChatbotAPIView(APIView):
         serializer = self.serializer_class(data=request.data)
 
         if serializer.is_valid():
-            msg = request.POST['msg']
-            ip = request.POST['ip']
+            msg = request.POST.get('msg') or request.data.get('msg')
+            ip = request.POST.get('ip') or request.data.get('ip')
             reply = self.rs.reply(ip, msg)
             log.info('Request data is valid.')
             return Response(reply)
