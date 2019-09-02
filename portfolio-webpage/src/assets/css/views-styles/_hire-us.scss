@@ -2,7 +2,7 @@
   background-color: #ddd;
 
   &__title {
-    font-size: 1.4em;
+    font-size: 1.3em;
     background: $blue-color;
     color: #fff;
     padding: 10px 0px;
@@ -39,7 +39,7 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      
+
       .hire-form__input {
         width: 49%;
         font-weight: 400;
@@ -48,9 +48,9 @@
       }
     }
 
-    .hire-form__message textarea {
-      width: 100%;
-    }
+    // .hire-form__message textarea {
+    //   width: 100%;
+    // }
 
     .hire-form__button {
       text-align: center;
@@ -111,6 +111,43 @@
         max-height: 300px;
       }
     }
+
+    .hire-form__files {
+      margin: 20px auto 40px;
+      display: flex;
+      justify-content: center;
+
+      .files__input {
+        width: 1px;
+        height: 1px;
+        position: absolute;
+      }
+
+      .files__label, .files__output-label {
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        padding: 0px 16px;
+        text-align: center;
+        background-color: $orange-color;
+        color: #fff;
+        margin: 0;
+        border: 1px solid $orange-color;
+        cursor: cell;
+      }
+
+      .files__output-label {
+        background-color: #fff;
+        cursor: default;
+        color: #000;
+      }
+
+      .files__input:focus + .files__label,
+      .files__label:hover {
+        background-color: darken($orange-color, 6%);
+        border-style: dotted;
+      }
+    }
   }
 }
 
@@ -147,6 +184,33 @@
           .service-picker__option {
             width: 100%;
           }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .hire-us {
+
+    .hire-form {
+      .hire-form__files {
+        flex-wrap: wrap;
+  
+        .files__label, .files__output-label {
+          width: 100%;
+        }
+  
+        .files__output-label {
+          background-color: #fff;
+          cursor: default;
+          color: #000;
+        }
+  
+        .files__input:focus + .files__label,
+        .files__label:hover {
+          background-color: darken($orange-color, 6%);
+          border-style: dotted;
         }
       }
     }

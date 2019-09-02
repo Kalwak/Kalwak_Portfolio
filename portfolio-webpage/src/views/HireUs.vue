@@ -59,11 +59,13 @@
                         <label class="d-none" for="message">Consulta</label>
                         <textarea v-model="service_request.description" id="message" placeholder="Cuentenos de su proyecto"></textarea>
                     </div>
+                    <div class="hire-form__files">
+                        <input type="file" id="inputFile" class="files__input" lang="es" multiple @change="getUserFiles($event)" />
+                        <label for="inputFile" class="files__label">Adjuntar archivos</label>
+                        <span class="files__output-label">Numero de archivos {{ numberOfSelectedFiles }}</span>
+                    </div>
                     <div class="hire-form__button">
                         <button class="u-button" :disabled="buttonDisabled" @click.prevent="submit">Cotizar</button>
-                    </div>
-                    <div class="hire-form__files">
-                        <label></label>
                     </div>
                 </form>
             </div>
@@ -115,26 +117,6 @@
                         name: 'Diseño web corporativo',
                         price: '$1200'
                     },
-                    {
-                        id: 5,
-                        name: 'Diseño web corporativo',
-                        price: '$1200'
-                    },
-                    {
-                        id: 6,
-                        name: 'Diseño web corporativo',
-                        price: '$1200'
-                    },
-                    {
-                        id: 7,
-                        name: 'Diseño web corporativo',
-                        price: '$1200'
-                    },
-                    {
-                        id: 8,
-                        name: 'Diseño web corporativo',
-                        price: '$1200'
-                    },
                 ],
             };
         },
@@ -152,6 +134,11 @@
             // button disabled based on buttonDisabledByInputs, this will be used to disabled cotizar button
             buttonDisabled() {
                 return this.buttonDisabledByInputs;
+            },
+
+            numberOfSelectedFiles() {
+                let numberOfFiles = this.service_request.files.length;
+                return numberOfFiles;
             },
         },
 
@@ -181,7 +168,14 @@
                 api.postService(this.service_request).then((data) => {
                     console.log(data);
                 }).catch(err => console.error(err));
-            }
+            },
+
+            // @vuese 
+            // used to get files from file input and then store in the service_request object
+            getUserFiles(event) {
+                let files = event.target.files;
+                this.service_request.files = files;
+            },
         }
     }
 </script>
