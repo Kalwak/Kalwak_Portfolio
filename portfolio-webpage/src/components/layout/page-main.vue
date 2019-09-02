@@ -7,10 +7,10 @@
 <template>
   <main class="main row">
     <router-view></router-view>
-    <div class="chatbot-main-container" :class="{ 'chatbot-background': chatbotVisible }">
+    <div class="chatbot-main-container" :class="{ 'chatbot-background': chatbotVisible }" @click="chatbotVisible = false">
       <chat-bot class="animated slideInUp"  @close-chatbot="chatbotVisible = false" v-if="chatbotVisible" />
     </div>
-    <img src="~@/assets/images/chatbot-icons/chatbot-icon.png" alt="open chatbot" title="open chatbot" @click="chatbotVisible= true" class="chatbot-open-icon" />
+    <img src="~@/assets/images/chatbot-icons/chatbot-icon.png" alt="open chatbot" title="open chatbot" @click="chatbotVisible = true" class="chatbot-open-icon" />
   </main>
 </template>
 
@@ -22,7 +22,6 @@ import ChatBot from '../sub-layout/chatbot.vue';
 // @vuese
 export default {
   name: 'page-main',
-
   data() {
     return {
       // chatbotVisble for controlling chatbot position/visibility

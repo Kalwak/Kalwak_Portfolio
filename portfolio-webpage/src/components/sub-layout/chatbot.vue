@@ -1,5 +1,5 @@
 <template>
-  <div class="chatbot-container">
+  <div class="chatbot-container" @click.stop="">
     <div class="chatbot__header">
       <h5 class="chatbot__header-title">
         <img  src="~@/assets/images/logo.svg" width="100px" />
@@ -20,7 +20,7 @@
           :class="{ 'bubble--right': message.type === 'human' }"
           v-for="message in messages" :key="message.id">
           <p class="message__bubble animated fadeIn" :class="{ 'orange--bubble': message.type === 'bot' }">
-            <span class="message__text">{{ message.text }}</span>
+            <span class="message__text" v-html="message.text"></span>
             <small class="message__information">{{ message.time }}</small>
           </p>
         </div>
@@ -59,12 +59,10 @@ export default {
     // return an object with full information about the user message
     // like message id, message type, by default is human, text which the user message and message time
     fullMessage() {
-      let id = this.messages.length + 1;
       let time = new Date().toLocaleTimeString();
       time = this.getTimewithOutSeconds(time);
       return {
         type: 'human',
-        id,
         text: this.message,
         time,
       };
@@ -89,6 +87,11 @@ export default {
 
       return ip;
     },
+
+    // get current $path form $route
+    currentPath() {
+      return this.$route.path;
+    },
   },
 
   methods: {
@@ -102,8 +105,13 @@ export default {
       };
 
       if (!this.invalidInput) {
-        this.messages.push(bubbleMessage);
         this.message = '';
+        this.PostMessageToChatbot({
+          ip: bubbleMessage.ip,
+          msg: bubbleMessage.text,
+        });
+        this.saveMessageToLocalStorage(bubbleMessage);
+        this.loadMessagesFromLocalStorage();
 
         // when the new message is already added in dom
         this.$nextTick(function() {
@@ -143,15 +151,21 @@ export default {
     },
 
     //@vuese
-    // clear messages array to an empty array
+    // clear messages of the localStorage _messages.messages
     clearMessages() {
-      this.messages = [];
+      let _messages = JSON.parse(localStorage.getItem('_messages'));
+      if (typeof _messages === 'object') {
+        if (!_messages.messages) return false;
+        _messages.messages = [];
+        localStorage.setItem('_messages', JSON.stringify(_messages));
+        this.loadMessagesFromLocalStorage();
+      } else return false;
     },
 
     // @vuese
     // returns a string with the time, but without seconds information
     // @args time string // should be the string returned from new Date().toLocaleTimeString
-    // or string with format hh:mm:ss am/pm, i.e 12:00 pm 
+    // or string with format hh:mm:ss am/pm, i.e 12:00:10 pm 
     getTimewithOutSeconds(time) {
       if (typeof time !== 'string') {
         return 'time string required';
@@ -169,17 +183,103 @@ export default {
     },
 
     // @vuese
-    // get the fist message from the bot 
-    getFirstChatbotResponse() {
+    // push bot response to localStoge _messages.messages object
+    setChatbotResponseMessage(response) {
+      let message = {
+        type: 'bot',
+        text: response,
+        time: this.getTimewithOutSeconds(new Date().toLocaleTimeString()),
+      };
+      
+      // save bot response to localStorage
+      this.saveMessageToLocalStorage(message);
+      this.loadMessagesFromLocalStorage();
+      this.$nextTick(() => {
+        this.scrollBottom();
+      });
+    },
+    // @vuese
+    // used to post message to bot api
+    // @arga message, this has to contain user ip and msg string
+    PostMessageToChatbot(message) {
       let chatbotUrl = this.chatbotApi;
-      axios.post('http://localhost:8000/api/chatbot/', {
-          ip: this.userIp,
-          msg: 'Hello',
-        })
+      axios.post(chatbotUrl, message)
         .then(response => {
-          console.log(response);
+          this.setChatbotResponseMessage(response.data);
         })
         .catch(err => console.error(err));
+    },
+
+    // @vuese
+    // set localStorage item _messages, which
+    // is an object where messages from both user and bot 
+    // are store, also last user message is storage
+    setMessagesLocalStorageItem() {
+      // create localStorage item for messages information
+      // which in an object
+      if (!localStorage.getItem('_messages')) {
+        localStorage.setItem('_messages', JSON.stringify({
+          messages: [],
+          lastMessage: '',
+        }));
+      };
+    },
+
+    // @vuese
+    // push message object to localStorage _messages.messages, which is an array of object
+    // @args message, object with text, time and type properties
+    saveMessageToLocalStorage(message) {
+      // first check if localStorage item _messages is created && it's type of an object
+      let _messages = JSON.parse(localStorage.getItem('_messages'));
+      if (typeof _messages === 'object') {
+        // only need text type and date from message if they're not, return false
+        if ((typeof message !== 'object') && ((!message.text) || (!message.type) || (!message.time))) {
+          return false;
+        };
+        _messages.messages.push({
+          type: message.type,
+          text: message.text,
+          time: message.time,
+          id: _messages.messages.length + 1,
+        });
+
+        localStorage.setItem('_messages', JSON.stringify(_messages));
+      } else return false;
+    },
+    
+    // @vuese
+    // load last message from ocalStorage _messages.lastMessage, which is a string
+    loadLastMessageFromLocalStorage() {
+      let _messages = JSON.parse(localStorage.getItem('_messages'));
+      if (typeof _messages === 'object') {
+        this.message = _messages.lastMessage;
+      } else return false;
+    },
+
+    // @vuese 
+    // save last user message to the localStorage _messages.lastMessage
+    // @args message, string
+    saveLastMessageToLocalStorage(message) {
+      let _messages = JSON.parse(localStorage.getItem('_messages'));
+      if (typeof _messages === 'object') {
+        if (typeof message !== 'string') {
+          return false;
+        }
+        _messages.lastMessage = message;
+        localStorage.setItem('_messages', JSON.stringify(_messages));
+      } else return false;
+    },
+
+    // @vuese
+    // 
+    loadMessagesFromLocalStorage() {
+      let _messages = JSON.parse(localStorage.getItem('_messages'));
+      if (typeof _messages === 'object') {
+        if (!_messages.messages) {
+          return false;
+        }
+        this.messages = _messages.messages;
+      } else return false;
     },
   },
 
@@ -187,7 +287,18 @@ export default {
   // and the message input will be focus, ready for use input
   mounted() {
     this.focusInput();
-    this.getFirstChatbotResponse();
+    this.scrollBottom();
+  },
+
+  created() {
+    this.setMessagesLocalStorageItem();
+    this.loadMessagesFromLocalStorage();
+    this.loadLastMessageFromLocalStorage();
+  },
+
+  beforeDestroy() {
+    // before component instance ins destroy, saveLastMessageToLocalStorage will save user message 
+    this.saveLastMessageToLocalStorage(this.message);
   },
 }
 </script>

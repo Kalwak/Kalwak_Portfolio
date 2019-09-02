@@ -16,7 +16,7 @@
     <div class="inner-wrapper">
       <div class="member__content">
         <div class="member__image">
-          <img src="~@/assets/images/banner.jpg" alt="placeholder image" class="image" />
+          <img :src="require(`@/assets/images/profile-images/${member.profilePicture}`)" :alt="member.name" class="image" />
         </div>
       </div>
       <div class="member__content">
@@ -32,6 +32,7 @@
 <script>
 // team-member component, used to show information about a member,
 // like name, biography and profile photo
+import path from 'path';
 
 // @vuese
 export default {
@@ -42,6 +43,14 @@ export default {
       type: Object,
       required: true,
     } 
+  },
+
+  methods: {
+    getImgUrl(memberPictureName) {
+      console.log(memberPictureName);
+      let images = require(path.resolve(__dirname, 'assets/images/members-pictures/' + memberPictureName ));
+      console.log(images);
+    },
   }
 }
 </script>

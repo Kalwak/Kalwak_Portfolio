@@ -3,24 +3,28 @@
     "id": 1,
     "name": "Jose Quesada Villalobos",
     "biography": "Apasionado de la ciencia y la tecnología, empecé a programar desde una temprana edad y desde entonces no he parado de aprender y buscar nuevos problemas a los cuales brindar soluciones innovadoras. Poseo excelentes habilidades matemáticas y lógicas que me han permitido desempeñarme exitosamente en desarrollo de páginas web, aplicaciones móviles, programación competitiva, aprendizaje automático y modelado tanto numérico cómo estadístico. Ademas me encanta enseñar, jugar basketball, asistir a eventos culturales y participar en actividades de divulgación.",
-    "tags": ["Django"]
+    "tags": ["Django"],
+    "profilePicture": "Jose.jpg"
   },
   {
     "id": 2,
     "name": "Joseph Zamora",
     "biography": "Gran experiencia y conocimiento cuando se trata de habilidades informáticas como desarrollo web, algoritmos complejos, aplicaciones de escritorio, manejo de Linux con casi cualquier distribución, pruebas de lápiz y otras herramientas informáticas y de programación. También tengo una gran habilidad para hablar inglés con facilidad. Teniendo una mentalidad de determinación, hago mi mayor esfuerzo en cualquier tarea dada con sed de conocimiento. Me encanta pasar el tiempo leyendo librosy cómics.",
-    "tags": ["Full-Stack"]
+    "tags": ["Full-Stack"],
+    "profilePicture": "Joseph.jpg"
   },
   {
     "id": 3,
     "name": "Edwin Garcia",
     "biography": "Desarollador web frontend, apasionado por las tecnologias web y de las computadora, crear paginas web con html, css y javascript, crear programas computacionales tambien es algo que me gusta hacer.",
-    "tags": ["Vuejs"]
+    "tags": ["Vuejs"],
+    "profilePicture": "Edwin.jpg"
   },
   {
     "id": 4,
     "name": "Jennifer De La Cruz",
     "biography": "Siempre he amado el arte, desde pequeña solía dibujar, pintar o crear adornos. Ahora me dedico al diseño gráfico y diseño web, siempre intentando realizar los trabajos más elaborados y originales posibles. Disfruto practicando deportes como fútbol, baloncesto y ciclismo, además, me gusta leer manga y ver buenas películas los fines de semana.",
-    "tags": ["Photoshop", "Ilustrador"]
+    "tags": ["Photoshop", "Ilustrador"],
+    "profilePicture": "Jennifer.jpg"
   }
 ]
