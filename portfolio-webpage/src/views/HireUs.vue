@@ -164,13 +164,14 @@
 
         methods: {
 
-            submit(e) {
-                //this.preventDefault();
+            submit() {
+
+                // This code is needed to insert the csrf token into the form
                 let input_name = "csrfmiddlewaretoken";
                 let token = window.$cookies.get('csrftoken');
                 console.log(input_name, token);
                 window.$('<input>').attr('type', 'hidden').attr('name', input_name).attr('value', token).appendTo('#service-form');
-                //this.submit(); // If all the validations succeeded
+
             },
 
             // @vuese 
@@ -183,8 +184,9 @@
             // Saves the errors gathered from the url queries to the this.errors array if no query in url, then nothing is done
             process_query_params(){
                 let urlParams = new URLSearchParams(window.location.search);
-                let query = urlParams.get("errors").replace(/'/g, '"'); //Replace is needed since JSON standards don't parse the ' correctly
+                let query = urlParams.get("errors");
                 if(query){
+                    query = query.replace(/'/g, '"'); //Replace is needed since JSON standards don't parse the ' correctly
                     let json_query = JSON.parse(query);
                     this.errors.push(json_query);
                 }

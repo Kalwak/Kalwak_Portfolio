@@ -44,7 +44,7 @@ class ServiceTestCase(TestCase):
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_302_FOUND)
-        correct_response = f"{settings.FRONTEND_URL}hire-us/?errors=%7B\'email\':%20[\'Enter%20a%20valid%20email%20address.\']%7D"
+        correct_response = f"{settings.FRONTEND_URL}/hire-us/?errors=%7B\'email\':%20[\'Enter%20a%20valid%20email%20address.\']%7D"
         self.assertEqual(response.url, correct_response)
 
     def test_service_request_name_emply(self):
@@ -55,7 +55,7 @@ class ServiceTestCase(TestCase):
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_302_FOUND)
-        correct_response = f"{settings.FRONTEND_URL}hire-us/?errors=%7B\'name\':%20[\'This%20field%20may%20not%20be%20blank.\']%7D"
+        correct_response = f"{settings.FRONTEND_URL}/hire-us/?errors=%7B\'name\':%20[\'This%20field%20may%20not%20be%20blank.\']%7D"
         self.assertEqual(response.url, correct_response)
 
     def test_service_request_description_emply(self):
@@ -66,7 +66,7 @@ class ServiceTestCase(TestCase):
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_302_FOUND)
-        correct_response = f"{settings.FRONTEND_URL}hire-us/?errors=%7B\'description\':%20[\'This%20field%20may%20not%20be%20blank.\']%7D"
+        correct_response = f"{settings.FRONTEND_URL}/hire-us/?errors=%7B\'description\':%20[\'This%20field%20may%20not%20be%20blank.\']%7D"
         self.assertEqual(response.url, correct_response)
 
     def test_service_request_missing_email_field(self):
@@ -76,7 +76,7 @@ class ServiceTestCase(TestCase):
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_302_FOUND)
-        correct_response = f"{settings.FRONTEND_URL}hire-us/?errors=%7B\'email\':%20[\'This%20field%20is%20required.\']%7D"
+        correct_response = f"{settings.FRONTEND_URL}/hire-us/?errors=%7B\'email\':%20[\'This%20field%20is%20required.\']%7D"
         self.assertEqual(response.url, correct_response)
 
     def test_service_request_missing_name_field(self):
@@ -86,7 +86,7 @@ class ServiceTestCase(TestCase):
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_302_FOUND)
-        correct_response = f"{settings.FRONTEND_URL}hire-us/?errors=%7B\'name\':%20[\'This%20field%20is%20required.\']%7D"
+        correct_response = f"{settings.FRONTEND_URL}/hire-us/?errors=%7B\'name\':%20[\'This%20field%20is%20required.\']%7D"
         self.assertEqual(response.url, correct_response)
 
     def test_service_request_missing_description_field(self):
@@ -96,7 +96,7 @@ class ServiceTestCase(TestCase):
         response = self.client.post('/api/service_request/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_302_FOUND)
-        correct_response = f"{settings.FRONTEND_URL}hire-us/?errors=%7B\'description\':%20[\'This%20field%20is%20required.\']%7D"
+        correct_response = f"{settings.FRONTEND_URL}/hire-us/?errors=%7B\'description\':%20[\'This%20field%20is%20required.\']%7D"
         self.assertEqual(response.url, correct_response)
 
     # TODO needs to be remade because of the changes

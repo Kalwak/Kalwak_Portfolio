@@ -31,12 +31,10 @@ env = environ.Env(
     SENDGRID_API_KEY=(str, 'password'),
     EMAIL=(str, 'kalwakcr@gmail.com'),
     LOGS_LIMIT=(int, 10),
-    FRONTEND_URL=(str, "http://localhost:5433/")
+    FRONTEND_URL=(str, "http://localhost:5433")
 )
 # reading .env file
 environ.Env.read_env()
-
-FRONTEND_URL = env('FRONTEND_URL')  # This is needed to the HireUs section in frontend (service_request in backend)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -48,6 +46,11 @@ SECRET_KEY = env('SECRET_KEY')
 DEBUG = env('DEBUG_MODE')
 LOGGING = env('LOGGING')  # Boolean to check if logging is enabled
 LOGS_LIMIT = env('LOGS_LIMIT')  # Limit the amount of logs saved to the database
+
+# If using build (without frontend nodejs server) or in production mode, then set the environment variable to ""
+FRONTEND_URL = env('FRONTEND_URL')  # This is needed to the HireUs section in frontend (service_request in backend)
+
+
 
 ALLOWED_HOSTS = ['*']
 

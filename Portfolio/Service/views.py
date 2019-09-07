@@ -89,12 +89,12 @@ class ServiceRequestView(viewsets.ModelViewSet):
             if error:
                 return error
 
-            return redirect("http://localhost:5433/hire-us/", status=status.HTTP_201_CREATED)
+            return redirect(f"{settings.FRONTEND_URL}/hire-us/", status=status.HTTP_201_CREATED)
             # return Response(serializer.data, status=status.HTTP_201_CREATED)
         log.info('Request data is not valid.')
         errors_json = JSONRenderer().render(serializer.errors)
         errors_json = json.loads(errors_json)
-        return redirect(f"{settings.FRONTEND_URL}hire-us/?errors={errors_json}", status=status.HTTP_400_BAD_REQUEST)
+        return redirect(f"{settings.FRONTEND_URL}/hire-us/?errors={errors_json}", status=status.HTTP_400_BAD_REQUEST)
 
 
 class ChatbotAPIView(APIView):
