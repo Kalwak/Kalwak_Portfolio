@@ -29,7 +29,7 @@ class ServiceRequestSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = ServiceR
-        fields = ('name', 'email', 'description', 'files', 'services', 'telephone')
+        fields = ('name', 'email', 'telephone', 'description', 'files', 'services', 'telephone')
 
     def create(self, validated_data):
         """

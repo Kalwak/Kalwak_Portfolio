@@ -275,7 +275,7 @@ class ChatbotTests(TestCase):
         response = self.client.post(self.url, data=data)
         response = response.content.decode()
         response = self.remove_extra_double_quotes(response)
-        expected = 'Send a message to +50684599023, an email to kalwakcr@gmail.com or go to our contact-us section <a src=\\"#contact-section\\">Contact</a>'
+        expected = 'Send a message to +50684599023, an email to kalwakcr@gmail.com or go to our contact-us section <a href=\\"#contact-section\\">Contact</a>'
         self.assertEqual(expected, response)
 
     def test_chatbot_output8(self):
