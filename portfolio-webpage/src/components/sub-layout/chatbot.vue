@@ -19,7 +19,8 @@
           class="message-container"
           :class="{ 'bubble--right': message.type === 'human' }"
           v-for="message in messages" :key="message.id">
-          <p class="message__bubble animated fadeIn" :class="{ 'orange--bubble': message.type === 'bot' }">
+          <p class="message__bubble animated fadeIn" 
+            :class="{ 'orange--bubble': message.type === 'bot' }">
             <span class="message__text" v-html="message.text"></span>
             <small class="message__information">{{ message.time }}</small>
           </p>
@@ -39,6 +40,7 @@
 // chat-bot component, provides chat inbox where the messages will be sent to the backend chatbot service
 import ip from 'ip';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 
 // @vuese
@@ -207,7 +209,12 @@ export default {
         .then(response => {
           this.setChatbotResponseMessage(response.data);
         })
-        .catch(err => console.error(err));
+        .catch(error => {
+          swal({
+            'title': 'Notificación',
+            'text': 'Hubo un error :('
+          }); 
+        });
     },
 
     // @vuese
