@@ -21,6 +21,6 @@ new Vue({
   render: createElement => createElement(App),
 }).$mount('#app');
 
-
+window.$ = window.jQuery = require('jquery');
 let csrf_cookie = window.$cookies.get('csrftoken');
 axios.defaults.headers.common['X-CSRFToken'] = csrf_cookie; // for all requests

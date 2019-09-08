@@ -26,19 +26,19 @@
             <h2 class="hire-us__title">¿Le gustaría trabajar con nosotros?</h2>
             <div class="inner-wrapper">
                 <h3 class="hire-us__sub-title">Complete el siguiente formulario para ser ascesorado</h3>
-                <form class="hire-form">
+                <form id="service-form" class="hire-form" action="http://localhost:8000/api/service_request/" method="post" enctype="multipart/form-data" @submit="submit">
                     <div class="hire-form__inputs">
                         <label class="d-none" for="fName">Nombre</label>
                         <input type="text" class="hire-form__input" id="fName" v-model="service_request.first_name"
-                               placeholder="Nombre"/>
+                               placeholder="Nombre" name="name"/>
                         <label class="d-none" for="lName">Apellido</label>
                         <input type="text" class="hire-form__input" id="lName" v-model="service_request.last_name"
-                               placeholder="Apellido"/>
+                               placeholder="Apellido" name="lastname"/>
                         <label class="d-none" for="phone">Teléfono</label>
                         <input type="tel" class="hire-form__input" id="phone" v-model="service_request.telephone"
-                               placeholder="Teléfono"/>
+                               placeholder="Teléfono" name="telephone"/>
                         <label class="d-none" for="email">E-mail</label>
-                        <input type="email" class="hire-form__input" id="email" v-model="service_request.email"
+                        <input type="email" class="hire-form__input" id="email" name="email" v-model="service_request.email"
                                placeholder="E-mail"/>
                     </div>
                     <div class="service-picker">
@@ -47,7 +47,7 @@
                             <div v-for="(option, idx) in options" class="service-picker__option" :key="idx">
                                 <!-- change to :value="option.name" when every option.name is different, otherwise it'll get a bug when checking checkboxes-->
                                 <input type="checkbox" :value="option.name + ' ' + option.id"
-                                       :id="option.id" class="option__checkbox" v-model="service_request.services"/>
+                                       :id="option.id" class="option__checkbox" v-model="service_request.services" name="services"/>
                                 <label :for="option.id" class="option__label">{{ option.name + ' ' + option.price
                                     }}</label>
                             </div>
@@ -57,26 +57,28 @@
                     </div>
                     <div class="hire-form__message">
                         <label class="d-none" for="message">Consulta</label>
-                        <textarea v-model="service_request.description" id="message" placeholder="Cuentenos de su proyecto"></textarea>
+                        <textarea v-model="service_request.description" id="message" placeholder="Cuentenos de su proyecto" name="description"></textarea>
                     </div>
                     <div class="hire-form__files">
-                        <input type="file" id="inputFile" class="files__input" lang="es" multiple @change="getUserFiles($event)" />
+                        <input type="file" id="inputFile" class="files__input" lang="es" multiple @change="getUserFiles($event)" name="files"/>
                         <label for="inputFile" class="files__label">Adjuntar archivos</label>
                         <span class="files__output-label">Numero de archivos {{ numberOfSelectedFiles }}</span>
                     </div>
                     <div class="hire-form__button">
-                        <button class="u-button" :disabled="buttonDisabled" @click.prevent="submit">Cotizar</button>
+                        <button class="u-button" :disabled="buttonDisabled" type="submit">Cotizar</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+
+
 </template>
 
 <script>
     // hire-us view component, provides an interface where the client is able to make a consultation for a centain service
     // 
-    import {ServiceRequestService} from '../services/service_request';
 
 
     // @vuese
@@ -85,7 +87,21 @@
 
         data() {
             return {
-                //Information that will be sent to the backend
+                /* Saves a list of errors gathered from the url queries
+                 Sample list:
+                 [
+                    {
+                        telephone: [
+                            "Telephone format is incorrect"
+                        ]
+                    }
+                 ]
+                */
+                errors: [
+
+                ],
+
+                //Form info
                 service_request: {
                     "first_name": undefined,
                     "last_name": undefined,
@@ -142,32 +158,20 @@
             },
         },
 
-        methods: {
-            format_name(first_name, last_name) {
-                this.service_request.name = `${first_name} ${last_name}`;
-            },
+        mounted: function () {
+            this.process_query_params();
+        },
 
-            format_services(){
-                let services = [];
-                for(let service of this.service_request.services){
-                    const formatted_service = {
-                        "services": service
-                    };
-                    services.push();
-                }
-                this.service_request.services = services;
-            },
+        methods: {
 
             submit() {
-                const api = new ServiceRequestService();
 
-                this.format_name(this.service_request.first_name, this.service_request.last_name);
+                // This code is needed to insert the csrf token into the form
+                let input_name = "csrfmiddlewaretoken";
+                let token = window.$cookies.get('csrftoken');
+                console.log(input_name, token);
+                window.$('<input>').attr('type', 'hidden').attr('name', input_name).attr('value', token).appendTo('#service-form');
 
-                this.format_services();
-
-                api.postService(this.service_request).then((data) => {
-                    console.log(data);
-                }).catch(err => console.error(err));
             },
 
             // @vuese 
@@ -176,6 +180,19 @@
                 let files = event.target.files;
                 this.service_request.files = files;
             },
+
+            // Saves the errors gathered from the url queries to the this.errors array if no query in url, then nothing is done
+            process_query_params(){
+                let urlParams = new URLSearchParams(window.location.search);
+                let query = urlParams.get("errors");
+                if(query){
+                    query = query.replace(/'/g, '"'); //Replace is needed since JSON standards don't parse the ' correctly
+                    let json_query = JSON.parse(query);
+                    this.errors.push(json_query);
+                }
+
+            }
         }
+
     }
 </script>

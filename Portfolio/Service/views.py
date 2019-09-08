@@ -1,6 +1,13 @@
+import json
 import os
+
+from django.http import HttpResponseRedirect
+from django.shortcuts import redirect
+from rest_framework.renderers import JSONRenderer
 from rest_framework.views import APIView
 from rivescript import RiveScript
+
+from Portfolio import settings
 from Portfolio.settings import BASE_DIR
 from Service.serializers import ChatbotSerializer, FileSerializer, ServiceSerializer
 from .models import ServiceRequest
@@ -14,23 +21,38 @@ log = logging.getLogger('debugger')
 
 
 def save_files(files, pk):
-    for element in files:
-        element["service"] = pk
-    files = FileSerializer(data=files, many=True)
-    if files.is_valid():
-        files.save()
-    else:
-        return Response(files.errors, status=status.HTTP_400_BAD_REQUEST)
+    data = [
+
+    ]
+    if len(files) and files[0] != '':  # Must be done, since posting a form with no files defaults the file's value to ''
+        for element in files:
+            data.append({
+                "service": pk,
+                "file": element
+            })
+    if len(data):
+        files = FileSerializer(data=data, many=True)
+        if files.is_valid():
+            files.save()
+        else:
+            return Response(files.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 def save_services(services, pk):
+    data = [
+
+    ]
     for element in services:
-        element["service_request"] = pk
-    services = ServiceSerializer(data=services, many=True)
-    if services.is_valid():
-        services.save()
-    else:
-        return Response(services.errors, status=status.HTTP_400_BAD_REQUEST)
+        data.append({
+            "service_request": pk,
+            "service": element
+        })
+    if len(data):
+        services = ServiceSerializer(data=data, many=True)
+        if services.is_valid():
+            services.save()
+        else:
+            return Response(services.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class ServiceRequestView(viewsets.ModelViewSet):
@@ -46,10 +68,16 @@ class ServiceRequestView(viewsets.ModelViewSet):
         :params request: should contain a JSON with name, email, description.
                         Also, can have attached several files.
         """
+        mutable = request.POST._mutable
+
+        request.POST._mutable = True
         files = request.data.pop("files", [])
         services = request.data.pop("services", [])
+
+        request.POST._mutable = mutable
         serializer = self.serializer_class(data=request.data,
                                            context={'request': request})
+
         if serializer.is_valid():
             log.info('Request data is valid.')
             instance = serializer.save()
@@ -61,9 +89,12 @@ class ServiceRequestView(viewsets.ModelViewSet):
             if error:
                 return error
 
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            return redirect(f"{settings.FRONTEND_URL}/hire-us/", status=status.HTTP_201_CREATED)
+            # return Response(serializer.data, status=status.HTTP_201_CREATED)
         log.info('Request data is not valid.')
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        errors_json = JSONRenderer().render(serializer.errors)
+        errors_json = json.loads(errors_json)
+        return redirect(f"{settings.FRONTEND_URL}/hire-us/?errors={errors_json}", status=status.HTTP_400_BAD_REQUEST)
 
 
 class ChatbotAPIView(APIView):
