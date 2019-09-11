@@ -5,11 +5,11 @@
         <img  src="~@/assets/images/logo.svg" width="100px" />
       </h5>
       <div class="chatbot__header-settings">
-          <span class="chatbot__setting-icon">
-            <img src="~@/assets/images/chatbot-icons/refresh-icon.png" alt="clear chatbot"  class="setting-icon__image" title="clear chatbot" @click="clearMessages" />
+          <span class="chatbot__setting-icon" @click="clearMessages">
+            <img src="~@/assets/images/chatbot-icons/refresh-icon.png" alt="borrar mensajes"  class="setting-icon__image" title="borrar mensajes" />
           </span>
-          <span class="chatbot__setting-icon">
-            <img src="~@/assets/images/chatbot-icons/close-icon.png" alt="close chatbot"  class="setting-icon__image"  title="close chatbot" @click="closeChatbot" />
+          <span class="chatbot__setting-icon" @click="closeChatbot">
+            <img src="~@/assets/images/chatbot-icons/close-icon.png" alt="cerrar"  class="setting-icon__image"  title="cerrar" />
           </span>
       </div>
     </div>
@@ -19,7 +19,8 @@
           class="message-container"
           :class="{ 'bubble--right': message.type === 'human' }"
           v-for="message in messages" :key="message.id">
-          <p class="message__bubble animated fadeIn" :class="{ 'orange--bubble': message.type === 'bot' }">
+          <p class="message__bubble animated fadeIn" 
+            :class="{ 'orange--bubble': message.type === 'bot' }">
             <span class="message__text" v-html="message.text"></span>
             <small class="message__information">{{ message.time }}</small>
           </p>
@@ -39,6 +40,7 @@
 // chat-bot component, provides chat inbox where the messages will be sent to the backend chatbot service
 import ip from 'ip';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 
 // @vuese
@@ -203,11 +205,18 @@ export default {
     // @arga message, this has to contain user ip and msg string
     PostMessageToChatbot(message) {
       let chatbotUrl = this.chatbotApi;
-      axios.post(chatbotUrl, message)
-        .then(response => {
-          this.setChatbotResponseMessage(response.data);
-        })
-        .catch(err => console.error(err));
+      window.setTimeout(() => {
+        axios.post(chatbotUrl, message)
+          .then(response => {
+            this.setChatbotResponseMessage(response.data);
+          })
+          .catch(error => {
+            swal({
+              title: 'Notificación',
+              text: 'Hubo un error, intente otra vez'
+            }); 
+          });
+      }, 500);
     },
 
     // @vuese
