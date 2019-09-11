@@ -2,7 +2,7 @@
   <div class="chatbot-container" @click.stop="">
     <div class="chatbot__header">
       <h5 class="chatbot__header-title">
-        <img  src="~@/assets/images/logo.svg" width="100px" />
+        <img  src="~@/assets/images/logo.svg" width="100px" title="Kalwak" alt="Kalwak logo" />
       </h5>
       <div class="chatbot__header-settings">
           <span class="chatbot__setting-icon" @click="clearMessages">

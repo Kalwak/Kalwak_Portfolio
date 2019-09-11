@@ -4,7 +4,7 @@
   right: 0;
   transition: .2s all;
   margin-right: 20px;
-  width: 450px;
+  width: 400px;
   z-index: 10000;
   background-color: #ddd;
   box-shadow: 0 4px 16px rgba(0,0,0,.3);
@@ -34,7 +34,7 @@
         border-radius: 100%;
 
         &:hover {
-          background: #fff;
+          background: rgb(207, 204, 204);
         }
 
         &:hover .setting-icon__image {
@@ -43,7 +43,6 @@
 
         .setting-icon__image {
           width: 50%;
-          pointer-events: none;
           transition: 0.2s all linear;
         }
       }
@@ -114,7 +113,7 @@
       }
 
       .send-button {
-        width: 15%;
+        max-width: 80px;
         height: 100%;
         border: none;
         padding: 0;
