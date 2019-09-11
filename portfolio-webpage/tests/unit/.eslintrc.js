@@ -1,5 +1,7 @@
 module.exports = {
-  env: {
-    jest: true
-  }
-}
+    env: {
+        jest: true,
+        jquery: true,
+        VueCookies: true
+    }
+};

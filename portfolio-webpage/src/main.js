@@ -6,9 +6,9 @@ import vueSmoothScroll from 'vue2-smooth-scroll';
 import axios from 'axios';
 import '../node_modules/swiper/dist/js/swiper.min.js';
 import './assets/css/main.scss';
-import VueCookies from 'vue-cookies';
-Vue.use(VueCookies);
+import {VueCookies} from 'vue-cookies';
 
+Vue.use(require('vue-cookies'));
 
 Vue.config.productionTip = false;
 Vue.use(vueSmoothScroll);
