@@ -26,7 +26,7 @@
             <h2 class="hire-us__title">¿Le gustaría trabajar con nosotros?</h2>
             <div class="inner-wrapper">
                 <h3 class="hire-us__sub-title">Complete el siguiente formulario para ser ascesorado</h3>
-                <form id="service-form" class="hire-form" action="http://localhost:8000/api/service_request/" method="post" enctype="multipart/form-data" @submit="submit">
+                <form id="service-form" class="hire-form" action="http://localhost:8000/api/service_request/" method="post" enctype="multipart/form-data">
                     <div class="hire-form__inputs">
                         <label class="d-none" for="fName">Nombre</label>
                         <input type="text" class="hire-form__input" id="fName" v-model="service_request.first_name"
@@ -67,6 +67,7 @@
                     <div class="hire-form__button">
                         <button class="u-button" :disabled="buttonDisabled" type="submit">Cotizar</button>
                     </div>
+                    <input id="csrftoken" type="hidden" name="csrfmiddlewaretoken" v-bind:value="csrftoken">
                 </form>
             </div>
         </div>
@@ -78,8 +79,7 @@
 
 <script>
     // hire-us view component, provides an interface where the client is able to make a consultation for a centain service
-    // 
-
+    //
 
     // @vuese
     export default {
@@ -87,6 +87,7 @@
 
         data() {
             return {
+                csrftoken : $cookies.get('csrftoken'),
                 /* Saves a list of errors gathered from the url queries
                  Sample list:
                  [
@@ -164,16 +165,6 @@
 
         methods: {
 
-            submit() {
-
-                // This code is needed to insert the csrf token into the form
-                let input_name = "csrfmiddlewaretoken";
-                let token = window.$cookies.get('csrftoken');
-                console.log(input_name, token);
-                window.$('<input>').attr('type', 'hidden').attr('name', input_name).attr('value', token).appendTo('#service-form');
-
-            },
-
             // @vuese 
             // used to get files from file input and then store in the service_request object
             getUserFiles(event) {
@@ -190,7 +181,7 @@
                     let json_query = JSON.parse(query);
                     this.errors.push(json_query);
                 }
-
+                return this.errors; // Done for unittesting
             }
         }
 
