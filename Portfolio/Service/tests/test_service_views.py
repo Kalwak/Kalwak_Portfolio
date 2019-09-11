@@ -99,8 +99,7 @@ class ServiceTestCase(TestCase):
         correct_response = f"{settings.FRONTEND_URL}/hire-us/?errors=%7B\'description\':%20[\'This%20field%20is%20required.\']%7D"
         self.assertEqual(response.url, correct_response)
 
-    # TODO needs to be remade because of the changes
-    """def test_service_request_saving_file(self):
+    def test_service_request_saving_file(self):
         data = {"name": "Fooname",
                 "email": "fooo@gmail.com",
                 "description": "foodescription",
@@ -109,17 +108,13 @@ class ServiceTestCase(TestCase):
         response = self.client.post('/api/service_request/', data=data,
                                     format='multipart')
         data.pop('file')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        response.data.pop("files")
-        response.data.pop("services")
-        self.assertEqual(response.data, data)
+        self.assertEqual(response.status_code, status.HTTP_302_FOUND)
         saved_file = File.objects.last()
         self.assertEqual(saved_file.service.email, "fooo@gmail.com")
         saved_file.service.delete()
-        saved_file.delete()"""
+        saved_file.delete()
 
-    # TODO needs to be remade because of the changes
-    """def test_service_request_saving_several_files(self):
+    def test_service_request_saving_several_files(self):
         data = {"name": "Fooname",
                 "email": "fooo@gmail.com",
                 "description": "foodescription",
@@ -131,13 +126,10 @@ class ServiceTestCase(TestCase):
         data.pop('file1')
         data.pop('file2')
         self.assertEqual(response.status_code, status.HTTP_302_FOUND)
-        response.data.pop("files")
-        response.data.pop("services")
-        self.assertEqual(response.data, data)
         saved_file = File.objects.last()
         self.assertEqual(saved_file.service.email, "fooo@gmail.com")
         saved_file.delete()
         saved_file = File.objects.last()
         self.assertEqual(saved_file.service.email, "fooo@gmail.com")
         saved_file.service.delete()
-        saved_file.delete()"""
+        saved_file.delete()
