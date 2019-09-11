@@ -89,9 +89,18 @@ After the build has been made remove the files in the backend folder called
 
 frontend/static/  and frontend/templates/
 
-now add the static files from the dist folder to frontend/static/ and
-move the index.html from the dist folder to the frontend/templates/ folder.
- 
+now add the static files from the dist folder to frontend/static/, add
+the favicon into the frontend/static/ folder and move the index.html from 
+the dist folder to the frontend/templates/ folder.
+
+Make sure the index.html is correctly formated to django's templating, add 
+the {% csrf_token %} at the beginning of the body and change all the 
+"./favicon..." to "/static/favicon..."
+
+
+## Frontend development
+
+Checkout this [README](portfolio-webpage/README.md) for more details. 
 
 ## Built With
 
