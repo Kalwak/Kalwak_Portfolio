@@ -27,7 +27,7 @@
     "vue-cookies": "^1.5.13",
     "vue-router": "^3.0.3",
     "vue-server-renderer": "^2.6.10",
-    "vue2-smooth-scroll": "^1.1.0",
+    "vuejs-logger": "1.5.3",
     "vuex": "^3.0.1"
   },
   "devDependencies": {

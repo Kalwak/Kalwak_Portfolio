@@ -24,11 +24,20 @@
     </div>
 
     <div class="nav__item">
+      <router-link to="/services/products" class="nav__link">Productos</router-link>
+    </div>
+
+    <div class="nav__item">
       <router-link to="/hire-us" class="nav__link">Cotizar</router-link>
     </div>
 
     <div class="nav__item">
       <a :href="currentPath + '#contact-section'" class="nav__link">Contacto</a>
+    </div>
+
+
+    <div class="nav__item">
+      <router-link to="/kalwak-blog" class="nav__link">Blog</router-link>
     </div>
 
     <div class="nav__item">
@@ -80,7 +89,8 @@ export default {
     // watch for currentPath,
     // used to emit a custom event to close navigation menu
     // if the current path/route has changed
-    currentPath() {
+    currentPath(newVal, oldVal) {
+      this.$log.debug(newVal, oldVal)
       this.$emit('close-nav-menu', false);
     },
   },

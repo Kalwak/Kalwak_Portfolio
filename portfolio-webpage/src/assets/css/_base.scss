@@ -47,9 +47,21 @@ a {
   margin: 0px auto;
 }
 
+// snippets to clear the x icon from browser that support it
+/* clears the 'X' from Internet Explorer */
+input[type=search]::-ms-clear {  display: none; width : 0; height: 0; }
+input[type=search]::-ms-reveal {  display: none; width : 0; height: 0; }
+
+/* clears the 'X' from Chrome */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration { display: none; }
+
+
 
 // MEDIA QUERIES FOR BASE STYLES
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1400px) {
   body {
     font-size: 16px;
   }
@@ -78,5 +90,11 @@ a {
 @media screen and (max-width: 300px) {
   body {
     font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 2000px) {
+  .inner-wrapper {
+    max-width: 1300px;
   }
 }

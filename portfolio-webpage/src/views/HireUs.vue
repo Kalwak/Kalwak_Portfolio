@@ -170,6 +170,7 @@
             getUserFiles(event) {
                 let files = event.target.files;
                 this.service_request.files = files;
+                console.log(this.service_request.files);
             },
 
             // Saves the errors gathered from the url queries to the this.errors array if no query in url, then nothing is done
@@ -180,10 +181,11 @@
                     query = query.replace(/'/g, '"'); //Replace is needed since JSON standards don't parse the ' correctly
                     let json_query = JSON.parse(query);
                     this.errors.push(json_query);
+                    console.log(this.errors);
                 }
                 return this.errors; // Done for unittesting
             }
-        }
+        },
+    };
 
-    }
 </script>

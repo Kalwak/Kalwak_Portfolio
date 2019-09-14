@@ -65,3 +65,6 @@
 .icon-double-left-arrow:before {
   content: "\69";
 }
+.icon-search:before {
+  content: "\6a";
+}

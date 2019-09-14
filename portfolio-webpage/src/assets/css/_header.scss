@@ -121,7 +121,7 @@
   ORDER: DESKTOP -> TABLE -> MOBILE (SCREENS)
 */
 // MOBILES
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 980px) {
 
   .brand-column {
     width: 100%;
@@ -193,6 +193,6 @@
   }
 
   .activatedMenu {
-    height: 284px;
+    height: auto;
   }
 }
