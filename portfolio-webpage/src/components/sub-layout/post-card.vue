@@ -9,7 +9,7 @@
     <div class="post-card__body">
       <h4 class="post-card__title">Card title</h4>
       <p class="post-card__description">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Simi
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi inventore quas non accusamus aut pariatur reprehenderit illum iste ratione perferendis!
       </p>
     </div>
     <footer class="post-card__footer">

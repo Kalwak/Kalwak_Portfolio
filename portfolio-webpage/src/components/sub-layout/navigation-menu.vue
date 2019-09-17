@@ -32,7 +32,7 @@
     </div>
 
     <div class="nav__item">
-      <a :href="currentPath + '#contact-section'" class="nav__link">Contacto</a>
+      <a :href="currentPath + '#contact-section'" class="nav__link" @click="$emit('close-nav-menu', false);">Contacto</a>
     </div>
 
 
@@ -90,7 +90,6 @@ export default {
     // used to emit a custom event to close navigation menu
     // if the current path/route has changed
     currentPath(newVal, oldVal) {
-      this.$log.debug(newVal, oldVal)
       this.$emit('close-nav-menu', false);
     },
   },

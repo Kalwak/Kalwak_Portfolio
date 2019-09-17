@@ -13,7 +13,8 @@
         <span
           class="blog-category__item"
           v-for="(category, index) in categories"
-          :key="index">
+          :key="index"
+          @click="setSearchCategory(category)">
             {{ category }}
           </span>
       </div>
@@ -30,7 +31,7 @@
           <select-filter :options="months" label="Mes" default-option="Enero" @getOption="search.filter.month = $event" />
         </div>
         <div class="inner-wrapper">
-          <posts-cards-slider />
+          <posts-cards-slider :search="search" />
         </div>
       </div>
     </div>
@@ -51,6 +52,7 @@ export default {
     return {
       search: {
         searchText: '',
+        category: '',
         filter: {
           year: '',
           month: '',
@@ -72,6 +74,7 @@ export default {
         'Diciembre'
       ],
       categories: [
+        'Todas',
         'Desarrollo',
         'Redes Sociales',
         'Startup',
@@ -100,6 +103,13 @@ export default {
       };
 
       return numbers;
+    },
+
+    // @vuese
+    // used to set the search category
+    setSearchCategory(category) {
+      this.$log.debug(category);
+      this.search.category = category;
     },
   },
 

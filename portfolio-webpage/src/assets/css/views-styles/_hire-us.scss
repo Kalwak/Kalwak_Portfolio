@@ -115,6 +115,7 @@
     .hire-form__files {
       margin: 20px auto 40px;
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
 
       .files__input {
