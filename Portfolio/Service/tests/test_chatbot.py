@@ -90,7 +90,8 @@ class ChatbotTests(TestCase):
         ip = self.generate_random_ip()
         data = {
             "msg": "WHAT IS MY NAME",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -99,7 +100,8 @@ class ChatbotTests(TestCase):
 
         data = {
             "msg": "My name is Joseph",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -108,7 +110,8 @@ class ChatbotTests(TestCase):
 
         data = {
             "msg": "WHAT IS MY NAME",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -123,7 +126,8 @@ class ChatbotTests(TestCase):
         ip = self.generate_random_ip()
         data = {
             "msg": "RANDOM TESTING TEXT",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -132,7 +136,8 @@ class ChatbotTests(TestCase):
 
         data = {
             "msg": "mY naMe IS Jose",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -143,7 +148,8 @@ class ChatbotTests(TestCase):
         ip = self.generate_random_ip()
         data = {
             "msg": "Hi",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -152,7 +158,8 @@ class ChatbotTests(TestCase):
 
         data = {
             "msg": "Edwin",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -163,7 +170,8 @@ class ChatbotTests(TestCase):
         ip2 = self.generate_random_ip()
         data = {
             "msg": "Hi",
-            "ip": ip2
+            "ip": ip2,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -172,7 +180,8 @@ class ChatbotTests(TestCase):
 
         data = {
             "msg": "Edwin",
-            "ip": ip2
+            "ip": ip2,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -182,7 +191,8 @@ class ChatbotTests(TestCase):
         ip1 = self.generate_random_ip()
         data = {
             "msg": "my name is Jennifer",
-            "ip": ip1
+            "ip": ip1,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -192,7 +202,8 @@ class ChatbotTests(TestCase):
         expected = "Jennifer"
         data = {
             "msg": "Who am I?",
-            "ip": ip1
+            "ip": ip1,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -201,7 +212,8 @@ class ChatbotTests(TestCase):
         expected = "Edwin"
         data = {
             "msg": "Who am I?",
-            "ip": ip2
+            "ip": ip2,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -211,7 +223,8 @@ class ChatbotTests(TestCase):
         ip = self.generate_random_ip()
         data = {
             "msg": "What are your services?",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -222,7 +235,8 @@ class ChatbotTests(TestCase):
         ip = self.generate_random_ip()
         data = {
             "msg": "Do you guys provide us with web development??",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode()
@@ -233,7 +247,8 @@ class ChatbotTests(TestCase):
         ip = self.generate_random_ip()
         data = {
             "msg": "facebook",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode()
@@ -251,7 +266,8 @@ class ChatbotTests(TestCase):
         self.assertEqual(expected, result.status_code)
         data = {
             "msg": "what are your products you sell",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode()
@@ -270,19 +286,21 @@ class ChatbotTests(TestCase):
         ip = self.generate_random_ip()
         data = {
             "msg": "give me a way to contact your developers",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/path1/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode()
         response = self.remove_extra_double_quotes(response)
-        expected = 'Send a message to +50684599023, an email to kalwakcr@gmail.com or go to our contact-us section <a href=\\"#contact-section\\">Contact</a>'
+        expected = 'Send a message to +50684599023, an email to kalwakcr@gmail.com or go to our contact-us section <a href=\\"/path1/#contact-section\\"> Contact</a>'
         self.assertEqual(expected, response)
 
     def test_chatbot_output8(self):
         ip = self.generate_random_ip()
         data = {
             "msg": "info",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
@@ -293,7 +311,8 @@ class ChatbotTests(TestCase):
         ip = self.generate_random_ip()
         data = {
             "msg": "tell me about de development team",
-            "ip": ip
+            "ip": ip,
+            "current_vue_path": "/"
         }
         response = self.client.post(self.url, data=data)
         response = response.content.decode().replace("\"", "")
