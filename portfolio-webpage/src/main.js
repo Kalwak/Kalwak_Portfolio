@@ -2,16 +2,27 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
-import vueSmoothScroll from 'vue2-smooth-scroll';
 import axios from 'axios';
+import vueLogger from 'vuejs-logger';
 import '../node_modules/swiper/dist/js/swiper.min.js';
 import './assets/css/main.scss';
 import {VueCookies} from 'vue-cookies';
 
 Vue.use(require('vue-cookies'));
 
+// vuejs logget and an object for configuration
+const isProduction = process.env.NODE_ENV === 'production';
+Vue.use(vueLogger, {
+  isEnabled: true,
+  logLevel: isProduction? 'error' : 'debug',
+  stringifyArguments: false,
+  showMethodName: true,
+  separator: '|',
+  showConsoleColors: true,
+  showLogLevel: true,
+});
+
 Vue.config.productionTip = false;
-Vue.use(vueSmoothScroll);
 Vue.prototype.$axios = axios;
 
 new Vue({

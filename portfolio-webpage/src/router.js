@@ -51,6 +51,11 @@ export default new Router({
       name: 'hire us',
       component: () => import('./views/HireUs.vue'),
     },
+    {
+      path: '/kalwak-blog',
+      name: 'kalwak blog',
+      component: () => import('./views/Blog.vue'),
+    },
   ]
 });
 // component: () => import(/* webpackChunkName: "about" */ './views/Component.vue')

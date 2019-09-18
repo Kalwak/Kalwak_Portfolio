@@ -23,6 +23,6 @@ export default {
     PageMain,
     // this represent the footer element
     PageFooter,
-  }
+  },
 }
 </script>
