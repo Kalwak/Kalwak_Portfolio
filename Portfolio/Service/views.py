@@ -1,8 +1,9 @@
 import json
 import os
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import redirect
+from ipware import get_client_ip
 from rest_framework.renderers import JSONRenderer
 from rest_framework.views import APIView
 from rivescript import RiveScript
@@ -24,7 +25,8 @@ def save_files(files, pk):
     data = [
 
     ]
-    if len(files) and files[0] != '':  # Must be done, since posting a form with no files defaults the file's value to ''
+    if len(files) and files[
+        0] != '':  # Must be done, since posting a form with no files defaults the file's value to ''
         for element in files:
             data.append({
                 "service": pk,
@@ -129,13 +131,32 @@ class ChatbotAPIView(APIView):
         :return: The kalwak bot response or the serializer errors
         """
 
+        if not request.data:  # No data was sent, so send a default response
+            desc = self.rs.get_variable(name="desc")
+            return Response(desc)
+
         serializer = self.serializer_class(data=request.data)
 
         if serializer.is_valid():
             msg = request.POST.get('msg') or request.data.get('msg')
             ip = request.POST.get('ip') or request.data.get('ip')
+            anchor_href = request.data.get('current_vue_path') + "#contact-section"
+            self.rs.set_variable(name="anchor_contact_us_url", value=anchor_href)
             reply = self.rs.reply(ip, msg)
             log.info('Request data is valid.')
             return Response(reply)
         log.info('Request data is not valid.')
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class GetIP(APIView):
+    """
+    Return the ip of the client to be used with the rivescript chatbot, exclusively as a GET request
+    """
+
+    def get(self, request):
+        ip = get_client_ip(request)[0]
+        response = {
+            "ip": ip
+        }
+        return JsonResponse(response)

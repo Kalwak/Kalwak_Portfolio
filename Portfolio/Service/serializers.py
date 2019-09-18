@@ -65,3 +65,5 @@ class ChatbotSerializer(serializers.Serializer):
     """
     msg = serializers.CharField()
     ip = serializers.IPAddressField()
+    regex = r"(\/[0-9].*\?|$)"
+    current_vue_path = serializers.RegexField(regex=regex)

@@ -2,6 +2,8 @@
 
 ! var desc = Greetings, I am the Kalwak bot. I was made to showcase some of the functionality that a chatbot. You may ask me general information about this company or just have a normal conversation with me. I am able to become a very complex bot if needed. Try telling me your name.
 
+! var anchor_contact_us_url = #contact-section
+
 ! local concat = none
 
 + (hello|hi|howdy|hey|good day|who are you) [*]
@@ -33,10 +35,10 @@
 + [*] (info|description|information) [*]
 - Kalwak is a company that has the software solution you need! With its fast and efficient engineering to supply you
 ^ with top notch software. Send a message to +50684599023, an email to kalwakcr@gmail.com or go to our contact-us section
-^ <a href="#contact-section"> Contact</a>
+^  <a href="<bot anchor_contact_us_url>"> Contact</a>
 
 + [*] contact [*]
-- Send a message to +50684599023, an email to kalwakcr@gmail.com or go to our contact-us section <a href="#contact-section">Contact</a>
+- Send a message to +50684599023, an email to kalwakcr@gmail.com or go to our contact-us section <a href="<bot anchor_contact_us_url>"> Contact</a>
 
 + [*] (products|product) [*]
 - Stay tuned to our <a href="https://www.facebook.com/Kalwak-358576961719203/">facebook</a> to get the latest news of our
