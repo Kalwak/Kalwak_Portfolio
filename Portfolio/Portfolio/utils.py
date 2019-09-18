@@ -35,7 +35,7 @@ def get_request(request):
         out = json.loads(out)
     except (AttributeError, JSONDecodeError):
         out = "No json request"
-    except UnicodeDecodeError:
+    except UnicodeDecodeError:  # This happens when a file is sent
         out = str(request.FILES)
     except RawPostDataException:
         out = "Error on accessing the request data"
@@ -54,8 +54,24 @@ def get_status_text(request):
     return out
 
 
-def path_towards_admin(path: str):
-    return path.startswith('/admin')
+def contains_unwanted_path(path: str):
+    """
+    Checks if an unwanted path is in the path provided as an argument.
+    :param path: A path in an url
+    :return: A boolean saying if one of the unwanted paths are in the path
+    """
+    unwanted_paths = [
+        "/admin",
+        "/robots.txt",
+        "/favicon.ico",
+        "/assets/",
+        "/static/",
+    ]
+
+    for unwanted_path in unwanted_paths:
+        if path.startswith(unwanted_path):
+            return True
+    return False
 
 
 def create_log(response, request):
@@ -65,7 +81,7 @@ def create_log(response, request):
     :return: The object created
     """
     _path = request.get_full_path()
-    if path_towards_admin(_path):
+    if contains_unwanted_path(_path):
         return
     _status_code = response.status_code
     _status_text = get_status_text(request)
