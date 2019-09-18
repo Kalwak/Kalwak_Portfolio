@@ -50,12 +50,7 @@ export default {
   data() {
     return {
     // messages is an array with all the messages
-      messages: [
-        {
-          id: 1,
-          type: 'human',
-        }
-      ],
+      messages: [],
 
       // user message
       message: '',

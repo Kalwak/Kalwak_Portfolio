@@ -13,12 +13,12 @@
         <div class="row justify-content-between align-items-center">
           <div class="col-auto brand-column">
             <div class="brand">
-              <div class="brand__logo">
+              <h1 class="brand__logo">
                 <router-link to="/" title="kalwak">
                   <img src="@/assets/images/logo.svg" alt="Wink logo" title="Kalwak logo" class="logo__image" />
                 </router-link>
                 <!-- <span class="menu-button" >menu</span> -->
-              </div>
+              </h1>
               <button class="hamburger hamburger--squeeze menu-button" :class="{ 'is-active': activatedMenu }" type="button" @click="toggleMenu">
                 <span class="hamburger-box">
                   <span class="hamburger-inner"></span>
