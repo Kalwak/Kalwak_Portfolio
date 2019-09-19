@@ -6,3 +6,9 @@ class BlogSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
         fields = ["title", "author", "date", "text", "tag"]
+
+
+class BlogListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Blog
+        fields = ["title", "author", "date", "tag"]
