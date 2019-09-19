@@ -195,7 +195,7 @@
               display: block;
               position: absolute;
               font-weight: 600;
-              right: 12px;
+              left: 12px;
               bottom: 12px;
               background-color: $green-color;
               color: #fff;
@@ -298,7 +298,7 @@
           .post-card {
   
             .post-card__header {
-              height: 210px;
+              height: 200px;
             }
           }
         }
@@ -324,7 +324,7 @@
         .posts-cards__container {
           // self container for post-card
           .post-card {
-            width: 80%;
+            width: 75%;
           }
         }
       }
@@ -354,7 +354,7 @@
             width: 49%;
   
             .post-card__header {
-              height: 220px;
+              height: 210px;
             }
           }
         }
@@ -383,7 +383,7 @@
             width: 46%;
   
             .post-card__header {
-              height: 230px;
+              height: 220px;
             }
           }
         }

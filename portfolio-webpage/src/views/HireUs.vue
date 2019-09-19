@@ -155,6 +155,19 @@ export default {
       let numberOfFiles = this.service_request.files.length;
       return numberOfFiles;
     },
+    totalFilesSize() {
+      let totalSize = 0;
+      let files = this.service_request.files;
+      if (files.length) {
+        for (let i = 0; i < files.length; i++) {
+        let file = files[i];
+        totalSize += file.size;
+        };
+        return totalSize;
+      };
+
+      return 0;
+    },
   },
   mounted: function () {
     this.process_query_params();
@@ -167,25 +180,29 @@ export default {
     getUserFiles(event) {
       let files = event.target.files;
       let clearFiles = [];
-      let limitSizeErrorMessage = 'Los siguientes archivos no seran\n envidos por limite de peso:\n\n';
-      let limitsizeError = false;
+      let limitSizeError = false;
+      let totalSize = this.totalFilesSize;
+      let errorMessage = 'Los siguientes archivos no se enviaran porque\n con ellos se superan el limite de 10MB\n';
       for (let i = 0; i < files.length; i++) {
-        let file = files[i];
-        if (file.size < 10000000) {
+        let file = files.item(i);
+        totalSize += file.size;
+        if (totalSize < 10000000) {
           clearFiles.push(file);
         } else {
-          limitsizeError = true;
-          limitSizeErrorMessage += ` ${file.name}\n`;
+          limitSizeError = true;
+          errorMessage += file.name + '\n';
         };
       };
 
-      if (limitsizeError) {
-        swal({
-          title: 'Notificación',
-          text: limitSizeErrorMessage,
-          icon: 'warning',
-        });
-      };
+      if (limitSizeError) swal({
+        title: 'Notificación',
+        text: errorMessage,
+        icon: 'warning',
+        button: {
+            text: 'Salir',
+        },
+      });
+
       this.service_request.files = this.service_request.files.concat(clearFiles);
       event.target.type = 'text';
       event.target.type = 'file';

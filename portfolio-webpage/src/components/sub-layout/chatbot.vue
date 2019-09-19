@@ -38,7 +38,6 @@
 
 <script>
 // chat-bot component, provides chat inbox where the messages will be sent to the backend chatbot service
-import ip from 'ip';
 import axios from 'axios';
 import swal from 'sweetalert';
 
@@ -85,7 +84,7 @@ export default {
 
     // user, not sure if this is the needed for the chatbot
     userIp() {
-      let ip = this.getIp();
+      let ip = this.$store.state.userIp;
 
       return ip;
     },
@@ -111,6 +110,8 @@ export default {
         this.PostMessageToChatbot({
           ip: bubbleMessage.ip,
           msg: bubbleMessage.text,
+          current_vue_path: this.currentPath,
+
         });
         this.saveMessageToLocalStorage(bubbleMessage);
         this.loadMessagesFromLocalStorage();
@@ -144,12 +145,6 @@ export default {
     // called in the mounted method 
     focusInput() {
       this.$refs.messageInput.focus();
-    },
-
-    // @vuese
-    // mock getIp method, this one helps me out with an error when testing
-    getIp() {
-      return ip.address();
     },
 
     //@vuese
@@ -298,7 +293,7 @@ export default {
   mounted() {
     // experimental option to first post a message to the chatbot when opening chatbot inbox
     var noMessagesInLocalStorage = localStorage.getItem('_messages') && JSON.parse(localStorage.getItem('_messages')).messages.length === 0;
-    if (noMessagesInLocalStorage) this.PostMessageToChatbot({ ip: '127.0.0.1', msg: 'Hello' });  
+    if (noMessagesInLocalStorage) this.PostMessageToChatbot({ ip: '127.0.0.1', msg: 'Hello', current_vue_path: this.currentPath, });  
     this.focusInput();
     this.scrollBottom();
   },
@@ -310,7 +305,7 @@ export default {
   },
 
   beforeDestroy() {
-    // before component instance ins destroy, saveLastMessageToLocalStorage will save user message 
+    // before component instance is destroyed, saveLastMessageToLocalStorage will save user message 
     this.saveLastMessageToLocalStorage(this.message);
   },
 }

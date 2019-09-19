@@ -32,7 +32,6 @@
 <script>
 // team-member component, used to show information about a member,
 // like name, biography and profile photo
-import path from 'path';
 
 // @vuese
 export default {
@@ -44,14 +43,6 @@ export default {
       required: true,
     } 
   },
-
-  methods: {
-    getImgUrl(memberPictureName) {
-      console.log(memberPictureName);
-      let images = require(path.resolve(__dirname, 'assets/images/members-pictures/' + memberPictureName ));
-      console.log(images);
-    },
-  }
 }
 </script>
 

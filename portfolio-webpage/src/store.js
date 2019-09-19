@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import axios from 'axios';
 
 Vue.use(Vuex);
 
@@ -15,6 +16,7 @@ export default new Vuex.Store({
             currentProject: {},
             currentProjectId: 0,
         },
+        userIp: '',
     },
 
     mutations: {
@@ -26,10 +28,10 @@ export default new Vuex.Store({
         setProjects: (state, projects) => state.projects.projects = projects,
         setCurrentProject: (state, project) => state.projects.currentProject = project,
         setAllProjects: (state, projects) => state.projectsInformation = projects,
+        setUserIp: (state, ip) => state.userIp = ip,
     },
 
     actions: {
-        // action to set projects by category
         setProjectsByCategory({commit, state}) {
             let category = state.projects.projectsCategory;
             let categorizedProjects = [];
@@ -50,6 +52,17 @@ export default new Vuex.Store({
                 // set emptyMatch to false to say that we have not empty matches
             }
             // after projects has been set, now will
+        },
+        getUserIp({ commit }) {
+            let endpoint = `${process.env.VUE_APP_API_ENDPOINT}/api/get-ip/`;
+            axios.get(endpoint)
+                .then( response => {
+                    let  ip = response.data.ip;
+                    commit('setUserIp', ip);
+                })
+                .catch( errors => {
+                    console.log(errors);
+                });
         },
     },
 

@@ -28,7 +28,7 @@
       <div class="blog-results-section">
         <div class="blog-filter-options">
           <select-filter :options="years" label="Año"  :default-option="2019" @getOption="search.filter.year = $event" />
-          <select-filter :options="months" label="Mes" default-option="Enero" @getOption="search.filter.month = $event" />
+          <select-filter :options="monthsAbbre" label="Mes" default-option="Ene" @getOption="search.filter.month = $event" />
         </div>
         <div class="inner-wrapper">
           <posts-cards-slider :search="search" />
@@ -73,6 +73,7 @@ export default {
         'Noviembre',
         'Diciembre'
       ],
+      monthsAbbre: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
       categories: [
         'Todas',
         'Desarrollo',

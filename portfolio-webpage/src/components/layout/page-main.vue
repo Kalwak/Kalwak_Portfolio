@@ -33,5 +33,10 @@ export default {
     // this represents the chatbot
     ChatBot
   },
+
+  created() {
+    // getting user ip when main component is created
+    this.$store.dispatch('getUserIp');
+  },
 }
 </script>
