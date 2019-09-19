@@ -13,7 +13,7 @@ class BlogTestCase(TestCase):
     def test_blog_post_successful(self):
         data = {"title": "A Wonderful Test",
                 "author": "Tester",
-                "tag": "Startup",
+                "tag": "startup",
                 "text": "This is my blog."}
         response = self.client.post('/api/blog/', data=data,
                                     format='json')
@@ -39,7 +39,7 @@ class BlogTestCase(TestCase):
 
     def test_blog_post_missing_title_field(self):
         data = {"author": "Tester",
-                "tag": "Startup",
+                "tag": "startup",
                 "text": "This is my blog."}
         response = self.client.post('/api/blog/', data=data,
                                     format='json')
@@ -49,7 +49,7 @@ class BlogTestCase(TestCase):
 
     def test_blog_post_missing_author_field(self):
         data = {"title": "Tester",
-                "tag": "Startup",
+                "tag": "startup",
                 "text": "This is my blog."}
         response = self.client.post('/api/blog/', data=data,
                                     format='json')
@@ -60,7 +60,7 @@ class BlogTestCase(TestCase):
     def test_blog_post_missing_text_field(self):
         data = {"title": "Test Title",
                 "author": "Tester",
-                "tag": "Startup"}
+                "tag": "startup"}
         response = self.client.post('/api/blog/', data=data,
                                     format='json')
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
@@ -80,7 +80,7 @@ class BlogTestCase(TestCase):
     def test_blog_post_date_added(self):
         data = {"title": "A Wonderful Test",
                 "author": "Tester",
-                "tag": "Startup",
+                "tag": "startup",
                 "text": "This is my blog.",
                 "date": "01/01/2019"}
         response = self.client.post('/api/blog/', data=data,
