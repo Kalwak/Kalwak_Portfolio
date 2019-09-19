@@ -1,11 +1,6 @@
 <template>
   <div class="blog-posts-cards-slider">
     <div class="posts-cards__container">
-      <post-card />
-      <post-card />
-      <post-card />
-      <post-card />
-      <post-card />
     </div>
     <div class="posts-cards__pagination">
       <span class="pagination__button icon-left-arrow arrow" @click="navPages('prev')"></span>
