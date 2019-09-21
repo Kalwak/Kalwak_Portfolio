@@ -2,14 +2,14 @@
   <div class="chatbot-container" @click.stop="">
     <div class="chatbot__header">
       <h5 class="chatbot__header-title">
-        <img  src="~@/assets/images/logo.svg" width="100px" />
+        <img  src="~@/assets/images/logo.svg" width="100px" title="Kalwak" alt="Kalwak logo" />
       </h5>
       <div class="chatbot__header-settings">
-          <span class="chatbot__setting-icon" @click="clearMessages">
-            <img src="~@/assets/images/chatbot-icons/refresh-icon.png" alt="borrar mensajes"  class="setting-icon__image" title="borrar mensajes" />
+          <span class="chatbot__setting-icon" @click="clearMessages" title="borrar mensajes">
+            <img src="~@/assets/images/chatbot-icons/refresh-icon.png" alt="borrar mensajes"  class="setting-icon__image" />
           </span>
-          <span class="chatbot__setting-icon" @click="closeChatbot">
-            <img src="~@/assets/images/chatbot-icons/close-icon.png" alt="cerrar"  class="setting-icon__image"  title="cerrar" />
+          <span class="chatbot__setting-icon" @click="closeChatbot" title="cerrar" >
+            <img src="~@/assets/images/chatbot-icons/close-icon.png" alt="cerrar"  class="setting-icon__image" />
           </span>
       </div>
     </div>
@@ -50,7 +50,12 @@ export default {
   data() {
     return {
     // messages is an array with all the messages
-      messages: [],
+      messages: [
+        {
+          id: 1,
+          type: 'human',
+        }
+      ],
 
       // user message
       message: '',
@@ -211,12 +216,13 @@ export default {
             this.setChatbotResponseMessage(response.data);
           })
           .catch(error => {
+            console.log(error.response);
             swal({
               title: 'Notificación',
               text: 'Hubo un error, intente otra vez'
             }); 
           });
-      }, 500);
+      }, 300);
     },
 
     // @vuese
@@ -295,6 +301,9 @@ export default {
   // one purpose, everytime is mounted, the focusInput method will be called
   // and the message input will be focus, ready for use input
   mounted() {
+    // experimental option to first post a message to the chatbot when opening chatbot inbox
+    var noMessagesInLocalStorage = localStorage.getItem('_messages') && JSON.parse(localStorage.getItem('_messages')).messages.length === 0;
+    if (noMessagesInLocalStorage) this.PostMessageToChatbot({ ip: '127.0.0.1', msg: 'Hello' });  
     this.focusInput();
     this.scrollBottom();
   },

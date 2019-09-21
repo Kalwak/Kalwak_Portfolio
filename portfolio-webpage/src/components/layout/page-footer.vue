@@ -11,10 +11,10 @@
 -->
 
 <template>
-  <footer class="footer row">
+  <footer class="footer row" id="contact-section">
     <div class="col-12">
       <div class="inner-wrapper">
-        <div class="contact-section" id="contact-section">
+        <div class="contact-section">
           <div class="contact-form" v-if="!formDisabled">
             <h4 class="contact__title">Contáctanos</h4>
             <form class="form-row form animated fadeIn"  v-if="!email.onSending">

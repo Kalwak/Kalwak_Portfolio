@@ -63,6 +63,7 @@
                         <input type="file" id="inputFile" class="files__input" lang="es" multiple @change="getUserFiles($event)" name="files"/>
                         <label for="inputFile" class="files__label">Adjuntar archivos</label>
                         <span class="files__output-label">Numero de archivos {{ numberOfSelectedFiles }}</span>
+                        <small class="text-muted w-100 text-center my-2 text-uppercase">Tamaño maximo de archivos hasta 10MB</small>
                     </div>
                     <div class="hire-form__button">
                         <button class="u-button" :disabled="buttonDisabled" type="submit">Cotizar</button>
@@ -78,14 +79,14 @@
 </template>
 
 <script>
-    // hire-us view component, provides an interface where the client is able to make a consultation for a centain service
-    //
+// hire-us view component, provides an interface where the client is able to make a consultation for a centain service
+import swal from 'sweetalert';
 
-    // @vuese
-    export default {
-        name: 'hire-us',
 
-        data() {
+// @vuese
+export default {
+  name: 'hire-us',
+  data() {
             return {
                 csrftoken : $cookies.get('csrftoken'),
                 /* Saves a list of errors gathered from the url queries
@@ -136,54 +137,96 @@
                     },
                 ],
             };
-        },
+  },
+  computed: {
+    // returns true if any of the required inputs is empty, else returns false
+    buttonDisabledByInputs() {
+      return !this.service_request.first_name
+        || !this.service_request.last_name
+        || !this.service_request.telephone
+        || !this.service_request.email
+        || !this.service_request.description;
+    },
+    // button disabled based on buttonDisabledByInputs, this will be used to disabled cotizar button
+    buttonDisabled() {
+      return this.buttonDisabledByInputs;
+    },    
+    numberOfSelectedFiles() {
+      let numberOfFiles = this.service_request.files.length;
+      return numberOfFiles;
+    },
+  },
+  mounted: function () {
+    this.process_query_params();
+    this.handleErrorsFromData();
+  },
+  methods: {
+    // @vuese 
+    // used to get files from file input and then store in the service_request object
+    // also 
+    getUserFiles(event) {
+      let files = event.target.files;
+      let clearFiles = [];
+      let limitSizeErrorMessage = 'Los siguientes archivos no seran\n envidos por limite de peso:\n\n';
+      let limitsizeError = false;
+      for (let i = 0; i < files.length; i++) {
+        let file = files[i];
+        if (file.size < 10000000) {
+          clearFiles.push(file);
+        } else {
+          limitsizeError = true;
+          limitSizeErrorMessage += ` ${file.name}\n`;
+        };
+      };
 
-        computed: {
-            // returns true if any of the required inputs is empty, else returns false
-            buttonDisabledByInputs() {
-                return !this.service_request.first_name
-                    || !this.service_request.last_name
-                    || !this.service_request.telephone
-                    || !this.service_request.email
-                    || !this.service_request.description;
-            },
+      if (limitsizeError) {
+        swal({
+          title: 'Notificación',
+          text: limitSizeErrorMessage,
+          icon: 'warning',
+        });
+      };
+      this.service_request.files = this.service_request.files.concat(clearFiles);
+      event.target.type = 'text';
+      event.target.type = 'file';
+    },
 
-            // button disabled based on buttonDisabledByInputs, this will be used to disabled cotizar button
-            buttonDisabled() {
-                return this.buttonDisabledByInputs;
-            },
+    // @vuese
+    // Saves the errors gathered from the url queries to the this.errors array if no query in url, then nothing is done
+    process_query_params(){
+      let urlParams = new URLSearchParams(window.location.search);
+      let query = urlParams.get("errors");
+      if(query){
+          query = query.replace(/'/g, '"'); //Replace is needed since JSON standards don't parse the ' correctly
+          let json_query = JSON.parse(query);
+          this.errors.push(json_query);
+          console.log(this.errors);
+      }
+      return this.errors; // Done for unittesting
+    },
 
-            numberOfSelectedFiles() {
-                let numberOfFiles = this.service_request.files.length;
-                return numberOfFiles;
-            },
-        },
+    // @vuese
+    // handle the errors array from the data property
+    // shows alerts if any error when submitting form
+    handleErrorsFromData() {
+      let errors = this.errors;
+      let errorMessage = '';
+      if (this.errors.length > 0) {
+          errors.forEach( error => {
+            let errorLabels = Object.keys(error);
+            errorLabels.forEach( label => {
+              if (label === 'email') errorMessage += 'Ingrese un email valido\n';
+              if (label === 'telephone') errorMessage += 'Ingrese un numero de teléfono valido\n';
+            });
+          });
 
-        mounted: function () {
-            this.process_query_params();
-        },
-
-        methods: {
-
-            // @vuese 
-            // used to get files from file input and then store in the service_request object
-            getUserFiles(event) {
-                let files = event.target.files;
-                this.service_request.files = files;
-            },
-
-            // Saves the errors gathered from the url queries to the this.errors array if no query in url, then nothing is done
-            process_query_params(){
-                let urlParams = new URLSearchParams(window.location.search);
-                let query = urlParams.get("errors");
-                if(query){
-                    query = query.replace(/'/g, '"'); //Replace is needed since JSON standards don't parse the ' correctly
-                    let json_query = JSON.parse(query);
-                    this.errors.push(json_query);
-                }
-                return this.errors; // Done for unittesting
-            }
-        }
-
-    }
+          swal({
+            title: 'Notificación',
+            text: errorMessage,
+            icon: 'error',
+          });
+      };
+    },
+  },
+};
 </script>

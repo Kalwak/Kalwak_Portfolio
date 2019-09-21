@@ -34,6 +34,7 @@
 
 .contact-form {
   width: 60%;
+
   .form {
     margin: 0;
     width: 95%;
@@ -43,11 +44,11 @@
       padding: 4px 10px;
       font-size: 1.1em;
       border: none;
-
     }
 
     .form__input {
       border: 1.2px solid $orange-color;
+      outline: none;
     }
 
     .form__textarea {
