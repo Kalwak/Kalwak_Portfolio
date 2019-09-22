@@ -38,5 +38,14 @@ export default {
     // getting user ip when main component is created
     this.$store.dispatch('getUserIp');
   },
+
+  watch: {
+    // hide body scrollbar when the chatbot is visible
+    // else body has scrollbar again
+    chatbotVisible(value) {
+      if (value) document.body.style.overflow = 'hidden';
+      else document.body.style.overflow = '';
+    },
+  },
 }
 </script>

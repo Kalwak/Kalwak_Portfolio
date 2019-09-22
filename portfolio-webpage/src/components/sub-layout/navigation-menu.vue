@@ -37,7 +37,7 @@
 
 
     <div class="nav__item">
-      <router-link to="/kalwak-blog" class="nav__link">Blog</router-link>
+      <router-link to="/blog/all/page/1" class="nav__link">Blog</router-link>
     </div>
 
     <div class="nav__item">

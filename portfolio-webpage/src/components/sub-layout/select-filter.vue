@@ -1,3 +1,10 @@
+<!--
+  STRUCTURE OF THIS COMPONENT
+  DIV // CLASSES: FILTER-OPTION // MAIN CONTAINER FOR FILTER COMPONENT
+    SPAN // CLASSES: LABEL // LABEL FOR CURRENT SELECTED OPTION
+    DIV // CLASSES: OPTIONS__LIST // CONTAINER FOR LIST OF AVAILABLE OPTIONS
+      SPAN // CLASSES: OPTION // CONTAINER FOR A PARTICULAR OPTION
+-->
 <template>
   <div class="filter-option">
     <span class="label" 
@@ -11,6 +18,7 @@
       @mouseout="setLabelHoveredStatus(false);">
       <span 
         class="option"
+        :class="{ 'selected-text': option === selectedOption }"
         v-for="(option, index) in options"
         :key="index"
         @click="setOption(option)">
@@ -60,7 +68,8 @@ export default {
         return false;
       }
       this.selectedOption = option;
-      this.$emit('getOption', option);
+      // storing value as string values
+      this.$emit('getOption', option + '');
     },
 
     // @vuese
@@ -72,6 +81,7 @@ export default {
   },
 
   created() {
+    // where created, default option will be set as the selectedOption
     this.setOption(this.defaultOption);
   }
 };

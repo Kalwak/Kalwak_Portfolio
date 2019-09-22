@@ -52,9 +52,27 @@ export default new Router({
       component: () => import('./views/HireUs.vue'),
     },
     {
-      path: '/kalwak-blog',
-      name: 'kalwak blog',
+      path: '/blog',
+      name: 'blog',
       component: () => import('./views/Blog.vue'),
+      children: [
+        {
+          path: ':category/page/:number',
+          name: 'blog list',
+          component: () => import('./views/sub-views/BlogCardsList.vue'),
+        }
+      ],
+    },
+
+    {
+      path: '*',
+      redirect: '/not-found'
+    },
+
+    {
+      path: '/not-found',
+      name: 'not found',
+      component: () => import('./views/NotFound.vue'),
     },
   ]
 });

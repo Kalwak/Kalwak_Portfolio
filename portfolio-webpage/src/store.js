@@ -17,18 +17,33 @@ export default new Vuex.Store({
             currentProjectId: 0,
         },
         userIp: '',
+
+        // blog card list
+        search: {
+            searchText: '',
+            filter: {
+                year: '',
+                month: '',
+            },
+        },
+        onSearching: false,
     },
 
     mutations: {
-        // mutations to set values for projects, which is an object where
-        // data like which project is shown now (matched with a view)
-        // like the current category and current project id
+        // projects related
         setCategory: (state, category) => state.projects.projectsCategory = category,
-        // setProjectId: (state, id) => state.projects.projectId = id,
         setProjects: (state, projects) => state.projects.projects = projects,
         setCurrentProject: (state, project) => state.projects.currentProject = project,
         setAllProjects: (state, projects) => state.projectsInformation = projects,
+
+        // user api related
         setUserIp: (state, ip) => state.userIp = ip,
+
+        // blog list related
+        setSearchText: (state, text) => state.search.searchText = text,
+        setSearchYear: (state, year) => state.search.filter.year = year,
+        setSearchMonth: (state, month) => state.search.filter.month = month,
+        setOnSearching: (state, status) => state.onSearching = status, 
     },
 
     actions: {

@@ -3,8 +3,16 @@ import { mount, createLocalVue } from '@vue/test-utils';
 
 
 describe('chat-bot', () => {
+  const $route = {
+    path: '/some/path'
+  };
   const localVue = createLocalVue();
-  const wrapper = mount(ChatBot, localVue);
+  const wrapper = mount(ChatBot, {
+    localVue,
+    mocks: {
+      $route
+    },
+  });
 
 
   it('should have a data option and should be a function', () => {

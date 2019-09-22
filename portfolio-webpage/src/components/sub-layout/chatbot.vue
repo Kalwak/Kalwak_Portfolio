@@ -120,6 +120,7 @@ export default {
         this.$nextTick(function() {
           this.scrollBottom();
         });
+        this.focusInput();
       };
     },
 
@@ -212,7 +213,7 @@ export default {
               text: 'Hubo un error, intente otra vez'
             }); 
           });
-      }, 300);
+      }, 500);
     },
 
     // @vuese
