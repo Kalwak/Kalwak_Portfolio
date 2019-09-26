@@ -9,4 +9,5 @@ class Blog(models.Model):
                     ("design", "Graphic Design")]
     tag = models.CharField(choices=tags_options, max_length=11)
     date = models.DateField(auto_now_add=True)
+    thumbnail = models.ImageField(upload_to='blog')
     text = models.TextField(blank=False, max_length=30000)
