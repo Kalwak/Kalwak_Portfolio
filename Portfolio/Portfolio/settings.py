@@ -20,6 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Django-Environ configuration
 env = environ.Env(
     # set casting, default value
+    USE_SSL=(bool, False),
     DEBUG_MODE=(bool, False),
     SECRET_KEY=(str, 'secret-key'),
     DBNAME=(str, 'kalwak'),
@@ -50,7 +51,9 @@ LOGS_LIMIT = env('LOGS_LIMIT')  # Limit the amount of logs saved to the database
 # If using build (without frontend nodejs server) or in production mode, then set the environment variable to ""
 FRONTEND_URL = env('FRONTEND_URL')  # This is needed to the HireUs section in frontend (service_request in backend)
 
-
+SECURE_SSL_REDIRECT = env('USE_SSL')
+SESSION_COOKIE_SECURE = env('USE_SSL')
+CSRF_COOKIE_SECURE = env('USE_SSL')
 
 ALLOWED_HOSTS = ['*']
 
