@@ -182,7 +182,7 @@ export default {
       let clearFiles = [];
       let limitSizeError = false;
       let totalSize = this.totalFilesSize;
-      let errorMessage = 'Los siguientes archivos no se enviaran porque\n con ellos se superan el limite de 10MB\n';
+      let errorMessage = 'Los siguientes archivos no se enviaran porque\n con ellos se supera el limite de 10MB\n';
       for (let i = 0; i < files.length; i++) {
         let file = files.item(i);
         totalSize += file.size;

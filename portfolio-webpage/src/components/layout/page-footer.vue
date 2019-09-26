@@ -52,9 +52,9 @@
           </div>
           <div class="contact-information" :class="{ 'information-50': formDisabled }">
             <div class="contact-info-container">
-              <h4 class="contact__title">Mas information</h4>
+              <h4 class="contact__title">Más información</h4>
               <p class="contact-info">
-                <span class="info__title">teléfono:</span>
+                <span class="info__title">Teléfono:</span>
                 <span class="info__description">
                   <a href="tel:+50684599023" title="telefono">+50684599023</a>
                 </span>

@@ -118,6 +118,7 @@ export default {
     navPages(toWhere) {
       let pageNumber = this.currentPageNumber;
       let limitNumber = this.numberOfPages;
+      this.$log.debug(toWhere);
 
       if (toWhere === 'next' && pageNumber < limitNumber) {
         this.$router.push({ name: 'blog list', params: { number: Number(pageNumber) + 1, category: this.currentCategory }});
@@ -167,12 +168,14 @@ export default {
       this.$store.commit('setOnSearching', true);
       axios.get(url)
         .then( response => {
+          this.$log.debug(response);
           let results = response.data.results;
           this.blogList = results;
           this.setNumberOfPages(response.data.count);
           this.checkForNoResults();
         })
         .catch( errors => {
+          this.$log.error(errors);
           this.$router.push({ name: 'not found' });
         })
         .finally(() => {

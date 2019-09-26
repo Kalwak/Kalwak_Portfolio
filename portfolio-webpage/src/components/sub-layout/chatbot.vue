@@ -98,8 +98,8 @@ export default {
   methods: {
     // @vuese
     // push all full message to messages array,
-    // @args bubbleMessage is an object container message information like, id, time, message
-    // @args disabledIp, default false
+    // @arg bubbleMessage is an object container message information like, id, time, message
+    // @arg disabledIp, default false
     pushMessage(bubbleMessage, disabledIp = false) {
       if(!disabledIp) {
         bubbleMessage.ip = this.userIp;
@@ -198,10 +198,9 @@ export default {
     },
     // @vuese
     // used to post message to bot api
-    // @arga message, this has to contain user ip and msg string
+    // @arg message, this has to contain user ip and msg string
     PostMessageToChatbot(message) {
       let chatbotUrl = this.chatbotApi;
-      window.setTimeout(() => {
         axios.post(chatbotUrl, message)
           .then(response => {
             this.setChatbotResponseMessage(response.data);
@@ -213,7 +212,6 @@ export default {
               text: 'Hubo un error, intente otra vez'
             }); 
           });
-      }, 500);
     },
 
     // @vuese

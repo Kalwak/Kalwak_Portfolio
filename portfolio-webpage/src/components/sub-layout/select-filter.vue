@@ -62,27 +62,28 @@ export default {
     // sets the value of the given argument to the selectedOption property
     // and also emits custom event called getOption which is payload is the option given argument as well
     // @arg option value which will be set as the value of selectedOption property
-    setOption(option) {
+    setOption(option, emit = true) {
       if ((typeof option !== 'string') && (typeof option !== 'number')) {
         this.$log.error('option must be a string or a number', 'but is', typeof option)
         return false;
       }
       this.selectedOption = option;
       // storing value as string values
-      this.$emit('getOption', option + '');
+      emit ? this.$emit('getOption', option + '') : '';
     },
 
     // @vuese
     // used to set labelHovered property to the given argument
     // @arg status is a boolean value
     setLabelHoveredStatus(status) {
+      this.$log.debug(status);
       this.labelHovered = status;
     },
   },
 
   created() {
     // where created, default option will be set as the selectedOption
-    this.setOption(this.defaultOption);
+    this.setOption(this.defaultOption, false);
   }
 };
 </script>

@@ -45,8 +45,8 @@
       </div>
       <div class="blog-results-section">
         <div class="blog-filter-options" :class="{ 'd-none': onSearching }">
-          <select-filter :options="years" :default-option="new Date().getFullYear()" @getOption="$store.commit('setSearchYear',$event)" />
-          <select-filter :options="months" :default-option="months[new Date().getMonth()]" @getOption="$store.commit('setSearchMonth',$event)" />
+          <select-filter :options="years" :default-option="new Date().getFullYear()" @getOption="setFilterYear" />
+          <select-filter :options="months" :default-option="months[new Date().getMonth()]" @getOption="setFilterMonth" />
         </div>
         <div class="inner-wrapper">
           <router-view />
@@ -117,9 +117,26 @@ export default {
     },
 
     // @vuese
-    //
+    // change $route category
     changeCategory(category) {
+      this.$log.debug(category);
       this.$router.push({ name: 'blog list', params: { category: category, number: 1 }});
+    },
+
+    // @vuese
+    // set store filter year and push to $route page 1
+    setFilterYear(year) {
+      this.$log.debug(year);
+      this.$router.push({ name: 'blog list', params: { number: '1' }});
+      this.$store.commit('setSearchYear', year);
+    },
+
+    // @vuese
+    // set store filter month and push to $route page 1
+    setFilterMonth(month) {
+      this.$log.debug(month);
+      this.$router.push({ name: 'blog list', params: { number: '1' }});
+      this.$store.commit('setSearchMonth', month);
     },
   },
 
