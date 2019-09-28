@@ -63,17 +63,20 @@ export default new Router({
         }
       ],
     },
-
     {
       path: '*',
       redirect: '/not-found'
     },
-
     {
       path: '/not-found',
       name: 'not found',
       component: () => import('./views/NotFound.vue'),
     },
+    {
+      path: '/blog/editor',
+      name: 'blog editor',
+      component: () => import('./views/BlogEditor.vue'),
+    }
   ]
 });
 // component: () => import(/* webpackChunkName: "about" */ './views/Component.vue')
