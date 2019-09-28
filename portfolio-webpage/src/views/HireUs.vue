@@ -176,7 +176,7 @@ export default {
   methods: {
     // @vuese 
     // used to get files from file input and then store in the service_request object
-    // also 
+    // @arg event, representing event object provided by change event
     getUserFiles(event) {
       let files = event.target.files;
       let clearFiles = [];

@@ -62,6 +62,7 @@ export default {
     // sets the value of the given argument to the selectedOption property
     // and also emits custom event called getOption which is payload is the option given argument as well
     // @arg option value which will be set as the value of selectedOption property
+    // @arg emit, boolean value by default is true, used to check if the method should emit the custom event getOption
     setOption(option, emit = true) {
       if ((typeof option !== 'string') && (typeof option !== 'number')) {
         this.$log.error('option must be a string or a number', 'but is', typeof option)

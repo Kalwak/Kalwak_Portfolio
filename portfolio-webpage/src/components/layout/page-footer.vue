@@ -221,7 +221,7 @@ export default {
     // @vuese
     // check if fields are not empty, 
     // it's used to check if required inputs are not empty, this method is used in sendEmail method
-    // @args filds which is an object
+    // @arg filds which is an object contain actually any fields
     checkFields(fields) {
       let validFields = true;
       let fieldsKeys = Object.keys(fields);

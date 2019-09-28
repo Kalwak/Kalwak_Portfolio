@@ -95,9 +95,8 @@ export default {
   methods: {
     // @vuese
     // used to return an array of number of the given ranges
-    // @args min, a int representing the min number of the array
-    // @args limit, a int representing the limit number of the array
-    // @return numbers, an array of numbers from min..to..limit
+    // @arg min, a int representing the min number of the array
+    // @arg limit, a int representing the limit number of the array
     getRangeOfNumbers(min, limit) {
       let numbers = [];
       let number = min;
@@ -111,6 +110,7 @@ export default {
     // handles @input event for search input 
     // and sets event.target.value to store search.searchText through 
     // setSearchText mutation method
+    // @arg event, event object provided by the @input event
     setSearchText(event) {
       let text = event.target.value;
       this.$store.commit('setSearchText', text);
@@ -118,6 +118,7 @@ export default {
 
     // @vuese
     // change $route category
+    // @arg category, representing blog category
     changeCategory(category) {
       this.$log.debug(category);
       this.$router.push({ name: 'blog list', params: { category: category, number: 1 }});
@@ -125,6 +126,7 @@ export default {
 
     // @vuese
     // set store filter year and push to $route page 1
+    // @arg year, representing filter year
     setFilterYear(year) {
       this.$log.debug(year);
       this.$router.push({ name: 'blog list', params: { number: '1' }});
@@ -133,6 +135,7 @@ export default {
 
     // @vuese
     // set store filter month and push to $route page 1
+    // @arg month, representing filter month
     setFilterMonth(month) {
       this.$log.debug(month);
       this.$router.push({ name: 'blog list', params: { number: '1' }});
