@@ -9,6 +9,7 @@
 import os
 import sys
 import django
+
 sys.path.insert(0, os.path.abspath('..'))
 os.environ['DJANGO_SETTINGS_MODULE'] = 'Portfolio.settings'
 django.setup()
@@ -21,7 +22,6 @@ author = 'Jose Mario Quesada Villalobos and Joseph David Zamora Murillo'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0'
-
 
 # -- General configuration ---------------------------------------------------
 
@@ -38,7 +38,6 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
-
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
@@ -51,16 +50,15 @@ html_theme = 'alabaster'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-#setting so Alabaster’s customized sidebar templates are loaded
+# setting so Alabaster’s customized sidebar templates are loaded
 html_sidebars = {
-        '**': [
-            'about.html',
-            'navigation.html',
-            'relations.html',
-            'searchbox.html',
-            'donate.html',
-        ]
-    }
+    '**': [
+        'about.html',
+        'navigation.html',
+        'relations.html',
+        'searchbox.html',
+        'donate.html',
+    ]
+}
 
-html_theme_options = {'caption_font_size':'5'}
-
+html_theme_options = {'caption_font_size': '5'}
