@@ -6,7 +6,6 @@ import axios from 'axios';
 import vueLogger from 'vuejs-logger';
 import '../node_modules/swiper/dist/js/swiper.min.js';
 import './assets/css/main.scss';
-import './assets/css/editor/editor.scss';
 
 Vue.use(require('vue-cookies'));
 

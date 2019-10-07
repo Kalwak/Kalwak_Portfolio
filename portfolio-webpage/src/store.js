@@ -8,8 +8,6 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         projectsInformation: [],
-        // organized information, with I'll work with the
-        // projects pagination
         projects: {
             projectsCategory: '',
             projects: [],
@@ -17,33 +15,24 @@ export default new Vuex.Store({
             currentProjectId: 0,
         },
         userIp: '',
-
-        // blog card list
-        search: {
-            searchText: '',
-            filter: {
-                year: '',
-                month: '',
-            },
-        },
         onSearching: false,
+        searchText: '',
+        filter: {
+            year: '',
+            month: '',
+        },
     },
 
     mutations: {
-        // projects related
         setCategory: (state, category) => state.projects.projectsCategory = category,
         setProjects: (state, projects) => state.projects.projects = projects,
         setCurrentProject: (state, project) => state.projects.currentProject = project,
         setAllProjects: (state, projects) => state.projectsInformation = projects,
-
-        // user api related
         setUserIp: (state, ip) => state.userIp = ip,
-
-        // blog list related
-        setSearchText: (state, text) => state.search.searchText = text,
-        setSearchYear: (state, year) => state.search.filter.year = year,
-        setSearchMonth: (state, month) => state.search.filter.month = month,
         setOnSearching: (state, status) => state.onSearching = status, 
+        setSearchText: (state, text) => state.searchText = text,
+        setYear: (state, year) => state.filter.year = year,
+        setMonth: (state, month) => state.filter.month = month
     },
 
     actions: {

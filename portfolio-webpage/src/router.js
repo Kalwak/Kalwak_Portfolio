@@ -53,11 +53,15 @@ export default new Router({
     },
     {
       path: '/blog',
-      name: 'blog',
       component: () => import('./views/Blog.vue'),
       children: [
         {
-          path: ':category/page/:number',
+          path: '',
+          name: 'blog',
+          component: () => import('./views/sub-views/BlogDefault.vue'), 
+        },
+        {
+          path: ':category/(page/)?:number(\\d+)?',
           name: 'blog list',
           component: () => import('./views/sub-views/BlogCardsList.vue'),
         }
@@ -73,7 +77,7 @@ export default new Router({
       component: () => import('./views/NotFound.vue'),
     },
     {
-      path: '/blog/editor',
+      path: '/blog.editor',
       name: 'blog editor',
       component: () => import('./views/BlogEditor.vue'),
     }

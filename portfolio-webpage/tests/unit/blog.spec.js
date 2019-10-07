@@ -1,134 +1,163 @@
 import Blog from '@/views/Blog.vue';
 import BlogCardsList from '@/views/sub-views/BlogCardsList.vue';
+import BlogDefault from '@/views/sub-views/BlogDefault.vue';
 import Vuex from 'vuex';
 import VueRouter from 'vue-router';
+import vueLogger from 'vuejs-logger';
 import { createLocalVue, shallowMount, mount } from '@vue/test-utils';
 
 
-describe('Blog', () => {
-  // local vue
+describe('blog', () => {
+
   const localVue = createLocalVue();
-  localVue.use(Vuex);
   localVue.use(VueRouter);
-  // store 
+  localVue.use(Vuex);
+  localVue.use(vueLogger);
+  // avoid logger messages
+  localVue.$log.debug = () => {};
+  localVue.$log.error = () => {};
+
+
+  const data = {
+    categories: [
+      { es: 'todas', en: 'all' },
+      { es: 'desarrollo', en: 'development' },
+      { es: 'redes sociales', en: 'social' },
+      { es: 'startup', en: 'startup' },
+      { es: 'seguridad', en: 'security' },
+      { es: 'diseño grafico', en: 'design' },
+    ],
+    searchText: '',
+    years: ['todos', 2019, 2020],
+    months: ['todos', 'Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
+  };
+
   const store = new Vuex.Store({
     state: {
-      search: {
-        searchText: '',
-        filter: {
-          year: '',
-          month: '',
-        },
-      },
       onSearching: false,
+      searchText: '',
+      filter: {
+        year: '',
+        month: '',
+      },
     },
+
     mutations: {
-      // blog list related
-      setSearchText: (state, text) => state.search.searchText = text,
-      setSearchYear: (state, year) => state.search.filter.year = year,
-      setSearchMonth: (state, month) => state.search.filter.month = month,
-      setOnSearching: (state, status) => state.onSearching = status, 
-    },
+      setSearchText: (state, text) => state.searchText = text,
+      setYear: (state, year) => state.filter.year = year,
+      setMonth: (state, month) => state.filter.month = month
+    }
   });
-  // router
+
   const router = new VueRouter({
-    routes: [
-      {
-        path: ':category/page/:number',
-        name: 'blog list',
-        component: BlogCardsList,
-      }
-    ],
   });
 
   // data
-  it('should have data function and it should return an object', () => {
-    expect(typeof Blog.data).toBe('function');
-    expect(typeof Blog.data()).toBe('object');
+  it('should have the current data', () => {
+    const wrapper = mount(Blog, {
+      localVue,
+      router,
+      store
+    });
+
+    let componentData = wrapper.vm.$data;
+    expect(componentData).toEqual(data);
   });
 
-  // lifecycles
-  it('should have a created lifecycle hook', () => {
-    expect(typeof Blog.created).toBe('function');
-  });
-
-  it('when instance is on created lifecycle, BlogCardsList view should exist', () => {
-    const wrapper = shallowMount(Blog, { store, localVue, router });
-    expect(wrapper.exists(BlogCardsList)).toBe(true);
-  });
 
   // computed
-  it('should have computed object', () => {
-    expect(typeof Blog.computed).toBe('object');
+  it('store onSearching is set to false by default', () => {
+    const wrapper = mount(Blog, {
+      localVue,
+      router,
+      store
+    });
+
+    let onSearching = wrapper.vm.onSearching;
+    expect(onSearching).toBe(false);
   });
 
-  // methods 
-  it('should have have a method called getRangeOfNumber which accepts a min and limit parameter, should return an array with number from min to limit', () => {
-    let min = 1, limit = 6;
-    let output = [1, 2, 3, 4, 5, 6];
-    expect(Blog.methods.getRangeOfNumbers(min, limit)).toEqual(output);
+  // methods
+  it('setSearchText should take searchText value and set it to store searchText through a mutation', () => {
+    const wrapper = mount(Blog, { localVue, router, store });
+    let searchText = 'My search text';
+    wrapper.vm.$data.searchText = searchText;
+    wrapper.vm.setSearchText();
+    let searchTextOnStore = wrapper.vm.$store.state.searchText;
+    expect(searchTextOnStore).toEqual(searchText);
   });
 
-  it('should have a method called setSearchText which is a handler for @input event and it gets the value from event.target.value and sets the value to store.state.search.searchText through setSearchText mutation', () => {
-    const wrapper = mount(Blog, { store, localVue, router });
-    let searchInput = wrapper.find('input[id=searchInput]');
-    searchInput.setValue('my text');
-    expect(wrapper.vm.$store.state.search.searchText).toBe('my text');
-    expect(searchInput.element.value).toBe('my text');
+  it('getYear method should check if its year parameter is equal to the string (todos) and replace it with string (all) else let it as it is, then set the year to store filter.year through a mutation', () => {
+    const wrapper = mount(Blog, { localVue, router, store });
+    // first check if the value of todos is set as all
+    let value = 'todos';
+    wrapper.vm.getYear(value);
+    let valueOnStore = wrapper.vm.$store.state.filter.year;
+    expect(valueOnStore).toBe('all');
+
+    // check for any year
+    wrapper.vm.getYear(2019);
+    valueOnStore = wrapper.vm.$store.state.filter.year;
+    expect(valueOnStore).toBe(2019);
   });
 
-  it('should have a method called changeCategory which recieves a category and pushes it to $route.params.category of the BlogCardsList component view', () => {
-    const wrapper = mount(Blog, { store, localVue, router });
-    wrapper.vm.changeCategory('category');
-    expect(wrapper.vm.$route.path).toBe('category/page/1');
-    expect(wrapper.vm.$route.params.category).toBe('category');
+  it('getMonth method should check if its month parameter is equal to the string (todos) and replace it with string (all) else let it as it is, then set the month to store filter.year through a mutation', () => {
+    const wrapper = mount(Blog, { localVue, router, store });
+    // first check if the value of todos is set as all
+    let value = 'todos';
+    wrapper.vm.getMonth(value);
+    let valueOnStore = wrapper.vm.$store.state.filter.month;
+    expect(valueOnStore).toBe('all');
 
-    // go through every category item, and trigger its @click event and check if the category matches with the $route.params & $route.path
-    let categoriesElements = wrapper.findAll('.blog-category__item');
-    let numberOfElements = categoriesElements.length;
-    for (let i = 0; i < numberOfElements; i++) {
-      let categoryElement = categoriesElements.at(i);
-      let esCategory = categoryElement.text();
-      let foundCategory = wrapper.vm.$data.categories.find( categoryOpt => categoryOpt.es === esCategory);
-      let enCategory = foundCategory.en;
-      categoryElement.trigger('click');
-      expect(wrapper.vm.$route.path).toBe(`${enCategory}/page/1`);
-      expect(wrapper.vm.$route.params.category).toBe(enCategory);
-    };
+    // check for any year
+    wrapper.vm.getMonth('Dec'); // December
+    valueOnStore = wrapper.vm.$store.state.filter.month;
+    expect(valueOnStore).toBe('Dec');
   });
 
-  // store
-  it('should call $store.setsetSearchYear when an option is clicked', () => { // filter-option:first-child for years list
-    const wrapper = mount(Blog, { store, localVue, router });
-    let optionFilter = wrapper.find('.filter-option:first-child');
-    
-    // when created, getOption custom event should emit the defaultOptin as its payload
-    expect(optionFilter.emitted().getOption[0][0]).toBe(optionFilter.props().defaultOption + '');
-
-    // when an option is click, getOption custom event is emitted with its value corresponding to options
-    let options = optionFilter.find('.options__list').findAll('.option');
-    for (let i = 0; i < options.length; i++) {
-      let option = options.at(i);
-      let optionValue = optionFilter.props().options[i] + '';
-      option.trigger('click');
-      expect(wrapper.vm.$store.state.search.filter.year).toBe(optionValue);
-    };
+  it('getPath should return a string with the format /blog/{category}/page/1 where {category} is replaced with its category parameter', () => {
+    const wrapper = mount(Blog, { localVue, router, store });
+    let formattedText = wrapper.vm.getPath('my-category');
+    expect(formattedText).toEqual('/blog/my-category/page/1');
   });
 
-  it('should call $store.setsetSearchMonth when an option is clicked', () => { // filter-option:last-child for month list
-    const wrapper = mount(Blog, { store, localVue, router });
-    let optionFilter = wrapper.find('.filter-option:last-child');
-    
-    // when created, getOption custom event should emit the defaultOptin as its payload
-    expect(optionFilter.emitted().getOption[0][0]).toBe(optionFilter.props().defaultOption + '');
-
-    // when an option is click, getOption custom event is emitted with its value corresponding to options
-    let options = optionFilter.find('.options__list').findAll('.option');
-    for (let i = 0; i < options.length; i++) {
-      let option = options.at(i);
-      let optionValue = optionFilter.props().options[i] + '';
-      option.trigger('click');
-      expect(wrapper.vm.$store.state.search.filter.month).toBe(optionValue);
-    };
+  // events as handlers
+  it('as select-filter component is created, it emits a getOption event and getYear method (for the years options) should be called as its handler and set the payload value to store filter.year', () => {
+    const wrapper = mount(Blog, { localVue, router, store });
+    // the default-option passed to select-filter for years options is -> todos, this value should be the payload when the select-filter emits the getOption when is created
+    let defaultValue = 'all';
+    // getYear method checks if the parameter is equal to the string 'todos', if it's equal, then replace its value with 'all', so that's why defaultValue is 'all'
+    let filterYear = wrapper.vm.$store.state.filter.year;
+    expect(filterYear).toBe(defaultValue)
   });
-});
+
+  it('as select-filter component is created, it emits a getOption event and getMonth method (for the months options) should be called as its handler and set the payload value to store filter.month', () => {
+    const wrapper = mount(Blog, { localVue, router, store });
+    // the default-option passed to select-filter for years options is -> todos, this value should be the payload when the select-filter emits the getOption when is created
+    let defaultValue = 'all';
+    // getMonth method checks if the parameter is equal to the string 'todos', if it's equal, then replace its value with 'all', so that's why defaultValue is 'all'
+    let filterMonth = wrapper.vm.$store.state.filter.month;
+    expect(filterMonth).toBe(defaultValue)
+  });
+
+
+  // buttons actions
+
+
+  // views render
+  it('when this component is rendered, should also display a default children view component', () => {
+    const wrapper = mount(Blog, {
+      localVue,
+      router,
+      store
+    });
+
+    expect(wrapper.exists(BlogDefault)).toBe(true);
+  });
+
+  it('should render BlogCardsList view component with this route string -> /blog/{category}/page/{pageNumber}', () => {
+    const wrapper = mount(Blog, { localVue, router, store });
+    wrapper.vm.$router.push('/blog/all/page/1');
+    expect(wrapper.exists(BlogCardsList)).toBe(true);
+  });
+})

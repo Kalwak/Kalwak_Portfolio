@@ -14,7 +14,7 @@
   <footer class="footer row" id="contact-section">
     <div class="col-12">
       <div class="inner-wrapper">
-        <div class="contact-section">
+        <div class="contact-section" v-if="currentPath !== '/blog.editor'">
           <div class="contact-form" v-if="!formDisabled">
             <h4 class="contact__title">Contáctanos</h4>
             <form class="form-row form animated fadeIn"  v-if="!email.onSending">
@@ -25,7 +25,7 @@
               </div>
               <div class="form-group col form__input-container">
                 <label for="phone" class="d-none">Teléfono</label>
-                <input type="tel" placeholder="Telefono" class="form-control form__input" id="phone" v-model.number="email.phoneNumber" />
+                <input type="tel" placeholder="Teléfono" class="form-control form__input" id="phone" v-model.number="email.phoneNumber" />
                 <small class="text-danger mt-1 mb d-block invisible">*opcional</small>
               </div>
               <div class="form-group col form__input-container">
