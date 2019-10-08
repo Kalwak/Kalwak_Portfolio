@@ -126,10 +126,12 @@ export default {
       this.$log.debug('pageNumber:', pageNumber, 'limitNumber:', limitNumber)
 
       if (toWhere === 'next' && pageNumber < limitNumber) {
-        this.$router.push({ name: 'blog list', params: { number: pageNumber + 1, category }});
+        pageNumber += 1
+        this.$router.push(`/blog/${category}/page/${pageNumber}`);
       };
       if (toWhere === 'prev' && pageNumber > 1) {
-        this.$router.push({ name: 'blog list', params: { number: pageNumber - 1, category }});
+        pageNumber -= 1
+        this.$router.push(`/blog/${category}/page/${pageNumber}`);
       } else return false;
     },
 

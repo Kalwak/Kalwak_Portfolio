@@ -97,19 +97,18 @@
 
       .editor-information-picker {
         margin-left: 12px;
-        display: flex;
 
         .filter-option {
-          margin-bottom: 8px;
-          width: 160px;
           background-color: $green-color;
           color: #fff;
+          margin-bottom: 2px;
 
           .options__list {
             background-color: inherit;
 
             .option {
               color: #fff;
+              padding: 4px 8px;
               
               &:hover {
                 opacity: 0.4;
@@ -122,6 +121,18 @@
             }
           }
         }
+      }
+    }
+
+    .saving-tools {
+      margin-top: 50px;
+      text-align: center;
+
+
+      .form-control-file {
+        width: 0;
+        height: 0;
+        position: absolute;
       }
     }
   }

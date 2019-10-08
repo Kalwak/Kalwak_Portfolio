@@ -10,7 +10,12 @@
     <div class="chatbot-main-container" :class="{ 'chatbot-background': chatbotVisible }" @click="chatbotVisible = false">
       <chat-bot class="animated slideInUp"  @close-chatbot="chatbotVisible = false" v-if="chatbotVisible" />
     </div>
-    <img src="~@/assets/images/chatbot-icons/chatbot-icon.png" alt="open chatbot" title="open chatbot" @click="chatbotVisible = true" class="chatbot-open-icon" />
+    <img 
+      src="~@/assets/images/chatbot-icons/chatbot-icon.png" 
+      alt="open chatbot" title="open chatbot" 
+      @click="chatbotVisible = true" 
+      v-if="notEditorPath" 
+      class="chatbot-open-icon" />
   </main>
 </template>
 
@@ -32,6 +37,13 @@ export default {
   components: {
     // this represents the chatbot
     ChatBot
+  },
+
+  computed: {
+    // to hide chatbot button when user is on editor route
+    notEditorPath() {
+      return this.$route.path !== '/blog.editor';
+    },
   },
 
   created() {
