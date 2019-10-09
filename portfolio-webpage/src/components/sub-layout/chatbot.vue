@@ -207,7 +207,7 @@ export default {
             this.setChatbotResponseMessage(response.data);
           })
           .catch(error => {
-            console.log(error.response);
+            console.error(error.response);
             swal({
               title: 'Notificación',
               text: 'Hubo un error, intente otra vez'
