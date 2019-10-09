@@ -155,6 +155,9 @@
               font-size: 1.1em;
               margin: 0px 0 4px;
               font-weight: 600;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
             }
 
             .post-card__description {

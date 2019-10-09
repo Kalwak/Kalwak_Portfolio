@@ -23,10 +23,10 @@
       <span class="post-card__category">{{ post.tag }}</span>
     </header>
     <div class="post-card__body">
-      <h4 class="post-card__title">{{ post.title }}</h4>
-      <p class="post-card__description">
+      <h4 class="post-card__title" :title="post.title">{{ post.title }}</h4>
+      <!-- <p class="post-card__description">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi inventore quas non accu...
-      </p>
+      </p> -->
     </div>
     <footer class="post-card__footer">
       <div class="post-card__details">

@@ -68,7 +68,7 @@
           {{ !post.thumbnail ? 'Seleciona imagen thumbnail' : post.thumbnail.name }}
           <input type="file" class="form-control-file" @change="getThumbnail" id="thumbnail" />
         </label>
-        <button class="u-button" @click="submitPost">Crear</button>
+        <button class="u-button" @click="submitPost" :disabled="onLoading">Crear</button>
       </div>
     </div>
   </div>
@@ -95,12 +95,14 @@ export default {
         'design',
       ],
       authors: [
-        'Jose Quesada Villalobos',
-        'Joseph Zamora',
-        'Edwin Garcia',
-        'Jennifer De La Cruz',
+        'Jose',
+        'Joseph',
+        'Ricardo',
+        'Edwin',
+        'Jennifer',
       ],
       editorIsReady: false,
+      onLoading: false,
       editorData: {},
       post: {
         title: '',
@@ -241,8 +243,10 @@ export default {
     },
 
     // @vuese
+    // submit post information to backend
     submitPost() {
       this.addFormattedDataToPost();
+      this.onLoading = true;
       let postUrl = this.postUrl;
       let post = this.post;
       this.$log.debug(post);
@@ -254,18 +258,34 @@ export default {
       postFormData.append('thumbnail', post.thumbnail);
       axios.post(postUrl, postFormData, {
         headers: {
-          // 'Content-Type': 'application/json',
-          // 'Content-Type': 'application/x-www-urlencoded'
           'Content-Type': 'multipart/form-data',
-          // 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-          // 'Accept': 'application/json',
         }
       })
         .then( response => {
           this.$log.debug(response);
+          let data = response.data;
+          swal({
+            title: 'Notificación',
+            text: `Creado con exito`,
+          });
         })
         .catch( errors => {
-          this.$log.error(errors.request);
+          let request = errors.request;
+          this.$log.error(request);
+          if (request.status === 400) {
+            swal({
+              title: 'Notificación',
+              text: 'Porfavor no olvide poner titulo y agregar una imagen thumbnail',
+            });
+          } else {
+            swal({
+              title: 'Notificación',
+              text: 'Hubo un error, intente de nuevo',
+            });
+          };
+        })
+        .finally( () => {
+          this.onLoading = false;
         });
     },
   },
