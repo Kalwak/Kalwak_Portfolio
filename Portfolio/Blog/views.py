@@ -28,7 +28,12 @@ class BlogListView(ListAPIView):
 
     def get(self, request, *args, **kwargs):
         params = dict(request.query_params)
-        params.pop("page")
+        try:
+            params.pop("page")
+        except KeyError:
+            return Response({
+                "detail": "page query parameter was not provided. Must be used like so: /api/blog-list/?page=1"
+            }, status=status.HTTP_400_BAD_REQUEST)
         for param in params:
             params[param] = "".join(params[param])
         serializer = BlogFilterSerializer(data=params)
