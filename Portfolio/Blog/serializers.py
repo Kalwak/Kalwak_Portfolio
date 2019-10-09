@@ -26,5 +26,5 @@ class BlogFilterSerializer(serializers.Serializer):
 class BlogListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Blog
-        fields = ["title", "author", "date", "tag", "thumbnail"]
+        fields = ["title", "author", "date", "tag", "thumbnail", "id"]
 

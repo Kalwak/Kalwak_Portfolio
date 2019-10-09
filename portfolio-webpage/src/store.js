@@ -65,7 +65,7 @@ export default new Vuex.Store({
                     commit('setUserIp', ip);
                 })
                 .catch( errors => {
-                    console.log(errors);
+                    console.error(errors);
                 });
         },
     },
