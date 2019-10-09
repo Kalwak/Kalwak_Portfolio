@@ -31,14 +31,14 @@
       :class="{ 'd-block': noResults }">
         No hay resultados
     </div>
-    <div class="posts-cards__pagination" v-if="numberOfPages > 0 && !onSearching">
+    <div class="posts-cards__pagination" v-if="!onSearching && blogList.length > 0">
       <span class="pagination__button icon-left-arrow arrow" @click="navPages('prev')"></span>
       <template v-for="pageNumber in pageNumbers">
         <span 
           class="pagination__button"
           :class="{ 'currentPage': currentPageNumber === pageNumber }"
           :key="pageNumber">
-            <router-link :to="{ name: 'blog list', params: { number: pageNumber }}">{{ pageNumber }}</router-link>
+            <router-link :to="`/blog/${category}/page/${pageNumber}`">{{ pageNumber }}</router-link>
           </span>
       </template>
       <span class="pagination__button icon-right-arrow arrow" @click="navPages('next')"></span>
@@ -50,7 +50,9 @@
 // posts-cards-slider, use for showing posts-cards based on search category and filter restuls
 // and also to provide a pagination
 import PostCard from '../../components/sub-layout/post-card';
+import { formatMonth } from '../../utils/utils';
 import axios from 'axios';
+import swal from 'sweetalert';
 import { mapState } from 'vuex';
 
 
@@ -80,33 +82,34 @@ export default {
 
     },
 
-    // base backend url endpoint for getting post, with axios
-    // I'll add the page query string
-    postUrl() {
-      let { filter, searchText } = this.search;
-      let page = `page=${ this.currentPageNumber}&`;
-      let category = this.currentCategory === 'all' ? '' : `tag=${this.currentCategory}&`;
-      let year = filter.year ? `year=${filter.year}&` : '';
-      let month = filter.month ? `month=${this.formatMonth(filter.month)}` : '';
-      return `${process.env.VUE_APP_API_ENDPOINT}/api/blog-list?${page}${category}${year}${month}`;
-    },
-
     currentPageNumber() {
       return Number(this.$route.params.number);
     },
 
-    currentCategory() {
+    category() {
       return this.$route.params.category;
     },
 
     ...mapState({
-      search: state => state.search,
       onSearching: state => state.onSearching,
+      searchText: state => state.searchText,
+      filter: state => state.filter
     }),
+
+    blogUrl() {
+      let tag = this.category === 'all' ? '' : `&tag=${this.category}`;
+      let page = `page=${this.currentPageNumber}`;
+      let { year, month } = this.filter;
+      year = year === 'all' ? '' : `&year=${year}`;
+      month = month === 'all' ? '' : `&month=${formatMonth(month)}`;
+      let keyword = this.searchText;
+      let baseUrl = process.env.VUE_APP_API_ENDPOINT;
+      return `${baseUrl}/api/blog-list/?${page}${tag}${year}${month}`;
+    }
   },
 
   components: {
-    PostCard
+    PostCard,
   },
   
   methods: {
@@ -118,12 +121,17 @@ export default {
     navPages(toWhere) {
       let pageNumber = this.currentPageNumber;
       let limitNumber = this.numberOfPages;
+      let category = this.category;
+      this.$log.debug(toWhere);
+      this.$log.debug('pageNumber:', pageNumber, 'limitNumber:', limitNumber)
 
       if (toWhere === 'next' && pageNumber < limitNumber) {
-        this.$router.push({ name: 'blog list', params: { number: Number(pageNumber) + 1, category: this.currentCategory }});
+        pageNumber += 1
+        this.$router.push(`/blog/${category}/page/${pageNumber}`);
       };
       if (toWhere === 'prev' && pageNumber > 1) {
-        this.$router.push({ name: 'blog list', params: { number: Number(pageNumber) - 1, category: this.currentCategory }});
+        pageNumber -= 1
+        this.$router.push(`/blog/${category}/page/${pageNumber}`);
       } else return false;
     },
 
@@ -137,43 +145,38 @@ export default {
     },
 
     // @vuese
-    // used in the created stage of the component
-    // so if the :number router is anything else but not a number
-    // user will be redirected to 404 page
-    checkRouteNumber() {
-      let pageNumber = this.$route.params.number;
-      if (!Number(pageNumber)) {
-        this.$router.push({ name: 'not found' });
-      };
-    },
-
-    // @vuese
-    // format month to have zero leading prefix if needed
-    // @arg month, special string like Ene for Enero ~ Dic for Diciembre
-    formatMonth(month) {
-      let months = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
-      if (typeof month !== 'string' || !month.length) return false;
-      month = months.indexOf(month) + 1;
-      month = month.toString().length === 1 ? '0' + month : month;
-      return month;
-    },
-
-    // @vuese
     // fetch blog list based on category, year, month and page
     getBlogList() {
-      let url = this.postUrl;
+      let url = this.blogUrl;
       this.blogList = [];
       this.noResults = false;
       this.$store.commit('setOnSearching', true);
       axios.get(url)
         .then( response => {
+          this.$log.debug(response);
           let results = response.data.results;
           this.blogList = results;
           this.setNumberOfPages(response.data.count);
           this.checkForNoResults();
         })
         .catch( errors => {
-          this.$router.push({ name: 'not found' });
+          let response = errors.response;
+          this.$log.error(errors);
+          this.$log.debug(response);
+          if (!response && !navigator.onLine) {
+            swal({
+              title: 'Notificación',
+              icon: 'error',
+              text: 'Sin conexión a internet'
+            })
+          } else if (!response) {
+            swal({
+              title: 'Notificación',
+              icon: 'warning',
+              text: 'Hubo un error, intente de nuevo'
+            })
+
+          } else if (response.status === 404) this.$router.push({ name: 'not found' });
         })
         .finally(() => {
           this.$store.commit('setOnSearching', false);
@@ -186,20 +189,31 @@ export default {
       if (this.blogList.length < 1) this.noResults = true;
       else this.noResults = false;
     },
+
+    // @vuese
+    // sets default page number if currentPageNumber is undefined
+    setDefaultPageNumber() {
+      let pageNumber = this.currentPageNumber;
+      if (!pageNumber) {
+        this.$router.push({ path: `/blog/${this.category}/page/1` });
+      };
+    }
   },
 
   created() {
-    this.checkRouteNumber();
-  },
-
-  mounted() {
+    this.setDefaultPageNumber();
     this.getBlogList();
   },
 
   watch: {
-    postUrl() {
-      this.getBlogList();
+    category(newCategory, oldCategory) {
+      this.setDefaultPageNumber();
     },
-  },
+
+    blogUrl() {
+      console.log('blog-url changed');
+      this.getBlogList();
+    }
+  }
 }
 </script>

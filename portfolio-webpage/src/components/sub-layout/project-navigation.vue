@@ -80,6 +80,7 @@ export default {
     // on the current caousel slide index,
     // so if current caousel slide index is 0, then Anterior arrow should be disabled
     // the same to Siguiente arrow, but opposite case
+    // @arg index, index value which comes from carousel current slide index
     disableArrowsByBoundaries(index) {
       // to disable left arrow
       if (index === 0) {

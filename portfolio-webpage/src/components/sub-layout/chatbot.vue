@@ -98,8 +98,8 @@ export default {
   methods: {
     // @vuese
     // push all full message to messages array,
-    // @args bubbleMessage is an object container message information like, id, time, message
-    // @args disabledIp, default false
+    // @arg bubbleMessage is an object container message information like, id, time, message
+    // @arg disabledIp, default false
     pushMessage(bubbleMessage, disabledIp = false) {
       if(!disabledIp) {
         bubbleMessage.ip = this.userIp;
@@ -162,7 +162,7 @@ export default {
 
     // @vuese
     // returns a string with the time, but without seconds information
-    // @args time string // should be the string returned from new Date().toLocaleTimeString
+    // @arg time string // should be the string returned from new Date().toLocaleTimeString
     // or string with format hh:mm:ss am/pm, i.e 12:00:10 pm 
     getTimewithOutSeconds(time) {
       if (typeof time !== 'string') {
@@ -182,6 +182,7 @@ export default {
 
     // @vuese
     // push bot response to localStoge _messages.messages object
+    // @arg response, contains bot response message
     setChatbotResponseMessage(response) {
       let message = {
         type: 'bot',
@@ -196,12 +197,12 @@ export default {
         this.scrollBottom();
       });
     },
+
     // @vuese
     // used to post message to bot api
-    // @arga message, this has to contain user ip and msg string
+    // @arg message, this has to contain user ip and msg string
     PostMessageToChatbot(message) {
       let chatbotUrl = this.chatbotApi;
-      window.setTimeout(() => {
         axios.post(chatbotUrl, message)
           .then(response => {
             this.setChatbotResponseMessage(response.data);
@@ -213,7 +214,6 @@ export default {
               text: 'Hubo un error, intente otra vez'
             }); 
           });
-      }, 500);
     },
 
     // @vuese
@@ -233,7 +233,7 @@ export default {
 
     // @vuese
     // push message object to localStorage _messages.messages, which is an array of object
-    // @args message, object with text, time and type properties
+    // @arg message, object with text, time and type properties
     saveMessageToLocalStorage(message) {
       // first check if localStorage item _messages is created && it's type of an object
       let _messages = JSON.parse(localStorage.getItem('_messages'));
@@ -264,7 +264,7 @@ export default {
 
     // @vuese 
     // save last user message to the localStorage _messages.lastMessage
-    // @args message, string
+    // @arg message, string
     saveLastMessageToLocalStorage(message) {
       let _messages = JSON.parse(localStorage.getItem('_messages'));
       if (typeof _messages === 'object') {
@@ -277,7 +277,7 @@ export default {
     },
 
     // @vuese
-    // 
+    // load messags from localStorage
     loadMessagesFromLocalStorage() {
       let _messages = JSON.parse(localStorage.getItem('_messages'));
       if (typeof _messages === 'object') {

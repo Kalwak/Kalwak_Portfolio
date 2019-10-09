@@ -10,7 +10,7 @@
     <span class="label" 
       @mouseover="setLabelHoveredStatus(true);"
       @mouseout="setLabelHoveredStatus(false)">
-      {{ selectedOption }} 
+      {{ label }} 
       <span :class="{ 'icon-down-open-mini': !labelHovered, 'icon-up-open-mini': labelHovered }"></span>
     </span>
     <div class="options__list"
@@ -50,11 +50,15 @@ export default {
       type: Array,
       required: true,
     },
-    // default option that will be taken and set as the selected option
+
     defaultOption: {
-      type: String | Number,
-      required: true,
+      type: String | Number
     },
+
+    label: {
+      type: String,
+      required: true,
+    }
   },
 
   methods: {
@@ -62,14 +66,14 @@ export default {
     // sets the value of the given argument to the selectedOption property
     // and also emits custom event called getOption which is payload is the option given argument as well
     // @arg option value which will be set as the value of selectedOption property
-    setOption(option) {
+    // @arg emit, boolean value by default is true, used to check if the method should emit the custom event getOption
+    setOption(option, emit = true) {
       if ((typeof option !== 'string') && (typeof option !== 'number')) {
-        this.$log.error('option must be a string or a number', 'but is', typeof option)
         return false;
       }
       this.selectedOption = option;
       // storing value as string values
-      this.$emit('getOption', option + '');
+      emit ? this.$emit('getOption', option + '') : '';
     },
 
     // @vuese
@@ -81,8 +85,7 @@ export default {
   },
 
   created() {
-    // where created, default option will be set as the selectedOption
-    this.setOption(this.defaultOption);
+    this.setOption(this.defaultOption)
   }
 };
 </script>

@@ -38,7 +38,7 @@
     <meta name="robots" content="noindex, nofollow" />
     <meta name="canonical" content="https://kalwak.xyz" />
 
-    <!-- open graph tags -->
+    <!-- open graph tags & social media cards -->
     <meta property="og:url" content="https://kalwak.xyz" />
     <meta property="og:title" content="kalwak | Desarrollo web y de software" />
     <meta property="og:site_name" content="kalwak" />
@@ -46,13 +46,42 @@
     <meta property="og:description" content="Desarrollo web y de software" />
     <meta property="og:image" content="https://res.cloudinary.com/edwing123/image/upload/v1565553015/kalwak-projects-images/favicon-16x16.png" />
 
+    <meta name="twitter:title" content="kalwak | Desarrollo web y de software" />
+    <meta name="twitter:description" content="Desarrollo web y de software" />
+    <meta name="twitter:image" content="https://res.cloudinary.com/edwing123/image/upload/v1565553015/kalwak-projects-images/favicon-16x16.png" />
+    <meta name="twitter:image:alt" content="Kalwak branding logo" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- custom styles for noscript message -->
+    <style>
+      noscript {
+        color: #fff;
+        display: block;
+        background: #243c96;
+        padding: 12px 20px;
+        width: 80%;
+        max-width: 600px;
+        margin: 80px auto;
+        border-radius: 4px;
+        font-family: sans-serif;
+        font-size: 0.9em;
+        text-align: center;
+        box-shadow: 0 10px 4px rgb(177, 175, 175);
+      }
+      @media screen and (min-width: 800px) {
+        noscript {
+          font-size: 1.2em;
+        }
+      }
+    </style>
+    
   </head>
   <body>
     <noscript>
-      <strong>We're sorry but this website doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+      <strong>
+        Lo sentimos esta página web no funciona sin JavaScript habilitado. Porfavor habilitelo para continuar.
+      </strong>
     </noscript>
-
-    <!-- app will be injected here -->
     <div id="app"></div>
   </body>
 </html>

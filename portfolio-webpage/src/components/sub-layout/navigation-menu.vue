@@ -23,9 +23,9 @@
       <router-link :to="'/services/' + serviceCategory" class="nav__link">Servicios</router-link>
     </div>
 
-    <div class="nav__item">
+    <!-- <div class="nav__item">
       <router-link to="/services/products" class="nav__link">Productos</router-link>
-    </div>
+    </div> -->
 
     <div class="nav__item">
       <router-link to="/hire-us" class="nav__link">Cotizar</router-link>
@@ -37,7 +37,7 @@
 
 
     <div class="nav__item">
-      <router-link to="/blog/all/page/1" class="nav__link">Blog</router-link>
+      <router-link to="/blog" class="nav__link">Blog</router-link>
     </div>
 
     <div class="nav__item">

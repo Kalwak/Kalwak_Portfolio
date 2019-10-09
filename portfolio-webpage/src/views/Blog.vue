@@ -32,21 +32,21 @@
           v-for="(category, index) in categories"
           :key="index"
           :class="{ 'selected-text': category.en === $route.params.category }"
-          @click="changeCategory(category.en)">
-            {{ category.es }}
-          </span>
+          >
+            <router-link :to="getPath(category.en)">{{ category.es }}</router-link>
+        </span>
       </div>
       <div class="blog-search-box" :class="{ 'd-none': onSearching }">
         <div class="search-box__body">
           <label for="searchInput" class="d-none">Busque aqui</label>
-          <input type="search" class="search-box__input" id="searchInput" :value="search.searchText" @input="setSearchText" placeholder="Busque aqui" />
-          <span class="search-box__icon icon-search" title="Buscar"></span>
+          <input type="search" class="search-box__input" id="searchInput" v-model="searchText" placeholder="Busque aqui" />
+          <span class="search-box__icon icon-search" title="Buscar" @click="setSearchText"></span>
         </div>
       </div>
       <div class="blog-results-section">
         <div class="blog-filter-options" :class="{ 'd-none': onSearching }">
-          <select-filter :options="years" :default-option="new Date().getFullYear()" @getOption="$store.commit('setSearchYear',$event)" />
-          <select-filter :options="months" :default-option="months[new Date().getMonth()]" @getOption="$store.commit('setSearchMonth',$event)" />
+          <select-filter label="Año" default-option="todos" :options="years" @getOption="getYear" />
+          <select-filter label="Mes" default-option="todos" :options="months" @getOption="getMonth" />
         </div>
         <div class="inner-wrapper">
           <router-view />
@@ -59,17 +59,14 @@
 <script>
 // Blog view, gives a header where search box and category list is given and
 // body where posts-cards and filter options are displayed
-import SelectFilter from '../components/sub-layout/select-filter.vue';
 import { mapState } from 'vuex';
-
+import SelectFilter from '../components/sub-layout/select-filter.vue';
 
 // @vuese
 export default {
   name: 'blog',
   data() {
     return {
-      years: [],
-      months: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
       categories: [
         { es: 'todas', en: 'all' },
         { es: 'desarrollo', en: 'development' },
@@ -78,12 +75,14 @@ export default {
         { es: 'seguridad', en: 'security' },
         { es: 'diseño grafico', en: 'design' },
       ],
+      searchText: '',
+      years: ['todos', 2019, 2020],
+      months: ['todos', 'Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'],
     };
   },
 
   computed: {
     ...mapState({
-      search: state => state.search,
       onSearching: state => state.onSearching,
     }),
   },
@@ -94,39 +93,42 @@ export default {
 
   methods: {
     // @vuese
-    // used to return an array of number of the given ranges
-    // @args min, a int representing the min number of the array
-    // @args limit, a int representing the limit number of the array
-    // @return numbers, an array of numbers from min..to..limit
-    getRangeOfNumbers(min, limit) {
-      let numbers = [];
-      let number = min;
-      for (; number <= limit; number++) {
-        numbers.push(number);
-      };
-
-      return numbers;
-    },
-    // @vuese
     // handles @input event for search input 
-    // and sets event.target.value to store search.searchText through 
-    // setSearchText mutation method
-    setSearchText(event) {
-      let text = event.target.value;
+    setSearchText() {
+      let text = this.searchText;
+      this.$log.debug(text);
       this.$store.commit('setSearchText', text);
     },
 
     // @vuese
-    //
-    changeCategory(category) {
-      this.$router.push({ name: 'blog list', params: { category: category, number: 1 }});
+    // get and set filter year
+    // handler for @getOption custom event in the select-filter component
+    // @arg year represents the year emitted by the select-filer
+    getYear(year) {
+      year = year === 'todos' ? 'all' : year;
+      this.$log.debug(year);
+      this.$store.commit('setYear', year);
     },
-  },
+  
+    // @vuese
+    // get and set filter month
+    // handler for @getOption custom event in the select-filter component
+    // @arg month represents the month emitted by the select-filer
+    getMonth(month) {
+      month = month === 'todos' ? 'all' : month;
+      this.$log.debug(month);
+      this.$store.commit('setMonth', month);
+    },
 
-  created() {
-    this.years = this.getRangeOfNumbers(2019, 2020);
-    // if only /blog route is matched, give a default page and number
-    if (this.$route.path === '/blog' || this.$route.path === '/blog/') this.$router.push('/blog/all/page/1');
+    // @vuese
+    // format a new string with the category string
+    // @arg category, representing blog category
+    getPath(category) {
+      this.$log.debug(category);
+      let path = `/blog/${category}/page/1`;
+      this.$log.debug(path);
+      return path;
+    },
   },
 }
 </script>

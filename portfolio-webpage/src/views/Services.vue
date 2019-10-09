@@ -31,11 +31,11 @@
             <img src="~@/assets/images/categories-images/category-4.png" alt="graphic design" class="category__icon" />
           </router-link>
         </div>
-        <div class="list__category">
+        <!-- <div class="list__category">
           <router-link to="/services/products">
             <img src="~@/assets/images/categories-images/category-5.png" alt="services" class="category__icon" />
           </router-link>
-        </div>
+        </div> -->
       </div>
     </div>
     <router-view />

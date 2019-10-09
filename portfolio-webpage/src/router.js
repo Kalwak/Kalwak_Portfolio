@@ -53,27 +53,34 @@ export default new Router({
     },
     {
       path: '/blog',
-      name: 'blog',
       component: () => import('./views/Blog.vue'),
       children: [
         {
-          path: ':category/page/:number',
+          path: '',
+          name: 'blog',
+          component: () => import('./views/sub-views/BlogDefault.vue'), 
+        },
+        {
+          path: ':category/(page/)?:number(\\d+)?',
           name: 'blog list',
           component: () => import('./views/sub-views/BlogCardsList.vue'),
         }
       ],
     },
-
     {
       path: '*',
       redirect: '/not-found'
     },
-
     {
       path: '/not-found',
       name: 'not found',
       component: () => import('./views/NotFound.vue'),
     },
+    {
+      path: '/blog.editor',
+      name: 'blog editor',
+      component: () => import('./views/BlogEditor.vue'),
+    }
   ]
 });
 // component: () => import(/* webpackChunkName: "about" */ './views/Component.vue')
