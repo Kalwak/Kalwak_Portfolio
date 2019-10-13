@@ -5,7 +5,8 @@
     </header>
     <div class="editor__body">
       <div class="editor-page">
-        <input class="post-main__title" placeholder="Titulo" v-model="post.title" />
+        <label for="mainTitle">Titulo principal</label>
+        <input class="post-main__title" placeholder="Titulo" id="mainTitle" v-model="post.title" />
         <div id="editor-holder"></div>
       </div>
       <div class="editor-settings">

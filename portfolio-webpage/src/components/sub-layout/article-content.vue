@@ -26,8 +26,8 @@
           <li 
           v-for="(item, itemIndex) in block.data.items"
           :key="itemIndex"
+          v-html="item"
           >
-            {{ item }}
           </li>
         </ul>
       </template>

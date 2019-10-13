@@ -35,7 +35,9 @@
     }
 
     .selected-text {
-      color: $blue-color;
+      a {
+        color: $blue-color;
+      }
     }
   }
 

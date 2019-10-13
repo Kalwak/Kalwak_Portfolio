@@ -76,9 +76,10 @@
   }
 
   .post-footer {
+    margin-top: 80px;
 
     .post__author {
-      margin: 20px 0;
+      margin: 30px 0 20px;
     }
 
     .share-box {
@@ -131,6 +132,7 @@
   
       .post__author {
         text-align: center;
+        margin: 30px 0 0;
       }
   
       .share-box {
@@ -159,6 +161,9 @@
       }
   
       // editor specific
+      .post__title {
+        margin: 0 20px;
+      }
       .post__paragraph {
         margin: 0 20px 20px;
       }

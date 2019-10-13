@@ -176,7 +176,9 @@ export default {
               text: 'Hubo un error, intente de nuevo'
             })
 
-          } else if (response.status === 404) this.$router.push({ name: 'not found' });
+          } else if (response.status === 404) {
+            this.checkForNoResults();
+          }
         })
         .finally(() => {
           this.$store.commit('setOnSearching', false);

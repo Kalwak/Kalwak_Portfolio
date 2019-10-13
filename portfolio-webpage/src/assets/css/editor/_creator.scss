@@ -25,6 +25,11 @@
 
     .editor-page {
 
+      label {
+        font-size: 0;
+        position: absolute;
+      }
+
       .post-main__title {
         width: 100%;
         font-size: 2.4em;

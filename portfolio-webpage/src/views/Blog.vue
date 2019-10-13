@@ -44,7 +44,7 @@
         </div>
       </div>
       <div class="blog-results-section">
-        <div class="blog-filter-options" :class="{ 'd-none': onSearching || $route.params.id }">
+        <div class="blog-filter-options" :class="{ 'd-none': onSearching || $route.params.id || !$route.params.category }">
           <select-filter label="Año" default-option="todos" :options="years" @getOption="getYear" />
           <select-filter label="Mes" default-option="todos" :options="months" @getOption="getMonth" />
         </div>

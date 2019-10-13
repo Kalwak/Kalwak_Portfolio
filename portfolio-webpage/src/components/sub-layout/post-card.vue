@@ -54,7 +54,7 @@ export default {
 
   computed: {
     postRoute() {
-      return `/blog/${this.category}/post/${this.post.id}`;
+      return `/blog/${this.post.tag}/post/${this.post.id}`;
     },
 
     category() {
