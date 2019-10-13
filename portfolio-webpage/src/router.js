@@ -58,13 +58,18 @@ export default new Router({
         {
           path: '',
           name: 'blog',
-          component: () => import('./views/sub-views/BlogDefault.vue'), 
+          component: () => import('./views/sub-views/BlogDefault.vue'),
         },
         {
           path: ':category/(page/)?:number(\\d+)?',
           name: 'blog list',
           component: () => import('./views/sub-views/BlogCardsList.vue'),
-        }
+        },
+        {
+          path: ':category/post/:id(\\d+)',
+          nane: 'article',
+          component: () => import('./views/sub-views/Post.vue'),
+        },
       ],
     },
     {

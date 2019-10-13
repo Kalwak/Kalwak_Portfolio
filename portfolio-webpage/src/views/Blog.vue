@@ -36,15 +36,15 @@
             <router-link :to="getPath(category.en)">{{ category.es }}</router-link>
         </span>
       </div>
-      <div class="blog-search-box" :class="{ 'd-none': onSearching }">
+      <div class="blog-search-box" :class="{ 'd-none': onSearching}">
         <div class="search-box__body">
-          <label for="searchInput" class="d-none">Busque aqui</label>
+          <label for="searchInput">Busque aqui</label>
           <input type="search" class="search-box__input" id="searchInput" v-model="searchText" placeholder="Busque aqui" />
           <span class="search-box__icon icon-search" title="Buscar" @click="setSearchText"></span>
         </div>
       </div>
       <div class="blog-results-section">
-        <div class="blog-filter-options" :class="{ 'd-none': onSearching }">
+        <div class="blog-filter-options" :class="{ 'd-none': onSearching || $route.params.id }">
           <select-filter label="Año" default-option="todos" :options="years" @getOption="getYear" />
           <select-filter label="Mes" default-option="todos" :options="months" @getOption="getMonth" />
         </div>

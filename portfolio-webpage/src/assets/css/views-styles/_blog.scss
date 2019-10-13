@@ -53,6 +53,11 @@
       max-width: 400px;
       margin: 0 auto;
 
+      label {
+        font-size: 0;
+        position: absolute;
+      }
+
       .search-box__input {
         border: none;
         outline: none;
@@ -457,6 +462,15 @@
           }
         }
       }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .blog-results-section {
+
+    .inner-wrapper {
+      max-width: 100%;
     }
   }
 }

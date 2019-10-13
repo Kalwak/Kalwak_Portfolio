@@ -19,22 +19,22 @@
             <h4 class="contact__title">Contáctanos</h4>
             <form class="form-row form animated fadeIn"  v-if="!email.onSending">
               <div class="form-group col-12 form__input-container">
-                <label for="name" class="d-none">Nombre</label>
+                <label for="name">Nombre</label>
                 <input type="text" placeholder="Nombre" class="form-control form__input" id="name" v-model="email.name" />
                 <small class="text-danger mt-1 mb-2 d-block" :class="{ visible: inputError, invisible: !inputError }">*requerido</small>
               </div>
               <div class="form-group col form__input-container">
-                <label for="phone" class="d-none">Teléfono</label>
+                <label for="phone">Teléfono</label>
                 <input type="tel" placeholder="Teléfono" class="form-control form__input" id="phone" v-model.number="email.phoneNumber" />
                 <small class="text-danger mt-1 mb d-block invisible">*opcional</small>
               </div>
               <div class="form-group col form__input-container">
-                <label for="email" class="d-none">Email</label>
+                <label for="email">Email</label>
                 <input type="email" placeholder="E-mail" class="form-control form__input" id="email" v-model="email.address" />
                 <small class="text-danger mt-1 mb-2 d-block" :class="{ visible: inputError, invisible: !inputError }">*requerido</small>
               </div>
               <div class="form-group col-12 form__input-container">
-                <label for="message" class="d-none">Consulta</label>
+                <label for="message">Consulta</label>
                 <textarea placeholder="Consulta" class="form-control form__input form__textarea" id="message" v-model="email.message"></textarea>
                 <small class="text-danger mt-1 mb-2 d-block" :class="{ visible: inputError, invisible: !inputError }">*requerido</small>
               </div>
@@ -68,7 +68,7 @@
             </div>
             <div class="social-media">
               <h4 class="contact__title">Nuestras redes</h4>
-              <a href="https://www.facebook.com/Kalwak-358576961719203" target="_blank" class="social-media__icon icon-facebook social-media__icon" title="facebook"></a>
+              <a href="https://www.facebook.com/Kalwak-358576961719203" target="_blank" rel="noopener" class="social-media__icon icon-facebook social-media__icon" title="facebook"></a>
               <a href="tel:+50684599023" class="social-media__icon icon-whatsapp social-media__icon" title="whatsapp"></a>
             </div>
           </div>

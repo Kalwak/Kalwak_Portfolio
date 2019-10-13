@@ -19,7 +19,7 @@
                 </router-link>
                 <!-- <span class="menu-button" >menu</span> -->
               </h1>
-              <button class="hamburger hamburger--squeeze menu-button" :class="{ 'is-active': activatedMenu }" type="button" @click="toggleMenu">
+              <button class="hamburger hamburger--squeeze menu-button" :class="{ 'is-active': activatedMenu }" type="button" @click="toggleMenu" aria-label="menu-button">
                 <span class="hamburger-box">
                   <span class="hamburger-inner"></span>
                 </span>

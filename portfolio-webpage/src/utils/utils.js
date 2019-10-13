@@ -8,7 +8,6 @@ function getRangeOfNumbers(min, limit) {
   return numbers;
 }
 
-
 function formatMonth(month) {
   let months = ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"];
   if (typeof month !== 'string' || !month.length) return false;
@@ -17,8 +16,25 @@ function formatMonth(month) {
   return month;
 }
 
+function formatPostDate(date) { // format should be -> yy-mm-dd
+  const months = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+  const datePieces = date.split('-');
+  let [year, month, day] = datePieces;
+
+  month = month.split('');
+  let monthIndex = Number((month[0] === '0' ? month[1] : month.join(''))) - 1;
+  month = months[monthIndex];
+
+  day = day.split('');
+  day = day[0] === '0' ? day[1] : day;
+  day = day.join('');
+
+  let finalDate = `Publicado el ${day} de ${month} del ${year}`;
+  return finalDate
+}
 
 export {
   getRangeOfNumbers,
-  formatMonth
+  formatMonth,
+  formatPostDate,
 }

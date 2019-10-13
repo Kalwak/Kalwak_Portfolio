@@ -1,0 +1,196 @@
+.post-container {
+  background-color: #fff;
+  padding: 40px 60px;
+  margin-top: 4px;
+
+  .post-body {
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: bold;
+      margin: 20px 0 6px;
+      padding: 27px 0 10px;
+    }
+
+    h1 {
+      font-size: 2.4em;
+    }
+    h2 {
+      font-size: 1.8em;
+    } 
+    h3 {
+      font-size: 1.5em;
+    }
+    h4 {
+      font-size: 1.3em;
+    } 
+    h5 { 
+      font-size: 1em;
+    } 
+    h6 { 
+      font-size: 0.9em;
+    }
+
+    // editor specific
+    .post__title {
+      font-size: 2.4em;
+      margin: 0;
+      padding: 0;
+    }
+
+    .post__date {
+      margin: 15px 0 20px;
+    }
+
+    .post__code {
+      display: block;
+
+      pre {
+        background: #002663;
+        color: #fff;
+        padding: 10px 15px;
+        font-size: 1.2em;
+        border-radius: 4px;
+        box-shadow: inset 0 5px 4px #02265e;
+      }
+    }
+
+    .post__paragraph {
+      font-size: 1.1em;
+      font-weight: 500;
+      margin: 10px 0px;
+    }
+
+    .post__list {
+      margin: 20px 0;
+      padding: 0;
+      list-style-position: inside;
+      font-size: 1.2em;
+    }
+
+    .post__image {
+      width: 100%;
+    }
+
+    .post__image-caption {
+      margin: 4px 0 20px;
+    }
+  }
+
+  .post-footer {
+
+    .post__author {
+      margin: 20px 0;
+    }
+
+    .share-box {
+      display: flex;
+      align-items: center;
+
+
+      span {
+        margin-right: 10px;
+      }
+
+      a {
+        margin: 0 6px;
+
+        svg {
+          width: 30px;
+        }
+
+        .facebook-color {
+          fill: #4172B8;
+        }
+        .instagram-color {
+          fill: #E4405F;
+        }
+        .whatsapp-color {
+          fill: #25D366;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .post-container {
+    padding: 20px;
+  
+    .post-body {
+  
+      // editor specific
+      .post__title {
+        text-align: center;
+      }
+  
+      .post__date {
+        text-align: center;
+      }
+    }
+  
+    .post-footer {
+  
+      .post__author {
+        text-align: center;
+      }
+  
+      .share-box {
+        justify-content: center;
+  
+        a {
+  
+          svg {
+            width: 25px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .post-container {
+    padding: 20px 0;
+  
+    .post-body {
+      h1, h2, h3, h4, h5, h6 {
+        font-weight: bold;
+        padding: 10px 0;
+        margin: 20px 20px 6px;
+      }
+  
+      // editor specific
+      .post__paragraph {
+        margin: 0 20px 20px;
+      }
+
+      .post__list {
+        margin: 20px;
+      }
+
+      .post__code {
+        margin: 20px;
+      }
+  
+      .post__image-caption {
+        text-align: center;
+      }
+    }
+  
+    .post-footer {
+  
+      .share-box {
+      flex-wrap: wrap;
+  
+        span {
+          width: 100%;
+          text-align: center;
+          margin: 10px 0;
+        }
+  
+        a {
+          margin: 0 6px;
+        }
+      }
+    }
+  }
+}

@@ -15,7 +15,7 @@
 
 -->
 <template>
-  <div class="post-card">
+  <div class="post-card" @click="goToPost">
     <header class="post-card__header">
       <div class="post-card__cover">
         <img :src="post.thumbnail" alt="imagen miniatura" class="cover__image" />
@@ -41,6 +41,7 @@
 // showcase a single post informnation through a good-looking card
 
 
+// @vuese
 export default {
   name: 'post-card',
   props: {
@@ -50,5 +51,23 @@ export default {
       required: true,
     },
   },
+
+  computed: {
+    postRoute() {
+      return `/blog/${this.category}/post/${this.post.id}`;
+    },
+
+    category() {
+      return this.$route.params.category;
+    },
+  },
+  
+  methods: {
+    // @vuese
+    // push posrRoute
+    goToPost() {
+      this.$router.push(this.postRoute);
+    }
+  }
 };
 </script>

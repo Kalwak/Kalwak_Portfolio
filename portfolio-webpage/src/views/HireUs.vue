@@ -28,16 +28,16 @@
                 <h3 class="hire-us__sub-title">Complete el siguiente formulario para ser ascesorado</h3>
                 <form id="service-form" class="hire-form" action="http://localhost:8000/api/service_request/" method="post" enctype="multipart/form-data">
                     <div class="hire-form__inputs">
-                        <label class="d-none" for="fName">Nombre</label>
+                        <label for="fName">Nombre</label>
                         <input type="text" class="hire-form__input" id="fName" v-model="service_request.first_name"
                                placeholder="Nombre" name="name"/>
-                        <label class="d-none" for="lName">Apellido</label>
+                        <label for="lName">Apellido</label>
                         <input type="text" class="hire-form__input" id="lName" v-model="service_request.last_name"
                                placeholder="Apellido" name="lastname"/>
-                        <label class="d-none" for="phone">Teléfono</label>
+                        <label for="phone">Teléfono</label>
                         <input type="tel" class="hire-form__input" id="phone" v-model="service_request.telephone"
                                placeholder="Teléfono" name="telephone"/>
-                        <label class="d-none" for="email">E-mail</label>
+                        <label for="email">E-mail</label>
                         <input type="email" class="hire-form__input" id="email" name="email" v-model="service_request.email"
                                placeholder="E-mail"/>
                     </div>
@@ -56,7 +56,7 @@
                             proyecto</small>
                     </div>
                     <div class="hire-form__message">
-                        <label class="d-none" for="message">Consulta</label>
+                        <label for="message">Consulta</label>
                         <textarea v-model="service_request.description" id="message" placeholder="Cuentenos de su proyecto" name="description"></textarea>
                     </div>
                     <div class="hire-form__files">

@@ -165,6 +165,10 @@
       }
 
       .form__input-container {
+        label {
+          font-size: 0px;
+          position: absolute;
+        }
 
         &:nth-child(2), &:nth-child(3) {
           min-width: 100%;

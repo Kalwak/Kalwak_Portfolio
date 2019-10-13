@@ -40,6 +40,11 @@
       flex-wrap: wrap;
       justify-content: space-between;
 
+      label {
+        font-size: 0;
+        position: absolute;
+      }
+
       .hire-form__input {
         width: 49%;
         font-weight: 400;
@@ -103,6 +108,11 @@
 
     .hire-form__message {
       margin-bottom: 20px;
+
+      label {
+        font-size: 0;
+        position: absolute;
+      }
 
       textarea {
         min-width: 100%;

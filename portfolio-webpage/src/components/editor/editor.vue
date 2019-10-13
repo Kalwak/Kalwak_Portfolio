@@ -59,7 +59,7 @@
         </div>
         <div class="editor-information-picker">
           <select-filter :options="categories" default-option="development" label="Categoria" class="post-category" @getOption="getTag" />
-          <select-filter :options="authors" default-option="Joseph Zamora" label="Autor" class="post-category" @getOption="getAuthor" />
+          <select-filter :options="authors" default-option="Joseph" label="Autor" class="post-category" @getOption="getAuthor" />
         </div>
       </div>
 
@@ -69,6 +69,17 @@
           <input type="file" class="form-control-file" @change="getThumbnail" id="thumbnail" />
         </label>
         <button class="u-button" @click="submitPost" :disabled="onLoading">Crear</button>
+      </div>
+    </div>
+    <div 
+    v-if="onLoading"
+      class="d-flex justify-content-center align-self-center bg-danger w-100" style="z-index: 10; position: absolute; margin-top: -300px">
+      <div class="spinner">
+        <div class="rect1"></div>
+        <div class="rect2"></div>
+        <div class="rect3"></div>
+        <div class="rect4"></div>
+        <div class="rect5"></div>
       </div>
     </div>
   </div>
@@ -83,6 +94,7 @@ import swal from 'sweetalert';
 import axios from 'axios';
 
 
+// @vuese
 export default {
   name: 'post-editor',
   data() {
@@ -107,7 +119,6 @@ export default {
       post: {
         title: '',
         author: '',
-        text: '',
         tag: '',
         thumbnail: null,
       },
@@ -166,24 +177,22 @@ export default {
     // @vuese
     // get Editor data and set it to component editorData, then call saveDataToLocalStorage
     // to save editorData to localStorage
-    saveData() {
-      let editor = window.editor;
-      editor.save()
-        .then( data => {
-          this.$log.debug(data);
-          this.editorData = data;
-          this.saveDataToLocalStorage();
-        })
-        .catch( reason => {
-          this.$log.error(reason);
-        })
+    getData() {
+      return new Promise((resolve, reject) => {
+        window.editor.save()
+          .then( data => {
+            resolve(data);
+          })
+          .catch( error => {
+            reject(error)
+          })
+      });
     },
 
     // @vuese
     // save editor data to localStorage, but check if data.blocks has something in it, if it's empty
     // returns false and no data is saved
-    saveDataToLocalStorage() {
-      let editorData = this.editorData;
+    saveDataToLocalStorage(editorData) {
       this.$log.debug(editorData);
       if (editorData.blocks && editorData.blocks.length === 0) return false;
       localStorage.setItem('_editor-data', JSON.stringify(editorData));
@@ -198,6 +207,16 @@ export default {
       this.$log.debug(editorData);
       if (!editorData) return false;
       this.editorData = editorData;
+    },
+
+    // @vuese
+    clearEditorData() {
+      localStorage.setItem('_editor-data', JSON.stringify({}));
+      this.editorData = {};
+      this.post.title = '';
+      this.post.thumbnail = '';
+      window.editor.destroy();
+      this.initEditor();
     },
 
     // @vuese
@@ -236,56 +255,57 @@ export default {
     },
 
     // @vuese
-    addFormattedDataToPost() {
-      let editorData = this.editorData;
-      let stringifyEditorData = JSON.stringify(editorData);
-      this.post.text = stringifyEditorData;
-    },
-
-    // @vuese
     // submit post information to backend
     submitPost() {
-      this.addFormattedDataToPost();
       this.onLoading = true;
       let postUrl = this.postUrl;
       let post = this.post;
-      this.$log.debug(post);
-      let postFormData = new FormData();
-      postFormData.append('title', post.title);
-      postFormData.append('author', post.author);
-      postFormData.append('tag', post.tag);
-      postFormData.append('text', post.text);
-      postFormData.append('thumbnail', post.thumbnail);
-      axios.post(postUrl, postFormData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        }
-      })
-        .then( response => {
-          this.$log.debug(response);
-          let data = response.data;
-          swal({
-            title: 'Notificación',
-            text: `Creado con exito`,
-          });
-        })
-        .catch( errors => {
-          let request = errors.request;
-          this.$log.error(request);
-          if (request.status === 400) {
-            swal({
-              title: 'Notificación',
-              text: 'Porfavor no olvide poner titulo y agregar una imagen thumbnail',
+      this.getData()
+        .then( data => {
+          let text = JSON.stringify(data);
+          this.$log.debug('editor data', post);
+          let postFormData = new FormData();
+          postFormData.append('title', post.title);
+          postFormData.append('author', post.author);
+          postFormData.append('tag', post.tag);
+          postFormData.append('text', text);
+          postFormData.append('thumbnail', post.thumbnail);
+          axios.post(postUrl, postFormData, {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            }
+          })
+            .then( response => {
+              this.$log.debug(response);
+              let data = response.data;
+              this.$log.debug(data);
+              swal({
+                title: 'Notificación',
+                text: `Creado con exito`,
+              });
+              this.clearEditorData();
+            })
+            .catch( errors => {
+              let request = errors.request;
+              this.$log.error(request);
+              if (request.status === 400) {
+                swal({
+                  title: 'Notificación',
+                  text: 'Verifique lo siguiente:\n- que el post tenga un titulo\n- que el titulo del post no tenga mas de 100 letras\n- que haya elegido una imagen thumbnail',
+                });
+              } else {
+                swal({
+                  title: 'Notificación',
+                  text: 'Hubo un error, intente de nuevo',
+                });
+              };
+            })
+            .finally( () => {
+              this.onLoading = false;
             });
-          } else {
-            swal({
-              title: 'Notificación',
-              text: 'Hubo un error, intente de nuevo',
-            });
-          };
         })
-        .finally( () => {
-          this.onLoading = false;
+        .catch( error => {
+          this.$log.error(error);
         });
     },
   },
@@ -296,7 +316,10 @@ export default {
   },
   
   beforeDestroy() {
-    this.saveData();
+    this.getData()
+      .then( data => {
+        this.saveDataToLocalStorage(data);
+      })
     window.editor.destroy();
   }
 }
